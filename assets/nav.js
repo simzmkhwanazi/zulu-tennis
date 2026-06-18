@@ -154,7 +154,28 @@
     els.forEach(function (el) { obs.observe(el); });
   }
 
-  function start() { buildSidebar(); initTheme(); initMenu(); initScrollSpy(); initReveal(); }
+  /* ---- Enhance "Watch" links: add real YouTube thumbnail + play badge ---- */
+  function initVideos() {
+    var items = document.querySelectorAll("a.video-item");
+    Array.prototype.forEach.call(items, function (a) {
+      if (a.querySelector(".thumb")) return;               // already enhanced
+      var m = (a.getAttribute("href") || "").match(/[?&]v=([A-Za-z0-9_-]{6,})/);
+      if (!m) return;
+      var id = m[1];
+      a.classList.add("has-thumb");
+      var fig = document.createElement("span");
+      fig.className = "thumb";
+      var img = document.createElement("img");
+      img.loading = "lazy";
+      img.alt = "";
+      img.src = "https://img.youtube.com/vi/" + id + "/mqdefault.jpg";
+      img.referrerPolicy = "no-referrer";
+      fig.appendChild(img);
+      a.insertBefore(fig, a.firstChild);
+    });
+  }
+
+  function start() { buildSidebar(); initTheme(); initMenu(); initScrollSpy(); initReveal(); initVideos(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
 })();

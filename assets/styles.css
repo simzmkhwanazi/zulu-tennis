@@ -257,11 +257,25 @@ figure.diagram figcaption { font-size:.82rem; color: var(--muted); margin-top: 8
 
 /* ---------- Watch / video block ---------- */
 .video-list { display:grid; gap:10px; margin-top: 8px; }
-.video-item { display:flex; gap:12px; align-items:center; padding: 8px; border:1px solid var(--border);
-  border-radius: var(--radius-sm); background: var(--surface); }
-.video-item .thumb { width: 120px; aspect-ratio: 16/9; border-radius: 7px; object-fit: cover; flex:0 0 auto; background: var(--surface-2); }
-.video-item .meta .t { font-weight: 700; }
-.video-item .meta .ch { font-size:.82rem; color: var(--muted); }
+.video-item { display:flex; gap:12px; align-items:center; padding: 8px 10px 8px 8px; border:1px solid var(--border);
+  border-left:4px solid var(--c-watch); border-radius: var(--radius-sm); background: var(--surface);
+  color: var(--text); text-decoration: none; transition: border-color .15s, transform .15s, background .15s; }
+.video-item:hover { border-color: var(--c-watch); background: color-mix(in srgb,var(--c-watch) 7%, var(--surface));
+  text-decoration: none; transform: translateY(-1px); }
+.video-item .thumb { position: relative; width: 132px; aspect-ratio: 16/9; border-radius: 8px; overflow: hidden;
+  flex:0 0 auto; background: var(--surface-2); display:block; }
+.video-item .thumb img { width:100%; height:100%; object-fit: cover; display:block; }
+.video-item .thumb::after { content:"▶"; position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+  font-size: 1rem; color:#fff; background: rgba(0,0,0,.28); }
+.video-item:hover .thumb::after { background: rgba(0,0,0,.12); }
+/* fallback play badge when no thumbnail yet (JS off / image loading) */
+.video-item:not(.has-thumb)::before { content:"▶"; flex:0 0 auto; width:40px; height:40px; border-radius:50%;
+  background: var(--hl); color:#141414; display:flex; align-items:center; justify-content:center; font-size:.9rem; font-weight:800; }
+.video-item .meta .t { font-weight: 750; }
+.video-item:hover .meta .t { text-decoration: underline; text-decoration-color: var(--c-watch); text-underline-offset: 2px; }
+.video-item .meta .ch { font-size:.8rem; color: var(--muted); }
+.video-item .meta .ch::before { content:"▶ "; color: var(--c-watch); }
+@media (max-width:520px){ .video-item .thumb { width: 104px; } }
 
 /* ---------- Pills / tags ---------- */
 .pill { display:inline-block; font-size:.74rem; font-weight:700; padding: 2px 9px; border-radius: 999px;
