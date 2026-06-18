@@ -249,6 +249,41 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .formula .principles .p { font-size:.8rem; font-weight:700; background: var(--surface-2); border:1px solid var(--border);
   border-radius:999px; padding:4px 11px; }
 
+/* ---------- Courtside Card (the 10-second bench read) ---------- */
+.courtside { border:1px solid var(--border); border-left:6px solid var(--hl); border-radius: var(--radius);
+  background: var(--surface); box-shadow: var(--shadow); padding: 16px 18px; margin: 14px 0 6px; }
+.courtside .cs-eyebrow { font-size:.66rem; font-weight:800; letter-spacing:.12em; text-transform:uppercase;
+  color: var(--hl-deep); display:flex; align-items:center; gap:8px; }
+:root[data-theme="dark"] .courtside .cs-eyebrow, :root:not([data-theme="light"]) .courtside .cs-eyebrow { color: var(--hl); }
+.courtside .cs-rule { font-weight:850; font-size: clamp(1.35rem, 4.8vw, 1.95rem); line-height:1.12;
+  letter-spacing:-.01em; margin: 6px 0 12px; }
+.courtside .cs-grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; align-items:center; }
+.courtside figure.diagram { margin: 0; box-shadow:none; border:none; padding:0; background:none; }
+.courtside .cs-dd { display:flex; flex-direction:column; gap:7px; }
+.courtside .dd { padding:8px 11px; border-radius:9px; font-weight:650; font-size:.95rem; }
+.courtside .dd-do { background: color-mix(in srgb,var(--c-purpose) 12%,var(--surface)); border-left:3px solid var(--c-purpose); }
+.courtside .dd-no { background: color-mix(in srgb,var(--c-mistake) 10%,var(--surface)); border-left:3px solid var(--c-mistake); }
+.courtside .dd b { font-weight:850; }
+.courtside .cs-cues { display:flex; flex-wrap:wrap; gap:6px; margin-top:10px; }
+.courtside .cs-cues span { font-size:.82rem; font-weight:700; background: var(--surface-2);
+  border:1px solid var(--border); border-radius:999px; padding:4px 11px; }
+.courtside .cs-drill { margin-top:12px; font-size:.92rem; padding-top:10px; border-top:1px dashed var(--border); }
+.courtside .cs-drill b { color: var(--hl-deep); }
+:root[data-theme="dark"] .courtside .cs-drill b, :root:not([data-theme="light"]) .courtside .cs-drill b { color: var(--hl); }
+@media (max-width:560px){ .courtside .cs-grid { grid-template-columns: 1fr; } }
+
+/* ---------- Collapsible deep breakdown ---------- */
+details.more { margin: 6px 0 0; border-top:1px solid var(--border); }
+details.more > summary { cursor:pointer; list-style:none; font-weight:800; color: var(--accent);
+  padding: 14px 2px; display:flex; align-items:center; gap:9px; user-select:none; }
+details.more > summary::-webkit-details-marker { display:none; }
+details.more > summary::before { content:"📖"; }
+details.more > summary::after { content:"▾"; margin-left:auto; transition: transform .2s; color: var(--muted); }
+details.more[open] > summary::after { transform: rotate(180deg); }
+details.more > summary:hover { color: var(--hl-deep); }
+:root[data-theme="dark"] details.more > summary, :root:not([data-theme="light"]) details.more > summary { color: var(--accent); }
+@media (prefers-reduced-motion: reduce){ details.more > summary::after { transition:none; } }
+
 /* ---------- Diagram figure ---------- */
 figure.diagram { margin: 18px 0; background: var(--surface); border:1px solid var(--border);
   border-radius: var(--radius); padding: 14px; box-shadow: var(--shadow); }
@@ -439,5 +474,8 @@ ul.check.print-fill li::before { background: var(--surface); }
   .page-break { break-before: page; }
   /* never let scroll-reveal hide content on paper */
   .reveal { opacity: 1 !important; transform: none !important; }
+  /* always expand the collapsed breakdown when printing */
+  details.more > summary { display: none !important; }
+  details.more > * { display: block !important; }
 }
 .print-only { display: none; }

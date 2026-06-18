@@ -202,7 +202,30 @@
     });
   }
 
-  function start() { buildSidebar(); initTheme(); initMenu(); initScrollSpy(); initReveal(); initVideos(); }
+  /* ---- Courtside mode: collapse the deep breakdown behind one toggle ----
+     Only runs on pages that have a .courtside card. Everything between the card
+     and .next-action is moved into <details class="more"> (closed by default). */
+  function initCollapse() {
+    var content = document.querySelector(".content");
+    if (!content) return;
+    var card = content.querySelector(".courtside");
+    if (!card || content.querySelector("details.more")) return;
+    // don't collapse search-tool pages (Problem Solver, Drill Library) or opted-out cards
+    if (content.querySelector('input[type="search"]') || card.classList.contains("no-collapse")) return;
+    var stop = content.querySelector(".next-action") || content.querySelector(".pager")
+            || content.querySelector("footer");
+    var nodes = [], n = card.nextElementSibling;
+    while (n && n !== stop) { nodes.push(n); n = n.nextElementSibling; }
+    if (!nodes.length) return;
+    var det = document.createElement("details"); det.className = "more";
+    var sum = document.createElement("summary");
+    sum.innerHTML = "Open the full breakdown — drills, why &amp; examples";
+    det.appendChild(sum);
+    nodes.forEach(function (x) { det.appendChild(x); });   // moves nodes in
+    content.insertBefore(det, stop);
+  }
+
+  function start() { buildSidebar(); initTheme(); initMenu(); initCollapse(); initScrollSpy(); initReveal(); initVideos(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
 })();
