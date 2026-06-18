@@ -57,6 +57,30 @@
   var here = (location.pathname.split("/").pop() || "index.html").toLowerCase();
   if (here === "") here = "index.html";
 
+  // Real YouTube channel names (from oEmbed) keyed by video id; shown on Watch cards.
+  var CHANNELS = {
+    "2oz7VMyffGw":"Top Tennis Training","37_ixSxH9Jc":"Essential Tennis","3uhq1YnGn7M":"Top Tennis Training",
+    "98Jl_RzEelk":"Tennishead","9lQy78zAlFc":"Tennis Lab","AMnmwePJVGE":"Crunch Time Coaching",
+    "CBH309BOKdE":"Top Tennis Training","D3O7wYfiV9k":"Essential Tennis","GumlybS_rBo":"2MinuteTennis",
+    "HnByEZTjqWA":"Fuzzy Yellow Balls","IPSQUqoN8gU":"2MinuteTennis","IurVY9SHdHE":"Tennis Evolution",
+    "K8f5E6aXyfM":"2MinuteTennis","L8TYCPIllJk":"Joel Myers","MWX2OSK0HzY":"The Tennis Mentor",
+    "NDpF_r7EVM8":"Tennis Warehouse","Ns54d4WLQSo":"Online Tennis Instruction","PC79gxmdv8Q":"Tennis Coaching Education",
+    "R5w7dnZmC18":"Patrik Broddfelt","Rdor7I6x6rg":"Unleash Your Tennis","Sf46KbN11D0":"CTW Academy",
+    "Tzu8xYiClJ8":"PowerLux Fitness","UNSLArLm0nc":"RacquetFlex","WnVPbvUZOEM":"Top Tennis Training",
+    "XAxoiz2wElU":"Peak Performance Sports","Xvw36Oyq05o":"Mel the Fitness Czar","YbaRAIAhPc8":"2MinuteTennis",
+    "_M8rcYnVwqc":"The Tennis Mentor","_cWG65aLoz8":"The Tennis Mentor","bMnVFK4Kg9E":"Unleash Your Tennis",
+    "cPurQuEOUjo":"Essential Tennis","cQ-onw4B_2A":"Daniel McCain","cTwmZpWftBY":"PlayYourCourt",
+    "cY6UNLYA9Jk":"Vantage Tennis","esJyKD3C2e0":"2MinuteTennis","fZMsoHPtWnU":"2MinuteTennis",
+    "feCB0-CYqrI":"2MinuteTennis","hNochU1XpoA":"Essential Tennis","nu2Y7Ygi2HQ":"Intuitive Tennis",
+    "pBeTmGGJE98":"Snowman Sports Media","pJ_vwgSJWgw":"Time Value Of Tennis","qTKaCiWRwgM":"Tennis Files",
+    "qfE0I0_7pdk":"Intuitive Tennis","sYXF77vwRzE":"Patrick Smith Tennis","skJm-zpDfPE":"Feel Tennis",
+    "teZlZP_0gEg":"Essential Tennis","twMrBvmrUb0":"Meike Babel Tennis","v1EyZCygYMo":"Kris Soutar",
+    "xwYUlwTzaS0":"Crunch Time Coaching","zO90rScjNk0":"Performance-Plus Tennis",
+    "a6w6RBjmvo0":"Tennis Channel","poMHhmJqxBA":"PlayYourCourt","hU_Tt3gxIfM":"Online Tennis Instruction",
+    "opnW4ZRtsVc":"Brent Abel's WebTennis","eRdWvrO_A9I":"Kris Soutar","J60YKdfqw_M":"Gill Gross",
+    "HtsqfAgj0YE":"Brent Abel's WebTennis"
+  };
+
   function esc(s){ return String(s).replace(/[&<>"]/g, function(c){
     return {"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;"}[c]; }); }
 
@@ -163,6 +187,9 @@
       if (!m) return;
       var id = m[1];
       a.classList.add("has-thumb");
+      // real channel name on the .ch line
+      var chEl = a.querySelector(".ch");
+      if (chEl && CHANNELS[id]) chEl.textContent = CHANNELS[id];
       var fig = document.createElement("span");
       fig.className = "thumb";
       var img = document.createElement("img");
