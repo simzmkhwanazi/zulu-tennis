@@ -325,7 +325,7 @@ ul.check.print-fill li::before { background: var(--surface); }
 /* Editorial serif wordmark (renders Bodoni/Didot on iPhone) */
 .wordmark { display:inline-block; margin: 0 auto; }
 .wordmark .zt { font-family: var(--serif); font-weight: 600; font-size: clamp(2.7rem, 13vw, 6.2rem);
-  letter-spacing: .005em; line-height: .98; color:#fff; }
+  letter-spacing: .005em; line-height: .98; color:#fff; margin: 0; }
 .wordmark .rule { height: 1px; width: 64%; margin: 18px auto 12px;
   background: var(--hl); }
 .wordmark .by { font-family: var(--serif); font-style: italic; color: var(--hl); letter-spacing:.02em;
@@ -429,5 +429,7 @@ ul.check.print-fill li::before { background: var(--surface); }
   .print-only { display: block !important; }
   h2 { break-after: avoid; }
   .page-break { break-before: page; }
+  /* never let scroll-reveal hide content on paper */
+  .reveal { opacity: 1 !important; transform: none !important; }
 }
 .print-only { display: none; }
