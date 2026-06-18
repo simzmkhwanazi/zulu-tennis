@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Advanced Concepts</title>
+<meta name="description" content="Advanced concepts — expected value, risk/reward, pattern probability, analytics, heatmaps, momentum & energy management and environmental adaptation.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>15</b> · Match Intelligence</span>
+        <span class="layer-chip">Layer 3 &amp; 5</span>
+      </div>
+      <h1>Advanced Concepts</h1>
+      <p class="lead">The edges most playbooks skip — the probability thinking, analytics and adaptability that
+      separate players who "hit well" from players who consistently <em>win</em>.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="ev">Expected-Value tennis</h2>
+    <p>Every shot choice has a distribution of outcomes. <strong>Expected Value (EV)</strong> = (chance you win
+    the point) − (chance you lose it), over the long run. The flashy down-the-line winner might win the point
+    35% of the time and lose it 40% — negative EV. The boring deep crosscourt might be +EV all day. Choose the
+    <strong>highest-EV play, not the highest-ceiling play.</strong> This is the math under the whole
+    <a href="01-decision-making.html">Decision Engine</a>. <span class="ev ev-a">Level A</span></p>
+
+    <h2 id="riskreward">Risk vs reward matrix</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Reward ↓ / Risk →</th><th>Low risk</th><th>High risk</th></tr></thead>
+      <tbody>
+        <tr><th>High reward</th><td><strong>Always do</strong> (e.g. attack the short inside ball)</td><td>Only when ahead / on the right ball</td></tr>
+        <tr><th>Low reward</th><td>Fine as a reset (deep middle)</td><td><strong>Never</strong> (low-% DTL off an outside ball)</td></tr>
+      </tbody>
+    </table></div>
+    <p>The single most common amateur error lives in the bottom-right box: high risk, low reward.</p>
+
+    <h2 id="probability">Pattern-probability models</h2>
+    <p>Track which of <em>your</em> patterns actually win points (in <a href="12-match-analysis.html">charting</a>).
+    If your serve+1 to the forehand wins 68% but your DTL-change pattern wins 41%, the data tells you what to lean
+    on and what to drill. Play your <strong>measured</strong> percentages, not your feelings.</p>
+
+    <h2 id="pressure">Pressure-point strategy</h2>
+    <p>Big points reward the lowest-variance plan. Pre-decide your <a href="25-pattern-library.html#pressure">Pressure-Point</a>
+    pattern and use it every time the point matters. Don't invent — execute.</p>
+
+    <h2 id="analytics">Tendency tracking, location analytics &amp; heatmaps</h2>
+    <ul>
+      <li><strong>Opponent-tendency tracking:</strong> log their go-to serve/shot on big points (<a href="20-match-intelligence-db.html">Scouting DB</a>).</li>
+      <li><strong>Serve-location analytics:</strong> chart where your serves land per side; find the patterns you over-use (predictable) and your reliable spots.</li>
+      <li><strong>Return-position analytics:</strong> note where you stand and how it correlates with return points won — adjust depth per server.</li>
+      <li><strong>Court-position heatmaps:</strong> from video, mark where you contact most balls. Living 3 metres behind the baseline? That's a heatmap problem, not a stroke problem.</li>
+    </ul>
+
+    <h2 id="momentum">Momentum management</h2>
+    <p>Momentum is real but reversible. When it's against you: slow the pace, change one variable, target one
+    service hold to stop the run. When it's with you: keep your routine identical, don't coast, press the next
+    game. See <a href="11-mental-performance.html">Mental Performance</a>.</p>
+
+    <h2 id="energy">Energy management during matches</h2>
+    <ul>
+      <li>Spend energy in bursts on points; <strong>fully relax</strong> between points (the 80% you're not playing).</li>
+      <li>Use full time between points and on changeovers when tiring; fuel/hydrate on changeovers.</li>
+      <li>Bank energy in easy service games; spend it on return games and big points.</li>
+    </ul>
+
+    <h2 id="environment">Environmental adaptation</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Condition</th><th>Adjustment</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Wind (into you)</strong></td><td>Swing faster, more spin, aim deeper — the wind shortens your ball.</td></tr>
+        <tr><td><strong>Wind (behind you)</strong></td><td>More margin, more topspin to hold the ball in; expect serves to fly.</td></tr>
+        <tr><td><strong>Crosswind</strong></td><td>Aim into the wind; favour the safer (downwind-protected) target.</td></tr>
+        <tr><td><strong>Sun</strong></td><td>Adjust serve toss / use more spin serve into the sun; lob the opponent into the sun; move your overhead position.</td></tr>
+        <tr><td><strong>Altitude</strong></td><td>Faster, higher-bouncing ball — more spin for control, expect serves to be bigger.</td></tr>
+        <tr><td><strong>Clay</strong></td><td>Slower, higher bounce — patience, heavy topspin, longer rallies, slide &amp; recover; the short ball comes later.</td></tr>
+        <tr><td><strong>Hard</strong></td><td>True bounce, medium pace — balanced game, first-strike rewarded, footing reliable.</td></tr>
+        <tr><td><strong>Grass</strong></td><td>Fast, low bounce — shorten points, serve+1, slice stays low, attack the net, take time early.</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="intelligence">The match-intelligence system</h2>
+    <p>Tie it together: pre-match scouting → in-match reading (score, tendencies, momentum, conditions) →
+    EV-based decisions → post-match charting → priorities. That feedback loop, run every match, is what
+    "match IQ" actually is — and it's trainable.</p>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Chasing highlight (high-ceiling) plays instead of high-EV ones.</li>
+        <li>Ignoring conditions — playing your sea-level hard-court game in wind on clay.</li>
+        <li>Burning energy between points and having nothing left in the third set.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>You can name the +EV play in a given situation, not just the exciting one.</li>
+        <li>You adjust at least one tactic for conditions every match.</li>
+        <li>Third-set win % holds steady (energy managed).</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=9lQy78zAlFc" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Clay vs Grass vs Hard — Surface Differences</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=nu2Y7Ygi2HQ" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Clay Court vs Hard Court Tactics</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=skJm-zpDfPE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Play Smarter Tennis Using Pro-Level Stats</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Pick one +EV swap to make in your game this week. Then turn all of this into a
+      training schedule — the <a href="14-practice-blueprint.html">Practice Blueprint</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="21-analytics.html"><small>Previous</small>← 21 · Analytics System</a>
+      <a class="next" href="14-practice-blueprint.html"><small>Next</small>14 · Practice Blueprint →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

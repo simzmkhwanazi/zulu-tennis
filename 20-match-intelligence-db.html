@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Match Intelligence Database</title>
+<meta name="description" content="The opponent scouting framework — a reusable, printable scouting sheet tracking serve/return tendencies, patterns, weaknesses and pressure behaviour.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>20</b> · Match Intelligence</span>
+        <span class="layer-chip">Layer 3 · Match Intelligence</span>
+      </div>
+      <h1>Match Intelligence Database</h1>
+      <p class="lead">In a league or circuit you face the same opponents repeatedly. A scouting record turns
+      "I always lose to her" into "she can't hurt me on the backhand and folds at 30–30." Build the file once,
+      win with it for years.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="why">Why scout</h2>
+    <p>Most opponents are creatures of habit — a favourite serve on break point, a backhand that breaks down under
+    pace, a tendency to rush when ahead. Capture those tendencies and you walk on court already two moves ahead.
+    Each opponent is an <a href="29-data-model.html">Opponent Profile</a> record. <span class="ev ev-b">Level B</span></p>
+
+    <h2 id="sheet">Printable scouting sheet</h2>
+    <div class="card">
+      <p><strong>Opponent:</strong> ________________ <strong>Type:</strong> ________________
+      <strong>Hand:</strong> R / L <strong>Last result vs:</strong> __________ <strong>Updated:</strong> ______</p>
+      <div class="tbl-wrap"><table><tbody>
+        <tr><th style="width:42%">Serve tendencies (1st)</th><td>Wide / Body / T — favourite: __________</td></tr>
+        <tr><th>Serve on big points (BP / 30–30)</th><td>__________________________</td></tr>
+        <tr><th>2nd serve (spin / depth / attackable?)</th><td>__________________________</td></tr>
+        <tr><th>Return tendencies (1st / 2nd)</th><td>Blocks / attacks; favourite return position: ______</td></tr>
+        <tr><th>Preferred rally pattern</th><td>__________________________</td></tr>
+        <tr><th>Forehand stability</th><td>Weapon / solid / liability</td></tr>
+        <tr><th>Backhand stability</th><td>Weapon / solid / liability</td></tr>
+        <tr><th>Net skills</th><td>Comfortable / avoids / weak overhead</td></tr>
+        <tr><th>Movement &amp; fitness</th><td>__________________________</td></tr>
+        <tr><th>Mental resilience</th><td>__________________________</td></tr>
+        <tr><th>Pressure behaviour (tight points)</th><td>Goes for it / gets passive / rushes</td></tr>
+        <tr><th>Tie-break behaviour</th><td>__________________________</td></tr>
+        <tr><th>Break-point behaviour</th><td>__________________________</td></tr>
+        <tr><th>Favourite serve location(s)</th><td>__________________________</td></tr>
+        <tr><th>Favourite return position</th><td>__________________________</td></tr>
+        <tr><th><strong>Their winning patterns</strong> (deny these)</th><td>__________________________</td></tr>
+        <tr><th><strong>Their losing patterns</strong> (force these)</th><td>__________________________</td></tr>
+      </tbody></table></div>
+      <p><strong>Game plan vs this opponent (neutralise / attack):</strong></p>
+      <p>______________________________________________________________</p>
+    </div>
+
+    <h2 id="use">Turning notes into a plan</h2>
+    <p>Before the match, distil the sheet into <strong>three lines</strong> for your
+    <a href="set-break.html">Set-Break planner</a>: one thing they do well (neutralise), one weakness (attack),
+    one big-point tendency (exploit). Match the plan to their type via
+    <a href="09-player-type-strategies.html">Player-Type Strategies</a>.</p>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Scouting everything and remembering nothing — distil to 3 actionable points.</li>
+        <li>Never updating the sheet — players change; note what's different each time.</li>
+        <li>Letting their reputation psych you out instead of attacking their actual weaknesses.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>A scouting sheet exists for every repeat opponent.</li>
+        <li>Win rate vs repeat opponents improves over time.</li>
+        <li>You execute the "neutralise/attack/exploit" plan from the first game.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=skJm-zpDfPE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Play Smarter Tennis Using Pro-Level Stats</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=cTwmZpWftBY" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Defeat the Pusher AND the Counter-Puncher</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Fill a scouting sheet for your next opponent. Then put your own numbers on a
+      dashboard — <a href="21-analytics.html">Analytics System</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="13-video-analysis.html"><small>Previous</small>← 13 · Video Analysis</a>
+      <a class="next" href="21-analytics.html"><small>Next</small>21 · Analytics System →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Set-Break Quick-Planner</title>
+<meta name="description" content="The Set-Break Quick-Planner — a one-screen, high-contrast cheat sheet to adjust strategy and plan the next set in under 20 seconds.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .sb-hero{background:#0b0b0b;color:#fff;border-radius:16px;padding:22px 20px;text-align:center;border:1px solid #1c1c1c;position:relative;margin-bottom:16px;}
+  .sb-hero::after{content:"";position:absolute;left:50%;bottom:0;width:55%;height:3px;transform:translateX(-50%);background:var(--hl);}
+  .sb-hero h1{font-family:var(--serif);font-weight:600;margin:.1em 0;font-size:clamp(1.8rem,7vw,2.8rem);}
+  .sb-hero p{color:var(--hl);letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;font-weight:700;margin:0;}
+  .sb-card{border:2px solid var(--ink);border-left:8px solid var(--hl);border-radius:12px;padding:14px 16px;margin:12px 0;background:var(--surface);}
+  .sb-card h2{margin:.1rem 0 .5rem;font-size:1.15rem;border:none;padding:0;}
+  .sb-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .sb-fill{min-height:84px;border:1.5px dashed var(--muted);border-radius:8px;padding:8px 10px;font-size:.92rem;color:var(--muted);}
+  .sb-big{font-size:1.05rem;}
+  .dial{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
+  .dial span{flex:1;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:8px 6px;font-weight:800;font-size:.82rem;}
+  .dial .down{border-color:var(--c-purpose);} .dial .mid{border-color:var(--c-check);} .dial .up{border-color:var(--c-watch);}
+  @media (max-width:520px){ .sb-grid{grid-template-columns:1fr;} }
+  @media print{ .sb-card{break-inside:avoid;} }
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <section class="sb-hero reveal">
+      <p>Read in 20 seconds</p>
+      <h1>Set-Break Quick-Planner</h1>
+    </section>
+
+    <p class="lead" style="margin-top:0">Sit down on the changeover. Run these six boxes top to bottom. Decide your
+    next set before you stand up. (Print it or keep it open on your phone.)</p>
+
+    <div class="sb-card reveal">
+      <h2>1 · What's working / what's not</h2>
+      <div class="sb-grid">
+        <div><strong style="color:var(--c-purpose)">✓ Working — do more</strong><div class="sb-fill">&nbsp;</div></div>
+        <div><strong style="color:var(--c-mistake)">✗ Not working — stop</strong><div class="sb-fill">&nbsp;</div></div>
+      </div>
+    </div>
+
+    <div class="sb-card reveal">
+      <h2>2 · Top decision triggers</h2>
+      <ul class="sb-big" style="margin:.2rem 0">
+        <li><strong>Deep &amp; fast at me</strong> → defend high crosscourt, reset.</li>
+        <li><strong>Short / inside ball</strong> → attack, take time, finish.</li>
+        <li><strong>Outside ball (crossed the line)</strong> → don't change direction; reset crosscourt.</li>
+        <li><strong>Opponent stretched</strong> → change direction only if I'm balanced.</li>
+      </ul>
+    </div>
+
+    <div class="sb-card reveal">
+      <h2>3 · Opponent-type counter</h2>
+      <ul style="margin:.2rem 0">
+        <li><strong>Pusher</strong> → approach &amp; finish; don't over-hit.</li>
+        <li><strong>Counter-puncher</strong> → take time, bring them to net.</li>
+        <li><strong>Power baseliner</strong> → change height/pace, deep middle.</li>
+        <li><strong>Serve &amp; volley</strong> → low returns at the feet, lob.</li>
+        <li><strong>Lefty</strong> → serve/return to backhand; watch ad-court kick.</li>
+        <li><strong>Big server</strong> → block deep middle; win 2nd-serve points.</li>
+        <li><strong>Moonballer</strong> → take early/on the rise, then approach.</li>
+      </ul>
+    </div>
+
+    <div class="sb-card reveal">
+      <h2>4 · Serve &amp; return reminders</h2>
+      <div class="sb-grid">
+        <div><strong>Serve</strong><br>High 1st-serve %. Go-to spot on big points. Mix in a body serve. Trusted +1.</div>
+        <div><strong>Return</strong><br>1st serve: block deep middle. 2nd serve: step in, attack. Make them play.</div>
+      </div>
+    </div>
+
+    <div class="sb-card reveal">
+      <h2>5 · Aggression dial (by score)</h2>
+      <div class="dial">
+        <span class="down">BEHIND<br>↓ high-% only</span>
+        <span class="mid">EVEN<br>→ best go-to</span>
+        <span class="up">AHEAD<br>↑ press / weapon</span>
+      </div>
+    </div>
+
+    <div class="sb-card reveal">
+      <h2>6 · Next-set plan — 3 actions</h2>
+      <div class="sb-fill sb-big">1. ____________________________<br>2. ____________________________<br>3. ____________________________</div>
+    </div>
+
+    <p style="text-align:center;margin-top:18px"><a class="cta" href="javascript:window.print()">🖨 Print this planner</a></p>
+
+    <div class="pager">
+      <a href="30-drill-library.html"><small>Previous</small>← 30 · Drill Library</a>
+      <a class="next" href="index.html"><small>Home</small>The System →</a>
+    </div>
+
+    <footer style="margin-top:30px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System. Full detail: the
+      <a href="16-complete-match-playbook.html">Complete Match Playbook</a>.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

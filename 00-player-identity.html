@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Player Identity</title>
+<meta name="description" content="Player Identity System — assess your style, strengths, weaknesses and archetype before building tactics.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>00</b> · Foundation</span>
+        <span class="layer-chip">Layer 3 · Match Intelligence</span>
+      </div>
+      <h1>Player Identity System</h1>
+      <p class="lead">Before tactics, before drills — know who you are as a competitor. Your identity decides
+      which patterns are <em>yours</em>, which to avoid, and where every training hour should go.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="why">Why identity comes first</h2>
+    <p>Most players borrow a game plan from whoever they last watched on TV. That's backwards. The
+    highest-percentage strategy is the one <strong>you</strong> can execute repeatedly under pressure —
+    which depends entirely on your strengths, your stamina, and your temperament. This page builds the
+    profile that every later section plugs into.</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+    <p>Turn vague self-image ("I'm an attacking player") into a measured profile you can build a system around.
+    Your archetype becomes the default lens for the <a href="01-decision-making.html">Decision Engine</a>,
+    <a href="25-pattern-library.html">Pattern Library</a> and <a href="23-development-roadmap.html">Development Roadmap</a>.
+    <span class="ev ev-b">Level B</span></p></div>
+
+    <h2 id="assessment">The self-assessment <span class="ev ev-c" style="vertical-align:middle">Level C</span></h2>
+    <p>Score yourself honestly, <strong>1 (liability) → 5 (weapon)</strong>, based on match performance —
+    not how a shot looks in the warm-up. Print this and re-score every 8–12 weeks.</p>
+
+    <div class="card">
+      <h3>A · Technical weapons</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Skill</th><th class="num">1</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
+        <tbody>
+          <tr><td>First serve (power + placement)</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Second serve (reliability under pressure)</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Forehand (offense)</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Backhand (stability)</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Return of serve</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Volley / net finishing</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Slice / change of pace</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>B · Movement &amp; physical</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Quality</th><th class="num">1</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
+        <tbody>
+          <tr><td>Speed &amp; recovery to centre</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Endurance over 3 sets</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Balance &amp; shot tolerance (long rallies)</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+        </tbody>
+      </table></div>
+
+      <h3>C · Mental profile</h3>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Trait</th><th class="num">1</th><th class="num">2</th><th class="num">3</th><th class="num">4</th><th class="num">5</th></tr></thead>
+        <tbody>
+          <tr><td>Patience (willingness to build points)</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Composure on big points</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+          <tr><td>Risk appetite (comfort going for it)</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td><td class="num">○</td></tr>
+        </tbody>
+      </table></div>
+      <p class="print-only"><strong>Scored on:</strong> ________________  ·  <strong>Top 2 weapons:</strong> ________________  ·  <strong>Top 2 liabilities:</strong> ________________</p>
+    </div>
+
+    <h2 id="reading">Reading your scores → your archetype</h2>
+    <p>Look at your <strong>highest three scores</strong> and your <strong>lowest two</strong>. The pattern points to an archetype.
+    You won't be a pure type — you'll be a primary with a secondary. Build around the primary; protect the lows.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>If your strengths cluster in…</th><th>Your likely archetype</th></tr></thead>
+      <tbody>
+        <tr><td>Forehand offense + first serve, risk appetite high</td><td><strong>Aggressive Baseliner</strong> / Serve-Dominant</td></tr>
+        <tr><td>Speed + endurance + patience, few errors</td><td><strong>Counter-Puncher</strong> / Grinder</td></tr>
+        <tr><td>Volley + serve + court coverage, varied shots</td><td><strong>Net Attacker</strong> / All-Court</td></tr>
+        <tr><td>Balanced across the board, adaptable</td><td><strong>All-Court</strong> / Hybrid</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="archetypes">The 7 archetypes</h2>
+    <p>Each archetype lists its signature, where it wins, where it bleeds, the core game plan, and what to train first.</p>
+
+    <div class="card reveal"><h3>1 · Aggressive Baseliner</h3>
+      <p><strong>Signature:</strong> dictates with heavy groundstrokes, takes time away, ends points from the back.</p>
+      <p><strong>Wins on:</strong> first-strike tennis, forehand+1 patterns, short balls. <strong>Bleeds on:</strong> unforced errors when rushing, long defensive rallies, low-percentage windows.</p>
+      <p><strong>Game plan:</strong> serve+1 to the forehand, hunt the short ball, attack only the <em>inside</em> ball. <strong>Train first:</strong> serve placement, forehand recovery footwork, error discipline.</p>
+    </div>
+    <div class="card reveal"><h3>2 · Counter-Puncher</h3>
+      <p><strong>Signature:</strong> elite defense and consistency; absorbs pace and redirects; wins by attrition.</p>
+      <p><strong>Wins on:</strong> long rallies, opponent impatience, retrieving. <strong>Bleeds on:</strong> being rushed, short balls they must finish, opponents who shorten points.</p>
+      <p><strong>Game plan:</strong> depth + height for margin, extend rallies, counter off the stretch. <strong>Train first:</strong> endurance, passing shots, transition finishing.</p>
+    </div>
+    <div class="card reveal"><h3>3 · All-Court Player</h3>
+      <p><strong>Signature:</strong> comfortable everywhere; selects the shot that exposes the opponent.</p>
+      <p><strong>Wins on:</strong> variety, problem-solving, neutralizing one-dimensional opponents. <strong>Bleeds on:</strong> indecision, "jack-of-all-trades" with no clear weapon.</p>
+      <p><strong>Game plan:</strong> read the matchup, deploy the right pattern, approach behind the short ball. <strong>Train first:</strong> decision speed, one signature weapon, net conversion.</p>
+    </div>
+    <div class="card reveal"><h3>4 · Serve-Dominant Player</h3>
+      <p><strong>Signature:</strong> holds easily off a big serve; cheap points; serve+1 dependence.</p>
+      <p><strong>Wins on:</strong> hold games, tiebreaks, pressure-free service points. <strong>Bleeds on:</strong> return games, second-serve days, long baseline exchanges.</p>
+      <p><strong>Game plan:</strong> protect serve, raise return aggression in spots, shorten points. <strong>Train first:</strong> return depth, baseline consistency, second-serve reliability.</p>
+    </div>
+    <div class="card reveal"><h3>5 · Grinder</h3>
+      <p><strong>Signature:</strong> physical, relentless, high rally tolerance; makes you earn every point.</p>
+      <p><strong>Wins on:</strong> fitness, heat, opponent frustration. <strong>Bleeds on:</strong> being out-paced early, having to create offense, short windows.</p>
+      <p><strong>Game plan:</strong> heavy depth, change of direction only on the right ball, drag opponents into long matches. <strong>Train first:</strong> offense from neutral, finishing, serve weapons.</p>
+    </div>
+    <div class="card reveal"><h3>6 · Net Attacker</h3>
+      <p><strong>Signature:</strong> seeks the net, finishes with volleys/overheads, applies positional pressure.</p>
+      <p><strong>Wins on:</strong> forward pressure, fast courts, opponents who dislike pace. <strong>Bleeds on:</strong> passing shots, lobs, slow high-bouncing courts.</p>
+      <p><strong>Game plan:</strong> approach behind deep balls, split-step early, close tight. <strong>Train first:</strong> first volley, overhead, approach-shot depth.</p>
+    </div>
+    <div class="card reveal"><h3>7 · Hybrid</h3>
+      <p><strong>Signature:</strong> blends two styles by score/opponent (e.g. counter-punch when behind, attack when ahead).</p>
+      <p><strong>Wins on:</strong> adaptability, unpredictability. <strong>Bleeds on:</strong> losing the thread of <em>which</em> identity to use under pressure.</p>
+      <p><strong>Game plan:</strong> pre-decide triggers (score/opponent) for each mode. <strong>Train first:</strong> the <a href="10-score-based-strategy.html">Match State Engine</a> so mode-switching is automatic, not emotional.</p>
+    </div>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+    <ul>
+      <li>Choosing an aspirational identity (the one you wish you had) over your real, repeatable one.</li>
+      <li>Trying to fix your weakest shot into a weapon instead of <em>protecting</em> it and amplifying a strength.</li>
+      <li>Switching identity mid-match out of frustration with no trigger or plan.</li>
+    </ul></div>
+
+    <h2 id="profile">Your one-page profile</h2>
+    <p>Condense everything into a profile you can re-read before any match. This maps directly to the
+    <a href="29-data-model.html">Player Profile</a> entity in the data model.</p>
+    <div class="card">
+      <table><tbody>
+        <tr><th style="width:38%">Primary archetype</th><td>__________________________</td></tr>
+        <tr><th>Secondary archetype</th><td>__________________________</td></tr>
+        <tr><th>Top 2 weapons</th><td>__________________________</td></tr>
+        <tr><th>Top 2 liabilities (protect)</th><td>__________________________</td></tr>
+        <tr><th>Default patterns (mine)</th><td>__________________________</td></tr>
+        <tr><th>Patterns to avoid</th><td>__________________________</td></tr>
+        <tr><th>One thing to train next</th><td>__________________________</td></tr>
+      </tbody></table>
+    </div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+    <ul>
+      <li>You can name your archetype and 2 weapons in one sentence.</li>
+      <li>Your match plan uses your strengths in ≥ 70% of the points you choose to construct.</li>
+      <li>Re-assessment every 8–12 weeks shows at least one liability moving up a point.</li>
+    </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=NDpF_r7EVM8" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Tennis Playing Styles Explained!</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=pBeTmGGJE98" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">4 Types of Tennis Playing Styles</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">You have an identity. Now learn the logic that turns it into points:
+      build the <a href="01-decision-making.html">Decision Engine</a> next. Want your data organized first?
+      See the <a href="29-data-model.html">Data Model</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="index.html"><small>Previous</small>← Home</a>
+      <a class="next" href="01-decision-making.html"><small>Next</small>01 · Decision Engine →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

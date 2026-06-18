@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Score-Based Strategy (Match State Engine)</title>
+<meta name="description" content="The Match State Engine — how aggression, risk, serve/return targets and mindset should change at every score from 0-0 to the tie-break.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>10</b> · Match Intelligence</span>
+        <span class="layer-chip">Layer 3 · Match Intelligence</span>
+      </div>
+      <h1>Score-Based Strategy <span style="font-weight:500;color:var(--muted)">· the Match State Engine</span></h1>
+      <p class="lead">Two identical balls demand different decisions at 30–0 and 0–30. The scoreboard changes
+      the math of risk. This engine tells you how aggressive to be at every score.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="principle">The core principle</h2>
+    <p>When you're <strong>ahead</strong> in a game, points are "cheaper" — you can take a calculated risk for a
+    big reward. When you're <strong>behind</strong>, every point is expensive — play your highest-percentage
+    tennis and make the opponent earn it.</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> The 0–30 example</div>
+      <p>At 0–30 the temptation is to "do something" — go big down-the-line. Wrong. The goal isn't a highlight,
+      it's to reach <strong>15–30</strong> and rebuild the game. If it slips to 0–40 your hold probability falls
+      off a cliff. So at 0–30: lower error probability, higher rally tolerance, trusted patterns.
+      <span class="ev ev-a">Level A</span></p></div>
+
+    <h2 id="serving">Match State Engine — serving</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Score</th><th>Aggression</th><th>Risk</th><th>Serve focus</th><th>Mental cue</th><th>Avoid</th></tr></thead>
+      <tbody>
+        <tr><td><strong>0–0</strong></td><td>Medium</td><td><span class="pill risk-med">med</span></td><td>Go-to first-serve pattern; set the tone</td><td>Start a routine, not a war</td><td>Casual first point</td></tr>
+        <tr><td><strong>15–0 / 30–0</strong></td><td>High</td><td><span class="pill risk-med">med</span></td><td>Free to go bigger / try a 2nd pattern</td><td>Press the advantage</td><td>Carelessness / 3 quick errors</td></tr>
+        <tr><td><strong>40–0 / 40–15</strong></td><td>High</td><td><span class="pill risk-med">med</span></td><td>Big first serve; take a swing</td><td>Close it out, stay sharp</td><td>Going passive / gifting points</td></tr>
+        <tr><td><strong>0–15</strong></td><td>Medium</td><td><span class="pill risk-low">low</span></td><td>High first-serve %, go-to spot</td><td>Reset, one point at a time</td><td>Overcorrecting with risk</td></tr>
+        <tr><td><strong>0–30</strong></td><td>Low</td><td><span class="pill risk-low">low</span></td><td>Trusted spot, high %, +1 construct</td><td>Reach 15–30 first</td><td>Low-% direction changes</td></tr>
+        <tr><td><strong>0–40</strong></td><td>Low (steady)</td><td><span class="pill risk-low">low</span></td><td>One point at a time; trusted serve</td><td>Make them earn every point</td><td>Hero ball / giving up</td></tr>
+        <tr><td><strong>15–15 / 30–30</strong></td><td>Medium-high</td><td><span class="pill risk-med">med</span></td><td>Best go-to pattern — these are mini break points</td><td>Win the leverage point</td><td>Indecision on a big point</td></tr>
+        <tr><td><strong>Deuce</strong></td><td>Medium</td><td><span class="pill risk-low">low</span></td><td>#1 trusted pattern</td><td>Two points, both yours</td><td>New / untested plays</td></tr>
+        <tr><td><strong>Ad-in (game point)</strong></td><td>Medium-high</td><td><span class="pill risk-med">med</span></td><td>Trusted serve, look to finish</td><td>Finish what you built</td><td>Tightening up / pushing</td></tr>
+        <tr><td><strong>Ad-out (break point down)</strong></td><td>Low (high-%)</td><td><span class="pill risk-low">low</span></td><td>Your #1 trusted serve pattern only</td><td>One ball at a time</td><td>Going for too much</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="returning">Match State Engine — returning</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Score</th><th>Aggression</th><th>Return focus</th><th>Mental cue</th><th>Avoid</th></tr></thead>
+      <tbody>
+        <tr><td><strong>0–0 / 15–0 (theirs)</strong></td><td>Medium</td><td>Deep middle, find rhythm; read their patterns</td><td>Build the return game</td><td>Going for a winner early</td></tr>
+        <tr><td><strong>30–0 / 40–0 down (theirs)</strong></td><td>Higher (free swings)</td><td>Step in, attack 2nd serves — nothing to lose</td><td>Free points — relax &amp; rip</td><td>Pressing as if it's must-win</td></tr>
+        <tr><td><strong>30–30 / Deuce (theirs)</strong></td><td>Medium-high</td><td>Deep, into their weaker wing; make them play</td><td>This is your opening</td><td>Low-% return on the big point</td></tr>
+        <tr><td><strong>Break point (yours)</strong></td><td>Medium</td><td>Make the return — deep, in play, force one more ball</td><td>Get it back &amp; compete</td><td>Return winner attempt</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="tiebreak">Tie-break</h2>
+    <div class="card reveal">
+      <p>A tie-break is a pressure cauldron — so it's the wrong time for new ideas.</p>
+      <ul>
+        <li><strong>Aggression:</strong> medium — controlled, not reckless. <strong>Risk:</strong> low.</li>
+        <li><strong>Serve:</strong> highest first-serve %, your most trusted locations.</li>
+        <li><strong>Return:</strong> get it deep and in; make every serve be played.</li>
+        <li><strong>Mental:</strong> mini-margins matter — win the first two points, take the early lead, breathe between points.</li>
+        <li><strong>Avoid:</strong> untested patterns, the big bail-out shot, rushing.</li>
+      </ul>
+    </div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Aggression dial (quick read)</div></div>
+    <pre class="tree">WHAT'S THE SCORE? —
+   │
+   ▼
+Am I ahead, even, or behind in this game?
+   ├─ AHEAD  ─▶ dial UP: calculated risk, press, try the weapon pattern
+   ├─ EVEN   ─▶ dial MID: best go-to pattern, win the leverage point
+   └─ BEHIND ─▶ dial DOWN: highest-% tennis, trusted patterns, make them earn it</pre>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Playing every point the same regardless of score.</li>
+        <li>Getting <em>more</em> aggressive when behind (raising error risk exactly when you can't afford it).</li>
+        <li>Getting <em>passive</em> when ahead (inviting the comeback) — see <a href="25-pattern-library.html">Closing-Out</a>.</li>
+        <li>Trying something new on the biggest points instead of your <a href="25-pattern-library.html">Pressure-Point</a> default.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Start at the score"</div>
+      <ul>
+        <li><strong>Setup:</strong> play practice games that start at a called score (0–30, 40–0, deuce, ad-out).</li>
+        <li><strong>Reps:</strong> rotate through 6 score states; state your aggression dial before each point.</li>
+        <li><strong>Constraint:</strong> at "behind" scores you lose the point if you attempt a low-% direction change.</li>
+        <li><strong>Coaching cue:</strong> "Read the score, set the dial, pick the pattern."</li>
+        <li><strong>Success metric:</strong> correct aggression level chosen on ≥ 80% of points; hold % from 0–30 starts improving.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Hold % after going 0–30 down ↑.</li>
+        <li>Break-point conversion &amp; save % ↑.</li>
+        <li>Deciding-point and tie-break win % ↑ (track in <a href="21-analytics.html">Analytics</a>).</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=2oz7VMyffGw" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Attack vs When To Defend — Tactics</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=Ns54d4WLQSo" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Simple 3-Step Shot Selection System</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Add "start at the score" games to practice this week. Then build the engine that
+      keeps you steady when the score gets tight — <a href="11-mental-performance.html">Mental Performance</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="09-player-type-strategies.html"><small>Previous</small>← 09 · Player-Type Strategies</a>
+      <a class="next" href="11-mental-performance.html"><small>Next</small>11 · Mental Performance →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

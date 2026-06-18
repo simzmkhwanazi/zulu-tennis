@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Pattern Library</title>
+<meta name="description" content="The Elite Match Patterns Library and Pattern Autopilot — ten high-value patterns as decision cards with risk, reward, best opponent and metrics.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>25</b> · Tactical</span>
+        <span class="layer-chip">Layer 2 · Tactical Systems</span>
+      </div>
+      <h1>Elite Match Patterns Library</h1>
+      <p class="lead">Your playbook of repeatable plays — plus the <strong>Pattern Autopilot</strong> that tells
+      you which one to default to under pressure, so you never deliberate on the big points.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="autopilot">Pattern Autopilot — pressure defaults</h2>
+    <p>Decision fatigue loses big points. Pre-load one trusted default per situation; on autopilot you execute
+    instead of deliberating.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Situation</th><th>Autopilot default</th></tr></thead>
+      <tbody>
+        <tr><td>Neutral rally</td><td>Crosscourt with margin — wait for the inside ball</td></tr>
+        <tr><td>0–30 service game</td><td>High-% patterns; no direction change off outside balls</td></tr>
+        <tr><td>Short ball</td><td>Approach down-the-line, close the net</td></tr>
+        <tr><td>Pulled wide (defending)</td><td>High, deep crosscourt; recover to bisector</td></tr>
+        <tr><td>Returning a big server</td><td>Block deep through the middle</td></tr>
+        <tr><td>Break point down</td><td>Your #1 trusted serve pattern</td></tr>
+        <tr><td>Tie-break</td><td>Trusted patterns only — nothing new</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="library">The pattern library</h2>
+    <p>Ten high-value patterns. Each is a <a href="01-decision-making.html">Decision Card</a>; the table gives
+    the essentials at a glance, then two are spotlighted in full. Risk:
+    <span class="pill risk-low">low</span> <span class="pill risk-med">med</span> <span class="pill risk-high">high</span>.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pattern</th><th>Purpose</th><th>Risk</th><th>Best opponent</th><th>Best surface</th><th>Key metric</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Serve +1</strong></td><td>Win cheap on the first two balls</td><td><span class="pill risk-low">low</span></td><td>Weak returner</td><td>Hard / grass</td><td>Pts won in ≤3 shots</td></tr>
+        <tr><td><strong>Return +1</strong></td><td>Neutralise, then attack the 2nd serve</td><td><span class="pill risk-med">med</span></td><td>Big server</td><td>All</td><td>Return pts won</td></tr>
+        <tr><td><strong>Forehand Dominance</strong></td><td>Manufacture inside-out/in forehands</td><td><span class="pill risk-med">med</span></td><td>Weaker backhand</td><td>Hard / clay</td><td>FH winners : errors</td></tr>
+        <tr><td><strong>Backhand Neutralization</strong></td><td>Protect &amp; reset off the backhand</td><td><span class="pill risk-low">low</span></td><td>FH attacker</td><td>All</td><td>BH error rate</td></tr>
+        <tr><td><strong>Approach</strong></td><td>Finish short balls forward</td><td><span class="pill risk-med">med</span></td><td>Passive baseliner</td><td>Grass / hard</td><td>Net pts won %</td></tr>
+        <tr><td><strong>Defensive Recovery</strong></td><td>Survive &amp; reset to neutral</td><td><span class="pill risk-low">low</span></td><td>Power baseliner</td><td>Clay</td><td>Reset rate</td></tr>
+        <tr><td><strong>Counterattack</strong></td><td>Flip defense into offense off a stretched ball</td><td><span class="pill risk-high">high</span></td><td>Over-aggressor</td><td>Hard / clay</td><td>Counter win %</td></tr>
+        <tr><td><strong>Pressure Point</strong></td><td>Highest-% play on big points</td><td><span class="pill risk-low">low</span></td><td>Any</td><td>All</td><td>BP save / convert %</td></tr>
+        <tr><td><strong>Tie-Break</strong></td><td>Trusted patterns, mini-margins</td><td><span class="pill risk-low">low</span></td><td>Any</td><td>All</td><td>TB win %</td></tr>
+        <tr><td><strong>Closing-Out</strong></td><td>Serve out / convert when ahead</td><td><span class="pill risk-low">low</span></td><td>Any</td><td>All</td><td>Games closed when serving for it</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="pressure">Spotlight — Pressure Point</h2>
+    <div class="decision-card reveal">
+      <header><span class="badge">Decision Card</span><h3>Pressure Point Pattern</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
+      <div class="dc-body">
+        <div class="field"><div class="lbl">Match situation</div><div>Break points, game points, 30–30, 4–4 — any point with outsized weight.</div></div>
+        <div class="field"><div class="lbl">Decision rule</div><div class="rule">Go to your <strong>highest-percentage, most-practised pattern</strong> — never something new. Reduce variables: trusted serve location → trusted +1 → construct.</div></div>
+        <div class="field"><div class="lbl">Why it works · risk · reward</div><div>Pressure shrinks skill; familiar patterns hold up best. <span class="pill risk-low">Low risk</span>, high reward — these points decide sets.</div></div>
+        <div class="field"><div class="lbl">Common failures</div><div>Going bigger "because it's important," or getting passive and just pushing. Both raise error/again-attacked risk.</div></div>
+        <div class="field"><div class="lbl">Practice progression</div><div>Play practice tiebreaks; start every server at 30–30; reward sticking to the trusted pattern, not winners.</div></div>
+        <div class="field"><div class="lbl">Performance metric</div><div>Break-point save % and conversion %; deciding-point win %.</div></div>
+      </div>
+    </div>
+
+    <h2 id="closing">Spotlight — Closing Out</h2>
+    <div class="decision-card reveal">
+      <header><span class="badge">Decision Card</span><h3>Closing-Out Pattern</h3><span class="spacer"></span><span class="ev ev-b">Level B</span></header>
+      <div class="dc-body">
+        <div class="field"><div class="lbl">Match situation</div><div>Serving for the set/match, or up a break and tightening.</div></div>
+        <div class="field"><div class="lbl">Decision rule</div><div class="rule">Keep doing what built the lead — same intensity, same patterns. Raise first-serve % and rally margin slightly; do <u>not</u> get safe-passive or over-aggressive.</div></div>
+        <div class="field"><div class="lbl">Why it works</div><div>Most blown leads come from changing a winning game. Consistency under "almost there" nerves is the skill.</div></div>
+        <div class="field"><div class="lbl">Common failures</div><div>Tightening up and pushing (invites the comeback) or over-pressing for a quick finish.</div></div>
+        <div class="field"><div class="lbl">Practice progression</div><div>Practice sets starting at 4–3, serving; or "serve it out" games from 40–30 up.</div></div>
+        <div class="field"><div class="lbl">Performance metric</div><div>% of games closed when serving for set/match; leads converted.</div></div>
+      </div>
+    </div>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes (all patterns)</div>
+      <ul>
+        <li>Collecting patterns you never drill — a pattern you can't execute under pressure isn't yours.</li>
+        <li>Running high-risk patterns (Counterattack) on big points instead of Pressure-Point defaults.</li>
+        <li>Ignoring the matchup — match the pattern to the opponent (see <a href="09-player-type-strategies.html">Player Types</a>).</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>You can name your top 3 patterns and their autopilot triggers.</li>
+        <li>On big points you default to Pressure-Point patterns &gt; 90% of the time.</li>
+        <li>Each pattern's "key metric" (above) is tracked in <a href="21-analytics.html">Analytics</a>.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=MWX2OSK0HzY" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">3 Serve + 1 Patterns (the cheat code)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=L8TYCPIllJk" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">The 2-1 Baseline Pattern Explained</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=2oz7VMyffGw" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Attack vs When To Defend</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Pick your three signature patterns and write their autopilot triggers on your
+      <a href="set-break.html">Set-Break planner</a>. Next, take the net with the <a href="08-net-play-system.html">Net Play System</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="07-defensive-system.html"><small>Previous</small>← 07 · Defensive System</a>
+      <a class="next" href="08-net-play-system.html"><small>Next</small>08 · Net Play System →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

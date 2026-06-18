@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Match Analysis</title>
+<meta name="description" content="Match analysis — printable charting worksheets and scorecards to track serve %, errors, break points, net points and rally length.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>12</b> · Improvement</span>
+        <span class="layer-chip">Layer 5 · Continuous Improvement</span>
+      </div>
+      <h1>Match Analysis</h1>
+      <p class="lead">You can't improve what you don't measure. A simple charting habit turns "I played badly"
+      into "my second-serve points won dropped to 38%." Print a sheet, tally a match, find the truth.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="how">How to chart (simple tally method)</h2>
+    <p>You don't need an app. A friend (or you, from video) tallies a few key events per point. Start with
+    just <strong>three</strong> stats, add more as it becomes habit:</p>
+    <ul class="check">
+      <li>Serve outcome (1st in / 2nd in / double fault)</li>
+      <li>How the point ended (winner / forced error / unforced error — and by whom)</li>
+      <li>Rally length (1–4 / 5–8 / 9+)</li>
+    </ul>
+
+    <h2 id="scorecard">Printable match scorecard</h2>
+    <p>Tally each match here (maps to the <a href="29-data-model.html">Match History</a> KPI fields).</p>
+    <div class="card">
+      <p><strong>Match:</strong> ____________ <strong>vs</strong> ____________ <strong>Surface:</strong> ______ <strong>Result:</strong> ______ <strong>Date:</strong> ______</p>
+      <div class="tbl-wrap"><table>
+        <thead><tr><th>Metric</th><th>Set 1</th><th>Set 2</th><th>Set 3</th><th>Total / %</th></tr></thead>
+        <tbody>
+          <tr><td>1st serves in / total</td><td>__ / __</td><td>__ / __</td><td>__ / __</td><td>____%</td></tr>
+          <tr><td>1st-serve points won</td><td>__ / __</td><td>__ / __</td><td>__ / __</td><td>____%</td></tr>
+          <tr><td>2nd-serve points won</td><td>__ / __</td><td>__ / __</td><td>__ / __</td><td>____%</td></tr>
+          <tr><td>Double faults</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+          <tr><td>Return points won</td><td>__ / __</td><td>__ / __</td><td>__ / __</td><td>____%</td></tr>
+          <tr><td>Winners</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+          <tr><td>Unforced errors</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+          <tr><td>Forced errors</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+          <tr><td>Break points won / faced</td><td>__ / __</td><td>__ / __</td><td>__ / __</td><td>____%</td></tr>
+          <tr><td>Net points won / total</td><td>__ / __</td><td>__ / __</td><td>__ / __</td><td>____%</td></tr>
+          <tr><td>Avg rally length</td><td>____</td><td>____</td><td>____</td><td>____</td></tr>
+        </tbody>
+      </table></div>
+      <p><strong>3 things that worked:</strong> _______________________________________________</p>
+      <p><strong>1 thing to fix (→ <a href="26-improvement-engine.html">Improvement Engine</a>):</strong> ____________________________</p>
+    </div>
+
+    <h2 id="read">Reading the numbers</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>If you see…</th><th>It usually means…</th><th>Go to</th></tr></thead>
+      <tbody>
+        <tr><td>2nd-serve points won &lt; 45%</td><td>Weak second serve / passive after it</td><td><a href="03-serve-strategy.html">Serve</a></td></tr>
+        <tr><td>UE ≫ winners + forced errors</td><td>Over-hitting / attacking wrong balls</td><td><a href="01-decision-making.html">Decision Engine</a></td></tr>
+        <tr><td>Low break-point conversion</td><td>Tightening on big points</td><td><a href="25-pattern-library.html#pressure">Pressure-Point</a></td></tr>
+        <tr><td>Losing 9+ shot rallies</td><td>Fitness / tolerance / forcing</td><td><a href="18-athlete-development.html">Athlete Dev</a></td></tr>
+        <tr><td>Net points won &lt; 50%</td><td>Approach selection / volley</td><td><a href="08-net-play-system.html">Net Play</a></td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Charting 20 stats and quitting after one match — start with 3, stay consistent.</li>
+        <li>Judging a match on feel/result instead of the numbers.</li>
+        <li>Collecting data you never turn into a practice priority.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>You chart ≥ 1 match per week and store it (<a href="29-data-model.html">Data Model</a>).</li>
+        <li>Each chart yields exactly one improvement priority.</li>
+        <li>Your tracked weak KPI trends upward month over month (<a href="21-analytics.html">Analytics</a>).</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=Xvw36Oyq05o" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How to Take Stats on a Tennis Match — Step by Step</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=v1EyZCygYMo" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Getting Started With Match Charting</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=_M8rcYnVwqc" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Match Charting — Tracking Match Flow</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Chart your next match with just the 3 core stats. Then add the eye — learn
+      <a href="13-video-analysis.html">Video Analysis</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="18-athlete-development.html"><small>Previous</small>← 18 · Athlete Development</a>
+      <a class="next" href="13-video-analysis.html"><small>Next</small>13 · Video Analysis →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

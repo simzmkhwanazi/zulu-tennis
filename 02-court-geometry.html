@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Court Geometry</title>
+<meta name="description" content="Court geometry — why crosscourt is safer, net-height and court-length math, margin over the net, high-percentage targets and recovery positions.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>02</b> · Tactical</span>
+        <span class="layer-chip">Layer 2 · Tactical Systems</span>
+      </div>
+      <h1>Court Geometry</h1>
+      <p class="lead">The court is the same shape for everyone — players who understand its angles, net
+      heights and distances simply make safer bets. This is the math behind every "play percentages."</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="crosscourt">Why crosscourt is safer</h2>
+    <p>Two facts of the court geometry make the crosscourt ball the highest-percentage shot in tennis —
+    and they're not opinions, they're measurements:</p>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="k">Net at the centre</div><div class="v">3′0″</div><div class="sub">lowest point</div></div>
+      <div class="kpi"><div class="k">Net at the posts</div><div class="v">3′6″</div><div class="sub">6″ higher</div></div>
+      <div class="kpi"><div class="k">Straight length</div><div class="v">78 ft</div><div class="sub">baseline to baseline</div></div>
+      <div class="kpi"><div class="k">Diagonal length</div><div class="v">~82.5 ft</div><div class="sub">+4.5 ft of court</div></div>
+    </div>
+    <p>So the crosscourt ball travels <strong>over the lowest part of the net</strong> and into
+    <strong>4½ feet more court</strong>. Lower obstacle, bigger target — more margin for the same swing.</p>
+
+    <figure class="diagram reveal">
+      <div data-court='{"w":340,"players":[{"x":85,"y":93,"label":"You","side":"you"}],"paths":[{"from":[85,93],"to":[14,8],"kind":"shot","label":"crosscourt · low net · ~82.5ft"},{"from":[85,93],"to":[86,8],"kind":"serve","label":"down the line · high net · ~78ft"}]}'></div>
+      <figcaption>The crosscourt (ink) crosses the low centre of the net into the long diagonal. The down-the-line (gold) must clear the higher net near the sideline into less court — same swing, less margin.</figcaption>
+    </figure>
+
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+      <p>Default to crosscourt to bank margin, then change direction only when the ball quality (an
+      <a href="01-decision-making.html">inside ball</a>) justifies the lower-percentage down-the-line.
+      <span class="ev ev-a">Level A</span></p></div>
+
+    <h2 id="margin">Margin over the net (aim up, not at the lines)</h2>
+    <p>Amateurs aim <em>at</em> the lines and skim the net. Pros aim at a <strong>window above the net</strong>
+    and let depth do the work. A ball aimed 3–5 feet over the net still lands in — and almost never finds
+    the net cord on a bad day. Depth, not flatness, is what pressures opponents.</p>
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Aiming for the lines: tiny target, huge downside (net or wide) for a marginal upside.</li>
+        <li>Flat, low clearance "to look aggressive" — it just raises your error rate.</li>
+        <li>Going down-the-line from a defensive, outside ball (over the highest net into the least court).</li>
+      </ul></div>
+
+    <h2 id="targets">High-percentage targets</h2>
+    <p>Think in <strong>zones, not dots.</strong> Your bread-and-butter targets are the deep crosscourt
+    corner (maximum margin + pushes the opponent back and wide) and the deep middle (removes their angle,
+    "safe" under pressure).</p>
+    <figure class="diagram reveal">
+      <div data-court='{"w":340,"zones":[{"x":3,"y":5,"w":32,"h":22,"kind":"target","label":"deep CC"},{"x":34,"y":4,"w":32,"h":15,"kind":"neutral","label":"deep middle (safe)"}],"players":[{"x":50,"y":93,"label":"You","side":"you"}]}'></div>
+      <figcaption>Yellow = primary target (deep crosscourt, max margin). Grey = the safe deep-middle target that kills the opponent's angle when you're under pressure.</figcaption>
+    </figure>
+
+    <h2 id="percentage">Percentage tennis (the 75/25 rule)</h2>
+    <p>High-level singles is roughly <strong>~75% primary patterns / ~25% secondary.</strong> The crosscourt
+    rally is the primary; the down-the-line, drop, and approach are the 25% you deploy <em>once the geometry
+    is in your favour.</em> The discipline isn't never going for it — it's only going for it on the right ball.</p>
+
+    <h2 id="recovery">Recovery positions</h2>
+    <p>Where you hit dictates where you stand next. Recover to the <strong>bisector</strong> of the opponent's
+    likely replies — not always the centre mark. Hit crosscourt? Recover a step <em>toward</em> the side you
+    hit to, because their best reply comes back crosscourt.</p>
+    <figure class="diagram reveal">
+      <div data-court='{"w":340,"players":[{"x":14,"y":12,"label":"O","side":"opp"},{"x":10,"y":90,"label":"You","side":"you"}],"paths":[{"from":[10,90],"to":[16,10],"kind":"shot","label":"your deep CC"}],"dots":[{"x":40,"y":98,"kind":"recovery","label":"recover (bisector)"}]}'></div>
+      <figcaption>After a deep crosscourt from the wide position, recover to the bisector — just past centre toward your forehand side here — not all the way back to the middle.</figcaption>
+    </figure>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Situation</th><th>Recovery position</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Offensive</strong> (you're dictating)</td><td>On or just inside the baseline, centred — ready to step in.</td></tr>
+        <tr><td><strong>Defensive</strong> (stretched/behind)</td><td>Deeper behind the baseline, central — buy time, cover the most court.</td></tr>
+        <tr><td><strong>After a wide ball</strong></td><td>Bisector of their angles — a step toward the side you hit to.</td></tr>
+        <tr><td><strong>After an approach</strong></td><td>Forward, split-step inside the service line, cover the line you approached down.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Recovery decision tree</div></div>
+    <pre class="tree">YOU JUST HIT —
+   │
+   ▼
+What did you hit?
+   ├─ Deep crosscourt ─▶ recover just past centre, toward the side you hit
+   ├─ Down the line ───▶ recover further across (you've opened your court)
+   └─ Short / defensive ▶ recover deeper &amp; central — buy time</pre>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Bisector recovery"</div>
+      <ul>
+        <li><strong>Setup:</strong> coach/partner feeds you wide, alternating corners; you hit deep crosscourt and recover.</li>
+        <li><strong>Reps:</strong> 4 × 90 seconds, 30s rest. Place a cone on the correct bisector spot each side.</li>
+        <li><strong>Constraint:</strong> you must touch the cone (correct recovery) before the next feed.</li>
+        <li><strong>Coaching cue:</strong> "Hit, then beat the ball back to the bisector."</li>
+        <li><strong>Success metric:</strong> reach the recovery spot before the opponent's contact on ≥ 80% of balls.</li>
+      </ul></div>
+
+    <h2 id="apply">Match application</h2>
+    <p>Geometry runs quietly under every point: default crosscourt for margin, aim over a net window for
+    depth, target zones (not lines), and recover to the bisector. It's the physics that makes the
+    <a href="01-decision-making.html">Home Base Pattern</a> mathematically correct.</p>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Net errors ↓ as your average clearance rises (aim higher, land deeper).</li>
+        <li>Depth: a majority of rally balls landing in the back third of the court.</li>
+        <li>You're set and balanced for the next ball more often (recovery on time).</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=CBH309BOKdE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Do NOT Hit Here! Cross Court vs Down The Line — Tactics</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=_cWG65aLoz8" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Singles Court Positioning — where to stand &amp; why</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=Rdor7I6x6rg" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Improve Your Court Positioning In Tennis</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">You know why crosscourt wins. Now weaponise the first ball of every point —
+      build your <a href="03-serve-strategy.html">Serve Strategy</a> next.</p>
+    </div>
+
+    <div class="pager">
+      <a href="01-decision-making.html"><small>Previous</small>← 01 · Decision Engine</a>
+      <a class="next" href="03-serve-strategy.html"><small>Next</small>03 · Serve Strategy →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

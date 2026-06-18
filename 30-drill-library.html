@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Drill Library</title>
+<meta name="description" content="Stroke, pattern and physical drills — each with setup, objective, reps, constraints, coaching cue, progression and success metric.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>30</b> · Knowledge &amp; Execution</span>
+        <span class="layer-chip">Layer 1 · Technical Execution</span>
+      </div>
+      <h1>Drill Library</h1>
+      <p class="lead">Repeatable drills by stroke, pattern and physical quality. Every drill names a setup, reps,
+      a constraint that forces the right behaviour, a cue, a progression, and a success metric.</p>
+    </div>
+
+    <label for="drillFilter" style="display:block;font-weight:700;margin:14px 0 6px">🔎 Search drills</label>
+    <input id="drillFilter" type="search" placeholder="e.g. serve, backhand, footwork, approach, pressure…"
+      style="width:100%;max-width:520px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:1rem">
+    <p id="drillCount" style="color:var(--muted);font-size:.85rem;margin:6px 0 0"></p>
+
+    <div id="drillList">
+
+      <h2 id="serve-return">Serve &amp; return</h2>
+      <div class="card drill-item reveal"><h3>🎾 Serve target ladder</h3>
+        <p><strong>Setup:</strong> 3 cones per box (wide/body/T). <strong>Objective:</strong> location over power.
+        <strong>Reps:</strong> 5×12, call target before each. <strong>Constraint:</strong> must call &amp; hit zone to score.
+        <strong>Cue:</strong> "Spot first, pace second." <strong>Progression:</strong> add a +1 ball to the open court.
+        <strong>Metric:</strong> location accuracy ≥ 50%.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Second-serve floor</h3>
+        <p><strong>Setup:</strong> deep target each box. <strong>Objective:</strong> 90%+ reliable kick/spin serve.
+        <strong>Reps:</strong> 50 second serves. <strong>Constraint:</strong> make 9/10 deep or restart.
+        <strong>Cue:</strong> "Up and out, land it deep." <strong>Progression:</strong> serve at 30–30 pressure.
+        <strong>Metric:</strong> make rate ≥ 90% deep; DF &lt; 2/set.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Deep-return target</h3>
+        <p><strong>Setup:</strong> server serves 1st/2nd; back-third target. <strong>Objective:</strong> neutralise deep.
+        <strong>Reps:</strong> 6 return games. <strong>Constraint:</strong> 1st-serve returns blocked (short backswing).
+        <strong>Cue:</strong> "Split on the toss, deep and in." <strong>Progression:</strong> attack 2nd serves.
+        <strong>Metric:</strong> ≥ 70% in play, ≥ 40% deep.</p></div>
+
+      <h2 id="ground">Groundstrokes &amp; slice</h2>
+      <div class="card drill-item reveal"><h3>🎾 Crosscourt tolerance (10-ball)</h3>
+        <p><strong>Setup:</strong> both crosscourt only. <strong>Objective:</strong> consistency + margin.
+        <strong>Reps:</strong> rallies of 10+; 6 rounds. <strong>Constraint:</strong> 4-ft net clearance minimum.
+        <strong>Cue:</strong> "Heavy, deep, repeat." <strong>Progression:</strong> change direction only off an inside ball.
+        <strong>Metric:</strong> UE rate ↓; rally length ↑.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Forehand inside-out / inside-in</h3>
+        <p><strong>Setup:</strong> feeds to your backhand corner. <strong>Objective:</strong> manufacture FH weapons.
+        <strong>Reps:</strong> 5×10 (alt IO/II). <strong>Constraint:</strong> recover fully after each.
+        <strong>Cue:</strong> "Run around, set, drive." <strong>Progression:</strong> IO to open court, II to finish.
+        <strong>Metric:</strong> FH winners:errors ≥ 1:1.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Backhand reset slice</h3>
+        <p><strong>Setup:</strong> partner pressures your backhand. <strong>Objective:</strong> low, deep defensive slice.
+        <strong>Reps:</strong> 4×2 min. <strong>Constraint:</strong> slice must land past service line &amp; stay low.
+        <strong>Cue:</strong> "Stay down, carry it deep." <strong>Progression:</strong> slice-approach. <strong>Metric:</strong> depth ≥ 70%.</p></div>
+
+      <h2 id="net">Net &amp; overhead</h2>
+      <div class="card drill-item reveal"><h3>🎾 Approach, split, finish</h3>
+        <p><strong>Setup:</strong> coach feeds short; you approach DTL. <strong>Objective:</strong> build then finish at net.
+        <strong>Reps:</strong> 5×10. <strong>Constraint:</strong> split-step every time; first volley past service line.
+        <strong>Cue:</strong> "Approach, split, deep, close." <strong>Progression:</strong> they try to pass.
+        <strong>Metric:</strong> net pts won ≥ 65%.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Overhead under the lob</h3>
+        <p><strong>Setup:</strong> partner lobs randomly. <strong>Objective:</strong> calm, deep overhead.
+        <strong>Reps:</strong> 4×10. <strong>Constraint:</strong> deep-middle target under pressure (angle only on short lobs).
+        <strong>Cue:</strong> "Turn, point, reach, hit down." <strong>Progression:</strong> move back for deeper lobs.
+        <strong>Metric:</strong> overhead error rate ↓.</p></div>
+
+      <h2 id="approach-pass">Approach · passing · lob</h2>
+      <div class="card drill-item reveal"><h3>🎾 Pass &amp; lob mix vs net-rusher</h3>
+        <p><strong>Setup:</strong> partner approaches; you pass or lob. <strong>Objective:</strong> beat the net player.
+        <strong>Reps:</strong> 6×2 min. <strong>Constraint:</strong> alternate dip-pass and lob; aim low at their feet or deep over backhand.
+        <strong>Cue:</strong> "Low or over — never chest-high." <strong>Metric:</strong> pass/lob success ↑.</p></div>
+
+      <h2 id="patterns">Patterns</h2>
+      <div class="card drill-item reveal"><h3>🎾 Serve +1 to open court</h3>
+        <p><strong>Setup:</strong> wide serve + open-court target. <strong>Objective:</strong> first-strike combo.
+        <strong>Reps:</strong> 5×10. <strong>Constraint:</strong> decide the +1 before serving. <strong>Cue:</strong> "Stretch, then space."
+        <strong>Progression:</strong> live point after the +1. <strong>Metric:</strong> pts won in ≤ 3 shots ≥ 50%.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Return +1</h3>
+        <p><strong>Setup:</strong> deep return then attack the reply. <strong>Objective:</strong> turn defence to neutral/offense.
+        <strong>Reps:</strong> 5×10. <strong>Constraint:</strong> return deep-middle, then attack only an inside ball.
+        <strong>Cue:</strong> "Deep, then hunt." <strong>Metric:</strong> return-game points won ↑.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 "Cross until inside" (Home Base)</h3>
+        <p><strong>Setup:</strong> crosscourt rally; change direction only off an inside ball. <strong>Objective:</strong> decision discipline.
+        <strong>Reps:</strong> 6×4-min games. <strong>Constraint:</strong> illegal (outside-ball) change = lose point.
+        <strong>Cue:</strong> "Cross, cross… now." <strong>Metric:</strong> &lt; 2 illegal changes/game.</p></div>
+
+      <h2 id="defense-pressure">Defensive &amp; pressure</h2>
+      <div class="card drill-item reveal"><h3>🎾 Survive &amp; reset scramble</h3>
+        <p><strong>Setup:</strong> coach hits 4–6 aggressive balls corner-to-corner. <strong>Objective:</strong> reset to neutral.
+        <strong>Reps:</strong> 6×1-min. <strong>Constraint:</strong> 4+ ft net clearance (height = time).
+        <strong>Cue:</strong> "High, deep, recover." <strong>Metric:</strong> ≥ 70% reset deep.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Start at the score</h3>
+        <p><strong>Setup:</strong> games begin at a called score (0–30, deuce, ad-out). <strong>Objective:</strong> score-based decisions.
+        <strong>Reps:</strong> rotate 6 score states. <strong>Constraint:</strong> behind = no low-% direction changes.
+        <strong>Cue:</strong> "Read score, set dial, pick pattern." <strong>Metric:</strong> correct dial ≥ 80%.</p></div>
+      <div class="card drill-item reveal"><h3>🎾 Tie-break trust</h3>
+        <p><strong>Setup:</strong> first-to-7 breakers. <strong>Objective:</strong> execute trusted patterns under pressure.
+        <strong>Reps:</strong> 3–5 breakers. <strong>Constraint:</strong> trusted patterns only — nothing new.
+        <strong>Cue:</strong> "Breathe, first two points." <strong>Metric:</strong> tie-break win % ↑.</p></div>
+
+      <h2 id="physical">Physical (off-court)</h2>
+      <div class="card drill-item reveal"><h3>🏋️ Acceleration starts</h3>
+        <p><strong>Setup:</strong> 5–10 m sprints from a split-step. <strong>Objective:</strong> explosive first step.
+        <strong>Reps:</strong> 8–10, full recovery. <strong>Constraint:</strong> react to a visual cue. <strong>Cue:</strong> "Low, drive, go."
+        <strong>Progression:</strong> multidirectional starts. <strong>Metric:</strong> 5–10 m split time ↓.</p></div>
+      <div class="card drill-item reveal"><h3>🏋️ 5-10-5 agility shuttle</h3>
+        <p><strong>Setup:</strong> 3 cones, 5 yds apart. <strong>Objective:</strong> change of direction + decel.
+        <strong>Reps:</strong> 6–8, full recovery. <strong>Constraint:</strong> touch each line, stay low. <strong>Cue:</strong> "Brake then burst."
+        <strong>Metric:</strong> shuttle time ↓ (see <a href="18-athlete-development.html#benchmarks">benchmarks</a>).</p></div>
+      <div class="card drill-item reveal"><h3>🏋️ Ladder + shadow movement</h3>
+        <p><strong>Setup:</strong> agility ladder, then shadow strokes to court positions. <strong>Objective:</strong> footwork &amp; recovery patterns.
+        <strong>Reps:</strong> 4 ladder patterns + 4×30s shadow. <strong>Constraint:</strong> split-step + recover to bisector each rep.
+        <strong>Cue:</strong> "Quick feet, recover home." <strong>Metric:</strong> clean footwork, balanced finishes.</p></div>
+      <div class="card drill-item reveal"><h3>🏋️ Tennis strength circuit</h3>
+        <p><strong>Setup:</strong> squat/hinge/push/pull/rotation/jump (see <a href="18-athlete-development.html#physical">template</a>).
+        <strong>Objective:</strong> force &amp; power base. <strong>Reps:</strong> 3–4 rounds, 5–8 reps. <strong>Constraint:</strong> quality over load.
+        <strong>Cue:</strong> "Brace, drive, control." <strong>Progression:</strong> add med-ball power. <strong>Metric:</strong> strength &amp; jump tests ↑.</p></div>
+
+    </div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=37_ixSxH9Jc" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Top 6 Drills To Win At Every Level</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=cY6UNLYA9Jk" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">3 Solo Tennis Practice Drills To Win More</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=R5w7dnZmC18" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Practice Tennis Alone</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Pick the 2 drills that target your #1 priority and put them in this week's plan.
+      Match day soon? Open the <a href="set-break.html">Set-Break Quick-Planner</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="24-ai-review-framework.html"><small>Previous</small>← 24 · AI Review Framework</a>
+      <a class="next" href="set-break.html"><small>Next</small>Set-Break Quick-Planner →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script>
+  (function(){
+    var input=document.getElementById('drillFilter');
+    var cards=[].slice.call(document.querySelectorAll('#drillList .drill-item'));
+    var heads=[].slice.call(document.querySelectorAll('#drillList h2'));
+    var count=document.getElementById('drillCount');
+    function apply(){
+      var q=(input.value||'').toLowerCase().trim(); var shown=0;
+      cards.forEach(function(c){ var hit=!q||c.textContent.toLowerCase().indexOf(q)>-1; c.style.display=hit?'':'none'; if(hit)shown++; });
+      heads.forEach(function(h){ var n=h.nextElementSibling, any=false;
+        while(n&&!/H2/.test(n.tagName)){ if(n.classList&&n.classList.contains('drill-item')&&n.style.display!=='none')any=true; n=n.nextElementSibling; }
+        h.style.display=any?'':'none'; });
+      count.textContent=q?(shown+' of '+cards.length+' drills match'):(cards.length+' drills');
+    }
+    input.addEventListener('input',apply); apply();
+  })();
+</script>
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

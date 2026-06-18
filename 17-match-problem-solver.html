@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Match Problem Solver</title>
+<meta name="description" content="The Match Scenario Database — a searchable troubleshooting system for the situations that beat you, each with causes, fixes, drills and metrics.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>17</b> · Match Intelligence</span>
+        <span class="layer-chip">Layer 3 · Match Intelligence</span>
+      </div>
+      <h1>Match Problem Solver</h1>
+      <p class="lead">A decision-support system for the situations that keep beating you. Search your problem,
+      get the likely cause, the fix, the drill and the metric. Built on the
+      <a href="01-decision-making.html">Decision Card</a> structure.</p>
+    </div>
+
+    <label for="problemFilter" style="display:block;font-weight:700;margin:14px 0 6px">🔎 Search the scenario database</label>
+    <input id="problemFilter" type="search" placeholder="e.g. pusher, tiebreak, overhitting, break point…"
+      style="width:100%;max-width:520px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:1rem">
+    <p id="filterCount" style="color:var(--muted);font-size:.85rem;margin:6px 0 0"></p>
+
+    <div id="problemList">
+
+      <div class="card problem reveal"><h3>I keep losing to a pusher</h3>
+        <p><strong>Symptoms:</strong> long matches, you make all the errors, they barely miss.
+        <strong>Likely cause:</strong> impatience — trying to out-hit a player who lives off your pace.</p>
+        <p><strong>Fix:</strong> build with depth, draw the short ball, <strong>approach and finish at net</strong>; add the drop-shot/approach combo. Win with forward pressure, not bigger swings.</p>
+        <p><strong>Drill:</strong> "approach &amp; finish" off short balls. <strong>Metric:</strong> net points won % &gt; 60%, UE count down. <strong>See:</strong> <a href="09-player-type-strategies.html#pusher">Pusher plan</a>, <a href="06-attacking-system.html">Attacking</a>.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I can't break a big server</h3>
+        <p><strong>Symptoms:</strong> cheap holds against you, you press on returns. <strong>Likely cause:</strong> over-swinging returns, not winning second-serve points.</p>
+        <p><strong>Fix:</strong> stand back, <strong>block deep through the middle</strong>, attack second serves, hold your own serve easily so every game pressures theirs. Treat returns as free swings.</p>
+        <p><strong>Drill:</strong> block-return-to-deep-target. <strong>Metric:</strong> return-in-play % &amp; 2nd-serve-return points won. <strong>See:</strong> <a href="04-return-strategy.html">Return Strategy</a>.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>Lefties give me trouble</h3>
+        <p><strong>Symptoms:</strong> jammed on the ad side, your backhand gets exposed, spin surprises you.
+        <strong>Likely cause:</strong> not adjusting for reversed spin/angles.</p>
+        <p><strong>Fix:</strong> serve/return to their backhand, expect the ad-court kick on big points, favour deep-middle (crosscourt feeds their forehand). Practise vs lefties on purpose.</p>
+        <p><strong>Drill:</strong> return the wide ad-serve repeatedly. <strong>Metric:</strong> win % vs lefties over a season. <strong>See:</strong> <a href="09-player-type-strategies.html#lefty">Lefty plan</a>.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I lose tight matches / can't close out</h3>
+        <p><strong>Symptoms:</strong> lead slips when serving for it; tighten up at the end. <strong>Likely cause:</strong> changing a winning game — getting passive or over-pressing.</p>
+        <p><strong>Fix:</strong> keep the patterns that built the lead, raise first-serve %, run your <a href="25-pattern-library.html">Closing-Out</a> &amp; <a href="25-pattern-library.html#pressure">Pressure-Point</a> defaults, keep the routine identical.</p>
+        <p><strong>Drill:</strong> serve-it-out games from 40–30 up. <strong>Metric:</strong> % games closed when serving for set/match.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I lose the long rallies</h3>
+        <p><strong>Symptoms:</strong> you crack first in extended exchanges. <strong>Likely cause:</strong> fitness, shot tolerance, or forcing too early.</p>
+        <p><strong>Fix:</strong> raise margin/height to extend safely, improve endurance &amp; shot tolerance, and only attack the inside ball (<a href="01-decision-making.html">Home Base</a>).</p>
+        <p><strong>Drill:</strong> 10-ball crosscourt tolerance rallies. <strong>Metric:</strong> avg rally length you win; UE after 6+ shots. <strong>See:</strong> <a href="18-athlete-development.html">Athlete Development</a>.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I lose tie-breaks</h3>
+        <p><strong>Symptoms:</strong> reach breakers but rarely win them. <strong>Likely cause:</strong> trying new things / rushing under pressure.</p>
+        <p><strong>Fix:</strong> trusted patterns only, highest first-serve %, get the early mini-break, breathe between points. Medium aggression, low risk.</p>
+        <p><strong>Drill:</strong> first-to-7 practice breakers daily. <strong>Metric:</strong> tie-break win %. <strong>See:</strong> <a href="10-score-based-strategy.html#tiebreak">Tie-break</a>.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I'm being outpowered</h3>
+        <p><strong>Symptoms:</strong> rushed, late, pushed back. <strong>Likely cause:</strong> trading pace toe-to-toe and standing too deep.</p>
+        <p><strong>Fix:</strong> change height &amp; pace (slice, high heavy), move them with depth-down-the-middle, take time early or reset with defense — don't match their power.</p>
+        <p><strong>Drill:</strong> absorb-and-reset against a feeder hitting hard. <strong>Metric:</strong> reset rate; errors while defending ↓. <strong>See:</strong> <a href="07-defensive-system.html">Defensive System</a>.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I'm being outdefended (everything comes back)</h3>
+        <p><strong>Symptoms:</strong> you hit "winners" that come back, then over-press. <strong>Likely cause:</strong> attacking the wrong ball / no net finish.</p>
+        <p><strong>Fix:</strong> attack only the genuine short/inside ball, then <strong>close the net</strong> to finish rather than going for bigger baseline winners.</p>
+        <p><strong>Drill:</strong> short-ball "green light" + approach. <strong>Metric:</strong> approach success %, net points won.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I break down mentally</h3>
+        <p><strong>Symptoms:</strong> lose the plot after bad points/calls; double-fault clusters. <strong>Likely cause:</strong> no routine; carrying points forward.</p>
+        <p><strong>Fix:</strong> run the 4-step <a href="11-mental-performance.html">Reset/Breathe/Analyze/Commit</a> routine on every point; one external focus cue on big points.</p>
+        <p><strong>Drill:</strong> "routine under load." <strong>Metric:</strong> win % on point-after-a-lost-point.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I play too passive</h3>
+        <p><strong>Symptoms:</strong> push the ball, wait to lose, never dictate. <strong>Likely cause:</strong> fear of errors; no clear attack trigger.</p>
+        <p><strong>Fix:</strong> commit to attacking the inside/short ball every time it appears; pre-decide serve+1; widen the aggression dial when ahead.</p>
+        <p><strong>Drill:</strong> "must-attack the short ball" points. <strong>Metric:</strong> winners + forced errors created ↑; short balls attacked %.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I overhit / too many unforced errors</h3>
+        <p><strong>Symptoms:</strong> spray balls, low first-serve %, errors in clusters. <strong>Likely cause:</strong> aiming the lines, attacking the wrong ball, flat low margin.</p>
+        <p><strong>Fix:</strong> aim over a net window into zones (not lines), add margin/height, and obey ball-quality rules — construct, don't force.</p>
+        <p><strong>Drill:</strong> 4-ft-net-clearance rally game. <strong>Metric:</strong> UE rate ↓; rally balls landing deep. <strong>See:</strong> <a href="02-court-geometry.html">Court Geometry</a>.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I keep missing my down-the-line changes</h3>
+        <p><strong>Symptoms:</strong> direction-change errors, especially under pressure. <strong>Likely cause:</strong> changing direction off an <em>outside</em> ball.</p>
+        <p><strong>Fix:</strong> the <a href="01-decision-making.html#homebase">Home Base</a> rule — only change direction off an inside ball, in balance. Reset crosscourt off outside balls.</p>
+        <p><strong>Drill:</strong> "cross until inside." <strong>Metric:</strong> directional-change error rate ↓.</p>
+      </div>
+
+      <div class="card problem reveal"><h3>I can't convert break points</h3>
+        <p><strong>Symptoms:</strong> earn break points, rarely take them. <strong>Likely cause:</strong> going for a winner or getting passive on the big point.</p>
+        <p><strong>Fix:</strong> make the server play — deep return, your best pattern, force one more ball. Medium aggression, trusted shapes.</p>
+        <p><strong>Drill:</strong> play points from break-point-up scores. <strong>Metric:</strong> break-point conversion %. <strong>See:</strong> <a href="25-pattern-library.html#pressure">Pressure-Point</a>.</p>
+      </div>
+
+    </div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> How to use this</div>
+      <p>After a loss, find the scenario, do the drill it names this week, and track the metric it gives in
+      <a href="21-analytics.html">Analytics</a>. Feed the biggest recurring one into the
+      <a href="26-improvement-engine.html">Improvement Engine</a> to rank it against everything else.</p></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=cTwmZpWftBY" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Defeat the Pusher AND the Counter-Puncher</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=twMrBvmrUb0" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Stop Choking — Close Out Matches</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=HnByEZTjqWA" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">5 Strategies To Beat A Pusher</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Pick the one problem that cost you your last loss and drill its fix this week.
+      Then build the body that executes it — <a href="18-athlete-development.html">Athlete Development</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="11-mental-performance.html"><small>Previous</small>← 11 · Mental Performance</a>
+      <a class="next" href="18-athlete-development.html"><small>Next</small>18 · Athlete Development →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script>
+  (function(){
+    var input=document.getElementById('problemFilter');
+    var cards=[].slice.call(document.querySelectorAll('#problemList .problem'));
+    var count=document.getElementById('filterCount');
+    function apply(){
+      var q=(input.value||'').toLowerCase().trim();
+      var shown=0;
+      cards.forEach(function(c){
+        var hit = !q || c.textContent.toLowerCase().indexOf(q)>-1;
+        c.style.display = hit ? '' : 'none';
+        if(hit) shown++;
+      });
+      count.textContent = q ? (shown+' of '+cards.length+' scenarios match') : (cards.length+' scenarios');
+    }
+    input.addEventListener('input',apply); apply();
+  })();
+</script>
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

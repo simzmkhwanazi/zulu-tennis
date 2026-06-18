@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Net Play System</title>
+<meta name="description" content="Net play — first volley, swing volley, overhead, approach patterns and singles positioning & anticipation.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>08</b> · Tactical</span>
+        <span class="layer-chip">Layer 1–2 · Technical &amp; Tactical</span>
+      </div>
+      <h1>Net Play System</h1>
+      <p class="lead">The net is where points end fastest. You don't need a serve-and-volley game — you need
+      a reliable first volley, a calm overhead, and the positioning to make the opponent pass you.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="position">Positioning &amp; anticipation</h2>
+    <p>Win the net with your feet, not your hands. Close to the right depth, split-step on every contact, and
+    stand on the <strong>bisector</strong> of the opponent's two passing lanes — biased toward the line you
+    approached down.</p>
+    <figure class="diagram reveal">
+      <div data-court='{"w":320,"players":[{"x":62,"y":36,"label":"You","side":"you"},{"x":80,"y":12,"label":"O","side":"opp"}],"paths":[{"from":[80,16],"to":[92,90],"kind":"move","label":"DTL pass"},{"from":[80,16],"to":[30,80],"kind":"move","label":"CC pass"}],"dots":[{"x":62,"y":36,"kind":"recovery","label":"bisect lanes"}]}'></div>
+      <figcaption>Stand on the bisector of the two passing lanes (dashed), shaded toward the line you approached. Split-step before their contact and you cover both passes.</figcaption>
+    </figure>
+
+    <h2 id="firstvolley">The first volley</h2>
+    <p>The first volley after an approach is a <strong>set-up, not a kill.</strong> Hit it deep and controlled,
+    keep closing, and let the second volley finish. Trying to end it on the first volley is the biggest cause
+    of net errors.</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+      <p>Stay on offense and force a passing attempt from a worse position. Deep first volley → close → finish.
+      <span class="ev ev-b">Level B</span></p></div>
+
+    <h2 id="shots">The net shots</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Shot</th><th>When</th><th>Target</th></tr></thead>
+      <tbody>
+        <tr><td><strong>First volley</strong></td><td>After an approach, around the service line</td><td>Deep, often behind the opponent or to open court</td></tr>
+        <tr><td><strong>Swing volley</strong></td><td>Floaty, high ball mid-court</td><td>Drive into the open court — take it out of the air</td></tr>
+        <tr><td><strong>Overhead</strong></td><td>Any lob you can reach</td><td>Deep middle (safe) or sharp angle off a short lob</td></tr>
+        <tr><td><strong>Low volley / half-volley</strong></td><td>Caught at your feet</td><td>Deep, neutral — reset and keep closing</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> At-the-net decision tree</div></div>
+    <pre class="tree">BALL COMING AT YOU AT NET —
+   │
+   ▼
+Height of the ball?
+   ├─ Above net ─▶ volley/punch deep or to open court (offense)
+   ├─ At/below net ─▶ low volley deep &amp; neutral, keep closing
+   └─ Lobbed ─▶ can you reach it?
+                ├─ YES ─▶ overhead (deep middle, or angle if short)
+                └─ NO  ─▶ retreat, let it bounce, defend/lob back</pre>
+
+    <h2 id="approach">Approach patterns &amp; singles "poaching"</h2>
+    <p>Singles has no partner, but the same principle applies: <strong>anticipate and cut off.</strong> When you
+    read a predictable crosscourt reply, step across early and take it as a volley or swing volley. Approach
+    down-the-line (shortest path), then poach the crosscourt pass you've invited.</p>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>No split-step — you're moving when they hit, so you can't change direction to the pass.</li>
+        <li>Trying to end the point on the first volley instead of building it.</li>
+        <li>Standing too far back (volleying up) or too close (lobbed easily) — find the right depth.</li>
+        <li>Overheads aimed at the lines; under pressure, deep-middle is the high-% overhead.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Approach, split, finish"</div>
+      <ul>
+        <li><strong>Setup:</strong> coach feeds a short ball; you approach DTL, then they try to pass.</li>
+        <li><strong>Reps:</strong> 5 × 10 approaches; alternate which pass they attempt; you must split-step every time.</li>
+        <li><strong>Constraint:</strong> first volley must land past the service line (deep) to count.</li>
+        <li><strong>Coaching cue:</strong> "Approach, split, deep volley, close, finish."</li>
+        <li><strong>Success metric:</strong> ≥ 65% of net points won; split-step on 100% of contacts.</li>
+      </ul></div>
+
+    <h2 id="apply">Match application</h2>
+    <p>You don't have to live at the net — but you must be willing to finish there. Convert the short balls you
+    earn in the <a href="06-attacking-system.html">Attacking System</a>, and use the net to shorten points
+    against grinders and on fast surfaces.</p>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Net points won % &gt; 60% (track in <a href="21-analytics.html">Analytics</a>).</li>
+        <li>First-volley depth: majority landing past the service line.</li>
+        <li>Overhead error rate ↓; pass-attempts-against converted into errors ↑.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=WnVPbvUZOEM" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Dominate The Net In Singles — Tactics</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=3uhq1YnGn7M" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Approach The Net / Come In To Volley</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=feCB0-CYqrI" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Avoid These 3 Volley &amp; Overhead Mistakes</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Add "approach, split, finish" to practice. Then learn to tailor all of this to
+      who's across the net — <a href="09-player-type-strategies.html">Player-Type Strategies</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="25-pattern-library.html"><small>Previous</small>← 25 · Pattern Library</a>
+      <a class="next" href="09-player-type-strategies.html"><small>Next</small>09 · Player-Type Strategies →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

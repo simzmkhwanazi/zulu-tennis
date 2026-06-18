@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — The Decision Engine</title>
+<meta name="description" content="The Decision Engine — the core logic layer of Zulu Tennis. Tactical Decision Formula, ball-quality tree, Decision Cards, and the Home Base Pattern.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>01</b> · Core Logic Layer</span>
+        <span class="layer-chip">Layer 1–2 · Technical &amp; Tactical</span>
+      </div>
+      <h1>The Decision Engine</h1>
+      <p class="lead">The spine of the whole system. Tennis isn't won by nicer shots — it's won by better
+      <em>decisions</em>, made automatically under pressure. This page turns "what should I hit?" into a
+      repeatable, high-percentage process.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="question">The only question that matters</h2>
+    <p>Every shot decision answers one question:</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> The core question</div>
+      <p style="font-size:1.1rem;margin:0"><em>Given the score, the situation, the opponent, the incoming
+      ball and my balance — what is the <strong>highest-value</strong> decision that increases my probability
+      of winning <strong>this point</strong>?</em></p></div>
+    <p>Not "what's the best shot in the world here," but "what's the best shot <strong>for me, right now,
+    that I can repeat.</strong>" Three priorities settle every close call:</p>
+    <div class="formula">
+      <div class="principles">
+        <span class="p">Expected Value &gt; highlight shots</span>
+        <span class="p">Repeatability &gt; perfect execution</span>
+        <span class="p">Pressure reliability &gt; practice level</span>
+      </div>
+    </div>
+
+    <h2 id="formula">The Tactical Decision Formula</h2>
+    <p>Elite decisions feel instinctive because the inputs have been internalised. These are the ten the
+    engine weighs — train them until the read is automatic:</p>
+    <div class="formula">
+      <div class="lbl" style="font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)">⚖️ Inputs</div>
+      <ol>
+        <li>Score situation</li><li>Point importance</li><li>Court position</li><li>Incoming ball quality</li>
+        <li>Player balance</li><li>Opponent position</li><li>Opponent weaknesses</li><li>Risk level</li>
+        <li>Expected reward</li><li>Recovery position after the shot</li>
+      </ol>
+    </div>
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistake</div>
+      <p>Most players weigh only inputs 4 and 9 (the ball and the reward) and ignore 1, 5 and 10 — score,
+      balance and recovery. That's how you hit a "great" shot at 0–30 and still lose the game.</p></div>
+
+    <h2 id="ballquality">The Ball-Quality Decision Engine</h2>
+    <p>The universal entry point. Before patterns, before targets — classify the ball, then respond. Where
+    the ball lands in <em>your</em> half sets the default:</p>
+
+    <figure class="diagram reveal">
+      <div data-court='{"w":340,"zones":[{"x":0,"y":50,"w":100,"h":17,"kind":"target","label":"ATTACK ZONE"},{"x":0,"y":67,"w":100,"h":17,"kind":"neutral","label":"RALLY / NEUTRAL"},{"x":0,"y":84,"w":100,"h":16,"kind":"danger","label":"DEFEND ZONE"}],"players":[{"x":50,"y":94,"label":"You","side":"you"}]}'></div>
+      <figcaption>Default by zone: a short ball that sits up (attack zone) → take time away; a rally-depth ball → construct; a deep, heavy or wide ball (defend zone) → reset with margin. The zone sets the <em>default</em>; the formula adjusts it.</figcaption>
+    </figure>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Universal decision tree</div></div>
+    <pre class="tree">INCOMING BALL
+   │
+   ▼
+Is the ball ATTACKABLE?   (short · sitting up · inside the court)
+   │
+   ├─ NO  ─▶  Neutralise  ·  recover to home base  ·  extend the rally
+   │
+   └─ YES ─▶  Can I attack IN BALANCE?
+                 │
+                 ├─ NO  ─▶  Keep constructing — don't force it
+                 │
+                 └─ YES ─▶  Attack  ▸  finish  ▸  recover</pre>
+    <p>That's the whole game in four lines. Everything else — serve+1, baseline patterns, approaches —
+    is a specialised branch of this tree. <span class="ev ev-a">Level A</span></p>
+
+    <h2 id="card">How patterns are written: the Decision Card</h2>
+    <p>A read you can't recall under pressure is useless. So every <em>pattern</em> in Zulu Tennis is written
+    as a <strong>Decision Card</strong> — same fields every time, so it's trainable and instantly retrievable.
+    The flagship card follows.</p>
+
+    <h2 id="homebase">Flagship pattern: Home Base</h2>
+    <div class="decision-card reveal">
+      <header><span class="badge">Decision Card</span><h3>Home Base Pattern</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
+      <div class="dc-body">
+
+        <div class="field"><div class="lbl">Match situation</div>
+          <div>Any neutral baseline rally — most often a crosscourt exchange — where you feel the urge to
+          "do something" but don't yet have a ball worth attacking. Especially valuable on serve at 0–30 / 15–30.</div></div>
+
+        <div class="field"><div class="lbl">Problem it solves</div>
+          <div>Stops the single most common unforced error in club tennis: changing direction off the wrong
+          ball. It converts a vague "stay patient" into a concrete, automatic rule.</div></div>
+
+        <div class="field"><div class="lbl">Decision rule</div>
+          <div class="rule">Picture an imaginary line running from you to your opponent.
+          <strong>If the ball crosses that line (an "outside" ball)</strong> → do <u>not</u> change direction;
+          return it back where it came from (crosscourt), with height and margin.
+          <strong>If the ball does <u>not</u> cross the line (an "inside" ball)</strong> and you're balanced →
+          direction change is unlocked: open court, inside-in, or inside-out.</div></div>
+
+        <div class="field"><div class="lbl">Why it works</div>
+          <ul style="margin:.3rem 0">
+            <li><strong>Geometry:</strong> redirecting an outside ball means hitting over the higher part of the net into less court — the lowest-percentage shot in tennis.</li>
+            <li><strong>Probability:</strong> resetting crosscourt keeps the ball over the lowest net and into the longest diagonal — maximum margin.</li>
+            <li><strong>Recovery:</strong> crosscourt-to-crosscourt keeps your recovery distance short; redirecting leaves the open court exposed.</li>
+            <li><strong>Pressure on them:</strong> each crosscourt to a stretched opponent makes <em>their</em> next ball more likely to float back as an inside ball — which you then attack.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Wrong vs correct</div>
+          <div class="dc-examples">
+            <div class="ex wrong"><span class="lbl">✗ Wrong</span><br>0–30, stuck in a backhand crosscourt rally, you feel pressure and rip it down-the-line off a wide, outside ball. Low percentage → 0–40, likely the game.</div>
+            <div class="ex right"><span class="lbl">✓ Correct</span><br>0–30, you reset the backhand crosscourt with margin, stretch them again, and attack the floaty inside ball that comes back. → 15–30, momentum shifts.</div>
+          </div>
+        </div>
+
+        <div class="field"><div class="lbl">Decision tree</div>
+          <pre class="tree">OPPONENT'S BALL
+   │
+   ▼
+Did it cross your imaginary centre line?
+   │
+   ├─ YES (outside ball) ─▶ DON'T change direction
+   │                        reset crosscourt — height + margin
+   │                        recover ▸ wait for the inside ball
+   │
+   └─ NO  (inside ball) ──▶ Direction change UNLOCKED (if balanced)
+                            ▸ open court  ▸ inside-in  ▸ inside-out
+                            ▸ recover & keep the pressure on</pre>
+        </div>
+
+        <div class="field"><div class="lbl">Practice drill — "Cross until inside"</div>
+          <ul style="margin:.3rem 0">
+            <li><strong>Setup:</strong> both players rally crosscourt only; either may change direction <em>only</em> when they receive an inside ball.</li>
+            <li><strong>Reps:</strong> 6 × 4-minute games to 7; loser of each point feeds next.</li>
+            <li><strong>Constraint:</strong> changing direction off an outside ball = lose the point automatically.</li>
+            <li><strong>Coaching cue:</strong> "Cross, cross, cross… <em>now</em>." Say it out loud as you recognise the inside ball.</li>
+            <li><strong>Success metric:</strong> &lt; 2 illegal (outside-ball) direction changes per game.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Match application</div>
+          <div>Make this your <strong>default in every neutral rally</strong> and especially when behind on serve
+          (0–30, 15–30, break point). When ahead (30–0, 40–0) you can widen the trigger and attack slightly
+          earlier — see the <a href="10-score-based-strategy.html">Match State Engine</a>.</div></div>
+
+        <div class="field"><div class="lbl">Success metrics</div>
+          <ul style="margin:.3rem 0">
+            <li>Directional-change error rate ↓ (track in <a href="12-match-analysis.html">Match Analysis</a>).</li>
+            <li>Average rally length ↑ on your service games.</li>
+            <li>Points won after resetting an outside ball ↑.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Opponent adaptations</div>
+          <ul style="margin:.3rem 0">
+            <li><strong>vs a counter-puncher:</strong> add height/heaviness, not pace — outlast their patience for the inside ball.</li>
+            <li><strong>vs a flat hitter:</strong> they'll feed you more inside balls; be ready to attack earlier.</li>
+            <li><strong>vs a lefty:</strong> the "line" still applies — just remember the crosscourt diagonal now favours their forehand.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Skill-level adaptation</div>
+          <div><strong>Intermediate:</strong> just obey the rule — never change direction off an outside ball.
+          <strong>Advanced/Tournament:</strong> add disguise and vary height/spin on the reset to <em>manufacture</em>
+          the inside ball sooner. See <a href="27-skill-roadmap.html">Skill-Level Roadmap</a>.</div></div>
+
+      </div>
+    </div>
+
+    <h2 id="autopilot">Pattern Autopilot — pressure defaults</h2>
+    <p>Under pressure, decision fatigue is the enemy. Pre-load a single trusted default per situation so you
+    never deliberate on the big points. Full set in the <a href="25-pattern-library.html">Pattern Library</a>.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Situation</th><th>Default (autopilot)</th></tr></thead>
+      <tbody>
+        <tr><td>Neutral rally</td><td>Crosscourt with margin — wait for the inside ball</td></tr>
+        <tr><td>0–30 service game</td><td>Highest-percentage patterns; no direction changes off outside balls</td></tr>
+        <tr><td>Short ball</td><td>Approach / step in and take time</td></tr>
+        <tr><td>Pulled wide (defending)</td><td>High, deep crosscourt; recover</td></tr>
+        <tr><td>Returning a big server</td><td>Deep through the middle — neutralise</td></tr>
+        <tr><td>Break point down</td><td>Your #1 trusted serve pattern</td></tr>
+        <tr><td>Tie-break</td><td>Trusted patterns only — nothing new</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics for the engine</div>
+    <ul>
+      <li>After any lost point you can name: the ball quality, the decision you made, and the better decision.</li>
+      <li>Unforced errors from direction changes trend down month over month.</li>
+      <li>On break points and in tie-breaks you default to autopilot patterns &gt; 90% of the time.</li>
+    </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=2oz7VMyffGw" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Attack vs When To Defend — Tactics Lesson</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=sYXF77vwRzE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Singles Strategy &amp; Shot Selection — The Four Zones</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=Ns54d4WLQSo" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Simple 3-Step Shot Selection System</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Drill the Home Base "cross until inside" game this week. Then learn <em>why</em>
+      the geometry rewards it — read <a href="02-court-geometry.html">Court Geometry</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="29-data-model.html"><small>Previous</small>← 29 · Data Model</a>
+      <a class="next" href="02-court-geometry.html"><small>Next</small>02 · Court Geometry →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

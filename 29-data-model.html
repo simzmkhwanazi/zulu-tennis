@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Data Model</title>
+<meta name="description" content="The unified player database schema that connects every dashboard, worksheet, scouting sheet and analytic in Zulu Tennis.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>29</b> · Data Backbone</span>
+        <span class="layer-chip">Layer 5 · Continuous Improvement</span>
+      </div>
+      <h1>Data Model</h1>
+      <p class="lead">One consistent schema behind every worksheet, scouting sheet, dashboard and the
+      improvement engine — so your data connects instead of scattering across notebooks. Designed as if
+      a future version could become an app.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="why">Why a single source of truth</h2>
+    <p>You already track scores, opponents, fitness and goals — but in separate places that never talk to
+    each other. The Data Model defines shared <strong>entities</strong> (tables) and how they relate, so a
+    match feeds analytics, analytics feed the <a href="26-improvement-engine.html">Improvement Engine</a>,
+    and that feeds your <a href="23-development-roadmap.html">roadmap</a>. Every printable sheet in this
+    system names the entity it maps to.</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Purpose</div>
+    <p>Make "Why did I lose that point / that match / last quarter?" answerable from one connected record.
+    <span class="ev ev-b">Level B</span></p></div>
+
+    <h2 id="erd">The schema at a glance</h2>
+    <figure class="diagram reveal">
+      <svg viewBox="0 0 860 560" role="img" aria-label="Entity relationship diagram" xmlns="http://www.w3.org/2000/svg">
+        <style>
+          .e{fill:#ffffff;stroke:#2b2b2b;stroke-width:1.4;}
+          .hub{fill:#ffd400;stroke:#111;stroke-width:1.8;}
+          .et{fill:#141414;font:700 12px var(--sans,sans-serif);}
+          .rel{stroke:#6b6b6b;stroke-width:1.4;fill:none;}
+          .ref{stroke:#6b6b6b;stroke-width:1.4;fill:none;stroke-dasharray:4 4;}
+        </style>
+        <!-- relationship lines (drawn first) -->
+        <line class="rel" x1="200" y1="280" x2="340" y2="40"/>
+        <line class="rel" x1="200" y1="280" x2="340" y2="118"/>
+        <line class="rel" x1="200" y1="280" x2="340" y2="196"/>
+        <line class="rel" x1="200" y1="280" x2="340" y2="274"/>
+        <line class="rel" x1="200" y1="280" x2="340" y2="352"/>
+        <line class="rel" x1="200" y1="280" x2="340" y2="430"/>
+        <line class="rel" x1="200" y1="280" x2="340" y2="508"/>
+        <line class="rel" x1="520" y1="40" x2="660" y2="40"/>
+        <line class="rel" x1="520" y1="40" x2="660" y2="118"/>
+        <line class="rel" x1="520" y1="118" x2="660" y2="196"/>
+        <line class="rel" x1="520" y1="430" x2="660" y2="508"/>
+        <line class="ref" x1="750" y1="252" x2="750" y2="218"/>
+        <line class="ref" x1="660" y1="274" x2="540" y2="55"/>
+        <!-- hub -->
+        <rect class="hub" x="20" y="256" width="180" height="48" rx="9"/>
+        <text class="et" x="110" y="285" text-anchor="middle">Player Profile</text>
+        <!-- column 2 -->
+        <g text-anchor="middle">
+          <rect class="e" x="340" y="18"  width="180" height="44" rx="8"/><text class="et" x="430" y="45">Match History</text>
+          <rect class="e" x="340" y="96"  width="180" height="44" rx="8"/><text class="et" x="430" y="123">Opponent Profiles</text>
+          <rect class="e" x="340" y="174" width="180" height="44" rx="8"/><text class="et" x="430" y="201">Practice Sessions</text>
+          <rect class="e" x="340" y="252" width="180" height="44" rx="8"/><text class="et" x="430" y="279">Fitness Tests</text>
+          <rect class="e" x="340" y="330" width="180" height="44" rx="8"/><text class="et" x="430" y="357">Physical Metrics</text>
+          <rect class="e" x="340" y="408" width="180" height="44" rx="8"/><text class="et" x="430" y="435">Tournament Results</text>
+          <rect class="e" x="340" y="486" width="180" height="44" rx="8"/><text class="et" x="430" y="513">Improvement Priorities</text>
+        </g>
+        <!-- column 3 -->
+        <g text-anchor="middle">
+          <rect class="e" x="660" y="18"  width="180" height="44" rx="8"/><text class="et" x="750" y="45">Point Logs</text>
+          <rect class="e" x="660" y="96"  width="180" height="44" rx="8"/><text class="et" x="750" y="123">Video Reviews</text>
+          <rect class="e" x="660" y="174" width="180" height="44" rx="8"/><text class="et" x="750" y="201">Match Scenarios</text>
+          <rect class="e" x="660" y="252" width="180" height="44" rx="8"/><text class="et" x="750" y="279">Decision Cards / Patterns</text>
+          <rect class="e" x="660" y="486" width="180" height="44" rx="8"/><text class="et" x="750" y="513">Roadmap Progress</text>
+        </g>
+      </svg>
+      <figcaption>Player Profile is the hub. Solid lines = owns/has-many; dashed = references. Point Logs &amp; Match Scenarios both reference Decision Cards / Patterns.</figcaption>
+    </figure>
+
+    <h2 id="entities">The entities</h2>
+    <p>Key fields only (the schema is intentionally lean). <code>id</code> = primary key; <code>*_id</code> = link to another entity.</p>
+
+    <div class="card">
+      <h3>Player Profile <span class="pill">1 record</span></h3>
+      <p>Built from <a href="00-player-identity.html">Player Identity</a>.</p>
+      <div class="tbl-wrap"><table><thead><tr><th>Field</th><th>Type</th><th>Notes</th></tr></thead><tbody>
+        <tr><td>id</td><td>string</td><td>you</td></tr>
+        <tr><td>primary_archetype / secondary_archetype</td><td>enum</td><td>7 archetypes</td></tr>
+        <tr><td>weapons[] / liabilities[]</td><td>string[]</td><td>top strengths / protect-list</td></tr>
+        <tr><td>default_patterns[] / avoid_patterns[]</td><td>pattern_id[]</td><td>→ Decision Cards</td></tr>
+        <tr><td>skill_level</td><td>enum</td><td>Intermediate→Elite Amateur</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="card">
+      <h3>Match History &amp; Point Logs <span class="pill">many</span></h3>
+      <div class="tbl-wrap"><table><thead><tr><th>Entity · Field</th><th>Type</th><th>Notes</th></tr></thead><tbody>
+        <tr><td><strong>Match</strong> · id, date, opponent_id, surface, result, score</td><td>—</td><td>one row per match</td></tr>
+        <tr><td>Match · kpis</td><td>object</td><td>→ Analytics KPIs (serve %, UE, BP…)</td></tr>
+        <tr><td><strong>Point Log</strong> · id, match_id, score_state, ball_quality, decision, outcome, pattern_id</td><td>—</td><td>optional point-by-point; powers "why did I lose that point?"</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="card">
+      <h3>Opponent Profiles &amp; Match Scenarios <span class="pill">many</span></h3>
+      <div class="tbl-wrap"><table><thead><tr><th>Entity · Field</th><th>Type</th><th>Notes</th></tr></thead><tbody>
+        <tr><td><strong>Opponent</strong> · id, name, serve_tendencies, return_tendencies, rally_pattern, weaknesses, pressure_behaviour</td><td>—</td><td>→ <a href="20-match-intelligence-db.html">Scouting DB</a></td></tr>
+        <tr><td><strong>Scenario</strong> · id, situation, recommended_decision, reason, risk_level, drill_id, metrics</td><td>—</td><td>→ <a href="17-match-problem-solver.html">Problem Solver</a></td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="card">
+      <h3>Training: Practice Sessions · Fitness Tests · Physical Metrics <span class="pill">many</span></h3>
+      <div class="tbl-wrap"><table><thead><tr><th>Entity · Field</th><th>Notes</th></tr></thead><tbody>
+        <tr><td><strong>Practice Session</strong> · id, date, focus, drills[], quality_rating</td><td>→ <a href="14-practice-blueprint.html">Practice</a> / <a href="30-drill-library.html">Drills</a></td></tr>
+        <tr><td><strong>Fitness Test</strong> · id, date, test (sprint/agility/jump/endurance), value, benchmark</td><td>→ <a href="18-athlete-development.html">Athlete Dev</a></td></tr>
+        <tr><td><strong>Physical Metric</strong> · id, date, sleep, load, soreness, weight</td><td>recovery &amp; readiness</td></tr>
+      </tbody></table></div>
+    </div>
+
+    <div class="card">
+      <h3>Improvement Priorities · Roadmap Progress · Decision Cards · Video Reviews · Tournament Results</h3>
+      <div class="tbl-wrap"><table><thead><tr><th>Entity · Field</th><th>Notes</th></tr></thead><tbody>
+        <tr><td><strong>Improvement Priority</strong> · id, weakness, impact, frequency, ease, priority_score</td><td>score = I × F × E → <a href="26-improvement-engine.html">Engine</a></td></tr>
+        <tr><td><strong>Roadmap Progress</strong> · id, goal, target_date, status, review_notes</td><td>→ <a href="23-development-roadmap.html">Roadmap</a></td></tr>
+        <tr><td><strong>Decision Card / Pattern</strong> · id, name, decision_rule, risk, reward, metrics</td><td>→ <a href="25-pattern-library.html">Pattern Library</a></td></tr>
+        <tr><td><strong>Video Review</strong> · id, match_id, timestamp, tag, grade, note</td><td>→ <a href="13-video-analysis.html">Video Analysis</a></td></tr>
+        <tr><td><strong>Tournament Result</strong> · id, event, dates, rounds[], match_ids[]</td><td>→ <a href="22-tournament-os.html">Tournament OS</a></td></tr>
+      </tbody></table></div>
+    </div>
+
+    <h2 id="example">Example record (JSON-shaped)</h2>
+    <p>How a single match connects to everything else — the shape a future app would store:</p>
+    <pre class="tree">{
+  "match": {
+    "id": "m_2026_06_14",
+    "date": "2026-06-14",
+    "opponent_id": "opp_naidoo",
+    "surface": "hard",
+    "result": "W",
+    "score": "6-4 3-6 7-5",
+    "kpis": { "first_serve_pct": 61, "bp_conversion": 0.38,
+              "unforced_errors": 22, "avg_rally_len": 4.1 }
+  },
+  "point_log_sample": {
+    "match_id": "m_2026_06_14",
+    "score_state": "0-30",
+    "ball_quality": "outside",
+    "decision": "reset_crosscourt",
+    "outcome": "won_rally",
+    "pattern_id": "pat_home_base"
+  },
+  "improvement_priority": {
+    "weakness": "down_the_line_errors",
+    "impact": 5, "frequency": 4, "ease": 3,
+    "priority_score": 60
+  }
+}</pre>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+    <ul>
+      <li>Tracking everything in one giant note — no links, so nothing aggregates.</li>
+      <li>Logging data you never review. Only track fields that feed a decision (analytics → priorities → roadmap).</li>
+    </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+    <ul>
+      <li>Each match record links to one opponent and produces one KPI set.</li>
+      <li>Every printable sheet you use names the entity it maps to.</li>
+      <li>Your top improvement priority is traceable back to specific matches/points.</li>
+    </ul></div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Schema in place. Now learn the logic that generates the data worth storing —
+      the <a href="01-decision-making.html">Decision Engine</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="00-player-identity.html"><small>Previous</small>← 00 · Player Identity</a>
+      <a class="next" href="01-decision-making.html"><small>Next</small>01 · Decision Engine →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

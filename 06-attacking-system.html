@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Attacking System</title>
+<meta name="description" content="The attacking system — recognising attackable balls, transition footwork, approach selection, closing the net and finishing points.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>06</b> · Tactical</span>
+        <span class="layer-chip">Layer 2 · Tactical Systems</span>
+      </div>
+      <h1>Attacking System</h1>
+      <p class="lead">Attacking isn't hitting harder — it's recognising the right ball, moving correctly, and
+      finishing with the highest-percentage option. Most points are lost by attacking the <em>wrong</em> ball.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="recognise">Recognising the attackable ball</h2>
+    <p>Three cues, ideally two or more present at once: the ball is <strong>short</strong> (landing inside the
+    baseline), <strong>sitting up</strong> (above net height at contact), and you can take it <strong>in
+    balance.</strong> Miss these and you're forcing, not attacking.</p>
+    <figure class="diagram reveal">
+      <div data-court='{"w":320,"players":[{"x":50,"y":92,"label":"You","side":"you"}],"zones":[{"x":12,"y":50,"w":76,"h":20,"kind":"target","label":"attackable: short + sitting up"}]}'></div>
+      <figcaption>The attack zone: a ball landing inside the baseline that lets you contact at or above net height — and step in <em>through</em> it.</figcaption>
+    </figure>
+
+    <h2 id="checklist">The "Should I attack?" checklist</h2>
+    <div class="callout check"><div class="head"><span class="ico">📋</span> Attack only if…</div>
+      <ul class="check">
+        <li>The ball is landing <strong>inside the baseline</strong> (short).</li>
+        <li>You can contact it <strong>at or above net height</strong> (sitting up).</li>
+        <li>You are <strong>balanced</strong> and moving forward, not stretched.</li>
+        <li>You have a <strong>target</strong> already in mind (open court / behind them).</li>
+      </ul>
+      <p style="margin:.4rem 0 0">If two or more are missing → <strong>keep constructing.</strong> Don't gift the point.</p>
+    </div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Attack decision tree</div></div>
+    <pre class="tree">SHORT BALL ARRIVES —
+   │
+   ▼
+Can I take it in balance, at/above net height?
+   ├─ NO ─▶ Rally ball deep, recover, stay patient
+   └─ YES ─▶ Approach or drive?
+              ├─ Very short / low ─▶ APPROACH + close net
+              └─ Sitting up high ──▶ DRIVE / swing volley, finish</pre>
+
+    <h2 id="footwork">Transition footwork</h2>
+    <p>The error most amateurs make: hitting the approach while still running, then stopping. Do the opposite —
+    <strong>load, hit, then keep moving forward</strong> and split-step as the opponent strikes.</p>
+    <ul>
+      <li>Read short early → explode forward.</li>
+      <li>Hit <em>through</em> the ball moving forward (don't camp behind it).</li>
+      <li>Continue toward the net; <strong>split-step</strong> just before their contact.</li>
+      <li>Close the line you hit down.</li>
+    </ul>
+
+    <h2 id="approach">Approach-shot selection</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>The short ball is…</th><th>Approach choice</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Very low / awkward</td><td>Slice deep down-the-line</td><td>Stays low, buys you time to close</td></tr>
+        <tr><td>Sitting up, mid-court</td><td>Drive deep down-the-line</td><td>Shortest path to net to defend; pressures them</td></tr>
+        <tr><td>Wide &amp; short</td><td>Drive behind them / sharp angle</td><td>They're recovering the other way</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> The golden rule</div>
+      <p>Approach <strong>down the line</strong> by default — it's the shortest distance to the net, so you have
+      time to get into position and you only have to cover one passing lane. <span class="ev ev-a">Level A</span></p></div>
+
+    <h2 id="closing">Closing &amp; finishing</h2>
+    <figure class="diagram reveal">
+      <div data-court='{"w":320,"players":[{"x":70,"y":40,"label":"You","side":"you"},{"x":18,"y":14,"label":"O","side":"opp"}],"paths":[{"from":[72,72],"to":[78,12],"kind":"shot","label":"approach DTL"},{"from":[70,40],"to":[24,30],"kind":"serve","label":"volley to open court"}]}'></div>
+      <figcaption>Approach down-the-line, close inside the service line, split-step, then volley into the open court.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>First volley:</strong> deep and simple — you don't have to win it outright, just stay on offense.</li>
+      <li><strong>Position:</strong> close tight after a good approach; hang back a touch after a weak one.</li>
+      <li><strong>Finish:</strong> into the open court or behind a scrambling opponent — see <a href="08-net-play-system.html">Net Play</a>.</li>
+    </ul>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Attacking a ball that's deep or below net height — the #1 unforced-error source.</li>
+        <li>Approaching crosscourt (longer path to net, two passing lanes to cover).</li>
+        <li>Over-hitting the approach for a winner instead of setting up the volley.</li>
+        <li>Floating to the net without a split-step — you're a sitting duck for the pass.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Short-ball green light"</div>
+      <ul>
+        <li><strong>Setup:</strong> partner feeds a mix of deep and short balls randomly.</li>
+        <li><strong>Reps:</strong> 5 × 2-min. Attack only the genuine short balls; rally the deep ones.</li>
+        <li><strong>Constraint:</strong> attacking a deep ball = lose the point; you must close the net after every approach.</li>
+        <li><strong>Coaching cue:</strong> "Read it, step in, hit through, split-step."</li>
+        <li><strong>Success metric:</strong> &gt; 60% of approached points won; near-zero attacks on deep balls.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Net points won % climbing (track in <a href="21-analytics.html">Analytics</a>).</li>
+        <li>Approach-shot success rate &gt; 60%.</li>
+        <li>Errors on "attacks" of deep/low balls trending to zero.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=xwYUlwTzaS0" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Tennis Approach Shot: How to Finish Short Balls</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=K8f5E6aXyfM" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Attack Short Balls (Strategy Explained)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=esJyKD3C2e0" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Aggressively Hit Approach Shots</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Practise the "green light" short-ball read this week. Then learn to survive
+      the points you <em>can't</em> attack — the <a href="07-defensive-system.html">Defensive System</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="05-baseline-patterns.html"><small>Previous</small>← 05 · Baseline Patterns</a>
+      <a class="next" href="07-defensive-system.html"><small>Next</small>07 · Defensive System →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

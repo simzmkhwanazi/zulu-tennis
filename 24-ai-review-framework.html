@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — AI Review Framework</title>
+<meta name="description" content="Copy-paste AI prompts for match review, tactical analysis, opponent scouting, training planning, tournament review, video analysis and weakness prioritization.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .prompt-wrap{position:relative;}
+  .copybtn{position:absolute;top:10px;right:10px;font-size:.72rem;font-weight:800;padding:5px 10px;border-radius:8px;
+    border:1px solid var(--border);background:var(--hl);color:#141414;cursor:pointer;}
+  .copybtn.done{background:var(--accent);color:#fff;}
+  pre.prompt{white-space:pre-wrap;background:var(--surface);border:1px solid var(--border);border-left:4px solid var(--c-ai);
+    border-radius:10px;padding:14px 16px;font-family:var(--mono);font-size:.86rem;line-height:1.5;}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>24</b> · Improvement</span>
+        <span class="layer-chip">Layer 5 · Continuous Improvement</span>
+      </div>
+      <h1>AI Review Framework</h1>
+      <p class="lead">Turn any AI assistant into your analyst. Paste your match data into these prompts and get
+      structured, actionable feedback — then feed it back into your <a href="26-improvement-engine.html">Improvement Engine</a>.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <div class="callout ai"><div class="head"><span class="ico">🧠</span> How to use</div>
+      <p>Fill the <code>[bracketed]</code> parts with your real data (from <a href="12-match-analysis.html">charts</a>,
+      <a href="20-match-intelligence-db.html">scouting</a>, <a href="29-data-model.html">the data model</a>), tap
+      <strong>Copy</strong>, and paste into your AI tool. Keep the structure so answers stay consistent. <span class="ev ev-d">Level D</span></p></div>
+
+    <h2 id="match">1 · Match review</h2>
+    <div class="prompt-wrap"><button class="copybtn">Copy</button>
+<pre class="prompt">You are my tennis performance analyst. Here is my singles match report:
+- Result/score: [score]
+- Opponent type: [pusher / power baseliner / etc.]
+- Stats: 1st serve % [x], 1st-serve pts won [x], 2nd-serve pts won [x],
+  return pts won [x], winners [x], unforced errors [x], forced errors [x],
+  break points won/faced [x/x], net pts won [x/x], avg rally length [x]
+- What it felt like: [2-3 sentences]
+
+Tasks:
+1) Identify my THREE biggest tactical problems in this match.
+2) For each, give the likely cause and one concrete fix.
+3) Tell me the single highest-value thing to practise next and why.
+Be specific and concise.</pre></div>
+
+    <h2 id="tactical">2 · Tactical analysis</h2>
+    <div class="prompt-wrap"><button class="copybtn">Copy</button>
+<pre class="prompt">Act as a tennis tactician. My game: [archetype + 2 weapons + 2 weaknesses].
+Recurring pattern I lose with: [describe the rally/situation].
+1) Explain the geometry/probability of why I'm losing this pattern.
+2) Give me the higher-percentage decision rule (when to reset vs attack).
+3) Turn it into a "Decision Card": situation, rule, why, wrong vs correct,
+   a drill, and a success metric.</pre></div>
+
+    <h2 id="scouting">3 · Opponent scouting</h2>
+    <div class="prompt-wrap"><button class="copybtn">Copy</button>
+<pre class="prompt">Build me a game plan against this opponent:
+- Type/hand: [type, R/L]
+- Serve tendencies: [...]  Return tendencies: [...]
+- FH/BH stability: [...]  Net skills: [...]
+- Pressure/tiebreak/break-point behaviour: [...]
+- Their winning patterns: [...]  Their losing patterns: [...]
+
+Give me: (a) ONE strength to neutralise, (b) ONE weakness to attack,
+(c) ONE big-point tendency to exploit, and (d) my 3-line match plan.</pre></div>
+
+    <h2 id="training">4 · Training planning</h2>
+    <div class="prompt-wrap"><button class="copybtn">Copy</button>
+<pre class="prompt">Create a 4-week training block for me.
+- Level: [intermediate/advanced/tournament/elite amateur]
+- Top priority weakness (Impact×Frequency×Ease ranked): [#1], then [#2]
+- Days/week available: [x]  Court+gym access: [...]
+Build a week-by-week plan (on-court priority blocks + off-court physical),
+each session ending with point play, plus the KPI to track for each priority.</pre></div>
+
+    <h2 id="tournament">5 · Tournament review</h2>
+    <div class="prompt-wrap"><button class="copybtn">Copy</button>
+<pre class="prompt">Here are my results & stats from [event] across [n] matches: [paste].
+1) What patterns held up under pressure and what broke down?
+2) What's the ONE recurring issue across matches?
+3) Give me a recovery + next-block plan for the 3 weeks after this event.</pre></div>
+
+    <h2 id="video">6 · Video analysis</h2>
+    <div class="prompt-wrap"><button class="copybtn">Copy</button>
+<pre class="prompt">From my video review grades (A-D): shot selection [x], positioning [x],
+recovery [x], patterns [x], serve location [x], routine [x].
+Plus notes: [paste any observations].
+1) Which graded area should I fix first for the biggest win-% gain?
+2) Give me 2 specific drills for it and a way to re-grade in 4 weeks.</pre></div>
+
+    <h2 id="prioritize">7 · Weakness prioritization</h2>
+    <div class="prompt-wrap"><button class="copybtn">Copy</button>
+<pre class="prompt">Here are my weaknesses with Impact/Frequency/Ease scores (1-5):
+[weakness — I/F/E], [weakness — I/F/E], [weakness — I/F/E] ...
+Compute Priority = Impact × Frequency × Ease, rank them, tell me which ONE
+to train now, which to ignore for now, and why — in terms of win probability.</pre></div>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Vague input ("I played bad") → vague output. Paste real numbers.</li>
+        <li>Acting on advice you never measure — always attach a KPI and a re-check date.</li>
+        <li>Treating AI output as gospel; sanity-check against this system and a coach.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Each match/video produces one AI-assisted priority with a KPI.</li>
+        <li>Prompts are reused consistently, so feedback is comparable over time.</li>
+        <li>Priorities flow into the <a href="26-improvement-engine.html">Improvement Engine</a> and <a href="23-development-roadmap.html">Roadmap</a>.</li>
+      </ul></div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Run the Match-Review prompt on your last match tonight. Then grab the drills to fix
+      what it finds — the <a href="30-drill-library.html">Drill Library</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="16-complete-match-playbook.html"><small>Previous</small>← 16 · Complete Match Playbook</a>
+      <a class="next" href="30-drill-library.html"><small>Next</small>30 · Drill Library →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script>
+  document.addEventListener('click',function(e){
+    var b=e.target.closest('.copybtn'); if(!b) return;
+    var pre=b.parentElement.querySelector('pre.prompt'); if(!pre) return;
+    var t=pre.innerText;
+    var done=function(){ b.textContent='Copied ✓'; b.classList.add('done'); setTimeout(function(){b.textContent='Copy';b.classList.remove('done');},1500); };
+    if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(done,done); }
+    else { var r=document.createRange(); r.selectNode(pre); var s=getSelection(); s.removeAllRanges(); s.addRange(r); try{document.execCommand('copy');}catch(_){} s.removeAllRanges(); done(); }
+  });
+</script>
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>

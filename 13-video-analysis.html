@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Video Analysis</title>
+<meta name="description" content="Video analysis — what to track in your match footage and grading rubrics for shot selection, positioning, recovery, patterns and serve locations.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+
+  <main class="content">
+
+    <div class="pagehead reveal">
+      <div class="layertags">
+        <span class="layer-chip"><b>13</b> · Improvement</span>
+        <span class="layer-chip">Layer 5 · Continuous Improvement</span>
+      </div>
+      <h1>Video Analysis</h1>
+      <p class="lead">Film hides nothing. The camera shows you the decisions and positioning you can't feel in the
+      moment. Watch with a system, not just for fun — grade, don't spectate.</p>
+    </div>
+
+    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+
+    <h2 id="setup">Film it right</h2>
+    <ul>
+      <li>Camera <strong>behind the baseline, elevated</strong> (fence-top / high tripod) — you want to see depth, position and the whole court.</li>
+      <li>Capture full points, not just rallies — the recovery and the space between points matter.</li>
+      <li>One match a week is plenty. Watch within 48 hours while memory is fresh.</li>
+    </ul>
+
+    <h2 id="track">What to track</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Watch for</th><th>The question</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Shot selection</strong></td><td>Did I attack the right ball? Change direction off inside balls only?</td></tr>
+        <tr><td><strong>Court positioning</strong></td><td>Was I behind the baseline by default? Stepping in on short balls?</td></tr>
+        <tr><td><strong>Recovery</strong></td><td>Did I get back to the bisector before their contact?</td></tr>
+        <tr><td><strong>Patterns</strong></td><td>Which patterns did I run? Did I have a plan or react?</td></tr>
+        <tr><td><strong>Serve locations</strong></td><td>Where did serves actually land vs. where I intended?</td></tr>
+        <tr><td><strong>Body language / routine</strong></td><td>Did I run my between-point routine, especially after errors?</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="rubric">Grading rubric</h2>
+    <p>Grade each category <strong>A–D</strong> for the match. Re-grade monthly; chase the lowest grades first.
+    (Maps to <a href="29-data-model.html">Video Reviews</a> entity.)</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Category</th><th>A (elite)</th><th>B (solid)</th><th>C (leaky)</th><th>D (costly)</th></tr></thead>
+      <tbody>
+        <tr><td>Shot selection</td><td>Attacks only correct balls</td><td>Mostly correct, rare forces</td><td>Forces often</td><td>Attacks wrong balls regularly</td></tr>
+        <tr><td>Positioning</td><td>On/inside baseline when dictating</td><td>Good, occasionally deep</td><td>Too deep often</td><td>Camped behind baseline</td></tr>
+        <tr><td>Recovery</td><td>Always to bisector in time</td><td>Usually recovers</td><td>Late often</td><td>Stranded after wide balls</td></tr>
+        <tr><td>Patterns</td><td>Clear, repeatable plans</td><td>Some structure</td><td>Mostly reactive</td><td>No plan</td></tr>
+        <tr><td>Serve location</td><td>Hits intended target</td><td>Close to target</td><td>Often off</td><td>No location intent</td></tr>
+        <tr><td>Routine / composure</td><td>Routine every point</td><td>Most points</td><td>Drops under pressure</td><td>No routine</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="card">
+      <p><strong>Video review log</strong> — Match: ________ Date: ________</p>
+      <p>Grades — Selection: __ · Positioning: __ · Recovery: __ · Patterns: __ · Serve loc: __ · Routine: __</p>
+      <p><strong>3 clips to keep (good):</strong> ____________ <strong>3 clips to fix:</strong> ____________</p>
+      <p><strong>Lowest grade → priority:</strong> ____________ (→ <a href="26-improvement-engine.html">Improvement Engine</a>)</p>
+    </div>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Only watching your winners — the errors and the decisions teach more.</li>
+        <li>Watching without a rubric, so it becomes entertainment, not analysis.</li>
+        <li>Filming from ground level at the side — you can't judge depth or position.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>One graded review per week, stored with the match.</li>
+        <li>Your lowest category grade climbs over a month.</li>
+        <li>Video confirms (or corrects) what the <a href="12-match-analysis.html">stats</a> suggested.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=skJm-zpDfPE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Play Smarter Tennis Using Pro-Level Stats</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=_M8rcYnVwqc" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Match Charting — Tracking Match Flow</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">Film one match this week and grade it. Then put your numbers on a dashboard with
+      benchmarks — <a href="21-analytics.html">Analytics System</a>.</p>
+    </div>
+
+    <div class="pager">
+      <a href="12-match-analysis.html"><small>Previous</small>← 12 · Match Analysis</a>
+      <a class="next" href="20-match-intelligence-db.html"><small>Next</small>20 · Match Intelligence DB →</a>
+    </div>
+
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
+      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
+
+  </main>
+</div>
+
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+</body>
+</html>
