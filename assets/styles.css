@@ -314,7 +314,7 @@ ul.check.print-fill li::before { background: var(--surface); }
 
 /* ---------- Hero (index) — minimalist black + yellow, editorial serif ---------- */
 .hero { position: relative; border-radius: 18px; overflow: hidden;
-  padding: clamp(48px, 11vw, 104px) clamp(20px,5vw,56px);
+  padding: clamp(30px, 5vw, 56px) clamp(20px,5vw,56px);
   background: #0b0b0b; color: #f6f6f2; box-shadow: var(--shadow);
   margin-bottom: 16px; text-align:center; border:1px solid #1c1c1c; }
 .hero::after { content:""; position:absolute; left:50%; bottom:0; width:60%; height:3px; transform:translateX(-50%);
@@ -323,10 +323,10 @@ ul.check.print-fill li::before { background: var(--surface); }
 .hero .kicker { color: #b9b9b2; letter-spacing:.26em; text-transform:uppercase; font-size:.74rem; font-weight:700; margin-top:18px; }
 .hero p { max-width: 640px; margin-left:auto; margin-right:auto; }
 /* Crest logo */
-.hero .crest { display:block; height: clamp(104px, 19vw, 156px); width:auto; margin: 0 auto 22px; }
+.hero .crest { display:block; height: clamp(72px, 12vw, 112px); width:auto; margin: 0 auto 14px; }
 /* Editorial serif wordmark (renders Bodoni/Didot on iPhone) */
 .wordmark { display:inline-block; margin: 0 auto; }
-.wordmark .zt { font-family: var(--serif); font-weight: 600; font-size: clamp(2.7rem, 13vw, 6.2rem);
+.wordmark .zt { font-family: var(--serif); font-weight: 600; font-size: clamp(2.2rem, 10vw, 5rem);
   letter-spacing: .005em; line-height: .98; color:#fff; margin: 0; }
 .wordmark .rule { height: 1px; width: 64%; margin: 18px auto 12px;
   background: var(--hl); }
