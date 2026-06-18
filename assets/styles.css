@@ -322,6 +322,8 @@ ul.check.print-fill li::before { background: var(--surface); }
 .hero .tag { color: var(--hl); font-weight: 700; letter-spacing:.34em; text-transform: uppercase; font-size:.7rem; }
 .hero .kicker { color: #b9b9b2; letter-spacing:.26em; text-transform:uppercase; font-size:.74rem; font-weight:700; margin-top:18px; }
 .hero p { max-width: 640px; margin-left:auto; margin-right:auto; }
+/* Crest logo */
+.hero .crest { display:block; height: clamp(104px, 19vw, 156px); width:auto; margin: 0 auto 22px; }
 /* Editorial serif wordmark (renders Bodoni/Didot on iPhone) */
 .wordmark { display:inline-block; margin: 0 auto; }
 .wordmark .zt { font-family: var(--serif); font-weight: 600; font-size: clamp(2.7rem, 13vw, 6.2rem);
@@ -356,6 +358,10 @@ ul.check.print-fill li::before { background: var(--surface); }
 /* ---------- Responsive ---------- */
 @media (max-width: 900px) {
   .menu-toggle { display: inline-flex; }
+  /* sidebar is fixed/off-canvas on mobile, so the flex row isn't needed —
+     block layout guarantees .content is exactly the viewport width (no overflow) */
+  .layout { display: block; max-width: 100%; }
+  .content { width: auto; }
   .sidebar {
     position: fixed; top: 60px; left: 0; bottom: 0; height: auto; z-index: 45;
     width: min(86vw, 320px); background: var(--surface);
