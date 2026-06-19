@@ -111,7 +111,7 @@
     s += line(LX - alleyW - 6, NETY, RX + alleyW + 6, NETY, 'ct-net'); // net
 
     // paths
-    (cfg.paths || []).forEach(function (p) {
+    (cfg.paths || []).forEach(function (p, i) {
       var a = px(p.from[0], p.from[1]), b = px(p.to[0], p.to[1]);
       var cls = p.kind === 'move' ? 'ct-move' : p.kind === 'serve' ? 'ct-serve' : 'ct-shot';
       var mk = p.kind === 'move' ? 'arrow-move' : p.kind === 'serve' ? 'arrow-serve' : 'arrow-shot';
@@ -126,6 +126,16 @@
       if (p.label) {
         var lx = (a[0] + b[0]) / 2 + (p.curve ? p.curve * 0.6 : 6), ly = (a[1] + b[1]) / 2 - 4;
         s += '<text x="' + lx + '" y="' + ly + '" class="ct-text">' + esc(p.label) + '</text>';
+      }
+      // animated travelling ball along shot/serve paths (skip player-movement dashes)
+      if (cfg._animate && p.kind !== 'move') {
+        var beg = (i * 0.5).toFixed(2);
+        var ballFill = p.kind === 'serve' ? '#ff9e1f' : '#eaff3a';
+        s += '<circle r="4" fill="' + ballFill + '" stroke="#111" stroke-width="0.8">'
+          +    '<animateMotion dur="1.8s" begin="' + beg + 's" repeatCount="indefinite" path="' + d + '"/>'
+          +    '<animate attributeName="opacity" dur="1.8s" begin="' + beg + 's" repeatCount="indefinite"'
+          +      ' keyTimes="0;0.06;0.85;1" values="0;1;1;0"/>'
+          +  '</circle>';
       }
     });
 
@@ -164,13 +174,23 @@
   }
   function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", "\"": "&quot;" }[c]; }); }
 
-  function render(el, cfg) { if (typeof el === "string") el = document.querySelector(el); if (el) el.innerHTML = svg(cfg); }
+  function prefersReduced() {
+    return !!(window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches);
+  }
+
+  function render(el, cfg) {
+    if (typeof el === "string") el = document.querySelector(el);
+    if (!el) return;
+    if (cfg._animate === undefined) cfg._animate = !prefersReduced();
+    el.innerHTML = svg(cfg);
+  }
 
   // Auto-render any <div data-court='{json}'> on load
   function auto() {
+    var animate = !prefersReduced();
     var nodes = document.querySelectorAll("[data-court]");
     Array.prototype.forEach.call(nodes, function (n) {
-      try { n.innerHTML = svg(JSON.parse(n.getAttribute("data-court"))); }
+      try { var cfg = JSON.parse(n.getAttribute("data-court")); cfg._animate = animate; n.innerHTML = svg(cfg); }
       catch (e) { n.innerHTML = '<small>court diagram error</small>'; }
     });
   }

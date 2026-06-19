@@ -143,6 +143,9 @@ small { color: var(--muted); }
 .pagehead { border-bottom: 1px solid var(--border); padding-bottom: 14px; margin-bottom: 8px; }
 .pagehead .layertags { display:flex; gap:6px; flex-wrap:wrap; margin-bottom: 10px; }
 .lead { font-size: 1.12rem; color: var(--muted); }
+/* On Courtside pages the card's rule IS the summary — drop the redundant intro lead so the card leads */
+.content:has(.courtside) .pagehead .lead { display: none; }
+.content:has(.courtside) .pagehead { border-bottom: none; padding-bottom: 2px; margin-bottom: 2px; }
 
 /* layer chips */
 .layer-chip {
