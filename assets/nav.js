@@ -9,7 +9,7 @@
   // Single source of truth for the whole site, grouped by the 5 layers.
   var SITE_NAV = [
     { group: "Start Here", layer: "", items: [
-      { n: "",   file: "index.html",                 t: "Bench Deck" },
+      { n: "",   file: "index.html",                 t: "Umdlalo we Tennis" },
       { n: "",   file: "library.html",                t: "Library / The System" },
       { n: "00", file: "00-player-identity.html",    t: "Player Identity" },
       { n: "29", file: "29-data-model.html",          t: "Data Model" },
@@ -234,7 +234,7 @@
     if (tb.querySelector(".benchback")) return;
     var brand = tb.querySelector(".brand"); if (!brand) return;
     var a = document.createElement("a");
-    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Bench";
+    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Umdlalo";
     brand.insertAdjacentElement("afterend", a);
   }
 
