@@ -131,9 +131,10 @@
         <button class="btn ghost" id="newMatch" type="button">＋ New match</button>
       </div>
       <div class="sb-grid" style="margin-top:10px">
+        <div><label class="fld" for="ohandle">Opponent IG @handle</label><input class="sb-in" id="ohandle" type="text" placeholder="@sipho (for the share card)" autocomplete="off"></div>
         <div><label class="fld" for="mdate">Date</label><input class="sb-in" id="mdate" type="date"></div>
-        <div><label class="fld" for="venue">Place</label><input class="sb-in" id="venue" type="text" placeholder="e.g. Wanderers Country Club" autocomplete="off"></div>
       </div>
+      <div style="margin-top:10px"><label class="fld" for="venue">Place</label><input class="sb-in" id="venue" type="text" placeholder="e.g. Wanderers Country Club" autocomplete="off"></div>
     </div>
 
     <!-- OPPONENT STYLE → WHAT TO DO TO WIN -->
@@ -194,8 +195,8 @@
     <div class="savemsg" id="saveMsg"></div>
 
     <div class="toolbar">
-      <button class="btn ghost" id="copySummary" type="button">📋 Copy summary</button>
-      <button class="btn ghost" id="shareSummary" type="button">↗ Share</button>
+      <button class="btn ghost" id="shareCard" type="button">📸 Share match card</button>
+      <button class="btn ghost" id="copySummary" type="button">📋 Copy text</button>
     </div>
 
     <!-- REFERENCE -->
@@ -253,7 +254,7 @@
   function todayISO(){ var d=new Date(); function p(n){return (n<10?"0":"")+n;} return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate()); }
   function blankStats(){ var s={}; STATS.forEach(function(x){ s[x[0]]=0; }); return s; }
   function newSet(n){ return {setNo:n,setType:"set",result:"won",myGames:0,oppGames:0,tbMe:0,tbOpp:0,tbLong:false,stbMe:0,stbOpp:0,stbLong:false}; }
-  function blankState(){ return {opponent:"",date:todayISO(),venue:"",styles:[],working:"",notWorking:"",numSets:3,sets:[newSet(1),newSet(2),newSet(3)],stats:blankStats(),updated:Date.now()}; }
+  function blankState(){ return {opponent:"",oppHandle:"",date:todayISO(),venue:"",styles:[],working:"",notWorking:"",numSets:3,sets:[newSet(1),newSet(2),newSet(3)],stats:blankStats(),updated:Date.now()}; }
 
   var state;
   try{ state=JSON.parse(localStorage.getItem(KEY))||blankState(); }catch(e){ state=blankState(); }
@@ -263,6 +264,7 @@
     try{ var old=JSON.parse(localStorage.getItem("zt-setbreak-v2")); if(old){ if(old.oppType) state.styles=[old.oppType]; if(typeof old.opponent==="string"&&!state.opponent) state.opponent=old.opponent; } }catch(e){}
   }
   if(typeof state.opponent!=="string") state.opponent="";
+  if(typeof state.oppHandle!=="string") state.oppHandle="";
   if(!state.date) state.date=todayISO();
   if(typeof state.venue!=="string") state.venue="";
   if(!Array.isArray(state.styles)) state.styles=[];
@@ -296,7 +298,7 @@
   function setTie(s){ return s.setType==="stb" ? s.stbMe===s.stbOpp : s.myGames===s.oppGames; }
 
   // ---- match-level renders ----
-  function renderHeader(){ $("opp").value=state.opponent||""; $("mdate").value=state.date||""; $("venue").value=state.venue||""; }
+  function renderHeader(){ $("opp").value=state.opponent||""; $("ohandle").value=state.oppHandle||""; $("mdate").value=state.date||""; $("venue").value=state.venue||""; }
 
   function renderStyle(){
     var wrap=$("styleChips"); wrap.innerHTML="";
@@ -421,7 +423,7 @@
   if(!career.matches) career.matches=[];
   var saveCareer=function(){ try{ localStorage.setItem(CKEY,JSON.stringify(career)); }catch(e){} };
   function matchHasData(){ return state.sets.some(setHasScore)||STATS.some(function(x){return state.stats[x[0]];}); }
-  function archiveCurrent(){ if(!matchHasData()) return; career.matches.push({opponent:state.opponent,date:state.date,venue:state.venue,styles:state.styles,ts:state.updated,sets:JSON.parse(JSON.stringify(state.sets)),stats:JSON.parse(JSON.stringify(state.stats))}); saveCareer(); }
+  function archiveCurrent(){ if(!matchHasData()) return; career.matches.push({opponent:state.opponent,oppHandle:state.oppHandle,date:state.date,venue:state.venue,styles:state.styles,ts:state.updated,sets:JSON.parse(JSON.stringify(state.sets)),stats:JSON.parse(JSON.stringify(state.stats))}); saveCareer(); }
   function aggregate(){
     var live=matchHasData()?{sets:state.sets,stats:state.stats}:null;
     var all=career.matches.concat(live?[live]:[]);
@@ -472,6 +474,7 @@
   // ---- wiring ----
   $("opp").addEventListener("input",function(){ state.opponent=this.value; save(); });
   $("mdate").addEventListener("input",function(){ state.date=this.value; save(); });
+  $("ohandle").addEventListener("input",function(){ state.oppHandle=this.value; save(); });
   $("venue").addEventListener("input",function(){ state.venue=this.value; save(); });
   $("newMatch").onclick=function(){
     if(matchHasData() && !confirm("Finish this match and start a new one? It'll be saved to your career history.")) return;
@@ -491,8 +494,106 @@
   };
   $("copySummary").onclick=function(){ var t=summaryText();
     if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(t).then(function(){ alert("Summary copied."); },function(){ window.prompt("Copy:",t); }); } else { window.prompt("Copy:",t); } };
-  $("shareSummary").onclick=function(){ var t=summaryText();
-    if(navigator.share){ navigator.share({title:"Zulu Tennis — Match",text:t}).catch(function(){}); } else { $("copySummary").click(); } };
+
+  // ---- shareable Instagram Story card (1080×1920, Editorial) ----
+  var shieldImg=null, shieldReady=false;
+  (function loadShield(){
+    fetch("assets/logo.svg").then(function(r){ return r.text(); }).then(function(txt){
+      if(!/<svg[^>]*\swidth=/.test(txt)) txt=txt.replace("<svg ", '<svg width="200" height="276" ');
+      var i=new Image();
+      i.onload=function(){ shieldImg=i; shieldReady=true; };
+      i.onerror=function(){ shieldReady=true; };
+      i.src="data:image/svg+xml;charset=utf-8,"+encodeURIComponent(txt);
+    }).catch(function(){ shieldReady=true; });
+  })();
+
+  function matchResultWord(){ var w=0,l=0; state.sets.forEach(function(s){ if(!setHasScore(s)) return; if(setWon(s)) w++; else if(!setTie(s)) l++; }); if(w===0&&l===0) return null; return w>=l?"Won.":"Lost."; }
+  function statLine(){
+    var s=state.stats, out=[];
+    if(s.firstTotal>0) out.push(["1st serve", Math.round(100*s.firstIn/s.firstTotal)+"%"]);
+    if(s.winners) out.push(["Winners", String(s.winners)]);
+    if(s.aces) out.push(["Aces", String(s.aces)]);
+    if(s.errors) out.push(["Unforced errors", String(s.errors)]);
+    if(s.bpTotal) out.push(["Break points", s.bpWon+"/"+s.bpTotal]);
+    return out;
+  }
+  function handleStr(){ var h=(state.oppHandle||"").trim(); if(h){ return h[0]==="@"?h:"@"+h; } return (state.opponent||"").trim(); }
+
+  function makeCard(cb){
+    var W=1080,H=1920, c=document.createElement("canvas"); c.width=W; c.height=H;
+    var x=document.getElementById("__cardc"); // optional on-page preview canvas
+    var ctx=c.getContext("2d");
+    var YELLOW="#ffd400", BG="#0b0b0b", INK="#f1f1ec", MUTE="#9b9b94", RED="#d64545";
+    var serif='"Didot","Bodoni 72","Hoefler Text",Georgia,"Times New Roman",serif';
+    var sans='-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif';
+    var ML=110; // left margin
+
+    ctx.fillStyle=BG; ctx.fillRect(0,0,W,H);
+    // faint oversized shield watermark, bottom-right
+    function drawShield(cx,cy,scale,alpha){ if(!shieldReady) return; ctx.save(); ctx.globalAlpha=alpha; ctx.translate(cx,cy); ctx.scale(scale,scale); ctx.drawImage(shieldImg,-100,-138,200,276); ctx.restore(); }
+    drawShield(W-150, H-150, 3.2, 0.06);
+
+    // top hairline
+    ctx.strokeStyle=YELLOW; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(ML,150); ctx.lineTo(W-110,150); ctx.stroke();
+    // brand lockup top-left
+    drawShield(ML+34, 100, 0.42, 1);
+    ctx.fillStyle=INK; ctx.textBaseline="middle"; ctx.font="700 34px "+sans;
+    ctx.fillText("ZULU TENNIS", ML+82, 96);
+    ctx.fillStyle=MUTE; ctx.font="italic 600 26px "+sans; ctx.fillText("by Veyane", ML+82, 132);
+
+    // headline result word (serif)
+    var word=matchResultWord();
+    ctx.textBaseline="alphabetic";
+    ctx.fillStyle = (word==="Won.")?YELLOW:(word?MUTE:INK);
+    ctx.font="600 220px "+serif;
+    ctx.fillText(word||"Match", ML, 560);
+
+    // rule
+    ctx.strokeStyle="rgba(255,212,0,.5)"; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(ML,620); ctx.lineTo(W-110,620); ctx.stroke();
+
+    // scoreline
+    var scored=state.sets.filter(setHasScore);
+    ctx.fillStyle=INK; ctx.font="700 84px "+sans;
+    ctx.fillText(scored.length?scored.map(setOf).join("   "):"—", ML, 730);
+    // vs handle
+    var h=handleStr(); ctx.fillStyle=MUTE; ctx.font="600 40px "+sans;
+    ctx.fillText(h?("vs "+h):"", ML, 800);
+
+    // stats list
+    var stats=statLine(), y=980;
+    ctx.font="700 30px "+sans;
+    stats.slice(0,5).forEach(function(p){
+      ctx.strokeStyle="rgba(255,255,255,.10)"; ctx.lineWidth=1; ctx.beginPath(); ctx.moveTo(ML,y-46); ctx.lineTo(W-110,y-46); ctx.stroke();
+      ctx.fillStyle=MUTE; ctx.textAlign="left"; ctx.fillText(p[0].toUpperCase(), ML, y);
+      ctx.fillStyle=YELLOW; ctx.textAlign="right"; ctx.font="800 56px "+sans; ctx.fillText(p[1], W-110, y);
+      ctx.font="700 30px "+sans; y+=120;
+    });
+    ctx.textAlign="left";
+
+    // footer
+    var foot=[]; if(state.venue) foot.push(state.venue); foot.push(new Date(state.date||Date.now()).toLocaleDateString());
+    ctx.strokeStyle=YELLOW; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(ML,H-220); ctx.lineTo(W-110,H-220); ctx.stroke();
+    ctx.fillStyle=MUTE; ctx.font="600 34px "+sans; ctx.fillText(foot.join("  ·  "), ML, H-150);
+    ctx.fillStyle=INK; ctx.font="italic 600 30px "+sans; ctx.fillText("zulu-tennis · by Veyane", ML, H-100);
+
+    if(x){ x.width=W; x.height=H; x.getContext("2d").drawImage(c,0,0); }
+    c.toBlob(function(blob){ cb(blob,c); }, "image/png");
+  }
+
+  $("shareCard").onclick=function(){
+    if(!shieldReady){ setTimeout(function(){ $("shareCard").click(); },180); return; }
+    makeCard(function(blob,canvas){
+      var fname="zulu-tennis-"+(state.date||"match")+".png";
+      var file=null; try{ file=new File([blob],fname,{type:"image/png"}); }catch(e){}
+      var cap=summaryText();
+      if(file && navigator.canShare && navigator.canShare({files:[file]})){
+        navigator.share({files:[file], title:"Zulu Tennis", text:cap}).catch(function(){});
+      } else {
+        var url=URL.createObjectURL(blob), a=document.createElement("a"); a.href=url; a.download=fname; document.body.appendChild(a); a.click(); a.remove();
+        setTimeout(function(){ URL.revokeObjectURL(url); },4000);
+      }
+    });
+  };
 
   function renderAll(){ renderHeader(); renderStyle(); setupWorking(); renderCount(); rebuildSets(); updateTally(); renderStats(); renderCareer(); }
   renderAll();
