@@ -194,7 +194,49 @@
       catch (e) { n.innerHTML = '<small>court diagram error</small>'; }
     });
   }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", auto); else auto();
+  /* ---------- Mini-viz (flow & bars) for non-court cards ---------- */
+  function vizFlow(cfg, animate) {
+    var steps = cfg.steps || [], n = steps.length;
+    var html = '<div class="viz-flow' + (animate ? ' anim' : '') + '" style="--n:' + n + '">';
+    steps.forEach(function (s, i) {
+      html += '<span class="vf-step" style="--i:' + i + '">' + esc(s) + '</span>';
+      if (i < n - 1) html += '<span class="vf-arr">→</span>';
+    });
+    if (cfg.loop) html += '<span class="vf-loop" aria-label="repeat">↺</span>';
+    return html + '</div>';
+  }
+  function vizBars(cfg, animate) {
+    var html = '<div class="viz-bars' + (animate ? ' anim' : '') + '">';
+    if (cfg.stacked) {
+      html += '<div class="vb-stack">';
+      cfg.stacked.forEach(function (seg) {
+        html += '<span class="vb-seg" style="width:' + seg.value + '%;background:' + (seg.color || '#1d8a4a') +
+                '"><b>' + esc(seg.label) + ' ' + seg.value + '%</b></span>';
+      });
+      html += '</div>';
+    } else {
+      (cfg.rows || []).forEach(function (r) {
+        html += '<div class="vb-row"><span class="vb-l">' + esc(r.label) + '</span>' +
+                '<span class="vb-track"><span class="vb-fill" style="width:' + r.value + '%;background:' + (r.color || '#1d8a4a') + '"></span>' +
+                (r.target != null ? '<span class="vb-tick" style="left:' + r.target + '%"></span>' : '') +
+                '</span><span class="vb-v">' + r.value + '%</span></div>';
+      });
+    }
+    return html + '</div>';
+  }
+  function vizAuto() {
+    var animate = !prefersReduced();
+    var nodes = document.querySelectorAll("[data-viz]");
+    Array.prototype.forEach.call(nodes, function (n) {
+      try {
+        var cfg = JSON.parse(n.getAttribute("data-viz"));
+        n.innerHTML = cfg.type === "bars" ? vizBars(cfg, animate) : vizFlow(cfg, animate);
+      } catch (e) { n.innerHTML = '<small>viz error</small>'; }
+    });
+  }
+
+  function initAll() { auto(); vizAuto(); }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", initAll); else initAll();
 
   global.ZuluCourt = { svg: svg, render: render };
 })(window);

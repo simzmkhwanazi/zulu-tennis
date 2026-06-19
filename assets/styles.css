@@ -275,6 +275,32 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 :root[data-theme="dark"] .courtside .cs-drill b, :root:not([data-theme="light"]) .courtside .cs-drill b { color: var(--hl); }
 @media (max-width:560px){ .courtside .cs-grid { grid-template-columns: 1fr; } }
 
+/* ---------- Mini-viz: step flow ---------- */
+.viz-flow { display:flex; flex-wrap:wrap; align-items:center; gap:6px 5px; margin: 6px 0 8px; }
+.vf-step { font-weight:750; font-size:.86rem; padding:6px 11px; border-radius:999px;
+  background: var(--surface-2); border:1px solid var(--border); white-space:nowrap; }
+.vf-arr { color: var(--muted); font-weight:800; }
+.vf-loop { color: var(--hl-deep); font-weight:900; font-size:1.1rem; }
+:root[data-theme="dark"] .vf-loop, :root:not([data-theme="light"]) .vf-loop { color: var(--hl); }
+.viz-flow.anim .vf-step { animation: vfpulse calc(var(--n,4) * .55s) infinite; animation-delay: calc(var(--i,0) * .55s); }
+@keyframes vfpulse { 0% { background: var(--hl); border-color: var(--hl); color:#141414; }
+  14%, 100% { background: var(--surface-2); border-color: var(--border); } }
+
+/* ---------- Mini-viz: bars ---------- */
+.viz-bars { display:flex; flex-direction:column; gap:8px; margin: 6px 0 8px; }
+.vb-row { display:flex; align-items:center; gap:8px; font-size:.84rem; }
+.vb-l { flex:0 0 40%; font-weight:650; }
+.vb-track { position:relative; flex:1; height:15px; border-radius:8px;
+  background: color-mix(in srgb, var(--muted) 18%, transparent); overflow:hidden; }
+.vb-fill { position:absolute; inset:0 auto 0 0; height:100%; border-radius:8px; transform-origin:left; }
+.vb-tick { position:absolute; top:-3px; bottom:-3px; width:3px; background: var(--hl); border-radius:2px; }
+.vb-v { flex:0 0 auto; font-weight:750; font-variant-numeric:tabular-nums; color: var(--muted); }
+.vb-stack { display:flex; height:28px; border-radius:9px; overflow:hidden; border:1px solid var(--border); }
+.vb-seg { display:flex; align-items:center; justify-content:center; color:#10240f; font-size:.78rem; transform-origin:left; }
+.vb-seg b { font-weight:800; }
+.viz-bars.anim .vb-fill, .viz-bars.anim .vb-seg { animation: vbgrow .9s ease both; }
+@keyframes vbgrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
 /* ---------- Collapsible deep breakdown ---------- */
 details.more { margin: 6px 0 0; border-top:1px solid var(--border); }
 details.more > summary { cursor:pointer; list-style:none; font-weight:800; color: var(--accent);
