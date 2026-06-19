@@ -9,7 +9,8 @@
   // Single source of truth for the whole site, grouped by the 5 layers.
   var SITE_NAV = [
     { group: "Start Here", layer: "", items: [
-      { n: "",   file: "index.html",                 t: "Home / The System" },
+      { n: "",   file: "index.html",                 t: "Bench Deck" },
+      { n: "",   file: "library.html",                t: "Library / The System" },
       { n: "00", file: "00-player-identity.html",    t: "Player Identity" },
       { n: "29", file: "29-data-model.html",          t: "Data Model" },
     ]},
@@ -206,6 +207,7 @@
      Only runs on pages that have a .courtside card. Everything between the card
      and .next-action is moved into <details class="more"> (closed by default). */
   function initCollapse() {
+    if (document.querySelector(".deck")) return;       // never collapse the bench deck
     var content = document.querySelector(".content");
     if (!content) return;
     var card = content.querySelector(".courtside");
@@ -225,7 +227,18 @@
     content.insertBefore(det, stop);
   }
 
-  function start() { buildSidebar(); initTheme(); initMenu(); initCollapse(); initScrollSpy(); initReveal(); initVideos(); }
+  /* ---- "← Bench" pill in the topbar on every deep page (not on the deck) ---- */
+  function initBenchBack() {
+    if (document.querySelector(".deck")) return;       // we're on the deck itself
+    var tb = document.querySelector(".topbar"); if (!tb) return;
+    if (tb.querySelector(".benchback")) return;
+    var brand = tb.querySelector(".brand"); if (!brand) return;
+    var a = document.createElement("a");
+    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Bench";
+    brand.insertAdjacentElement("afterend", a);
+  }
+
+  function start() { buildSidebar(); initTheme(); initMenu(); initBenchBack(); initCollapse(); initScrollSpy(); initReveal(); initVideos(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
 })();

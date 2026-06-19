@@ -301,6 +301,70 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .viz-bars.anim .vb-fill, .viz-bars.anim .vb-seg { animation: vbgrow .9s ease both; }
 @keyframes vbgrow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
+/* ===================================================================
+   BENCH DECK — the swipeable front door (index.html)
+   =================================================================== */
+.deckbar { position: sticky; top: 0; z-index: 50; display:flex; align-items:center; gap:8px;
+  height: 56px; padding: 0 14px; background: color-mix(in srgb, var(--surface) 90%, transparent);
+  backdrop-filter: saturate(150%) blur(10px); border-bottom: 1px solid var(--border); }
+.deckbar .brand { display:flex; align-items:center; gap:8px; font-family: var(--serif); font-weight:600; font-size:1.06rem; color: var(--text); text-decoration:none; }
+.deckbar .brand img { height: 26px; width:auto; }
+.deckbar .spacer { flex:1; }
+.pill-link { font-weight:750; font-size:.82rem; padding:7px 13px; border-radius:999px;
+  border:1px solid var(--border); background: var(--surface); color: var(--text); text-decoration:none; white-space:nowrap; }
+.pill-link:hover { border-color: var(--hl); text-decoration:none; }
+.pill-link.lib { opacity:.72; }
+
+.deck { height: calc(100dvh - 56px); overflow-y:auto; scroll-snap-type: y mandatory;
+  -webkit-overflow-scrolling: touch; background: #0b0b0b; }
+.deck > .deckcard { min-height: calc(100dvh - 56px); scroll-snap-align: start; scroll-snap-stop: always;
+  display:flex; flex-direction:column; justify-content:center; padding: 16px clamp(14px,5vw,40px) 30px; box-sizing:border-box; }
+.deckcard .courtside { margin:0 auto; width:100%; max-width: 660px; }
+.deck-hd { display:flex; align-items:center; gap:8px; font-size:.7rem; font-weight:800; letter-spacing:.1em;
+  text-transform:uppercase; color: var(--hl-deep); margin: 0 0 6px 2px; }
+:root[data-theme="dark"] .deck-hd, :root:not([data-theme="light"]) .deck-hd { color: var(--hl); }
+.deck-hd .n { color: var(--muted); }
+.deepen { display:inline-flex; align-items:center; gap:6px; margin-top:14px; font-weight:800;
+  color: var(--accent); text-decoration:none; align-self:flex-start; }
+.deepen::after { content:"→"; }
+.deepen:hover { text-decoration:underline; }
+
+/* max-contrast bench mode (sunlight) */
+.deck.benchmax { background:#000; }
+.deck.benchmax .courtside { background:#0b0b0b; border-color:#333; color:#fff; }
+.deck.benchmax .cs-rule { color:#fff; font-size: clamp(1.7rem,7vw,2.5rem); }
+.deck.benchmax .dd { background:#161616 !important; color:#f3f3f3; }
+.deck.benchmax .vf-step { background:#161616; border-color:#333; color:#eee; }
+.deck.benchmax .deepen { opacity:.6; font-size:.85rem; }
+
+/* dot rail */
+.dotrail { position: fixed; right: 8px; top: 50%; transform: translateY(-50%); z-index:55;
+  display:flex; flex-direction:column; gap:9px; }
+.dotrail button { width:13px; height:13px; border-radius:50%; border:2px solid var(--muted);
+  background: transparent; padding:0; cursor:pointer; position:relative; -webkit-tap-highlight-color:transparent; }
+.dotrail button::after { content:""; position:absolute; inset:-12px; }     /* 44px hit area */
+.dotrail button.passed { background: var(--hl); border-color: var(--hl); }
+.dotrail button.active { background: var(--hl); border-color: var(--hl); transform: scale(1.35); }
+.dotrail button .dname { position:absolute; right:20px; top:50%; transform:translateY(-50%); white-space:nowrap;
+  background:#0b0b0b; color:#fff; font-size:.7rem; font-weight:700; padding:3px 9px; border-radius:7px;
+  opacity:0; pointer-events:none; transition:opacity .15s; }
+.dotrail button.active .dname { opacity:1; }
+@media (prefers-reduced-motion: reduce){ .dotrail button.active{transform:none;} .dotrail button .dname{transition:none;} }
+
+/* first-run swipe hint + deck-complete */
+.swipehint { position: fixed; left:50%; bottom: 18px; transform:translateX(-50%); z-index:55;
+  color:#fff; background: rgba(0,0,0,.5); padding:6px 14px; border-radius:999px; font-size:.8rem; font-weight:700;
+  animation: hintbob 1.6s ease-in-out 3; }
+@keyframes hintbob { 0%,100%{transform:translate(-50%,0);opacity:.9;} 50%{transform:translate(-50%,-6px);opacity:1;} }
+@media (prefers-reduced-motion: reduce){ .swipehint{animation:none;} }
+.deck-done { text-align:center; }
+.deck-done .courtside { background: linear-gradient(160deg, var(--navy), #0b0b0b); color:#fff; border-color:#333; }
+
+/* back-to-bench pill injected into the topbar on deep pages */
+.benchback { display:inline-flex; align-items:center; gap:5px; font-weight:750; font-size:.8rem;
+  padding:7px 12px; border-radius:999px; border:1px solid var(--border); background:var(--surface); color:var(--text); text-decoration:none; }
+.benchback:hover{ border-color:var(--hl); text-decoration:none; }
+
 /* ---------- Collapsible deep breakdown ---------- */
 details.more { margin: 6px 0 0; border-top:1px solid var(--border); }
 details.more > summary { cursor:pointer; list-style:none; font-weight:800; color: var(--accent);

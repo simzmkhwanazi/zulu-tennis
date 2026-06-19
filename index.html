@@ -2,183 +2,234 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Elite Singles Performance System</title>
-<meta name="description" content="Zulu Tennis by Veyane — a complete tennis singles performance operating system. Decision engine, tactics, analytics, athlete development.">
+<title>Zulu Tennis — Bench Deck</title>
+<meta name="description" content="Zulu Tennis by Veyane — the Bench Deck: 8 swipeable cards, the whole game you can read between games. Tap Deepen for scenarios + video.">
 <script>document.documentElement.classList.remove('no-js');</script>
 <link rel="icon" href="assets/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Elite Singles Performance System">
-<meta property="og:description" content="Zulu Tennis by Veyane — a complete tennis singles performance operating system. Decision engine, tactics, analytics, athlete development.">
+<meta property="og:title" content="Zulu Tennis — the Bench Deck">
+<meta property="og:description" content="8 swipeable cards — the whole game, readable between games. by Veyane.">
 <meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/">
 <meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — Elite Singles Performance System">
-<meta name="twitter:description" content="Zulu Tennis by Veyane — a complete tennis singles performance operating system. Decision engine, tactics, analytics, athlete development.">
 <meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
 <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html">
-    <span class="wm">Zulu Tennis</span>
-    <span class="sep"></span>
-    <span class="by">by Veyane</span>
-  </a>
+<header class="deckbar">
+  <a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>Zulu Tennis</span></a>
   <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+  <button class="iconbtn" id="contrastToggle" aria-label="Bench contrast" title="Sunlight contrast">◐</button>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾</button>
+  <a class="pill-link" href="set-break.html">Set-Break</a>
+  <a class="pill-link lib" href="library.html">Library</a>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<nav class="dotrail" id="dotrail" aria-label="Deck cards"></nav>
 
-  <main class="content">
+<main class="deck" id="deck">
 
-    <!-- HERO -->
-    <section class="hero reveal">
-      <img class="crest" src="assets/logo.svg" alt="Zulu Tennis crest — a Zulu shield with crossed rackets" width="200" height="276">
-      <div class="wordmark">
-        <h1 class="zt">Zulu Tennis</h1>
-        <div class="rule"></div>
-        <div class="by">by Veyane</div>
+  <!-- 1 -->
+  <section class="deckcard" data-name="Read the ball">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">1 / 8</span> · Read the ball <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Reset the outside ball. Attack the inside ball.</div>
+      <figure class="diagram"><div data-court='{"w":250,"players":[{"x":18,"y":90,"label":"You","side":"you"},{"x":78,"y":14,"label":"O","side":"opp"}],"paths":[{"from":[78,16],"to":[20,86],"kind":"serve","label":"outside ball"},{"from":[20,86],"to":[80,16],"kind":"shot"}],"dots":[{"x":46,"y":97,"kind":"recovery","label":"recover"}]}'></div></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> Crosscourt with margin until you get an inside ball.</div>
+        <div class="dd dd-no"><b>✗</b> Change direction off a wide / outside ball.</div>
       </div>
-      <p class="kicker">Elite Singles Performance System</p>
-      <p style="margin-top:26px"><a class="cta" href="01-decision-making.html">Start with the Decision Engine →</a></p>
-    </section>
-
-    <nav id="pageToc" class="pill" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;background:none;border:none;padding:0;margin:10px 0 0"></nav>
-
-    <!-- WHAT THIS IS -->
-    <h2 id="what">What Zulu Tennis is</h2>
-    <p class="lead">A single, integrated performance system that works simultaneously as ten tools.</p>
-    <div class="modgrid">
-      <a href="01-decision-making.html"><span class="t">🃏 Tactical Playbook</span><span class="d">Decision engine + pattern library</span></a>
-      <a href="14-practice-blueprint.html"><span class="t">🎾 Training Manual</span><span class="d">Drills, plans, periodization</span></a>
-      <a href="16-complete-match-playbook.html"><span class="t">📋 Match Strategy Guide</span><span class="d">Checklists for every phase</span></a>
-      <a href="22-tournament-os.html"><span class="t">🏆 Tournament Prep</span><span class="d">Countdown to match day</span></a>
-      <a href="20-match-intelligence-db.html"><span class="t">🗂️ Opponent Scouting</span><span class="d">Reusable scouting sheets</span></a>
-      <a href="13-video-analysis.html"><span class="t">🎬 Video Analysis</span><span class="d">What to track + rubrics</span></a>
-      <a href="21-analytics.html"><span class="t">📊 Stats Dashboard</span><span class="d">KPIs + benchmarks by level</span></a>
-      <a href="11-mental-performance.html"><span class="t">🧠 Mental Framework</span><span class="d">Routines under pressure</span></a>
-      <a href="18-athlete-development.html"><span class="t">🏋️ Athlete Development</span><span class="d">Gym, speed, recovery, nutrition</span></a>
-      <a href="23-development-roadmap.html"><span class="t">🗺️ Development Roadmap</span><span class="d">12-month long-term plan</span></a>
+      <div class="cs-cues"><span>"Cross… cross… now"</span></div>
+      <a class="deepen" href="01-decision-making.html" data-card="0">Scenarios &amp; video</a>
     </div>
+  </section>
 
-    <!-- PHILOSOPHY -->
-    <h2 id="philosophy">Core philosophy</h2>
-    <p>The objective is <strong>not to hit better shots</strong> — it is to <strong>win more matches</strong>
-    and become a better athlete on and off the court. Every recommendation in Zulu Tennis is evaluated
-    through five lenses:</p>
-    <div class="kpi-grid">
-      <div class="kpi"><div class="k">Lens 1</div><div class="v" style="font-size:1.1rem">Match Win %</div></div>
-      <div class="kpi"><div class="k">Lens 2</div><div class="v" style="font-size:1.1rem">Expected Value</div></div>
-      <div class="kpi"><div class="k">Lens 3</div><div class="v" style="font-size:1.1rem">Risk vs Reward</div></div>
-      <div class="kpi"><div class="k">Lens 4</div><div class="v" style="font-size:1.1rem">Repeatability</div></div>
-      <div class="kpi"><div class="k">Lens 5</div><div class="v" style="font-size:1.1rem">Long-Term Gain</div></div>
+  <!-- 2 -->
+  <section class="deckcard" data-name="Serve +1">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">2 / 8</span> · Serve +1 <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Pick a target. Plan the +1.</div>
+      <figure class="diagram"><div data-court='{"w":250,"players":[{"x":58,"y":95,"label":"Srv","side":"you"}],"paths":[{"from":[58,95],"to":[17,29],"kind":"serve","label":"Wide"},{"from":[58,95],"to":[33,33],"kind":"serve","label":"Body"},{"from":[58,95],"to":[45,29],"kind":"serve","label":"T"}]}'></div></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> Wide opens court · Body jams · T takes time. Decide +1 first.</div>
+        <div class="dd dd-no"><b>✗</b> Patty-cake 2nd serve / aim the lines.</div>
+      </div>
+      <div class="cs-cues"><span>Spot first, pace second</span></div>
+      <a class="deepen" href="03-serve-strategy.html" data-card="1">Scenarios &amp; video</a>
     </div>
-    <div class="formula">
-      <div class="principles">
-        <span class="p">Expected Value &gt; highlight shots</span>
-        <span class="p">Repeatability &gt; perfect execution</span>
-        <span class="p">Pressure reliability &gt; practice level</span>
+  </section>
+
+  <!-- 3 -->
+  <section class="deckcard" data-name="Return">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">3 / 8</span> · Return <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Deep middle. Take away the +1.</div>
+      <figure class="diagram"><div data-court='{"w":250,"players":[{"x":50,"y":92,"label":"R","side":"you"}],"zones":[{"x":33,"y":4,"w":34,"h":18,"kind":"target","label":"deep middle"}],"paths":[{"from":[50,92],"to":[50,12],"kind":"shot"}]}'></div></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> 1st serve: block deep middle. 2nd: step in, attack.</div>
+        <div class="dd dd-no"><b>✗</b> Same big swing on every serve.</div>
+      </div>
+      <div class="cs-cues"><span>Split on the toss</span></div>
+      <a class="deepen" href="04-return-strategy.html" data-card="2">Scenarios &amp; video</a>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section class="deckcard" data-name="Rally">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">4 / 8</span> · Rally / construct <span class="ev ev-c">C</span></div>
+      <div class="cs-rule">Crosscourt until the short ball.</div>
+      <figure class="diagram"><div data-court='{"w":250,"players":[{"x":18,"y":92,"label":"You","side":"you"}],"zones":[{"x":2,"y":52,"w":42,"h":18,"kind":"target","label":"short"}],"paths":[{"from":[18,90],"to":[18,12],"kind":"shot","label":"rally CC"},{"from":[26,64],"to":[86,14],"kind":"shot","label":"attack"}]}'></div></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> Heavy &amp; deep; change direction only on the inside ball.</div>
+        <div class="dd dd-no"><b>✗</b> Run the down-the-line before you earn it.</div>
+      </div>
+      <div class="cs-cues"><span>Earn it, then end it</span></div>
+      <a class="deepen" href="05-baseline-patterns.html" data-card="3">Scenarios &amp; video</a>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section class="deckcard" data-name="Attack">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">5 / 8</span> · Attack / finish <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Short + up + balanced = attack.</div>
+      <figure class="diagram"><div data-court='{"w":250,"players":[{"x":50,"y":92,"label":"You","side":"you"}],"zones":[{"x":12,"y":50,"w":76,"h":20,"kind":"target","label":"attack zone"}]}'></div></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> Approach down-the-line, then close the net.</div>
+        <div class="dd dd-no"><b>✗</b> Attack a deep or low ball.</div>
+      </div>
+      <div class="cs-cues"><span>Read it, step in, split</span></div>
+      <a class="deepen" href="06-attacking-system.html" data-card="4">Scenarios &amp; video</a>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section class="deckcard" data-name="Defend">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">6 / 8</span> · Defend / reset <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">High, deep, recover — survive &amp; reset.</div>
+      <figure class="diagram"><div data-court='{"w":250,"players":[{"x":8,"y":90,"label":"You","side":"you"}],"paths":[{"from":[8,90],"to":[20,10],"kind":"shot","label":"high deep CC"}],"dots":[{"x":40,"y":98,"kind":"recovery","label":"recover"}]}'></div></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> Height = time; reset to neutral. Lob the net-rusher.</div>
+        <div class="dd dd-no"><b>✗</b> Go for a winner from a losing position.</div>
+      </div>
+      <div class="cs-cues"><span>High, deep, recover</span></div>
+      <a class="deepen" href="07-defensive-system.html" data-card="5">Scenarios &amp; video</a>
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section class="deckcard" data-name="Opponent">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">7 / 8</span> · Opponent counter <span class="ev ev-b">B</span></div>
+      <div class="cs-rule">Neutralise one strength. Attack one weakness.</div>
+      <figure class="diagram"><div data-court='{"w":250,"players":[{"x":50,"y":92,"label":"You","side":"you"},{"x":70,"y":14,"label":"O","side":"opp"}],"zones":[{"x":3,"y":4,"w":30,"h":18,"kind":"target","label":"weak wing"}],"paths":[{"from":[50,90],"to":[16,12],"kind":"shot"}]}'></div></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> Pusher→net · Big server→block deep · Lefty→their backhand.</div>
+        <div class="dd dd-no"><b>✗</b> Play everyone the same way.</div>
+      </div>
+      <div class="cs-cues"><span>Name the type, pick the plan</span></div>
+      <a class="deepen" href="09-player-type-strategies.html" data-card="6">Scenarios &amp; video</a>
+    </div>
+  </section>
+
+  <!-- 8 -->
+  <section class="deckcard" data-name="Score + head">
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">8 / 8</span> · Score + head <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Behind → play safe. Ahead → press.</div>
+      <figure class="diagram"><svg viewBox="0 0 240 144" style="color:var(--text)" xmlns="http://www.w3.org/2000/svg"><path d="M30,120 A90,90 0 0 1 75,42" fill="none" stroke="#2e7d46" stroke-width="18"/><path d="M75,42 A90,90 0 0 1 165,42" fill="none" stroke="#f4c20d" stroke-width="18"/><path d="M165,42 A90,90 0 0 1 210,120" fill="none" stroke="#c0392b" stroke-width="18"/><line x1="120" y1="120" x2="120" y2="40" stroke="currentColor" stroke-width="3"/><circle cx="120" cy="120" r="6" fill="currentColor"/><text x="46" y="140" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="11">BEHIND ↓</text><text x="120" y="140" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="11">EVEN →</text><text x="196" y="140" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="11">AHEAD ↑</text></svg></figure>
+      <div class="cs-dd">
+        <div class="dd dd-do"><b>✓</b> 0–30: trusted patterns only. Between points: Reset · Breathe · Analyze · Commit.</div>
+        <div class="dd dd-no"><b>✗</b> Get more aggressive when behind; carry anger to the next point.</div>
+      </div>
+      <div class="cs-cues"><span>Read score → set the dial</span></div>
+      <a class="deepen" href="10-score-based-strategy.html" data-card="7">Scenarios &amp; video</a>
+    </div>
+  </section>
+
+  <!-- done -->
+  <section class="deckcard deck-done" data-done>
+    <div class="courtside">
+      <div class="deck-hd"><span class="n">✓</span> Deck complete</div>
+      <div class="cs-rule">That's the whole game. Go win it.</div>
+      <div class="cs-cues" style="justify-content:center"><span>Pick ONE rule per match</span></div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+        <a class="pill-link" href="set-break.html">▶ Set-Break planner</a>
+        <a class="pill-link" href="#" id="backTop">↑ Back to card 1</a>
+        <a class="pill-link lib" href="library.html">Full library</a>
       </div>
     </div>
+  </section>
 
-    <!-- 5-LAYER ARCHITECTURE -->
-    <h2 id="architecture">The 5-layer architecture</h2>
-    <p>Every page in the system is tagged to the layer(s) it serves, so the whole thing reads as one OS.</p>
-    <div class="layers">
-      <div class="layer"><div class="num">LAYER 1</div><h3>Technical Execution</h3><p>Serve, return, groundstrokes, slice, volley, overhead, approach, passing, lob.</p></div>
-      <div class="layer"><div class="num">LAYER 2</div><h3>Tactical Systems</h3><p>Serve, return, baseline, attack, defensive & net patterns.</p></div>
-      <div class="layer"><div class="num">LAYER 3</div><h3>Match Intelligence</h3><p>Opponent profiling, pattern recognition, score & momentum awareness.</p></div>
-      <div class="layer"><div class="num">LAYER 4</div><h3>Performance Mgmt</h3><p>Mental game, physical development, recovery, nutrition, tournaments.</p></div>
-      <div class="layer"><div class="num">LAYER 5</div><h3>Continuous Improvement</h3><p>Match & video review, data, prioritization, development planning.</p></div>
-    </div>
+</main>
 
-    <!-- DECISION ENGINE OVERVIEW -->
-    <h2 id="engine">The Decision Engine (core logic layer)</h2>
-    <p>Zulu Tennis runs like an in-match decision engine. The question is never "what's a nice shot?"
-    but: <em>given the score, situation, opponent, ball quality and my balance — what is the highest-value
-    decision that increases my probability of winning the point?</em> Every decision weighs 10 inputs:</p>
-    <div class="formula">
-      <div class="lbl" style="font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)">⚖️ Tactical Decision Formula</div>
-      <ol>
-        <li>Score Situation</li><li>Point Importance</li><li>Court Position</li><li>Incoming Ball Quality</li>
-        <li>Player Balance</li><li>Opponent Position</li><li>Opponent Weaknesses</li><li>Risk Level</li>
-        <li>Expected Reward</li><li>Recovery Position</li>
-      </ol>
-    </div>
-
-    <figure class="diagram reveal">
-      <div data-court='{"w":340,"players":[{"x":50,"y":12,"label":"O","side":"opp"},{"x":50,"y":90,"label":"You","side":"you"}],"zones":[{"x":8,"y":4,"w":40,"h":22,"kind":"target","label":"high-% target"}],"paths":[{"from":[50,90],"to":[20,8],"kind":"shot","label":"CC"},{"from":[50,90],"to":[50,99],"kind":"move"}],"dots":[{"x":50,"y":95,"kind":"recovery","label":"recover"}]}'></div>
-      <figcaption>Sample court diagram (powered by <code>courts.js</code>): crosscourt with margin into the high-percentage target, then recover to home base. Yellow = shot, blue dashed = movement.</figcaption>
-    </figure>
-
-    <!-- COMPONENT / CALLOUT LEGEND -->
-    <h2 id="legend">How to read this system (legend)</h2>
-    <p>Recurring components you'll see on every page:</p>
-
-    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical Purpose</div><p>Why a decision or shot exists — what it's trying to achieve.</p></div>
-    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common Mistakes</div><p>The errors most players make here, and why they cost matches.</p></div>
-    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice Drill</div><p>Setup · reps · constraints · coaching cue · success metric.</p></div>
-    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success Metrics</div><p>How you measure whether it's working — numbers, not feelings.</p></div>
-    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div><p>Hand-picked, verified YouTube references (title · channel · link).</p></div>
-
-    <h3>Evidence levels</h3>
-    <p>Every recommendation is tagged so you know how strongly it's backed:</p>
-    <p style="display:flex;gap:8px;flex-wrap:wrap">
-      <span class="ev ev-a">Level A — strong pro + sports-science support</span>
-      <span class="ev ev-b">Level B — widely accepted coaching principle</span>
-      <span class="ev ev-c">Level C — useful heuristic</span>
-      <span class="ev ev-d">Level D — personal preference</span>
-    </p>
-
-    <h3>The Decision Card</h3>
-    <p>Every tactical <em>pattern</em> is written as a Decision Card so it can be trained and recalled under pressure:</p>
-    <div class="decision-card reveal">
-      <header><span class="badge">Decision Card · sample</span><h3>Home Base Pattern</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
-      <div class="dc-body">
-        <div class="field"><div class="lbl">Decision Rule</div><div class="rule">If the ball crosses the imaginary center line (outside ball) → return crosscourt with height &amp; margin. If it doesn't (inside ball) and you're balanced → direction change is unlocked.</div></div>
-        <div class="field">
-          <div class="lbl">Wrong vs Correct</div>
-          <div class="dc-examples">
-            <div class="ex wrong"><span class="lbl">✗ Wrong</span><br>Change direction down-the-line off an outside, stretched ball "to take control."</div>
-            <div class="ex right"><span class="lbl">✓ Correct</span><br>Reset crosscourt, recover, and wait for the inside ball before attacking.</div>
-          </div>
-        </div>
-        <div class="field"><div class="lbl">Full card</div><div>See the complete card — situation, why it works, decision tree, drill, metrics, opponent &amp; skill-level adaptations — in <a href="01-decision-making.html">the Decision Engine</a>.</div></div>
-      </div>
-    </div>
-
-    <!-- NEXT ACTION -->
-    <div class="next-action reveal">
-      <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">New here? Start with <a href="00-player-identity.html">Player Identity</a> to find your archetype,
-      then learn <a href="01-decision-making.html">the Decision Engine</a>. Between sets, jump to the
-      <a href="set-break.html">Set-Break Quick-Planner</a>.</p>
-    </div>
-
-    <div class="pager">
-      <span></span>
-      <a class="next" href="00-player-identity.html"><small>Next</small>00 · Player Identity →</a>
-    </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem">
-      <hr><p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System. All content original.
-      Built as a dependency-free static site for GitHub Pages.</p>
-    </footer>
-
-  </main>
-</div>
+<div class="swipehint" id="swipehint" hidden>swipe up ⌄</div>
 
 <script src="assets/courts.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script>
+(function(){
+  var deck=document.getElementById('deck');
+  var cards=[].slice.call(deck.querySelectorAll('.deckcard'));
+  var topics=cards.filter(function(c){return !c.hasAttribute('data-done');});
+  var rail=document.getElementById('dotrail');
+
+  // build dot rail
+  topics.forEach(function(c,i){
+    var b=document.createElement('button');
+    b.setAttribute('aria-label','Card '+(i+1)+', '+c.getAttribute('data-name'));
+    b.innerHTML='<span class="dname">'+c.getAttribute('data-name')+'</span>';
+    b.addEventListener('click',function(){ c.scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'}); });
+    rail.appendChild(b);
+  });
+  var dots=[].slice.call(rail.children);
+
+  // active + progress via IntersectionObserver
+  if('IntersectionObserver' in window){
+    var obs=new IntersectionObserver(function(es){
+      es.forEach(function(e){
+        if(!e.isIntersecting) return;
+        var idx=topics.indexOf(e.target); if(idx<0) return;
+        dots.forEach(function(d,i){ d.classList.toggle('active',i===idx); d.classList.toggle('passed',i<idx); d.setAttribute('aria-current', i===idx?'true':'false'); });
+      });
+    },{root:deck,threshold:0.6});
+    topics.forEach(function(c){obs.observe(c);});
+  }
+
+  // remember position: save on Deepen tap, restore on load
+  deck.querySelectorAll('.deepen').forEach(function(a){
+    a.addEventListener('click',function(){ try{sessionStorage.setItem('zt-deck-card', a.getAttribute('data-card'));}catch(e){} });
+  });
+  try{
+    var saved=sessionStorage.getItem('zt-deck-card');
+    if(saved!==null && topics[+saved]){ topics[+saved].scrollIntoView({block:'start',behavior:'auto'}); sessionStorage.removeItem('zt-deck-card'); }
+  }catch(e){}
+
+  // back to top
+  var bt=document.getElementById('backTop');
+  if(bt) bt.addEventListener('click',function(ev){ev.preventDefault(); topics[0].scrollIntoView({block:'start',behavior:'smooth'});});
+
+  // contrast (bench-max) toggle, persisted
+  var ct=document.getElementById('contrastToggle');
+  try{ if(localStorage.getItem('zt-benchmax')==='1') deck.classList.add('benchmax'); }catch(e){}
+  if(ct) ct.addEventListener('click',function(){ deck.classList.toggle('benchmax'); try{localStorage.setItem('zt-benchmax', deck.classList.contains('benchmax')?'1':'0');}catch(e){} });
+
+  // first-run swipe hint (once)
+  try{
+    if(!localStorage.getItem('zt-seen-deck')){
+      var h=document.getElementById('swipehint'); h.hidden=false;
+      localStorage.setItem('zt-seen-deck','1');
+      deck.addEventListener('scroll',function(){h.hidden=true;},{once:true});
+      setTimeout(function(){h.hidden=true;},6000);
+    }
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
