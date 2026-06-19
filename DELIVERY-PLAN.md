@@ -69,8 +69,30 @@ Legend: ✅ done · 🔄 in progress · ⬜ pending.
 
 ---
 
-## ✅ BUILD COMPLETE — all 10 parts delivered.
-Open `index.html` and publish via the README's GitHub Pages steps.
+## ✅ ORIGINAL BUILD COMPLETE — all 10 parts delivered (32 pages).
+
+---
+
+## POST-LAUNCH REDESIGNS
+
+### R1 — Branding & polish ✅
+- Minimalist **yellow + black**, editorial serif wordmark, **Zulu-shield + crossed-rackets crest** (`assets/logo.svg`), favicon (`assets/favicon.svg`), 1200×630 social card (`assets/og.html` → `assets/og-image.png`, rendered via headless Chrome) + OG/Twitter meta on every page.
+- **Real YouTube channel names** (via oEmbed) on all Watch cards; repeated videos diversified.
+- **Metric + imperial** units throughout (SA + coaching-video friendly).
+
+### R2 — Courtside cards (glanceable) ✅
+- New `.courtside` component: rule (≤8 words) + diagram + ✓/✗ + cue + one-line drill, atop **all 27 content pages**.
+- Deep prose auto-collapses behind `details.more` (one toggle) via `nav.js initCollapse()`; print override expands it.
+- A diagram on **every** card: court diagrams (`data-court`) + new **`data-viz`** mini-vizzes (step-flows, loops, bars) folded into `courts.js`.
+- **Animated diagrams:** a ball travels each shot path; flows pulse; bars grow — all gated by `prefers-reduced-motion`.
+
+### R3 — Umdlalo we Tennis (the front door) 🔄
+- **Wave 1 ✅** — `index.html` is now the **deck**: 8 full-screen scroll-snap cards + dot rail (labeled, progress-fill, tap-to-jump) + deckbar (crest · ◐ sunlight contrast · theme · Set-Break · Library). Position memory (sessionStorage), first-run hint, "Deck complete" card. Old landing → `library.html`; `← Umdlalo` pill injected on deep pages. Collapse logic guarded against the deck.
+- **Wave 2 ⬜** — inline tap-to-play YouTube embeds (facade) + offline "no signal" fallback.
+- **Wave 3 ⬜** — Scenario Engine on the 8 topic pages (animated "if the ball is ___ → do ___" mini-cards + embedded video).
+- UX-hardening punch-list (P0/P1/P2) lives in `PLAN.md` → "BENCH DECK REDESIGN".
+
+**Deploy:** all of R1–R3/Wave-1 committed & pushed to `main`; live at https://simzmkhwanazi.github.io/zulu-tennis/.
 
 ---
 

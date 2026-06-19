@@ -234,3 +234,146 @@ YouTube reference videos are sourced/verified during the part that builds each p
 - All content original; no proprietary system/wording/diagrams reproduced.
 - "Comprehensive but tight" prose — dashboards, tables, diagrams, and checklists do the heavy lifting.
 - Every page ends pointing to the next highest-value action (ties into Improvement Engine / 80-20).
+
+---
+
+# COURTSIDE REDESIGN — glanceable / bench-ready (CURRENT WORK)
+
+## Context
+The full system is built and live, but it's **word-heavy** — too slow to read on the bench
+mid-practice and daunting to "finish." Goal: make every page **readable in ~30 seconds** while
+keeping the depth for home study. Decisions (confirmed with user): **(1) add a Courtside Card to the
+top of every page + collapse the deep prose behind a toggle; (2) add a diagram to every key concept
+("see it" over "read it").** The diagram engine (`assets/courts.js`) and component system already exist.
+
+## The model (per content page)
+`[pagehead]` → **`[Courtside Card]`** (the 30-second read) → `[<details class="more">` wrapping ALL the
+existing deep sections, collapsed by default]` → `[next-action]` → `[pager]` → `[footer]`.
+
+### Courtside Card — `.courtside` (new component)
+High-contrast card, authored per page. **Brevity standard: readable in ~10 seconds at the break chair,
+under pressure.** Telegraphic, not sentences. Big type, mostly visual:
+- **The core rule** — ONE line, ≤ ~8 words, large (e.g. "Reset outside ball. Attack inside ball.").
+- **One diagram** (the ball-decision picture; reuse `courts.js`).
+- **Do / Don't** — `✓ …` / `✗ …`, a few words each.
+- **1–3 cue words** (what you say to yourself: "Cross… cross… now").
+- **Drill:** one short line.
+No paragraphs, no "why" — that lives in the collapsed breakdown. The card alone tells you what to do.
+
+### Collapse the depth — `details.more`
+Everything currently on the page (the h2 sections, tables, callouts, full Decision Cards, Watch
+videos) moves **inside one `<details class="more">`** with a summary like
+"📖 Open the full breakdown — drills, why, examples". Default **closed**, so the page is just the card.
+
+## Implementation
+- **`assets/styles.css`** — add `.courtside` (header strip, big rule, do/don't `.dd`, cue list, mini drill row),
+  `details.more` + `summary` styling, and a **print override** so `details` content always prints
+  (`@media print{ details>*{display:block!important} summary{display:none} }`).
+- **`assets/nav.js`** — add `initCollapse()`: on any page that has a `.courtside` card, gather the
+  siblings between the card and `.next-action` and wrap them in `<details class="more">` (closed);
+  hide/remove `#pageToc` on those pages (the card replaces it). One change → applies site-wide; robust
+  vs editing 32 bodies by hand. Respect `prefers-reduced-motion` (no animated open).
+- **Each `NN-*.html`** — author the `.courtside` card right after `.pagehead`. Distil the page's core
+  rule, pick/þadd a diagram, write Do/Don't + cues + one-line drill. Pull the rule/diagram from content
+  already on the page where possible.
+- **Diagrams for every key concept** — add `data-court` diagrams where missing, e.g.: `03` serve patterns
+  per side, `04` return positions, `09` a mini court per opponent type (where they hurt you / where to attack),
+  `11` a Reset→Breathe→Analyze→Commit loop, plus reuse existing diagrams inside cards. Data pages
+  (`12/13/20/21/29`) keep their tables; their cards carry the one visual that matters.
+- `set-break.html` is already a courtside-style card → leave as the model; no collapse needed.
+  `24-ai-review` (prompts) and short utility pages: card optional, no heavy collapse.
+
+## Delivery (waves — bench-critical first)
+- **Wave A — design system:** `.courtside` + `details.more` CSS, `nav.js` collapse logic, build & verify on one page (`01`).
+- **Wave B — core tactical/decision pages** (what you actually read courtside): `01, 02, 03, 04, 05, 06, 07, 08, 09, 10, 25, 17`, + confirm `set-break`.
+- **Wave C — mind/body & execution:** `11, 18, 14, 16, 22`.
+- **Wave D — measurement/improvement/dev + foundations:** `12, 13, 15, 20, 21, 23, 26, 27, 28, 00, 29`.
+- Update `DELIVERY-PLAN.md`; commit per wave; push.
+
+## Verification
+1. Render core pages at **390px** (iPhone) and desktop: card appears first and is self-sufficient; the
+   breakdown is collapsed; one tap expands; diagrams render; no horizontal overflow.
+2. **Print** a page → the collapsed breakdown prints fully (worksheets intact).
+3. Spot-check the Courtside Card alone answers: what's the rule, what does the ball-decision look like,
+   what do I drill — without expanding.
+4. Re-run link/asset QA; commit & push; confirm live on GitHub Pages.
+
+---
+
+# BENCH DECK REDESIGN — the front door (CURRENT WORK)
+
+## Context
+Even ~12 pages feels like too many. The user needs **one thing**, usable on the bench in seconds —
+but also wants real depth expressed as **scenario plays ("how to play each ball / every court
+decision")** and **embedded YouTube**, all *visual*, not prose. UI-designer review (read-only)
+recommended a single swipeable deck as the front door, keeping the 30 pages as a hidden library.
+Confirmed with user: **8-card deck · embedded video per topic · rich ball-by-ball scenarios · keep
+30 pages as deep library.**
+
+## The model
+- **`bench.html` = the home / only destination.** Vertical **scroll-snap deck** of **8 full-screen
+  cards**, right-edge **dot rail**, top pills: **Bench · Set Break · Library**. **No sidebar.**
+- **8 cards** (existing `.courtside`: rule + animated diagram + ✓Do/✗Don't + cue + one-line drill):
+  1 Read the ball · 2 Serve +1 · 3 Return · 4 Rally/construct · 5 Attack/finish · 6 Defend/reset ·
+  7 Opponent counter · 8 Score + head. Each card foot: **"Deepen → scenarios & video".**
+- **Deepen target = the topic page, reframed to lead with a Scenario Engine + embedded video**, old
+  prose collapsed below (`details.more`). The other ~22 pages remain the untouched deep library,
+  reachable via the one **Library** link.
+
+## New/changed pieces (reuse everything that exists)
+- **`bench.html`** (new): `.deck` container + 8 lifted `.courtside` cards + dot rail. Becomes home
+  (retire/relabel `index.html` → "About the system", or redirect).
+- **Deck CSS** (~30 lines in `styles.css`): `.deck{height:100dvh;overflow-y:auto;scroll-snap-type:y mandatory}`,
+  `.deck>.courtside{min-height:100dvh;scroll-snap-align:start;display:flex;flex-direction:column;justify-content:center}`,
+  dot-rail. Cards reuse `.courtside/.cs-*/data-court/data-viz` unchanged.
+- **Dot-rail JS** (~25 lines): build 8 dots + `IntersectionObserver` active-dot (copy the pattern from
+  `nav.js` `initScrollSpy`/`initReveal`). `nav.js` sidebar/collapse already no-op without `#sidebar`.
+- **Inline video embeds (facade)** — upgrade `.video-item` in `nav.js initVideos()` so a **tap swaps the
+  thumbnail for a responsive 16:9 `<iframe>` (`youtube.com/embed/ID`)** that plays in-page. Lazy
+  (no eager iframes → no perf hit), reduced-motion safe, works on the scenario pages and existing Watch blocks.
+- **Scenario Engine** (new `.scenarios` grid component, CSS + per-topic content): a responsive grid of
+  **mini scenario cards**, each = a **ball situation label + an animated `data-court` diagram + a
+  telegraphic decision** ("if the ball is ___ → do ___"). Authored per topic to cover the key + edge
+  court decisions. Reuses `courts.js`. Goal: "every court decision" expressed as pictures, not paragraphs.
+
+## Scenario coverage per card (pattern — diagrams, ≤6-word decisions)
+- **Read the ball:** deep+fast · short+sitting up · wide/outside · inside · low slice · high heavy · body/jam · on the run.
+- **Serve +1:** wide / body / T × deuce & ad → the +1 each.
+- **Return:** 1st vs 2nd × wide / body / T.
+- **Rally:** CC tolerance · DTL-change trigger · deep middle · change height/spin.
+- **Attack:** short ball · approach DTL · swing volley · put-away/recover.
+- **Defend:** pulled wide · lob the net-rusher · slice reset · neutral reset.
+- **Opponent:** pusher · counter-puncher · power baseliner · S&V · lefty · big server · moonballer · junkballer → one plan each.
+- **Score + head:** key score states (0-0/0-30/30-30/BP/tiebreak) + the Reset·Breathe·Analyze·Commit routine.
+
+## Delivery waves (review after each)
+1. **Bench Deck** — `bench.html` + deck CSS/dot-rail JS + make it the home + top pills. *(The big "feels like one thing" win; small effort.)*
+2. **Inline video embeds** — facade upgrade in `nav.js` + CSS; verify a tap plays in-page.
+3. **Scenario Engine** — `.scenarios` component + author scenario grids on the 8 topic pages + embed each topic's video. *(Largest wave; do per topic.)*
+
+## Verification
+1. `bench.html` at **390px**: swipe through 8 cards (scroll-snap), dot rail tracks + jumps, no sidebar, feels like one finishable thing; top pills switch Bench/Set-Break/Library.
+2. "Deepen →" opens the topic's Scenario Engine; scenario mini-diagrams animate; decisions are ≤6-word.
+3. Tap a video → it plays **inline** (iframe facade); reduced-motion + print still OK.
+4. 30 deep pages still reachable via Library; all links resolve; commit & push per wave; live on Pages.
+
+## UX hardening (from UX review — folded into the waves)
+**P0 — bench-critical (Wave 1):**
+- **Remember deck position:** on Deepen-tap, `sessionStorage['zt-deck-card']=i`; on `bench.html` load, instant `scrollIntoView({block:'start',behavior:'auto'})` to that card. Deepen links carry `#deepen`. → "Back" lands on the exact card.
+- **Dot rail = real controls:** `<nav aria-label="Deck cards">` of 8 `<button aria-current aria-label="Card 3, Return">`; numbered always; active dot shows the name; **passed dots fill yellow = progress**; tap → jump. Reuse the `nav.js` IntersectionObserver pattern for active state.
+- **Snap robustness:** `scroll-snap-stop:always` on `.deck>.courtside`; use `100dvh`; tall cards allow internal overflow (no hard center-clip at large text / landscape).
+- **Persistent card header** `[3 / 8] · RETURN` (repurpose `.cs-eyebrow`); title top, **Deepen → at the bottom** (thumb reach).
+- **"← Bench" pill** on every topic/scenario page (don't rely on browser Back).
+
+**P1 — sun & no-signal (Wave 1–2):**
+- **Bench-mode toggle** (pill on `bench.html`, `localStorage`, mirrors theme-toggle): max-contrast card (black bg / `#ffd400` rule / no shadow / rule clamp ~2.4–2.8rem) + demote Deepen to muted footer link.
+- **Deck index** (card 0 or "Index" pill): 8-tile grid (number · name · mini-diagram) → jump; doubles as 5-second first-run orientation.
+- **First-run hint:** card 2 peeks above the fold + one-time fading ⌄ chevron (both gated by `prefers-reduced-motion`); no modal.
+- **Deck-complete state** after card 8: "Deck complete" strip → Set-Break + Back-to-top.
+- **Service worker** (dependency-free) precaching `bench.html`, the 8 topic pages, `assets/*`, favicon → **deck works offline on court.**
+
+**P2 — scenario/study polish (Wave 3):**
+- Scenario grid: **cap ~6 visible + chip-filter** the overflow (opponent types, ball types); enforce ≤6-word decisions.
+- **Animate only in-view** scenario diagrams (wire `courts.js` `_animate` to an IntersectionObserver).
+- **Video facade hardening:** inject iframe (`?autoplay=1`) only on tap, never eager; `navigator.onLine===false` → "No signal — saved for later" chip (title+channel) instead of a dead iframe; defer thumbnails until near view; keep ▶ fallback badge.
+- **A11y sweep:** card `tabindex="-1"` + heading per card; `aria-current` on dots; Tab order pills → dots → content; reduced-motion gates the new scroll-jumps + chevron.

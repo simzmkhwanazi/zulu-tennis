@@ -3,59 +3,71 @@
 **Elite Singles Performance System.** Not a book — a complete tennis *operating system* for the
 competitive singles player, built around one goal: **win more matches.**
 
-It's a dependency-free static website (plain HTML/CSS/JS — no frameworks, no build step) designed
-mobile-first, with light/dark mode, printable worksheets, original inline-SVG court diagrams, and
-verified-live YouTube references on every page.
+Dependency-free static site (plain HTML/CSS/JS — **no frameworks, no build step**), designed
+**mobile-first** for use on the bench between games. Yellow + black, editorial serif wordmark,
+Zulu-shield + crossed-rackets crest. Light/dark, print-friendly, original animated inline-SVG
+diagrams, and verified-live YouTube references.
+
+**Live:** https://simzmkhwanazi.github.io/zulu-tennis/
 
 ---
 
-## What's inside
+## Two front doors
 
-A 30-page system organised in five layers: **Technical Execution · Tactical Systems · Match
-Intelligence · Performance Management · Continuous Improvement.**
+- **`index.html` — “Umdlalo we Tennis” (the deck).** The home screen: **8 full-screen, swipeable
+  cards** (Read the ball · Serve +1 · Return · Rally · Attack · Defend · Opponent · Score + Head),
+  each a 10-second read — rule + animated diagram + ✓Do/✗Don't + cue + drill, with a **“Scenarios &
+  video →”** link into the matching deep page. Right-edge **dot rail** (progress + jump), a sunlight
+  **contrast toggle (◐)**, and **position memory** so leaving and returning lands you on the same card.
+- **`library.html` — the full system.** The complete 30-page reference, reached via the **Library**
+  pill (and a layer-grouped sidebar on every deep page).
 
-- **Start here:** the System overview (`index.html`), **Player Identity** (00), **Data Model** (29)
-- **The Decision Engine** (01) — core logic layer: the Tactical Decision Formula, ball-quality tree,
-  Decision Cards and the Home Base Pattern
-- **Tactics:** Court Geometry, Serve, Return, Baseline Patterns, Attacking, Defensive, Net Play, Pattern Library
-- **Match intelligence:** Player-Type Strategies, Score-Based / Match State Engine, Match Problem Solver, Scouting DB
-- **Performance:** Mental Performance, Athlete Development (gym/speed/recovery/nutrition), Tournament OS
-- **Measure & improve:** Match Analysis, Video Analysis, Analytics, Improvement Engine, Development Roadmap, Skill Roadmap, 80/20
-- **Execution:** Practice Blueprint, Complete Match Playbook, AI Review Framework, Drill Library
-- **Match day:** the **Set-Break Quick-Planner** (`set-break.html`) — a 20-second cheat sheet
+## The system (in the Library)
 
-`PLAN.md` holds the full build spec; `DELIVERY-PLAN.md` tracks build progress.
+30 pages across five layers — **Technical · Tactical · Match Intelligence · Performance · Continuous
+Improvement.** Every page opens with a **Courtside card** (the glanceable summary); the deep prose
+collapses behind one toggle.
 
-## View it locally
+- **Decision Engine** (01) — Tactical Decision Formula, ball-quality tree, Decision Cards, Home Base Pattern
+- **Tactics** — Court Geometry, Serve, Return, Baseline Patterns, Attacking, Defensive, Net Play, Pattern Library
+- **Match intelligence** — Player-Type Strategies, Score / Match-State Engine, Match Problem Solver, Scouting DB
+- **Performance** — Mental, Athlete Development (gym/speed/recovery/nutrition), Tournament OS
+- **Measure & improve** — Match & Video Analysis, Analytics, Improvement Engine, Roadmap, Skill Roadmap, 80/20
+- **Execution** — Practice Blueprint, Complete Match Playbook, AI Review, Drill Library
+- **Match day** — the **Set-Break Quick-Planner** (`set-break.html`)
 
-Just open `index.html` in any browser — no server needed.
+## Project files
 
-## Publish on GitHub Pages
+```
+index.html            # Umdlalo we Tennis — the 8-card deck (home)
+library.html          # full-system overview + sidebar
+00–30 *.html          # the 30 deep pages (00 Player Identity … 30 Drill Library)
+set-break.html        # 20-second changeover planner
+assets/
+  styles.css          # all styling (tokens, courtside, deck, viz, print, light/dark)
+  nav.js              # sidebar, theme, scroll-spy, collapse, video thumbs, back-pill (shared)
+  courts.js           # inline-SVG court engine + data-viz mini-charts (auto-render)
+  logo.svg            # crest · favicon.svg · og.html → og-image.png (social card)
+PLAN.md               # full build spec (source of truth)
+DELIVERY-PLAN.md      # progress tracker
+DEV-NOTES.md          # technical handoff for developers
+```
 
-1. Create a repo and push these files to the **`main`** branch (keep the structure; `index.html` at the root).
-   ```bash
-   git init
-   git add .
-   git commit -m "Zulu Tennis — initial publish"
-   git branch -M main
-   git remote add origin https://github.com/<you>/<repo>.git
-   git push -u origin main
-   ```
-2. On GitHub: **Settings → Pages → Build and deployment → Source: Deploy from a branch**,
-   then choose **`main`** / **`/ (root)`** and **Save**.
-3. Wait ~1 minute; your site goes live at `https://<you>.github.io/<repo>/`.
+## Run / publish
 
-No Jekyll config is needed — it's plain static files. (Optional: add an empty `.nojekyll` file to
-skip Jekyll processing entirely.)
+- **Local:** open `index.html` — no server needed (an optional `python3 -m http.server` avoids any
+  `file://` quirks).
+- **GitHub Pages:** push to `main`, then **Settings → Pages → Deploy from a branch → `main` / `/root`**.
+  Plain static files (a `.nojekyll` file is included); live at `https://<you>.github.io/<repo>/` in ~1 min.
 
-## Notes
+## Conventions & notes
 
-- All content is original; no copyrighted coaching material, diagrams or proprietary systems are reproduced.
-- Each recommendation carries an **evidence-level badge** (A = strong pro/science support → D = personal preference).
-- YouTube links point to real, third-party videos verified live at build time; if any later goes offline,
-  search the listed title to find an equivalent.
-- General fitness content in *Athlete Development* is educational, not medical advice.
-
----
+- All content original; no copyrighted coaching material/diagrams reproduced.
+- **Evidence badges** (A → D) flag how strongly each recommendation is backed.
+- **Units** shown in metric + imperial.
+- YouTube links are real third-party videos verified live at build (channel names via oEmbed); if one
+  goes offline, search the listed title.
+- Animations respect `prefers-reduced-motion`; diagrams print via a `details`-expanding print stylesheet.
+- *Athlete Development* fitness content is educational, not medical advice.
 
 *Zulu Tennis · by Veyane.*
