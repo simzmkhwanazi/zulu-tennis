@@ -8,8 +8,11 @@
 
   // Single source of truth for the whole site, grouped by the 5 layers.
   var SITE_NAV = [
+    { group: "On Court", layer: "LIVE", items: [
+      { n: "",   file: "set-break.html",              t: "Set-Break Quick-Planner" },
+    ]},
     { group: "Start Here", layer: "", items: [
-      { n: "",   file: "index.html",                 t: "Umdlalo we Tennis" },
+      { n: "",   file: "index.html",                 t: "Ukushaya iTennis" },
       { n: "",   file: "library.html",                t: "Library / The System" },
       { n: "00", file: "00-player-identity.html",    t: "Player Identity" },
       { n: "29", file: "29-data-model.html",          t: "Data Model" },
@@ -51,7 +54,6 @@
       { n: "16", file: "16-complete-match-playbook.html",  t: "Complete Match Playbook" },
       { n: "24", file: "24-ai-review-framework.html",      t: "AI Review Framework" },
       { n: "30", file: "30-drill-library.html",            t: "Drill Library" },
-      { n: "",   file: "set-break.html",                    t: "Set-Break Quick-Planner" },
     ]},
   ];
 
@@ -234,7 +236,7 @@
     if (tb.querySelector(".benchback")) return;
     var brand = tb.querySelector(".brand"); if (!brand) return;
     var a = document.createElement("a");
-    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Umdlalo";
+    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Ukushaya iTennis";
     brand.insertAdjacentElement("afterend", a);
   }
 

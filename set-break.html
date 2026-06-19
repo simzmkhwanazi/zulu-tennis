@@ -2,40 +2,135 @@
 <html lang="en" class="no-js">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Set-Break Quick-Planner</title>
-<meta name="description" content="The Set-Break Quick-Planner — a one-screen, high-contrast cheat sheet to adjust strategy and plan the next set in under 20 seconds.">
+<title>Zulu Tennis — Set-Break Planner & Match Tracker</title>
+<meta name="description" content="A one-screen, on-court tool: plan your next set, log it at every changeover, and track live match stats — all on your phone.">
 <script>document.documentElement.classList.remove('no-js');</script>
 <link rel="icon" href="assets/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Set-Break Quick-Planner">
-<meta property="og:description" content="The Set-Break Quick-Planner — a one-screen, high-contrast cheat sheet to adjust strategy and plan the next set in under 20 seconds.">
+<meta property="og:title" content="Zulu Tennis — Set-Break Planner & Match Tracker">
+<meta property="og:description" content="Plan your next set, log every changeover, and track live match stats — all on your phone.">
 <meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/set-break.html">
 <meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — Set-Break Quick-Planner">
-<meta name="twitter:description" content="The Set-Break Quick-Planner — a one-screen, high-contrast cheat sheet to adjust strategy and plan the next set in under 20 seconds.">
+<meta name="twitter:title" content="Zulu Tennis — Set-Break Planner & Match Tracker">
+<meta name="twitter:description" content="Plan your next set, log every changeover, and track live match stats — all on your phone.">
 <meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
 <link rel="stylesheet" href="assets/styles.css">
 <style>
-  .sb-hero{background:#0b0b0b;color:#fff;border-radius:16px;padding:22px 20px;text-align:center;border:1px solid #1c1c1c;position:relative;margin-bottom:16px;}
+  .sb-hero{background:#0b0b0b;color:#fff;border-radius:16px;padding:20px;text-align:center;border:1px solid #1c1c1c;position:relative;margin-bottom:14px;}
   .sb-hero::after{content:"";position:absolute;left:50%;bottom:0;width:55%;height:3px;transform:translateX(-50%);background:var(--hl);}
-  .sb-hero h1{font-family:var(--serif);font-weight:600;margin:.1em 0;font-size:clamp(1.8rem,7vw,2.8rem);}
+  .sb-hero h1{font-family:var(--serif);font-weight:600;margin:.1em 0;font-size:clamp(1.7rem,7vw,2.6rem);}
   .sb-hero p{color:var(--hl);letter-spacing:.2em;text-transform:uppercase;font-size:.72rem;font-weight:700;margin:0;}
+
   .sb-card{border:2px solid var(--ink);border-left:8px solid var(--hl);border-radius:12px;padding:14px 16px;margin:12px 0;background:var(--surface);}
-  .sb-card h2{margin:.1rem 0 .5rem;font-size:1.15rem;border:none;padding:0;}
+  .sb-card h2{margin:.1rem 0 .6rem;font-size:1.12rem;border:none;padding:0;display:flex;align-items:center;gap:8px;}
+  .sb-card .sub{color:var(--muted);font-size:.82rem;margin:-.3rem 0 .7rem;}
   .sb-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-  .sb-fill{min-height:84px;border:1.5px dashed var(--muted);border-radius:8px;padding:8px 10px;font-size:.92rem;color:var(--muted);}
-  .sb-big{font-size:1.05rem;}
-  .dial{display:flex;gap:6px;flex-wrap:wrap;margin-top:6px;}
-  .dial span{flex:1;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:8px 6px;font-weight:800;font-size:.82rem;}
-  .dial .down{border-color:var(--c-purpose);} .dial .mid{border-color:var(--c-check);} .dial .up{border-color:var(--c-watch);}
   @media (max-width:520px){ .sb-grid{grid-template-columns:1fr;} }
-  @media print{ .sb-card{break-inside:avoid;} }
+
+  /* inputs */
+  .fld{display:block;margin:.1rem 0 .2rem;font-weight:700;font-size:.82rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;}
+  textarea.sb-in,input.sb-in{width:100%;box-sizing:border-box;border:1.5px solid var(--border);border-radius:9px;background:var(--bg);
+     color:var(--text);font:inherit;font-size:1rem;padding:10px 12px;}
+  textarea.sb-in{min-height:74px;resize:vertical;}
+  .sb-in:focus{outline:none;border-color:var(--hl);box-shadow:0 0 0 3px color-mix(in srgb,var(--hl) 35%,transparent);}
+  .actions-row{display:flex;gap:8px;align-items:center;margin:6px 0;}
+  .actions-row .num{font-weight:800;color:var(--hl-deep);width:1.2em;flex:none;}
+  select.adder{appearance:none;-webkit-appearance:none;cursor:pointer;color:var(--text);margin-bottom:6px;
+     background-image:linear-gradient(45deg,transparent 50%,var(--muted) 50%),linear-gradient(135deg,var(--muted) 50%,transparent 50%);
+     background-position:calc(100% - 18px) 1.05em,calc(100% - 13px) 1.05em;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:34px;}
+  .actions-row select.adder{flex:1;margin-bottom:0;}
+  .action-block{margin:8px 0;}
+
+  /* steppers / scoreboard */
+  .score{display:flex;gap:10px;align-items:stretch;flex-wrap:wrap;}
+  .score .team{flex:1;min-width:130px;border:1.5px solid var(--border);border-radius:10px;padding:8px 10px;background:var(--bg);}
+  .score .team .nm{font-weight:700;font-size:.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-bottom:4px;}
+  .stepper{display:flex;align-items:center;justify-content:space-between;gap:8px;}
+  .stepper .val{font-size:1.8rem;font-weight:800;font-variant-numeric:tabular-nums;min-width:1.6em;text-align:center;}
+  .rnd{appearance:none;border:1.5px solid var(--border);background:var(--surface);color:var(--text);
+     width:42px;height:42px;border-radius:50%;font-size:1.4rem;font-weight:800;line-height:1;cursor:pointer;flex:none;}
+  .rnd:active{transform:scale(.92);} .rnd.plus{border-color:var(--c-purpose);color:var(--c-purpose);} .rnd.minus{border-color:var(--c-mistake);color:var(--c-mistake);}
+
+  /* chips */
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:4px;}
+  .chip{appearance:none;border:1.5px solid var(--border);background:var(--bg);color:var(--text);border-radius:999px;
+     padding:8px 13px;font-weight:700;font-size:.86rem;cursor:pointer;}
+  .chip[aria-pressed="true"]{background:var(--hl);color:#141414;border-color:var(--hl);}
+  .hint{margin-top:8px;font-size:.9rem;color:var(--muted);min-height:1.2em;}
+  .hint b{color:var(--text);}
+
+  /* aggression dial */
+  .dial{display:flex;gap:6px;margin-top:6px;}
+  .dial button{flex:1;text-align:center;border:1.5px solid var(--border);border-radius:8px;padding:9px 6px;font-weight:800;font-size:.8rem;
+     background:var(--bg);color:var(--text);cursor:pointer;line-height:1.25;}
+  .dial .down[aria-pressed="true"]{background:var(--c-purpose);border-color:var(--c-purpose);color:#fff;}
+  .dial .mid[aria-pressed="true"]{background:var(--c-check);border-color:var(--c-check);color:#fff;}
+  .dial .up[aria-pressed="true"]{background:var(--c-watch);border-color:var(--c-watch);color:#fff;}
+
+  /* stats grid */
+  .stat{display:flex;align-items:center;justify-content:space-between;gap:8px;border:1.5px solid var(--border);border-radius:10px;padding:8px 10px;background:var(--bg);}
+  .stat .lab{font-weight:700;font-size:.9rem;}
+  .stat .lab small{display:block;color:var(--muted);font-weight:600;font-size:.72rem;}
+  .stat .ctr{display:flex;align-items:center;gap:8px;}
+  .stat .ctr .val{font-size:1.3rem;font-weight:800;min-width:1.5em;text-align:center;font-variant-numeric:tabular-nums;}
+  .stat .rnd{width:36px;height:36px;font-size:1.2rem;}
+  .stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+  @media (max-width:520px){ .stats-grid{grid-template-columns:1fr;} }
+  .derived{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px dashed var(--border);}
+  .derived div{font-size:.92rem;} .derived b{font-size:1.15rem;color:var(--hl-deep);font-variant-numeric:tabular-nums;}
+
+  /* match bar */
+  .matchbar{display:flex;gap:10px;align-items:flex-end;flex-wrap:wrap;}
+  .matchbar .grow{flex:1;min-width:160px;}
+  .setline{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:8px;font-weight:800;font-variant-numeric:tabular-nums;}
+  .setpill{border:1.5px solid var(--border);border-radius:8px;padding:4px 9px;background:var(--bg);font-size:.95rem;}
+  .setpill.win{border-color:var(--c-purpose);color:var(--c-purpose);} .setpill.loss{border-color:var(--c-mistake);color:var(--c-mistake);}
+
+  /* timeline */
+  .log{margin-top:6px;display:flex;flex-direction:column;gap:10px;}
+  .logitem{border:1px solid var(--border);border-left:5px solid var(--hl);border-radius:10px;padding:11px 13px;background:var(--surface);}
+  .logitem .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+  .logitem .sc{font-weight:800;font-size:1.05rem;font-variant-numeric:tabular-nums;}
+  .logitem .when{color:var(--muted);font-size:.78rem;}
+  .logitem ul{margin:.4rem 0 .2rem;padding-left:1.1rem;} .logitem li{margin:.1rem 0;}
+  .logitem .meta{font-size:.82rem;color:var(--muted);margin-top:.3rem;}
+  .logitem .del{float:right;background:none;border:none;color:var(--c-mistake);font-weight:700;cursor:pointer;font-size:.82rem;}
+  .empty{color:var(--muted);font-style:italic;padding:6px 2px;}
+
+  /* career */
+  .career-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:6px;}
+  @media (min-width:560px){ .career-grid{grid-template-columns:repeat(4,1fr);} }
+  .ctile{border:1.5px solid var(--border);border-radius:10px;padding:10px 8px;text-align:center;background:var(--bg);}
+  .ctile .v{font-size:1.45rem;font-weight:800;font-variant-numeric:tabular-nums;color:var(--hl-deep);line-height:1.1;}
+  .ctile .v.win{color:var(--c-purpose);} .ctile .v.loss{color:var(--c-mistake);}
+  .ctile .k{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.04em;margin-top:3px;}
+  .resetcareer{background:none;border:none;color:var(--muted);font-size:.8rem;cursor:pointer;text-decoration:underline;margin-top:10px;}
+
+  /* buttons / toolbar */
+  .btn{display:inline-block;border:none;border-radius:10px;padding:13px 18px;font-weight:800;font-size:1rem;cursor:pointer;}
+  .btn.primary{background:var(--hl);color:#141414;width:100%;}
+  .btn.primary:active{transform:scale(.99);}
+  .btn.ghost{background:var(--bg);color:var(--text);border:1.5px solid var(--border);}
+  .toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;}
+  .toolbar .btn{flex:1;min-width:130px;text-align:center;}
+  .miniprint{display:block;text-align:center;margin-top:12px;color:var(--muted);font-size:.85rem;}
+  .saved-flash{color:var(--c-purpose);font-weight:700;font-size:.85rem;margin-left:auto;opacity:0;transition:opacity .2s;}
+  .saved-flash.show{opacity:1;}
+
+  details.ref{border:1.5px solid var(--border);border-radius:12px;padding:0 14px;margin:12px 0;background:var(--surface);}
+  details.ref>summary{cursor:pointer;font-weight:800;padding:13px 0;list-style:none;font-size:1.02rem;}
+  details.ref>summary::-webkit-details-marker{display:none;}
+  details.ref>summary::before{content:"▸ ";color:var(--hl-deep);} details.ref[open]>summary::before{content:"▾ ";}
+  details.ref .refbody{padding-bottom:12px;}
+  details.ref h3{font-size:1rem;margin:.6rem 0 .3rem;}
+
+  @media print{ .matchbar .btn,.toolbar,.dial button,.rnd,.chip,.miniprint,details.ref{display:none!important;} .sb-card{break-inside:avoid;} details.ref[open]{display:block!important;} }
 </style>
 </head>
 <body>
@@ -54,67 +149,158 @@
   <main class="content">
 
     <section class="sb-hero reveal">
-      <p>Read in 20 seconds</p>
-      <h1>Set-Break Quick-Planner</h1>
+      <p>Tap · Plan · Track</p>
+      <h1>Set-Break Planner</h1>
     </section>
 
-    <p class="lead" style="margin-top:0">Sit down on the changeover. Run these six boxes top to bottom. Decide your
-    next set before you stand up. (Print it or keep it open on your phone.)</p>
+    <p class="lead" style="margin-top:0">Sit down on the changeover, fill the boxes, tap <strong>Save set break</strong>.
+    Everything stays on your phone — keep going set after set and watch the match build below.</p>
+
+    <!-- MATCH BAR -->
+    <div class="sb-card reveal">
+      <h2>🎾 This match <span class="saved-flash" id="savedFlash">Saved ✓</span></h2>
+      <div class="matchbar">
+        <div class="grow">
+          <label class="fld" for="opp">Opponent</label>
+          <input class="sb-in" id="opp" type="text" placeholder="e.g. Sipho M. — lefty pusher" autocomplete="off">
+        </div>
+        <button class="btn ghost" id="newMatch" type="button">＋ New match</button>
+      </div>
+      <div class="sb-grid" style="margin-top:10px">
+        <div>
+          <label class="fld" for="mdate">Date</label>
+          <input class="sb-in" id="mdate" type="date">
+        </div>
+        <div>
+          <label class="fld" for="venue">Place</label>
+          <input class="sb-in" id="venue" type="text" placeholder="e.g. Wanderers Country Club" autocomplete="off">
+        </div>
+      </div>
+      <div class="setline" id="setLine"><span style="color:var(--muted);font-weight:600">No sets logged yet.</span></div>
+    </div>
+
+    <!-- LIVE PLANNER -->
+    <div class="sb-card reveal">
+      <h2>1 · Set score</h2>
+      <p class="sub">Set <span id="setNoLabel">1</span> — what was the game score?</p>
+      <div class="score">
+        <div class="team">
+          <div class="nm">Me</div>
+          <div class="stepper"><button class="rnd minus" data-step="myGames" data-d="-1">−</button><span class="val" id="myGames">0</span><button class="rnd plus" data-step="myGames" data-d="1">+</button></div>
+        </div>
+        <div class="team">
+          <div class="nm" id="oppLabel">Opponent</div>
+          <div class="stepper"><button class="rnd minus" data-step="oppGames" data-d="-1">−</button><span class="val" id="oppGames">0</span><button class="rnd plus" data-step="oppGames" data-d="1">+</button></div>
+        </div>
+      </div>
+    </div>
 
     <div class="sb-card reveal">
-      <h2>1 · What's working / what's not</h2>
+      <h2>2 · What's working / what's not</h2>
       <div class="sb-grid">
-        <div><strong style="color:var(--c-purpose)">✓ Working — do more</strong><div class="sb-fill">&nbsp;</div></div>
-        <div><strong style="color:var(--c-mistake)">✗ Not working — stop</strong><div class="sb-fill">&nbsp;</div></div>
+        <div>
+          <label class="fld" style="color:var(--c-purpose)" for="working">✓ Working — do more</label>
+          <select class="sb-in adder" data-target="working" data-list="tactics" data-mode="append" aria-label="Add a working shot/tactic"></select>
+          <textarea class="sb-in" id="working" placeholder="Pick from the list above, or type your own…"></textarea>
+        </div>
+        <div>
+          <label class="fld" style="color:var(--c-mistake)" for="notWorking">✗ Not working — stop</label>
+          <select class="sb-in adder" data-target="notWorking" data-list="tactics" data-mode="append" aria-label="Add a shot/tactic that isn't working"></select>
+          <textarea class="sb-in" id="notWorking" placeholder="Pick from the list above, or type your own…"></textarea>
+        </div>
       </div>
     </div>
 
     <div class="sb-card reveal">
-      <h2>2 · Top decision triggers</h2>
-      <ul class="sb-big" style="margin:.2rem 0">
-        <li><strong>Deep &amp; fast at me</strong> → defend high crosscourt, reset.</li>
-        <li><strong>Short / inside ball</strong> → attack, take time, finish.</li>
-        <li><strong>Outside ball (crossed the line)</strong> → don't change direction; reset crosscourt.</li>
-        <li><strong>Opponent stretched</strong> → change direction only if I'm balanced.</li>
-      </ul>
+      <h2>3 · Opponent type</h2>
+      <p class="sub">Tap their style — get the counter.</p>
+      <div class="chips" id="oppTypeChips"></div>
+      <div class="hint" id="oppHint"></div>
     </div>
 
     <div class="sb-card reveal">
-      <h2>3 · Opponent-type counter</h2>
-      <ul style="margin:.2rem 0">
-        <li><strong>Pusher</strong> → approach &amp; finish; don't over-hit.</li>
-        <li><strong>Counter-puncher</strong> → take time, bring them to net.</li>
-        <li><strong>Power baseliner</strong> → change height/pace, deep middle.</li>
-        <li><strong>Serve &amp; volley</strong> → low returns at the feet, lob.</li>
-        <li><strong>Lefty</strong> → serve/return to backhand; watch ad-court kick.</li>
-        <li><strong>Big server</strong> → block deep middle; win 2nd-serve points.</li>
-        <li><strong>Moonballer</strong> → take early/on the rise, then approach.</li>
-      </ul>
-    </div>
-
-    <div class="sb-card reveal">
-      <h2>4 · Serve &amp; return reminders</h2>
-      <div class="sb-grid">
-        <div><strong>Serve</strong><br>High 1st-serve %. Go-to spot on big points. Mix in a body serve. Trusted +1.</div>
-        <div><strong>Return</strong><br>1st serve: block deep middle. 2nd serve: step in, attack. Make them play.</div>
+      <h2>4 · Aggression dial (by score)</h2>
+      <div class="dial" id="dial">
+        <button class="down" data-agg="behind" type="button">BEHIND<br>↓ high-% only</button>
+        <button class="mid" data-agg="even" type="button">EVEN<br>→ best go-to</button>
+        <button class="up" data-agg="ahead" type="button">AHEAD<br>↑ press / weapon</button>
       </div>
     </div>
 
     <div class="sb-card reveal">
-      <h2>5 · Aggression dial (by score)</h2>
-      <div class="dial">
-        <span class="down">BEHIND<br>↓ high-% only</span>
-        <span class="mid">EVEN<br>→ best go-to</span>
-        <span class="up">AHEAD<br>↑ press / weapon</span>
+      <h2>5 · Next-set plan — 3 actions</h2>
+      <div class="action-block">
+        <div class="actions-row"><span class="num">1</span><select class="sb-in adder" data-target="a1" data-list="actions" data-mode="set" aria-label="Pick action 1"></select></div>
+        <input class="sb-in" id="a1" type="text" placeholder="…or type your own">
+      </div>
+      <div class="action-block">
+        <div class="actions-row"><span class="num">2</span><select class="sb-in adder" data-target="a2" data-list="actions" data-mode="set" aria-label="Pick action 2"></select></div>
+        <input class="sb-in" id="a2" type="text" placeholder="…or type your own">
+      </div>
+      <div class="action-block">
+        <div class="actions-row"><span class="num">3</span><select class="sb-in adder" data-target="a3" data-list="actions" data-mode="set" aria-label="Pick action 3"></select></div>
+        <input class="sb-in" id="a3" type="text" placeholder="…or type your own">
       </div>
     </div>
 
+    <!-- MATCH STATS -->
     <div class="sb-card reveal">
-      <h2>6 · Next-set plan — 3 actions</h2>
-      <div class="sb-fill sb-big">1. ____________________________<br>2. ____________________________<br>3. ____________________________</div>
+      <h2>📊 Match stats</h2>
+      <p class="sub">Running totals for the whole match — tap as points happen.</p>
+      <div class="stats-grid" id="statsGrid"></div>
+      <div class="derived" id="derived"></div>
     </div>
 
-    <p style="text-align:center;margin-top:18px"><a class="cta" href="javascript:window.print()">🖨 Print this planner</a></p>
+    <button class="btn primary reveal" id="saveBreak" type="button">✓ Save set break</button>
+
+    <!-- TIMELINE -->
+    <div class="sb-card reveal">
+      <h2>🗒 Match log</h2>
+      <div class="log" id="log"></div>
+    </div>
+
+    <div class="toolbar reveal">
+      <button class="btn ghost" id="copySummary" type="button">📋 Copy match summary</button>
+      <button class="btn ghost" id="shareSummary" type="button">↗ Share</button>
+    </div>
+    <a class="miniprint" href="javascript:window.print()">🖨 Or print a blank/filled sheet</a>
+
+    <!-- CAREER / SEASON -->
+    <div class="sb-card reveal">
+      <h2>🏆 Career / Season</h2>
+      <p class="sub">Every match saved on this device — the current match counts live until you start a new one.</p>
+      <div class="career-grid" id="careerGrid"></div>
+      <button class="resetcareer" id="resetCareer" type="button">Reset career history</button>
+    </div>
+
+    <!-- REFERENCE (on demand) -->
+    <details class="ref reveal">
+      <summary>Decision triggers & counters (reference)</summary>
+      <div class="refbody">
+        <h3>Top decision triggers</h3>
+        <ul style="margin:.2rem 0">
+          <li><strong>Deep &amp; fast at me</strong> → defend high crosscourt, reset.</li>
+          <li><strong>Short / inside ball</strong> → attack, take time, finish.</li>
+          <li><strong>Outside ball (crossed the line)</strong> → don't change direction; reset crosscourt.</li>
+          <li><strong>Opponent stretched</strong> → change direction only if I'm balanced.</li>
+        </ul>
+        <h3>Opponent-type counters</h3>
+        <ul style="margin:.2rem 0">
+          <li><strong>Pusher</strong> → approach &amp; finish; don't over-hit.</li>
+          <li><strong>Counter-puncher</strong> → take time, bring them to net.</li>
+          <li><strong>Power baseliner</strong> → change height/pace, deep middle.</li>
+          <li><strong>Serve &amp; volley</strong> → low returns at the feet, lob.</li>
+          <li><strong>Lefty</strong> → serve/return to backhand; watch ad-court kick.</li>
+          <li><strong>Big server</strong> → block deep middle; win 2nd-serve points.</li>
+          <li><strong>Moonballer</strong> → take early/on the rise, then approach.</li>
+        </ul>
+        <h3>Serve &amp; return reminders</h3>
+        <div class="sb-grid">
+          <div><strong>Serve</strong><br>High 1st-serve %. Go-to spot on big points. Mix in a body serve. Trusted +1.</div>
+          <div><strong>Return</strong><br>1st serve: block deep middle. 2nd serve: step in, attack. Make them play.</div>
+        </div>
+      </div>
+    </details>
 
     <div class="pager">
       <a href="30-drill-library.html"><small>Previous</small>← 30 · Drill Library</a>
@@ -130,5 +316,332 @@
 
 <script src="assets/courts.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script>
+(function(){
+  "use strict";
+  var KEY = "zt-setbreak-v2";
+
+  var OPP_TYPES = [
+    ["Pusher","approach & finish; don't over-hit."],
+    ["Counter-puncher","take time, bring them to net."],
+    ["Power baseliner","change height/pace, deep middle."],
+    ["Serve & volley","low returns at the feet, lob."],
+    ["Lefty","serve/return to backhand; watch ad-court kick."],
+    ["Big server","block deep middle; win 2nd-serve points."],
+    ["Moonballer","take early/on the rise, then approach."]
+  ];
+  // key, label, sublabel
+  var STATS = [
+    ["firstIn","1st serves in","of attempts"],
+    ["firstTotal","1st serve attempts",""],
+    ["aces","Aces",""],
+    ["dfs","Double faults",""],
+    ["winners","Winners",""],
+    ["errors","Unforced errors",""],
+    ["bpWon","Break points won",""],
+    ["bpTotal","Break points faced/created",""]
+  ];
+
+  // dropdown option lists
+  // Kept short on purpose — 90-second changeover, pick fast.
+  var LISTS = {
+    tactics: ["Serve","Return","Forehand","Backhand","Net play","Movement"],
+    actions: ["Raise first-serve %","Attack the second serve","Target their backhand",
+      "Be more patient","Come to the net more","Stay aggressive on big points"]
+  };
+
+  function todayISO(){ var d=new Date(); function p(n){return (n<10?"0":"")+n;} return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate()); }
+  function blankStats(){ var s={}; STATS.forEach(function(x){ s[x[0]]=0; }); return s; }
+  function blankDraft(){ return { setNo:1, myGames:0, oppGames:0, working:"", notWorking:"", oppType:"", aggression:"", a1:"", a2:"", a3:"" }; }
+  function blankState(){ return { opponent:"", date:todayISO(), venue:"", updated:Date.now(), stats:blankStats(), draft:blankDraft(), breaks:[] }; }
+
+  var state;
+  try { state = JSON.parse(localStorage.getItem(KEY)) || blankState(); } catch(e){ state = blankState(); }
+  // backfill any missing keys
+  if(!state.stats) state.stats = blankStats();
+  STATS.forEach(function(x){ if(typeof state.stats[x[0]]!=="number") state.stats[x[0]]=0; });
+  if(!state.draft) state.draft = blankDraft();
+  if(!state.breaks) state.breaks = [];
+  if(!state.date) state.date = todayISO();
+  if(typeof state.venue!=="string") state.venue = "";
+
+  var $ = function(id){ return document.getElementById(id); };
+  var save = function(){ state.updated=Date.now(); try{ localStorage.setItem(KEY, JSON.stringify(state)); }catch(e){} };
+  function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c];}); }
+
+  function flash(){ var f=$("savedFlash"); if(!f) return; f.classList.add("show"); setTimeout(function(){ f.classList.remove("show"); },1400); }
+
+  // ---- render helpers ----
+  function renderOppChips(){
+    var wrap=$("oppTypeChips"); wrap.innerHTML="";
+    OPP_TYPES.forEach(function(t){
+      var b=document.createElement("button"); b.className="chip"; b.type="button"; b.textContent=t[0];
+      b.setAttribute("aria-pressed", state.draft.oppType===t[0] ? "true":"false");
+      b.onclick=function(){
+        state.draft.oppType = (state.draft.oppType===t[0]) ? "" : t[0];
+        save(); renderOppChips();
+      };
+      wrap.appendChild(b);
+    });
+    var sel = OPP_TYPES.filter(function(t){return t[0]===state.draft.oppType;})[0];
+    $("oppHint").innerHTML = sel ? ("<b>"+esc(sel[0])+"</b> → "+esc(sel[1])) : "";
+  }
+  function renderDial(){
+    Array.prototype.forEach.call($("dial").children,function(b){
+      b.setAttribute("aria-pressed", state.draft.aggression===b.dataset.agg ? "true":"false");
+    });
+  }
+  function renderScore(){
+    $("myGames").textContent = state.draft.myGames;
+    $("oppGames").textContent = state.draft.oppGames;
+    $("setNoLabel").textContent = state.draft.setNo;
+  }
+  function renderStats(){
+    var grid=$("statsGrid"); grid.innerHTML="";
+    STATS.forEach(function(x){
+      var d=document.createElement("div"); d.className="stat";
+      d.innerHTML='<div class="lab">'+esc(x[1])+(x[2]?'<small>'+esc(x[2])+'</small>':'')+'</div>'+
+        '<div class="ctr"><button class="rnd minus" type="button">−</button><span class="val">'+state.stats[x[0]]+'</span><button class="rnd plus" type="button">+</button></div>';
+      var val=d.querySelector(".val");
+      d.querySelector(".minus").onclick=function(){ state.stats[x[0]]=Math.max(0,state.stats[x[0]]-1); val.textContent=state.stats[x[0]]; save(); renderDerived(); renderCareer(); };
+      d.querySelector(".plus").onclick=function(){ state.stats[x[0]]++; val.textContent=state.stats[x[0]]; save(); renderDerived(); renderCareer(); };
+      grid.appendChild(d);
+    });
+    renderDerived();
+  }
+  function renderDerived(){
+    var s=state.stats;
+    var firstPct = s.firstTotal>0 ? Math.round(100*s.firstIn/s.firstTotal)+"%" : "—";
+    var we = s.errors>0 ? (s.winners/s.errors).toFixed(2) : (s.winners>0?"∞":"—");
+    var bp = s.bpTotal>0 ? s.bpWon+"/"+s.bpTotal : "—";
+    $("derived").innerHTML =
+      '<div>1st serve %<br><b>'+firstPct+'</b></div>'+
+      '<div>Winners : Errors<br><b>'+we+'</b></div>'+
+      '<div>Break points<br><b>'+bp+'</b></div>';
+  }
+  function setOf(b){ return b.myGames+"–"+b.oppGames; }
+  function renderSetLine(){
+    var line=$("setLine");
+    if(!state.breaks.length){ line.innerHTML='<span style="color:var(--muted);font-weight:600">No sets logged yet.</span>'; return; }
+    line.innerHTML="";
+    state.breaks.forEach(function(b){
+      var won = b.myGames>b.oppGames;
+      var p=document.createElement("span");
+      p.className="setpill "+(b.myGames===b.oppGames?"":(won?"win":"loss"));
+      p.textContent=setOf(b);
+      line.appendChild(p);
+    });
+  }
+  function renderLog(){
+    var log=$("log");
+    if(!state.breaks.length){ log.innerHTML='<div class="empty">Nothing logged yet — fill the boxes above and tap “Save set break”.</div>'; return; }
+    log.innerHTML="";
+    state.breaks.slice().reverse().forEach(function(b){
+      var item=document.createElement("div"); item.className="logitem";
+      var acts=(b.actions||[]).filter(Boolean).map(function(a){return "<li>"+esc(a)+"</li>";}).join("");
+      var when=new Date(b.ts).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'});
+      var bits=[];
+      if(b.oppType) bits.push(esc(b.oppType));
+      if(b.aggression) bits.push(esc(b.aggression.toUpperCase()));
+      if(b.working) bits.push("✓ "+esc(b.working));
+      if(b.notWorking) bits.push("✗ "+esc(b.notWorking));
+      item.innerHTML=
+        '<button class="del" data-id="'+b.id+'">delete</button>'+
+        '<div class="top"><span class="sc">Set '+b.setNo+' &nbsp; '+setOf(b)+'</span><span class="when">'+when+'</span></div>'+
+        (acts?'<ul>'+acts+'</ul>':'')+
+        (bits.length?'<div class="meta">'+bits.join(" · ")+'</div>':'');
+      item.querySelector(".del").onclick=function(){
+        state.breaks=state.breaks.filter(function(x){return x.id!==b.id;});
+        save(); renderLog(); renderSetLine();
+      };
+      log.appendChild(item);
+    });
+  }
+  function renderHeader(){
+    $("opp").value = state.opponent||"";
+    var nm = (state.opponent||"").trim();
+    $("oppLabel").textContent = nm ? nm.split(/[\s—-]/)[0] : "Opponent";
+  }
+  function renderDraftFields(){
+    $("working").value=state.draft.working; $("notWorking").value=state.draft.notWorking;
+    $("a1").value=state.draft.a1; $("a2").value=state.draft.a2; $("a3").value=state.draft.a3;
+  }
+  // ---- career / season aggregation ----
+  var CKEY = "zt-career-v1";
+  var career;
+  try { career = JSON.parse(localStorage.getItem(CKEY)) || {matches:[]}; } catch(e){ career = {matches:[]}; }
+  if(!career.matches) career.matches = [];
+  var saveCareer = function(){ try{ localStorage.setItem(CKEY, JSON.stringify(career)); }catch(e){} };
+
+  function archiveCurrent(){
+    if(!state.breaks.length) return;
+    career.matches.push({ opponent:state.opponent, ts:state.updated,
+      breaks:JSON.parse(JSON.stringify(state.breaks)), stats:JSON.parse(JSON.stringify(state.stats)) });
+    saveCareer();
+  }
+
+  function aggregate(){
+    // archived matches + the live in-progress match (so totals feel live)
+    var live = state.breaks.length ? {opponent:state.opponent, ts:state.updated, breaks:state.breaks, stats:state.stats} : null;
+    var all = career.matches.concat(live?[live]:[]);
+    var t = {played:all.length, gp:0, gw:0, setsW:0, setsL:0, results:[]};
+    STATS.forEach(function(x){ t[x[0]]=0; });
+    all.forEach(function(m){
+      var sw=0, sl=0;
+      (m.breaks||[]).forEach(function(b){
+        t.gp += b.myGames + b.oppGames; t.gw += b.myGames;
+        if(b.myGames>b.oppGames) sw++; else if(b.oppGames>b.myGames) sl++;
+      });
+      t.setsW+=sw; t.setsL+=sl;
+      t.results.push(sw>sl?"W":(sl>sw?"L":"-"));
+      STATS.forEach(function(x){ t[x[0]] += (m.stats&&m.stats[x[0]])||0; });
+    });
+    t.wins = t.results.filter(function(r){return r==="W";}).length;
+    t.losses = t.results.filter(function(r){return r==="L";}).length;
+    // streak: trailing run of identical decided results
+    var dec = t.results.filter(function(r){return r!=="-";});
+    var streak="—", scls="";
+    if(dec.length){ var last=dec[dec.length-1], n=0; for(var i=dec.length-1;i>=0 && dec[i]===last;i--) n++; streak=last+n; scls=(last==="W"?"win":"loss"); }
+    t.streak=streak; t.streakCls=scls;
+    return t;
+  }
+
+  function renderCareer(){
+    var t=aggregate(), g=$("careerGrid");
+    var winPct = (t.wins+t.losses)>0 ? Math.round(100*t.wins/(t.wins+t.losses))+"%" : "—";
+    var gwPct  = t.gp>0 ? Math.round(100*t.gw/t.gp)+"%" : "—";
+    var serve  = t.firstTotal>0 ? Math.round(100*t.firstIn/t.firstTotal)+"%" : "—";
+    var we     = t.errors>0 ? (t.winners/t.errors).toFixed(2) : (t.winners>0?"∞":"—");
+    var bp     = t.bpTotal>0 ? t.bpWon+"/"+t.bpTotal : "—";
+    var tiles=[
+      ["Matches", t.played, ""],
+      ["Win–Loss", t.wins+"–"+t.losses, ""],
+      ["Win %", winPct, ""],
+      ["Streak", t.streak, t.streakCls],
+      ["Sets W–L", t.setsW+"–"+t.setsL, ""],
+      ["Games won", t.gw+"/"+t.gp, ""],
+      ["Game win %", gwPct, ""],
+      ["Serve accuracy", serve, ""],
+      ["Aces", t.aces, ""],
+      ["Double faults", t.dfs, ""],
+      ["Winners : Errors", we, ""],
+      ["Break points", bp, ""]
+    ];
+    g.innerHTML = tiles.map(function(x){
+      return '<div class="ctile"><div class="v'+(x[2]?" "+x[2]:"")+'">'+esc(x[1])+'</div><div class="k">'+esc(x[0])+'</div></div>';
+    }).join("");
+  }
+
+  function renderAll(){ renderHeader(); renderScore(); renderDraftFields(); renderOppChips(); renderDial(); renderStats(); renderSetLine(); renderLog(); renderCareer(); }
+
+  // ---- dropdown adders ----
+  function setupAdders(){
+    Array.prototype.forEach.call(document.querySelectorAll("select.adder"),function(sel){
+      var opts = LISTS[sel.dataset.list] || [];
+      var ph = sel.dataset.mode==="append" ? "＋ Add a common option…" : "Pick a common action…";
+      sel.innerHTML = '<option value="">'+ph+'</option>' + opts.map(function(o){ return '<option>'+esc(o)+'</option>'; }).join("");
+      sel.addEventListener("change",function(){
+        var val=sel.value; if(!val){ return; }
+        var fld=$(sel.dataset.target);
+        if(sel.dataset.mode==="append"){
+          var cur=(fld.value||"").trim();
+          if(cur.split(/\s*,\s*/).indexOf(val)===-1){ fld.value = cur ? (cur+", "+val) : val; }
+        } else {
+          fld.value = val;
+        }
+        sel.value="";                                   // reset back to placeholder
+        fld.dispatchEvent(new Event("input",{bubbles:true})); // persist via existing handler
+      });
+    });
+  }
+  setupAdders();
+
+  // ---- wiring ----
+  $("opp").addEventListener("input",function(){ state.opponent=this.value; save(); renderHeader(); });
+
+  Array.prototype.forEach.call(document.querySelectorAll("[data-step]"),function(btn){
+    btn.onclick=function(){
+      var k=btn.dataset.step, d=parseInt(btn.dataset.d,10);
+      state.draft[k]=Math.max(0,state.draft[k]+d); save(); renderScore(); renderCareer();
+    };
+  });
+
+  ["working","notWorking","a1","a2","a3"].forEach(function(id){
+    $(id).addEventListener("input",function(){ state.draft[id]=this.value; save(); });
+  });
+
+  Array.prototype.forEach.call($("dial").children,function(b){
+    b.onclick=function(){ state.draft.aggression = (state.draft.aggression===b.dataset.agg)?"":b.dataset.agg; save(); renderDial(); };
+  });
+
+  $("saveBreak").onclick=function(){
+    var d=state.draft;
+    if(d.myGames===0 && d.oppGames===0 && !d.working && !d.notWorking && !d.a1 && !d.a2 && !d.a3){
+      alert("Add a score or at least one note before saving."); return;
+    }
+    state.breaks.push({
+      id: Date.now().toString(36)+Math.random().toString(36).slice(2,6),
+      ts: Date.now(), setNo:d.setNo, myGames:d.myGames, oppGames:d.oppGames,
+      working:d.working, notWorking:d.notWorking, oppType:d.oppType, aggression:d.aggression,
+      actions:[d.a1,d.a2,d.a3], statsSnapshot: JSON.parse(JSON.stringify(state.stats))
+    });
+    // advance to next set, clear per-set fields (keep opponent type + running stats)
+    state.draft = blankDraft();
+    state.draft.setNo = (state.breaks[state.breaks.length-1].setNo||0)+1;
+    state.draft.oppType = state.breaks[state.breaks.length-1].oppType;
+    save(); renderAll(); flash();
+    $("log").scrollIntoView({behavior:"smooth",block:"start"});
+  };
+
+  $("newMatch").onclick=function(){
+    if(state.breaks.length && !confirm("Finish this match and start a new one? It will be saved to your career history.")) return;
+    archiveCurrent();
+    state = blankState(); save(); renderAll();
+  };
+
+  $("resetCareer").onclick=function(){
+    if(!career.matches.length){ alert("No career history yet."); return; }
+    if(!confirm("Erase all "+career.matches.length+" archived matches? This cannot be undone.")) return;
+    career = {matches:[]}; saveCareer(); renderCareer();
+  };
+
+  function summaryText(){
+    var L=[]; L.push("ZULU TENNIS — MATCH SUMMARY");
+    if(state.opponent) L.push("Opponent: "+state.opponent);
+    L.push(new Date().toLocaleString());
+    if(state.breaks.length){
+      L.push(""); L.push("Sets: "+state.breaks.map(setOf).join(", "));
+      state.breaks.forEach(function(b){
+        L.push(""); L.push("• Set "+b.setNo+"  "+setOf(b)+(b.aggression?"  ["+b.aggression+"]":""));
+        if(b.working) L.push("   ✓ "+b.working);
+        if(b.notWorking) L.push("   ✗ "+b.notWorking);
+        (b.actions||[]).filter(Boolean).forEach(function(a,i){ L.push("   "+(i+1)+". "+a); });
+      });
+    }
+    var s=state.stats;
+    L.push(""); L.push("STATS");
+    L.push("  1st serve %: "+(s.firstTotal>0?Math.round(100*s.firstIn/s.firstTotal)+"% ("+s.firstIn+"/"+s.firstTotal+")":"—"));
+    L.push("  Aces: "+s.aces+"   Double faults: "+s.dfs);
+    L.push("  Winners: "+s.winners+"   Unforced errors: "+s.errors);
+    L.push("  Break points: "+(s.bpTotal>0?s.bpWon+"/"+s.bpTotal:"—"));
+    L.push(""); L.push("zulu-tennis · by Veyane");
+    return L.join("\n");
+  }
+
+  $("copySummary").onclick=function(){
+    var t=summaryText();
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){ alert("Match summary copied to clipboard."); },function(){ window.prompt("Copy your summary:",t); });
+    } else { window.prompt("Copy your summary:",t); }
+  };
+  $("shareSummary").onclick=function(){
+    var t=summaryText();
+    if(navigator.share){ navigator.share({title:"Zulu Tennis — Match Summary",text:t}).catch(function(){}); }
+    else { $("copySummary").click(); }
+  };
+
+  renderAll();
+})();
+</script>
 </body>
 </html>
