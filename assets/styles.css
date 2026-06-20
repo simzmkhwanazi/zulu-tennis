@@ -91,13 +91,14 @@ small { color: var(--muted); }
 
 /* ---------- Top bar ---------- */
 .topbar {
-  position: sticky; top: 0; z-index: 50; height: 60px;
-  display: flex; align-items: center; gap: 14px;
-  padding: 0 18px; background: color-mix(in srgb, var(--surface) 88%, transparent);
+  position: sticky; top: 0; z-index: 50; height: 60px; flex-wrap: nowrap;
+  display: flex; align-items: center; gap: 12px; box-sizing: content-box; padding-top: env(safe-area-inset-top);
+  padding-left: max(14px, env(safe-area-inset-left)); padding-right: max(14px, env(safe-area-inset-right));
+  background: color-mix(in srgb, var(--surface) 88%, transparent);
   backdrop-filter: saturate(150%) blur(10px); border-bottom: 1px solid var(--border);
 }
 /* Brand: "ZULU TENNIS  |  by Veyane" (no icon in wordmark) */
-.topbar .brand { display:flex; align-items:center; gap:10px; color: var(--text); }
+.topbar .brand { display:flex; align-items:center; gap:10px; color: var(--text); white-space:nowrap; flex:0 1 auto; min-width:0; }
 .topbar .brand .wm { font-family: var(--serif); font-weight:600; letter-spacing:.01em; font-size:1.2rem; }
 .topbar .brand .sep { width:1px; height:18px; background: var(--border); display:inline-block; }
 .topbar .brand .by { font-weight:600; color:var(--muted); font-size:.82rem; font-style:italic; }
@@ -305,8 +306,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
    BENCH DECK — the swipeable front door (index.html)
    =================================================================== */
 .deckbar { position: sticky; top: 0; z-index: 50; display:flex; align-items:center; gap:8px;
-  height: 56px; padding: 0 14px; background: color-mix(in srgb, var(--surface) 90%, transparent);
+  height: 56px; box-sizing: content-box; padding-top: env(safe-area-inset-top);
+  padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right));
+  background: color-mix(in srgb, var(--surface) 90%, transparent);
   backdrop-filter: saturate(150%) blur(10px); border-bottom: 1px solid var(--border); }
+.pill-link.primary { background: var(--hl); color:#141414; border-color: var(--hl); }
 .deckbar .brand { display:flex; align-items:center; gap:8px; font-family: var(--serif); font-weight:600; font-size:1.06rem; color: var(--text); text-decoration:none; }
 .deckbar .brand img { height: 26px; width:auto; }
 .deckbar .spacer { flex:1; }
@@ -315,11 +319,29 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .pill-link:hover { border-color: var(--hl); text-decoration:none; }
 .pill-link.lib { opacity:.72; }
 
-.deck { height: calc(100dvh - 56px); overflow-y:auto; scroll-snap-type: y mandatory;
-  -webkit-overflow-scrolling: touch; background: #0b0b0b; }
-.deck > .deckcard { min-height: calc(100dvh - 56px); scroll-snap-align: start; scroll-snap-stop: always;
-  display:flex; flex-direction:column; justify-content:center; padding: 16px clamp(14px,5vw,40px) 30px; box-sizing:border-box; }
-.deckcard .courtside { margin:0 auto; width:100%; max-width: 660px; }
+.deck { height: calc(100dvh - 56px - env(safe-area-inset-top)); overflow-y:auto; overflow-x:hidden;
+  scroll-snap-type: y mandatory; -webkit-overflow-scrolling: touch; background: #0b0b0b; }
+.deck > .deckcard { min-height: calc(100dvh - 56px - env(safe-area-inset-top)); scroll-snap-align: start; scroll-snap-stop: always;
+  display:flex; flex-direction:column; justify-content:center; box-sizing:border-box;
+  padding: 16px max(20px, env(safe-area-inset-right)) max(28px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
+.deckcard .courtside { margin:0 auto; width:100%; max-width: min(640px, 100%); }
+
+/* Landing / "what it is" intro card + big Set-Break button */
+.deckcard.intro { text-align:center; }
+.deckcard.intro .intro-inner { margin:0 auto; max-width: min(540px,100%); display:flex; flex-direction:column; align-items:center; }
+.intro-crest { height: clamp(112px, 24vw, 168px); margin-bottom: 8px; }
+.intro-zt { font-family: var(--serif); font-weight:600; font-size: clamp(2.3rem, 11vw, 3.5rem); color:#fff; line-height:1; }
+.intro-by { font-family: var(--serif); font-style:italic; color: var(--hl); font-size:1.1rem; margin-top:4px; }
+.intro-what { color:#c7c7c0; font-size: clamp(1rem,4.2vw,1.16rem); line-height:1.5; margin:14px 6px 0; }
+.bigcta { display:flex; flex-direction:column; align-items:center; gap:2px; width:100%; margin-top:26px;
+  background: var(--hl); color:#141414; font-weight:850; font-size: clamp(1.1rem,5vw,1.35rem);
+  padding:18px 20px; border-radius:16px; text-decoration:none; box-shadow:0 10px 28px rgba(255,212,0,.22); }
+.bigcta small { font-weight:700; font-size:.66em; opacity:.78; }
+.bigcta:hover { background:#ffe24d; text-decoration:none; }
+.intro-hint { color: var(--muted); font-size:.85rem; margin-top:20px; letter-spacing:.03em; }
+
+/* safe-area for the deep-page content too */
+.content { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
 .deck-hd { display:flex; align-items:center; gap:8px; font-size:.7rem; font-weight:800; letter-spacing:.1em;
   text-transform:uppercase; color: var(--hl-deep); margin: 0 0 6px 2px; }
 :root[data-theme="dark"] .deck-hd, :root:not([data-theme="light"]) .deck-hd { color: var(--hl); }
@@ -338,7 +360,7 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .deck.benchmax .deepen { opacity:.6; font-size:.85rem; }
 
 /* dot rail */
-.dotrail { position: fixed; right: 8px; top: 50%; transform: translateY(-50%); z-index:55;
+.dotrail { position: fixed; right: max(6px, env(safe-area-inset-right)); top: 50%; transform: translateY(-50%); z-index:55;
   display:flex; flex-direction:column; gap:9px; }
 .dotrail button { width:13px; height:13px; border-radius:50%; border:2px solid var(--muted);
   background: transparent; padding:0; cursor:pointer; position:relative; -webkit-tap-highlight-color:transparent; }
@@ -507,12 +529,17 @@ ul.check.print-fill li::before { background: var(--surface); }
 /* ---------- iPhone-first refinements (used 90% on mobile) ---------- */
 @media (max-width: 600px) {
   body { font-size: 16.5px; }
-  .topbar { height: 56px; padding: 0 12px; gap: 10px; }
+  .topbar { height: 56px; gap: 8px;
+    padding-left: max(12px, env(safe-area-inset-left)); padding-right: max(12px, env(safe-area-inset-right)); }
+  /* keep the brand from wrapping or crowding the back/theme controls */
+  .topbar .brand .by, .topbar .brand .sep { display: none; }
+  .topbar .brand .wm { font-size: 1.02rem; }
+  .benchback { font-size: .76rem; padding: 6px 10px; }
   .iconbtn { height: 42px; min-width: 42px; }            /* >= 44px touch target w/ padding */
   .sidebar { top: 56px; }
   .scrim { top: 56px; }
   html { scroll-padding-top: 70px; }
-  .content { padding: 18px 16px 96px; }
+  .content { padding: 18px max(16px, env(safe-area-inset-left)) 96px max(16px, env(safe-area-inset-right)); }
 
   h1 { font-size: 1.7rem; }
   h2 { font-size: 1.3rem; margin-top: 1.8rem; }

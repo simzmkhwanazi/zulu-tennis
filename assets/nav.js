@@ -236,7 +236,7 @@
     if (tb.querySelector(".benchback")) return;
     var brand = tb.querySelector(".brand"); if (!brand) return;
     var a = document.createElement("a");
-    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Ukushaya iTennis";
+    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Home";
     brand.insertAdjacentElement("afterend", a);
   }
 

@@ -21,17 +21,29 @@
 <body>
 
 <header class="deckbar">
-  <a class="brand" href="index.html"><img src="assets/logo.svg" alt=""><span>Zulu Tennis</span></a>
+  <a class="brand" href="index.html"><img src="assets/logo.svg" alt="Zulu Tennis"></a>
   <span class="spacer"></span>
-  <button class="iconbtn" id="contrastToggle" aria-label="Bench contrast" title="Sunlight contrast">◐</button>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾</button>
-  <a class="pill-link" href="set-break.html">Set-Break</a>
+  <a class="pill-link primary" href="set-break.html">🎾 Set-Break</a>
   <a class="pill-link lib" href="library.html">Library</a>
+  <button class="iconbtn" id="contrastToggle" aria-label="Sunlight contrast" title="Sunlight contrast">◐</button>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾</button>
 </header>
 
 <nav class="dotrail" id="dotrail" aria-label="Deck cards"></nav>
 
 <main class="deck" id="deck">
+
+  <!-- 0 · Landing / what it is -->
+  <section class="deckcard intro" data-intro>
+    <div class="intro-inner">
+      <img class="intro-crest" src="assets/logo.svg" alt="">
+      <h1 class="intro-zt">Zulu Tennis</h1>
+      <div class="intro-by">by Veyane</div>
+      <p class="intro-what">A free decision playbook for competitive singles — <b>what to do with every ball</b>, glanceable between games. Eight cards: the whole game.</p>
+      <a class="bigcta" href="set-break.html">🎾 Playing a match now?<small>Open the Set-Break Planner</small></a>
+      <div class="intro-hint">↓ swipe up for the game plan</div>
+    </div>
+  </section>
 
   <!-- 1 -->
   <section class="deckcard" data-name="Read the ball">
@@ -177,7 +189,7 @@
 (function(){
   var deck=document.getElementById('deck');
   var cards=[].slice.call(deck.querySelectorAll('.deckcard'));
-  var topics=cards.filter(function(c){return !c.hasAttribute('data-done');});
+  var topics=cards.filter(function(c){return !c.hasAttribute('data-done') && !c.hasAttribute('data-intro');});
   var rail=document.getElementById('dotrail');
 
   // build dot rail
