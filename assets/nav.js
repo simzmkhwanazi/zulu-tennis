@@ -54,6 +54,7 @@
       { n: "16", file: "16-complete-match-playbook.html",  t: "Complete Match Playbook" },
       { n: "24", file: "24-ai-review-framework.html",      t: "AI Review Framework" },
       { n: "30", file: "30-drill-library.html",            t: "Drill Library" },
+      { n: "",   file: "videos.html",                      t: "🎥 Drills & Strategy Videos" },
     ]},
   ];
 
