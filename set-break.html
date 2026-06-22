@@ -127,19 +127,19 @@
 
     <!-- MATCH -->
     <div class="sb-card reveal">
-      <h2>🎾 This match <span class="savestatus" id="saveStatus">Auto-saving…</span></h2>
+      <h2><span id="metaTitle">🎾 This match</span> <span class="savestatus" id="saveStatus">Auto-saving…</span></h2>
       <div class="matchbar">
-        <div class="grow">
+        <div class="grow" id="oppField">
           <label class="fld" for="opp">Opponent</label>
           <input class="sb-in" id="opp" type="text" placeholder="e.g. Sipho M." autocomplete="off">
         </div>
         <button class="btn ghost" id="newMatch" type="button">＋ New match</button>
       </div>
-      <div class="sb-grid" style="margin-top:10px">
-        <div><label class="fld" for="ohandle">Opponent IG @handle</label><input class="sb-in" id="ohandle" type="text" placeholder="@sipho (for the share card)" autocomplete="off"></div>
-        <div><label class="fld" for="mdate">Date</label><input class="sb-in" id="mdate" type="date"></div>
+      <div class="sb-grid" style="margin-top:10px" id="metaGrid">
+        <div id="handleField"><label class="fld" for="ohandle">Opponent IG @handle</label><input class="sb-in" id="ohandle" type="text" placeholder="@sipho (for the share card)" autocomplete="off"></div>
+        <div id="dateField"><label class="fld" for="mdate">Date</label><input class="sb-in" id="mdate" type="date"></div>
       </div>
-      <div style="margin-top:10px"><label class="fld" for="venue">Place</label><input class="sb-in" id="venue" type="text" placeholder="e.g. Wanderers Country Club" autocomplete="off"></div>
+      <div style="margin-top:10px" id="placeField"><label class="fld" for="venue">Place</label><input class="sb-in" id="venue" type="text" placeholder="e.g. Wanderers Country Club" autocomplete="off"></div>
     </div>
 
     <!-- OPPONENT STYLE → WHAT TO DO TO WIN -->
@@ -192,7 +192,7 @@
 
       <label class="fld" style="margin-top:10px">Drills this session</label>
       <div class="chips mini" id="drillChips" style="margin-bottom:6px"></div>
-      <a class="sub" href="drills.html" style="display:inline-block">Browse all drills &amp; how-to →</a>
+      <a class="sub" id="browseDrills" href="drills.html" style="display:inline-block">Browse these drills &amp; how-to →</a>
 
       <label class="fld" style="margin-top:12px">What I worked on</label>
       <div class="chips mini" id="focusChips" style="margin-bottom:8px"></div>
@@ -498,7 +498,7 @@
     var L=[state.sessionType==="practice"?"ZULU TENNIS — PRACTICE":"ZULU TENNIS — MATCH"];
     if(state.sessionType==="practice"){
       L.push((state.practiceWith==="solo"?"Solo practice":"With a partner")+(state.practiceWith!=="solo"&&state.partner?(" — "+state.partner):""));
-      L.push("Date: "+(state.date||todayISO())+(state.venue?("   Place: "+state.venue):""));
+      L.push("Date: "+(state.date||todayISO()));
       if(state.practiceDrills&&state.practiceDrills.length) L.push("Drills: "+state.practiceDrills.join(", "));
       if(state.practiceFocus) L.push("Worked on: "+state.practiceFocus);
       if(state.practiceNote) L.push("Notes: "+state.practiceNote);
@@ -636,7 +636,7 @@
     }
 
     // footer
-    var foot=[]; if(state.venue) foot.push(state.venue); foot.push(new Date(state.date||Date.now()).toLocaleDateString());
+    var foot=[]; if(state.venue && state.sessionType!=="practice") foot.push(state.venue); foot.push(new Date(state.date||Date.now()).toLocaleDateString());
     ctx.strokeStyle=YELLOW; ctx.lineWidth=3; ctx.beginPath(); ctx.moveTo(ML,H-220); ctx.lineTo(W-110,H-220); ctx.stroke();
     ctx.fillStyle=MUTE; ctx.font="600 34px "+sans; ctx.fillText(foot.join("  ·  "), ML, H-150);
     ctx.fillStyle=INK; ctx.font="italic 600 30px "+sans; ctx.fillText("zulu-tennis · by Veyane", ML, H-100);
@@ -679,6 +679,15 @@
     if(stc) stc.hidden=practice;      // opponent style is match-only
     if(wc) wc.hidden=practice;        // working/not-working is match-only
     if(pc) pc.hidden=!practice;       // practice card only in practice
+    // top meta card: in practice it's "This tennis session" — drop opponent/@handle/place
+    var mt=$("metaTitle"), of=$("oppField"), hf=$("handleField"), pf=$("placeField"),
+        mg=$("metaGrid"), nm=$("newMatch");
+    if(mt) mt.textContent = practice ? "🎾 This tennis session" : "🎾 This match";
+    if(of) of.hidden=practice;        // opponent — match/partner only
+    if(hf) hf.hidden=practice;        // IG @handle — match only
+    if(pf) pf.hidden=practice;        // place — hidden in practice (privacy)
+    if(mg) mg.style.gridTemplateColumns = practice ? "1fr" : "";  // date spans full width
+    if(nm) nm.textContent = practice ? "＋ New session" : "＋ New match";
   }
   function renderDrillChips(){
     var box=$("drillChips"); if(!box) return; box.innerHTML="";
@@ -694,10 +703,12 @@
       box.appendChild(b);
     });
   }
+  function updateBrowse(){ var a=$("browseDrills"); if(a) a.href="drills.html?with="+(state.practiceWith==="solo"?"solo":"partner"); }
   function setupPractice(){
     var f=$("practiceFocus"), n=$("practiceNote"), chips=$("focusChips"),
         wsel=$("practiceWith"), pp=$("practicePartner"), plbl=$("partnerLbl");
-    if(wsel){ wsel.value=state.practiceWith; wsel.onchange=function(){ state.practiceWith=this.value; save(); renderDrillChips(); togglePartner(); }; }
+    if(wsel){ wsel.value=state.practiceWith; wsel.onchange=function(){ state.practiceWith=this.value; save(); renderDrillChips(); togglePartner(); updateBrowse(); }; }
+    updateBrowse();
     function togglePartner(){ var solo=state.practiceWith==="solo"; if(plbl) plbl.style.display=solo?"none":""; if(pp) pp.style.display=solo?"none":""; }
     if(pp){ pp.value=state.partner||""; pp.oninput=function(){ state.partner=this.value; save(); }; }
     togglePartner();

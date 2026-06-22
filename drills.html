@@ -16,7 +16,15 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
 <link rel="stylesheet" href="assets/styles.css">
-<style>.video-list.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));}</style>
+<style>
+.video-list.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));}
+.drillfilter{display:flex;flex-wrap:wrap;gap:8px;margin:16px 0 4px;position:sticky;top:0;z-index:5;
+  background:var(--bg);padding:8px 0;}
+.drillfilter button{appearance:none;border:1.5px solid var(--border);background:var(--surface);color:var(--text);
+  border-radius:999px;padding:8px 14px;font-weight:700;font-size:.88rem;cursor:pointer;}
+.drillfilter button[aria-selected="true"]{background:var(--hl);color:#141414;border-color:var(--hl);}
+.drillgroup[hidden]{display:none;}
+</style>
 </head>
 <body>
 
@@ -59,7 +67,14 @@
       </div>
     </div>
 
+    <div class="drillfilter" id="drillFilter" role="tablist" aria-label="Filter drills">
+      <button type="button" data-f="partner">🤝 With a partner</button>
+      <button type="button" data-f="solo">🎯 Training alone</button>
+      <button type="button" data-f="all">All</button>
+    </div>
+
     <!-- ============ WITH A PARTNER ============ -->
+    <section id="group-partner" class="drillgroup">
     <h2 id="partner">🤝 With a partner</h2>
 
     <h3 id="open">🎲 Open / decision drills</h3>
@@ -152,7 +167,9 @@
       <a class="video-item" href="https://www.youtube.com/watch?v=eMq0oS36lf8" target="_blank" rel="noopener"><span class="meta"><span class="t">Approach footwork — moving forward</span><span class="ch">RacquetFlex</span></span></a>
     </div>
 
+    </section>
     <!-- ============ TRAINING ALONE ============ -->
+    <section id="group-solo" class="drillgroup">
     <h2 id="solo">🎯 Training alone</h2>
     <p class="lead" style="margin-top:-4px">No hitting partner? You can still train hard. A ball machine,
     a backboard and a basket of serves cover most of the game — and movement/shadow work needs nothing
@@ -222,6 +239,8 @@
       <a class="video-item" href="https://www.youtube.com/watch?v=E0XYkeO17zg" target="_blank" rel="noopener"><span class="meta"><span class="t">5 tennis drills you can do alone</span><span class="ch">Hendrik Jebens</span></span></a>
     </div>
 
+    </section>
+
     <div class="next-action reveal">
       <div class="lbl">Your next highest-value action</div>
       <p style="margin:.3rem 0 0">Open the <a href="set-break.html">Practice planner</a>, choose
@@ -236,5 +255,22 @@
 
 <script src="assets/courts.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script>
+(function(){
+  var bar=document.getElementById("drillFilter");
+  var gp=document.getElementById("group-partner"), gs=document.getElementById("group-solo");
+  if(!bar||!gp||!gs) return;
+  var btns=bar.querySelectorAll("button");
+  function apply(f){
+    gp.hidden = (f==="solo");
+    gs.hidden = (f==="partner");
+    Array.prototype.forEach.call(btns,function(b){ b.setAttribute("aria-selected", b.getAttribute("data-f")===f?"true":"false"); });
+    try{ history.replaceState(null,"", f==="all"?location.pathname:(location.pathname+"?with="+f)); }catch(e){}
+  }
+  Array.prototype.forEach.call(btns,function(b){ b.onclick=function(){ apply(b.getAttribute("data-f")); window.scrollTo(0,0); }; });
+  var m=(location.search.match(/[?&]with=(solo|partner)/)||[])[1];
+  apply(m||"all");
+})();
+</script>
 </body>
 </html>
