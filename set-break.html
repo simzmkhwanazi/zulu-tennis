@@ -120,6 +120,11 @@
       <h1>Set-Break Planner</h1>
     </section>
 
+    <!-- SESSION TYPE -->
+    <div class="sb-card reveal" style="padding:12px 14px;margin-top:0">
+      <div class="chips" id="sessionType" aria-label="Session type"></div>
+    </div>
+
     <!-- MATCH -->
     <div class="sb-card reveal">
       <h2>🎾 This match <span class="savestatus" id="saveStatus">Auto-saving…</span></h2>
@@ -163,7 +168,7 @@
     </div>
 
     <!-- SCORE -->
-    <div class="sb-card reveal">
+    <div class="sb-card reveal" id="scoreCard">
       <h2>🎯 The score</h2>
       <label class="fld">Sets played</label>
       <div class="chips" id="setCount"></div>
@@ -171,8 +176,19 @@
       <div id="setsWrap"></div>
     </div>
 
+    <!-- PRACTICE (no score) -->
+    <div class="sb-card reveal" id="practiceCard" hidden>
+      <h2>🛠 Practice session</h2>
+      <p class="sub">No points counted — just log what you worked on.</p>
+      <label class="fld">What I worked on</label>
+      <div class="chips mini" id="focusChips" style="margin-bottom:8px"></div>
+      <textarea class="sb-in" id="practiceFocus" placeholder="e.g. serve+1 wide, cross-court depth, approach &amp; finish…"></textarea>
+      <label class="fld" style="margin-top:10px">How it went / next time</label>
+      <textarea class="sb-in" id="practiceNote" placeholder="What clicked, what to keep drilling…"></textarea>
+    </div>
+
     <!-- STATS (tucked away) -->
-    <details class="box reveal">
+    <details class="box reveal" id="statsBox">
       <summary>📊 Match stats (optional)</summary>
       <div class="boxbody">
         <p class="sub">Tap as points happen — running totals for the match.</p>
@@ -254,7 +270,7 @@
   function todayISO(){ var d=new Date(); function p(n){return (n<10?"0":"")+n;} return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate()); }
   function blankStats(){ var s={}; STATS.forEach(function(x){ s[x[0]]=0; }); return s; }
   function newSet(n){ return {setNo:n,setType:"set",result:"won",myGames:0,oppGames:0,tbMe:0,tbOpp:0,tbLong:false,stbMe:0,stbOpp:0,stbLong:false}; }
-  function blankState(){ return {opponent:"",oppHandle:"",date:todayISO(),venue:"",styles:[],working:"",notWorking:"",numSets:3,sets:[newSet(1),newSet(2),newSet(3)],stats:blankStats(),updated:Date.now()}; }
+  function blankState(){ return {sessionType:"match",opponent:"",oppHandle:"",date:todayISO(),venue:"",styles:[],working:"",notWorking:"",practiceFocus:"",practiceNote:"",numSets:3,sets:[newSet(1),newSet(2),newSet(3)],stats:blankStats(),updated:Date.now()}; }
 
   var state;
   try{ state=JSON.parse(localStorage.getItem(KEY))||blankState(); }catch(e){ state=blankState(); }
@@ -270,6 +286,9 @@
   if(!Array.isArray(state.styles)) state.styles=[];
   if(typeof state.working!=="string") state.working="";
   if(typeof state.notWorking!=="string") state.notWorking="";
+  if(state.sessionType!=="practice") state.sessionType="match";
+  if(typeof state.practiceFocus!=="string") state.practiceFocus="";
+  if(typeof state.practiceNote!=="string") state.practiceNote="";
   if(!Array.isArray(state.sets)||!state.sets.length) state.sets=[newSet(1),newSet(2),newSet(3)];
   state.sets=state.sets.map(function(o){ var s=newSet(o&&o.setNo||1); if(o) for(var k in s){ if(o[k]!==undefined) s[k]=o[k]; } return s; });
   if(!state.numSets) state.numSets=state.sets.length||3;
@@ -423,10 +442,10 @@
   if(!career.matches) career.matches=[];
   var saveCareer=function(){ try{ localStorage.setItem(CKEY,JSON.stringify(career)); }catch(e){} };
   function matchHasData(){ return state.sets.some(setHasScore)||STATS.some(function(x){return state.stats[x[0]];}); }
-  function archiveCurrent(){ if(!matchHasData()) return; career.matches.push({opponent:state.opponent,oppHandle:state.oppHandle,date:state.date,venue:state.venue,styles:state.styles,ts:state.updated,sets:JSON.parse(JSON.stringify(state.sets)),stats:JSON.parse(JSON.stringify(state.stats))}); saveCareer(); }
+  function archiveCurrent(){ if(state.sessionType==="practice"||!matchHasData()) return; career.matches.push({sessionType:state.sessionType,opponent:state.opponent,oppHandle:state.oppHandle,date:state.date,venue:state.venue,styles:state.styles,ts:state.updated,sets:JSON.parse(JSON.stringify(state.sets)),stats:JSON.parse(JSON.stringify(state.stats))}); saveCareer(); }
   function aggregate(){
     var live=matchHasData()?{sets:state.sets,stats:state.stats}:null;
-    var all=career.matches.concat(live?[live]:[]);
+    var all=career.matches.filter(function(m){return m.sessionType!=="practice";}).concat(live?[live]:[]);
     var t={played:all.length,gp:0,gw:0,setsW:0,setsL:0,results:[]}; STATS.forEach(function(x){ t[x[0]]=0; });
     all.forEach(function(m){
       var sw=0,sl=0,sets=m.sets||m.breaks||[];
@@ -454,7 +473,15 @@
 
   // ---- summary ----
   function summaryText(){
-    var L=["ZULU TENNIS — MATCH"];
+    var L=[state.sessionType==="practice"?"ZULU TENNIS — PRACTICE":"ZULU TENNIS — MATCH"];
+    if(state.sessionType==="practice"){
+      L.push("Date: "+(state.date||todayISO())+(state.venue?("   Place: "+state.venue):""));
+      if(state.practiceFocus) L.push("Worked on: "+state.practiceFocus);
+      if(state.working) L.push("Working: "+state.working);
+      if(state.notWorking) L.push("Fix: "+state.notWorking);
+      if(state.practiceNote) L.push("Notes: "+state.practiceNote);
+      L.push(""); L.push("zulu-tennis · by Veyane"); return L.join("\n");
+    }
     if(state.opponent) L.push("Opponent: "+state.opponent);
     if(state.styles.length) L.push("Style: "+state.styles.join(", "));
     L.push("Date: "+(state.date||todayISO())+(state.venue?("   Place: "+state.venue):""));
@@ -595,7 +622,35 @@
     });
   };
 
-  function renderAll(){ renderHeader(); renderStyle(); setupWorking(); renderCount(); rebuildSets(); updateTally(); renderStats(); renderCareer(); }
+  // ---- session type: Match vs Practice (no points) ----
+  function renderSessionType(){
+    var wrap=$("sessionType"); if(!wrap) return; wrap.innerHTML="";
+    [["match","🎾 Match"],["practice","🛠 Practice (no score)"]].forEach(function(o){
+      var b=document.createElement("button"); b.className="chip"; b.type="button"; b.textContent=o[1];
+      b.setAttribute("aria-pressed", state.sessionType===o[0]?"true":"false");
+      b.onclick=function(){ state.sessionType=o[0]; save(); renderSessionType(); applyMode(); };
+      wrap.appendChild(b);
+    });
+  }
+  function applyMode(){
+    var practice=state.sessionType==="practice";
+    var sc=$("scoreCard"), sb=$("statsBox"), pc=$("practiceCard");
+    if(sc) sc.hidden=practice;        // no score in practice
+    if(sb) sb.hidden=practice;        // match stats hidden in practice
+    if(pc) pc.hidden=!practice;       // practice card only in practice
+  }
+  function setupPractice(){
+    var f=$("practiceFocus"), n=$("practiceNote"), chips=$("focusChips");
+    if(f){ f.value=state.practiceFocus||""; f.oninput=function(){ state.practiceFocus=this.value; save(); }; }
+    if(n){ n.value=state.practiceNote||""; n.oninput=function(){ state.practiceNote=this.value; save(); }; }
+    if(chips){ chips.innerHTML=""; TACTICS.forEach(function(t){
+      var b=document.createElement("button"); b.className="chip"; b.type="button"; b.textContent=t;
+      b.onclick=function(){ var cur=(f.value||"").trim(); if(cur.split(/\s*,\s*/).indexOf(t)===-1){ f.value=cur?cur+", "+t:t; state.practiceFocus=f.value; save(); } };
+      chips.appendChild(b);
+    }); }
+  }
+
+  function renderAll(){ renderHeader(); renderSessionType(); renderStyle(); setupWorking(); setupPractice(); renderCount(); rebuildSets(); updateTally(); renderStats(); renderCareer(); applyMode(); }
   renderAll();
   save(); // persist any migration + show the saved indicator on load
 })();
