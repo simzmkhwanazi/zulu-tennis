@@ -143,7 +143,7 @@
     </div>
 
     <!-- OPPONENT STYLE → WHAT TO DO TO WIN -->
-    <div class="sb-card reveal">
+    <div class="sb-card reveal" id="styleCard">
       <h2>🧠 How are they playing?</h2>
       <p class="sub">Tap their style(s) — get what to do to win.</p>
       <div class="chips" id="styleChips"></div>
@@ -151,7 +151,7 @@
     </div>
 
     <!-- WHAT'S WORKING -->
-    <div class="sb-card reveal">
+    <div class="sb-card reveal" id="workingCard">
       <h2>✓ What's working for me</h2>
       <div class="sb-grid">
         <div>
@@ -501,8 +501,6 @@
       L.push("Date: "+(state.date||todayISO())+(state.venue?("   Place: "+state.venue):""));
       if(state.practiceDrills&&state.practiceDrills.length) L.push("Drills: "+state.practiceDrills.join(", "));
       if(state.practiceFocus) L.push("Worked on: "+state.practiceFocus);
-      if(state.working) L.push("Working: "+state.working);
-      if(state.notWorking) L.push("Fix: "+state.notWorking);
       if(state.practiceNote) L.push("Notes: "+state.practiceNote);
       L.push(""); L.push("zulu-tennis · by Veyane"); return L.join("\n");
     }
@@ -674,9 +672,12 @@
   }
   function applyMode(){
     var practice=state.sessionType==="practice";
-    var sc=$("scoreCard"), sb=$("statsBox"), pc=$("practiceCard");
+    var sc=$("scoreCard"), sb=$("statsBox"), pc=$("practiceCard"),
+        stc=$("styleCard"), wc=$("workingCard");
     if(sc) sc.hidden=practice;        // no score in practice
     if(sb) sb.hidden=practice;        // match stats hidden in practice
+    if(stc) stc.hidden=practice;      // opponent style is match-only
+    if(wc) wc.hidden=practice;        // working/not-working is match-only
     if(pc) pc.hidden=!practice;       // practice card only in practice
   }
   function renderDrillChips(){
