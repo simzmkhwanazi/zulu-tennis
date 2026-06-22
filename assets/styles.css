@@ -350,6 +350,20 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .intro-btnrow .intro-btn { margin-top:0; }
 .intro-hint { color: var(--muted); font-size:.85rem; margin-top:20px; letter-spacing:.03em; }
 
+/* ---- Training plan: add buttons + floating badge ---- */
+.video-item .thumb { position: relative; }
+.plan-add { position:absolute; top:6px; right:6px; z-index:2; width:30px; height:30px; border-radius:50%;
+  border:none; background:rgba(0,0,0,.66); color:#fff; font-size:17px; font-weight:800; line-height:1;
+  display:flex; align-items:center; justify-content:center; cursor:pointer; padding:0; box-shadow:0 1px 4px rgba(0,0,0,.4); }
+.plan-add.on { background: var(--hl); color:#141414; }
+.plan-badge { position:fixed; right:14px; bottom:calc(14px + env(safe-area-inset-bottom)); z-index:50;
+  display:none; align-items:center; gap:8px; background:var(--hl); color:#141414; font-weight:800;
+  padding:10px 14px; border-radius:999px; box-shadow:0 8px 24px rgba(0,0,0,.3); text-decoration:none; font-size:.9rem; }
+.plan-badge span { background:#141414; color:var(--hl); border-radius:999px; padding:1px 8px; font-size:.82rem; }
+.drill-plan { display:inline-flex; margin-top:10px; border:1.5px solid var(--border); background:var(--surface); color:var(--text);
+  border-radius:999px; padding:6px 13px; font-size:.78rem; font-weight:800; cursor:pointer; white-space:nowrap; }
+.drill-plan.on { background: var(--hl); color:#141414; border-color: var(--hl); }
+
 /* ---- Drill cards (drills.html) ---- */
 .drillcard { border:1px solid var(--border); border-radius:14px; padding:14px 16px; margin:12px 0;
   background: var(--surface); }

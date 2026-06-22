@@ -272,5 +272,32 @@
   apply(m||"all");
 })();
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function(){
+  if(!window.ZTPlan) return;
+  // drill anchor → practice-picker chip label (must match DRILLS in set-break.html)
+  var MAP={"random-feed":"Random feed","approach-decision":"Approach DTL/CC","king-court":"King of court",
+    "live-ball":"Live-ball pts","serve-plus-one-live":"Serve+1 live","situational":"Situational",
+    "constraints":"Constraints game","crosscourt":"Cross-court","dtl-change":"DTL change",
+    "serve-plus-one":"Serve+1 pattern","volleys":"Volleys","approach-volley":"Approach+volley",
+    "machine-ground":"Ball machine","machine-decision":"Machine decisions","wall-rally":"Wall rally",
+    "serve-baskets":"Serve targets","shadow":"Shadow swings","spider":"Spider drill",
+    "cones":"Cone agility","solo-session":"Solo session"};
+  function paint(id,btn){ var on=window.ZTPlan.has("drill:"+id); btn.classList.toggle("on",on);
+    btn.textContent=on?"✓ In plan":"＋ Plan"; }
+  Object.keys(MAP).forEach(function(id){
+    var card=document.getElementById(id); if(!card) return;
+    if(!card.querySelector("h3")) return;
+    var label=MAP[id], btn=document.createElement("button");
+    btn.type="button"; btn.className="drill-plan"; paint(id,btn);
+    btn.onclick=function(){ window.ZTPlan.toggle({k:"drill:"+id,t:label,u:"drills.html#"+id,ch:"",src:"drill",chip:label}); paint(id,btn); };
+    card.appendChild(btn);   // own line at the bottom of the card — always visible
+  });
+  document.addEventListener("ztplan:change", function(){
+    Object.keys(MAP).forEach(function(id){ var card=document.getElementById(id); if(!card) return;
+      var b=card.querySelector(".drill-plan"); if(b) paint(id,b); });
+  });
+});
+</script>
 </body>
 </html>

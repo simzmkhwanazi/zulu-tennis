@@ -44,6 +44,14 @@
   .chip{appearance:none;border:1.5px solid var(--border);background:var(--bg);color:var(--text);border-radius:999px;padding:8px 13px;font-weight:700;font-size:.86rem;cursor:pointer;}
   .chip[aria-pressed="true"]{background:var(--hl);color:#141414;border-color:var(--hl);}
   .chips.mini .chip{padding:6px 10px;font-size:.82rem;}
+  .planlist{display:flex;flex-direction:column;gap:6px;margin:2px 0;}
+  .planrow{display:flex;align-items:center;gap:8px;}
+  .pl-add{flex:0 0 auto;width:28px;height:28px;border-radius:50%;border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-weight:800;cursor:pointer;line-height:1;}
+  .pl-add.on{background:var(--hl);border-color:var(--hl);color:#141414;}
+  .pl-t{flex:1 1 auto;font-size:.9rem;min-width:0;}
+  .pl-t i{color:var(--muted);font-style:normal;font-size:.82rem;}
+  .pl-watch{flex:0 0 auto;text-decoration:none;font-weight:800;padding:3px 9px;border-radius:8px;border:1.5px solid var(--border);color:var(--text);}
+  .pl-x{flex:0 0 auto;border:none;background:none;color:var(--muted);font-size:1rem;cursor:pointer;padding:4px;}
 
   .suggest{margin-top:12px;border-top:1px dashed var(--border);padding-top:10px;}
   .suggest .none{color:var(--muted);font-style:italic;}
@@ -190,7 +198,10 @@
       <label class="fld" id="partnerLbl" style="margin-top:10px">Hit with (optional)</label>
       <input class="sb-in" id="practicePartner" placeholder="who you practised with…">
 
-      <label class="fld" style="margin-top:10px">Drills this session</label>
+      <label class="fld" style="margin-top:12px">📋 Training plan</label>
+      <div id="planList" class="planlist"></div>
+
+      <label class="fld" style="margin-top:12px">Drills this session</label>
       <div class="chips mini" id="drillChips" style="margin-bottom:6px"></div>
       <a class="sub" id="browseDrills" href="drills.html" style="display:inline-block">Browse these drills &amp; how-to →</a>
 
@@ -698,9 +709,33 @@
       b.onclick=function(){
         var i=state.practiceDrills.indexOf(d);
         if(i===-1) state.practiceDrills.push(d); else state.practiceDrills.splice(i,1);
-        save(); renderDrillChips();
+        save(); renderDrillChips(); renderPlan();
       };
       box.appendChild(b);
+    });
+  }
+  // ---- Training plan (saved from Videos & Drills pages; same localStorage key) ----
+  var PLANKEY="zt-trainingplan";
+  function planAll(){ try{ return JSON.parse(localStorage.getItem(PLANKEY))||[]; }catch(e){ return []; } }
+  function planWrite(l){ try{ localStorage.setItem(PLANKEY, JSON.stringify(l)); }catch(e){} }
+  function planRemove(k){ planWrite(planAll().filter(function(i){return i.k!==k;})); renderPlan(); }
+  function renderPlan(){
+    var box=$("planList"); if(!box) return; var list=planAll(); box.innerHTML="";
+    if(!list.length){ box.innerHTML='<p class="sub" style="margin:2px 0">Nothing saved yet. On the <a href="drills.html">Drills</a> &amp; <a href="videos.html">Videos</a> pages, tap <b>＋ Plan</b> on anything you want to work on — it waits here for your next session.</p>'; return; }
+    list.forEach(function(it){
+      var label=it.chip||it.t, inSess=state.practiceDrills.indexOf(label)!==-1;
+      var row=document.createElement("div"); row.className="planrow";
+      var tag=it.src==="drill"?"🎾":"🎥";
+      var html='<button type="button" class="pl-add'+(inSess?" on":"")+'" aria-pressed="'+(inSess?"true":"false")+'" title="Add to this session">'+(inSess?"✓":"＋")+'</button>'
+        +'<span class="pl-t">'+tag+' '+esc(it.t)+(it.ch?' <i>'+esc(it.ch)+'</i>':'')+'</span>';
+      if(it.u) html+='<a class="pl-watch" href="'+esc(it.u)+'" target="_blank" rel="noopener">▶</a>';
+      html+='<button type="button" class="pl-x" title="Remove from plan">✕</button>';
+      row.innerHTML=html;
+      row.querySelector(".pl-add").onclick=function(){ var i=state.practiceDrills.indexOf(label);
+        if(i===-1) state.practiceDrills.push(label); else state.practiceDrills.splice(i,1);
+        save(); renderDrillChips(); renderPlan(); };
+      row.querySelector(".pl-x").onclick=function(){ planRemove(it.k); };
+      box.appendChild(row);
     });
   }
   function updateBrowse(){ var a=$("browseDrills"); if(a) a.href="drills.html?with="+(state.practiceWith==="solo"?"solo":"partner"); }
@@ -713,6 +748,7 @@
     if(pp){ pp.value=state.partner||""; pp.oninput=function(){ state.partner=this.value; save(); }; }
     togglePartner();
     renderDrillChips();
+    renderPlan();
     if(f){ f.value=state.practiceFocus||""; f.oninput=function(){ state.practiceFocus=this.value; save(); }; }
     if(n){ n.value=state.practiceNote||""; n.oninput=function(){ state.practiceNote=this.value; save(); }; }
     if(chips){ chips.innerHTML=""; TACTICS.forEach(function(t){
@@ -724,6 +760,12 @@
 
   function renderAll(){ renderHeader(); renderSessionType(); renderStyle(); setupWorking(); setupPractice(); renderCount(); rebuildSets(); updateTally(); renderStats(); renderCareer(); applyMode(); }
   renderAll();
+  // deep-link from the "★ Training plan" badge → open in practice and jump to the plan
+  if(/[?&]session=practice/.test(location.search) || location.hash==="#plan"){
+    if(state.sessionType!=="practice"){ state.sessionType="practice"; }
+    renderAll();
+    var pcEl=$("practiceCard"); if(pcEl){ try{ pcEl.scrollIntoView({block:"start"}); }catch(e){} }
+  }
   save(); // persist any migration + show the saved indicator on load
 })();
 </script>

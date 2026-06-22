@@ -6,6 +6,23 @@
 (function () {
   "use strict";
 
+  /* ---- Training Plan: saved videos & drills (localStorage, per device) ---- */
+  var ZTPlan = (function () {
+    var KEY = "zt-trainingplan";
+    function read() { try { return JSON.parse(localStorage.getItem(KEY)) || []; } catch (e) { return []; } }
+    function write(list) { try { localStorage.setItem(KEY, JSON.stringify(list)); } catch (e) {}
+      try { document.dispatchEvent(new CustomEvent("ztplan:change")); } catch (e) {} }
+    return {
+      all: read,
+      has: function (k) { return read().some(function (i) { return i.k === k; }); },
+      count: function () { return read().length; },
+      add: function (item) { var l = read(); if (!l.some(function (i) { return i.k === item.k; })) { l.push(item); write(l); } },
+      remove: function (k) { write(read().filter(function (i) { return i.k !== k; })); },
+      toggle: function (item) { if (this.has(item.k)) this.remove(item.k); else this.add(item); return this.has(item.k); }
+    };
+  })();
+  window.ZTPlan = ZTPlan;
+
   // Single source of truth for the whole site, grouped by the 5 layers.
   var SITE_NAV = [
     { group: "On Court", layer: "LIVE", items: [
@@ -204,6 +221,22 @@
       img.referrerPolicy = "no-referrer";
       fig.appendChild(img);
       a.insertBefore(fig, a.firstChild);
+
+      // "+ Plan" toggle — save this video to the training plan
+      if (!a.querySelector(".plan-add")) {
+        var titleEl = a.querySelector(".t"), tt = titleEl ? titleEl.textContent.trim() : "Video";
+        var chTxt = chEl ? chEl.textContent.trim() : "";
+        var pb = document.createElement("button");
+        pb.type = "button"; pb.className = "plan-add";
+        var paint = function () { var on = ZTPlan.has(id); pb.classList.toggle("on", on);
+          pb.setAttribute("aria-pressed", on ? "true" : "false"); pb.innerHTML = on ? "✓" : "＋";
+          pb.title = on ? "In your training plan" : "Add to training plan"; };
+        paint();
+        pb.addEventListener("click", function (ev) { ev.preventDefault(); ev.stopPropagation();
+          ZTPlan.toggle({ k: id, t: tt, u: a.href, ch: chTxt, src: "video", chip: "" }); paint(); });
+        document.addEventListener("ztplan:change", paint);
+        fig.appendChild(pb);   // pin to the thumbnail corner (always visible)
+      }
     });
   }
 
@@ -242,7 +275,19 @@
     brand.insertAdjacentElement("afterend", a);
   }
 
-  function start() { buildSidebar(); initTheme(); initMenu(); initBenchBack(); initCollapse(); initScrollSpy(); initReveal(); initVideos(); }
+  /* ---- Floating "★ Training plan (n)" badge on pages where you can add ---- */
+  function initPlanBadge() {
+    if (!document.querySelector("a.video-item, .drillcard")) return;
+    var b = document.createElement("a");
+    b.className = "plan-badge"; b.href = "set-break.html?session=practice#plan";
+    document.body.appendChild(b);
+    var paint = function () { var n = ZTPlan.count();
+      b.style.display = n ? "inline-flex" : "none";
+      b.innerHTML = "★ Training plan <span>" + n + "</span>"; };
+    paint(); document.addEventListener("ztplan:change", paint);
+  }
+
+  function start() { buildSidebar(); initTheme(); initMenu(); initBenchBack(); initCollapse(); initScrollSpy(); initReveal(); initVideos(); initPlanBadge(); }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start);
   else start();
 })();
