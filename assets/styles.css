@@ -341,6 +341,11 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
 .intro-more { display:inline-block; margin-top:16px; color: var(--hl); font-weight:800;
   font-size: clamp(.98rem, 4vw, 1.12rem); text-decoration:underline; text-underline-offset:3px; }
 .intro-more:hover { color:#ffe24d; }
+.intro-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; align-self:center;
+  margin-top:14px; padding:10px 18px; border-radius:999px; border:1.5px solid var(--hl);
+  color: var(--hl); background:transparent; font-weight:800; font-size:clamp(.9rem,3.6vw,1rem);
+  text-decoration:none; transition:background .15s ease; }
+.intro-btn:hover { background:rgba(255,212,0,.12); text-decoration:none; }
 .intro-hint { color: var(--muted); font-size:.85rem; margin-top:20px; letter-spacing:.03em; }
 
 /* safe-area for the deep-page content too */
