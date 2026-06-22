@@ -180,7 +180,21 @@
     <div class="sb-card reveal" id="practiceCard" hidden>
       <h2>🛠 Practice session</h2>
       <p class="sub">No points counted — just log what you worked on.</p>
-      <label class="fld">What I worked on</label>
+
+      <label class="fld" for="practiceWith">Training with…</label>
+      <select class="sb-in" id="practiceWith">
+        <option value="partner">🤝 A partner</option>
+        <option value="solo">🎯 Alone — machine / wall / serves</option>
+      </select>
+
+      <label class="fld" id="partnerLbl" style="margin-top:10px">Hit with (optional)</label>
+      <input class="sb-in" id="practicePartner" placeholder="who you practised with…">
+
+      <label class="fld" style="margin-top:10px">Drills this session</label>
+      <div class="chips mini" id="drillChips" style="margin-bottom:6px"></div>
+      <a class="sub" href="drills.html" style="display:inline-block">Browse all drills &amp; how-to →</a>
+
+      <label class="fld" style="margin-top:12px">What I worked on</label>
       <div class="chips mini" id="focusChips" style="margin-bottom:8px"></div>
       <textarea class="sb-in" id="practiceFocus" placeholder="e.g. serve+1 wide, cross-court depth, approach &amp; finish…"></textarea>
       <label class="fld" style="margin-top:10px">How it went / next time</label>
@@ -264,13 +278,18 @@
     ["errors","Unforced errors",""],["bpWon","Break points won",""],["bpTotal","Break points faced/created",""]
   ];
   var TACTICS=["Serve","Return","Forehand","Backhand","Net play","Movement","Topspin","Slice","Patience"];
+  // drill picker — switches by "training with" (partner vs solo); anchors map to drills.html
+  var DRILLS={
+    partner:["Random feed","Approach DTL/CC","King of court","Live-ball pts","Serve+1 live","Situational","Constraints game","Cross-court","DTL change","Serve+1 pattern","Volleys","Approach+volley"],
+    solo:["Ball machine","Machine decisions","Wall rally","Serve targets","Shadow swings","Spider drill","Cone agility","Solo session"]
+  };
   // set scores (winner hi–lo); orientation set by Won/Lost row
   var SCORES=[[6,0],[6,1],[6,2],[6,3],[6,4],[7,5],[7,6]];
 
   function todayISO(){ var d=new Date(); function p(n){return (n<10?"0":"")+n;} return d.getFullYear()+"-"+p(d.getMonth()+1)+"-"+p(d.getDate()); }
   function blankStats(){ var s={}; STATS.forEach(function(x){ s[x[0]]=0; }); return s; }
   function newSet(n){ return {setNo:n,setType:"set",result:"won",myGames:0,oppGames:0,tbMe:0,tbOpp:0,tbLong:false,stbMe:0,stbOpp:0,stbLong:false}; }
-  function blankState(){ return {sessionType:"match",opponent:"",oppHandle:"",date:todayISO(),venue:"",styles:[],working:"",notWorking:"",practiceFocus:"",practiceNote:"",numSets:3,sets:[newSet(1),newSet(2),newSet(3)],stats:blankStats(),updated:Date.now()}; }
+  function blankState(){ return {sessionType:"match",practiceWith:"partner",partner:"",practiceDrills:[],opponent:"",oppHandle:"",date:todayISO(),venue:"",styles:[],working:"",notWorking:"",practiceFocus:"",practiceNote:"",numSets:3,sets:[newSet(1),newSet(2),newSet(3)],stats:blankStats(),updated:Date.now()}; }
 
   var state;
   try{ state=JSON.parse(localStorage.getItem(KEY))||blankState(); }catch(e){ state=blankState(); }
@@ -289,6 +308,9 @@
   if(state.sessionType!=="practice") state.sessionType="match";
   if(typeof state.practiceFocus!=="string") state.practiceFocus="";
   if(typeof state.practiceNote!=="string") state.practiceNote="";
+  if(state.practiceWith!=="solo") state.practiceWith="partner";
+  if(typeof state.partner!=="string") state.partner="";
+  if(!Array.isArray(state.practiceDrills)) state.practiceDrills=[];
   if(!Array.isArray(state.sets)||!state.sets.length) state.sets=[newSet(1),newSet(2),newSet(3)];
   state.sets=state.sets.map(function(o){ var s=newSet(o&&o.setNo||1); if(o) for(var k in s){ if(o[k]!==undefined) s[k]=o[k]; } return s; });
   if(!state.numSets) state.numSets=state.sets.length||3;
@@ -475,7 +497,9 @@
   function summaryText(){
     var L=[state.sessionType==="practice"?"ZULU TENNIS — PRACTICE":"ZULU TENNIS — MATCH"];
     if(state.sessionType==="practice"){
+      L.push((state.practiceWith==="solo"?"Solo practice":"With a partner")+(state.practiceWith!=="solo"&&state.partner?(" — "+state.partner):""));
       L.push("Date: "+(state.date||todayISO())+(state.venue?("   Place: "+state.venue):""));
+      if(state.practiceDrills&&state.practiceDrills.length) L.push("Drills: "+state.practiceDrills.join(", "));
       if(state.practiceFocus) L.push("Worked on: "+state.practiceFocus);
       if(state.working) L.push("Working: "+state.working);
       if(state.notWorking) L.push("Fix: "+state.notWorking);
@@ -568,6 +592,21 @@
     ctx.fillText("ZULU TENNIS", ML+82, 96);
     ctx.fillStyle=MUTE; ctx.font="italic 600 26px "+sans; ctx.fillText("by Veyane", ML+82, 132);
 
+    if(state.sessionType==="practice"){
+      ctx.textBaseline="alphabetic";
+      ctx.fillStyle=INK; ctx.font="600 150px "+serif; ctx.fillText("Practice", ML, 540);
+      ctx.strokeStyle="rgba(255,212,0,.5)"; ctx.lineWidth=2; ctx.beginPath(); ctx.moveTo(ML,600); ctx.lineTo(W-110,600); ctx.stroke();
+      ctx.fillStyle=YELLOW; ctx.font="700 46px "+sans; ctx.fillText(state.practiceWith==="solo"?"Training alone":"With a partner", ML, 678);
+      var py=760;
+      if(state.practiceWith!=="solo" && state.partner){ ctx.fillStyle=MUTE; ctx.font="600 38px "+sans; ctx.fillText("with "+state.partner, ML, 726); py=812; }
+      function psec(label,text,y){ ctx.fillStyle=MUTE; ctx.font="800 28px "+sans; ctx.fillText(label.toUpperCase(), ML, y); y+=48;
+        ctx.fillStyle=INK; ctx.font="600 40px "+sans; var words=String(text).split(/\s+/), line="", maxW=W-ML-110;
+        words.forEach(function(w){ var t=line?line+" "+w:w; if(ctx.measureText(t).width>maxW){ ctx.fillText(line,ML,y); y+=54; line=w; } else line=t; });
+        if(line){ ctx.fillText(line,ML,y); y+=54; } return y+30; }
+      if(state.practiceDrills&&state.practiceDrills.length) py=psec("Drills", state.practiceDrills.join("  ·  "), py);
+      if(state.practiceFocus) py=psec("Worked on", state.practiceFocus, py);
+      if(state.practiceNote) py=psec("Notes", state.practiceNote, py);
+    } else {
     // headline result word (serif)
     var word=matchResultWord();
     ctx.textBaseline="alphabetic";
@@ -596,6 +635,7 @@
       ctx.font="700 30px "+sans; y+=120;
     });
     ctx.textAlign="left";
+    }
 
     // footer
     var foot=[]; if(state.venue) foot.push(state.venue); foot.push(new Date(state.date||Date.now()).toLocaleDateString());
@@ -639,8 +679,28 @@
     if(sb) sb.hidden=practice;        // match stats hidden in practice
     if(pc) pc.hidden=!practice;       // practice card only in practice
   }
+  function renderDrillChips(){
+    var box=$("drillChips"); if(!box) return; box.innerHTML="";
+    (DRILLS[state.practiceWith]||DRILLS.partner).forEach(function(d){
+      var on=state.practiceDrills.indexOf(d)!==-1;
+      var b=document.createElement("button"); b.className="chip"+(on?" on":""); b.type="button"; b.textContent=d;
+      b.setAttribute("aria-pressed", on?"true":"false");
+      b.onclick=function(){
+        var i=state.practiceDrills.indexOf(d);
+        if(i===-1) state.practiceDrills.push(d); else state.practiceDrills.splice(i,1);
+        save(); renderDrillChips();
+      };
+      box.appendChild(b);
+    });
+  }
   function setupPractice(){
-    var f=$("practiceFocus"), n=$("practiceNote"), chips=$("focusChips");
+    var f=$("practiceFocus"), n=$("practiceNote"), chips=$("focusChips"),
+        wsel=$("practiceWith"), pp=$("practicePartner"), plbl=$("partnerLbl");
+    if(wsel){ wsel.value=state.practiceWith; wsel.onchange=function(){ state.practiceWith=this.value; save(); renderDrillChips(); togglePartner(); }; }
+    function togglePartner(){ var solo=state.practiceWith==="solo"; if(plbl) plbl.style.display=solo?"none":""; if(pp) pp.style.display=solo?"none":""; }
+    if(pp){ pp.value=state.partner||""; pp.oninput=function(){ state.partner=this.value; save(); }; }
+    togglePartner();
+    renderDrillChips();
     if(f){ f.value=state.practiceFocus||""; f.oninput=function(){ state.practiceFocus=this.value; save(); }; }
     if(n){ n.value=state.practiceNote||""; n.oninput=function(){ state.practiceNote=this.value; save(); }; }
     if(chips){ chips.innerHTML=""; TACTICS.forEach(function(t){

@@ -346,7 +346,26 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; }
   color: var(--hl); background:transparent; font-weight:800; font-size:clamp(.9rem,3.6vw,1rem);
   text-decoration:none; transition:background .15s ease; }
 .intro-btn:hover { background:rgba(255,212,0,.12); text-decoration:none; }
+.intro-btnrow { display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px; }
+.intro-btnrow .intro-btn { margin-top:0; }
 .intro-hint { color: var(--muted); font-size:.85rem; margin-top:20px; letter-spacing:.03em; }
+
+/* ---- Drill cards (drills.html) ---- */
+.drillcard { border:1px solid var(--border); border-radius:14px; padding:14px 16px; margin:12px 0;
+  background: var(--surface); }
+.drillcard > h3 { margin:0 0 6px; display:flex; align-items:center; gap:10px; flex-wrap:wrap; font-size:1.05rem; }
+.drillcard .how { margin:0 0 8px; }
+.drillcard .setup { margin:0 0 10px; padding-left:18px; color: var(--muted); font-size:.92rem; }
+.drillcard .setup li { margin:2px 0; }
+.dtag { font-size:.62rem; font-weight:800; letter-spacing:.05em; text-transform:uppercase; padding:3px 9px; border-radius:999px; white-space:nowrap; }
+.dtag.open    { background:rgba(255,212,0,.16); color:#a87b00; border:1px solid rgba(255,212,0,.5); }
+.dtag.pattern { background:rgba(90,140,230,.14); color:#3b62b5; border:1px solid rgba(90,140,230,.4); }
+.dtag.net     { background:rgba(50,170,110,.14); color:#1f7a4d; border:1px solid rgba(50,170,110,.38); }
+.dtag.solo    { background:rgba(180,110,230,.14); color:#7a3fb0; border:1px solid rgba(180,110,230,.38); }
+:root[data-theme="dark"] .dtag.open, :root:not([data-theme="light"]) .dtag.open       { color:#ffd400; }
+:root[data-theme="dark"] .dtag.pattern, :root:not([data-theme="light"]) .dtag.pattern { color:#8fb6ff; }
+:root[data-theme="dark"] .dtag.net, :root:not([data-theme="light"]) .dtag.net         { color:#7fe0a8; }
+:root[data-theme="dark"] .dtag.solo, :root:not([data-theme="light"]) .dtag.solo       { color:#cf9bf0; }
 
 /* safe-area for the deep-page content too */
 .content { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
