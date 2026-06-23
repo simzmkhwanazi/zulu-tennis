@@ -25,6 +25,13 @@
 
   // Single source of truth for the whole site, grouped by the 5 layers.
   var SITE_NAV = [
+    { group: "Quick Links", layer: "", items: [
+      { n: "", file: "index.html",     t: "🎾 Ukushaya iTennis (deck)" },
+      { n: "", file: "set-break.html", t: "🎯 Playing now / Set-Break" },
+      { n: "", file: "videos.html",    t: "🎥 Watch drills & clips" },
+      { n: "", file: "drills.html",    t: "🎾 Practice drills" },
+      { n: "", file: "library.html",   t: "📚 More tactics & the system" },
+    ]},
     { group: "On Court", layer: "LIVE", items: [
       { n: "",   file: "set-break.html",              t: "Set-Break Quick-Planner" },
     ]},
