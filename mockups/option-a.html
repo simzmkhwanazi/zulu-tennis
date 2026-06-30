@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zulu Tennis — Option A</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--hl:#ffd400}
+  body{background:#0b0b0b;color:#f1f1ec;font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100dvh;display:flex;flex-direction:column;align-items:center;
+    padding:max(40px,env(safe-area-inset-top)) 22px max(28px,env(safe-area-inset-bottom))}
+  .crest{width:62px;height:86px;margin:18px 0 14px}
+  h1{font-family:"Didot","Bodoni 72","Hoefler Text",Georgia,serif;font-weight:600;font-size:2.7rem;letter-spacing:.01em;text-align:center}
+  .by{color:var(--hl);font-style:italic;font-size:1rem;margin-top:2px}
+  .tag{color:#9b9b94;text-align:center;font-size:.95rem;margin:14px 0 30px;max-width:300px;line-height:1.5}
+  .tiles{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%;max-width:430px}
+  .tile{display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-end;gap:6px;
+    min-height:128px;padding:16px;border:1.5px solid #2a2a27;border-radius:18px;text-decoration:none;color:#f1f1ec;background:#161616}
+  .tile .ic{font-size:1.7rem}
+  .tile .t{font-weight:800;font-size:1.05rem}
+  .tile .s{font-size:.78rem;color:#9b9b94;font-weight:600}
+  .tile.primary{background:var(--hl);color:#141414;border-color:var(--hl);grid-column:1 / -1;min-height:96px}
+  .tile.primary .s{color:#3a3210}
+  .foot{margin-top:26px;color:#6c6c66;font-size:.8rem;text-align:center}
+  .foot a{color:#9b9b94}
+</style></head>
+<body>
+  <svg class="crest" viewBox="0 0 100 138" aria-hidden="true">
+    <ellipse cx="50" cy="69" rx="33" ry="58" fill="none" stroke="#ffd400" stroke-width="3"/>
+    <line x1="50" y1="14" x2="50" y2="124" stroke="#ffd400" stroke-width="2.5"/>
+    <line x1="30" y1="40" x2="70" y2="98" stroke="#ffd400" stroke-width="2.5"/>
+    <line x1="70" y1="40" x2="30" y2="98" stroke="#ffd400" stroke-width="2.5"/>
+    <circle cx="30" cy="40" r="9" fill="none" stroke="#ffd400" stroke-width="2.5"/>
+    <circle cx="70" cy="40" r="9" fill="none" stroke="#ffd400" stroke-width="2.5"/>
+  </svg>
+  <h1>Zulu Tennis</h1>
+  <div class="by">by Veyane</div>
+  <p class="tag">What to do with every ball. Pick one thing.</p>
+
+  <div class="tiles">
+    <a class="tile primary" href="#"><span class="ic">🎾</span><span class="t">Playing now</span><span class="s">Match or practice — Set-Break planner</span></a>
+    <a class="tile" href="#"><span class="ic">🎥</span><span class="t">Watch</span><span class="s">Strategy &amp; drills</span></a>
+    <a class="tile" href="#"><span class="ic">📖</span><span class="t">Learn</span><span class="s">Basics by stroke</span></a>
+    <a class="tile" href="#"><span class="ic">🃏</span><span class="t">The Deck</span><span class="s">8-card game plan</span></a>
+    <a class="tile" href="#"><span class="ic">📚</span><span class="t">The System</span><span class="s">Full playbook</span></a>
+  </div>
+
+  <p class="foot">no sign-up · nothing tracked<br><a href="#">about Zulu Tennis</a></p>
+</body></html>

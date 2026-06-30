@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Zulu Tennis — Option C</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  :root{--hl:#ffd400;--bg:#f6f6f3;--ink:#131313;--mut:#6c6c66;--line:#e4e4de;--card:#fff}
+  body{background:var(--bg);color:var(--ink);font-family:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    min-height:100dvh;padding:max(20px,env(safe-area-inset-top)) 18px max(28px,env(safe-area-inset-bottom))}
+  .top{display:flex;align-items:center;gap:10px;margin:6px 2px 16px}
+  .crest{width:30px;height:42px}
+  .wm{font-family:"Didot","Bodoni 72",Georgia,serif;font-size:1.5rem;font-weight:600}
+  .wm b{font-weight:600}
+  .by{color:var(--mut);font-style:italic;font-size:.8rem;margin-left:2px}
+  .search{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:12px;background:var(--card);
+    font-size:1rem;color:var(--ink);margin-bottom:18px}
+  .lead{font-weight:800;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--mut);margin:0 4px 8px}
+  .list{background:var(--card);border:1px solid var(--line);border-radius:16px;overflow:hidden}
+  .row{display:flex;align-items:center;gap:14px;padding:15px 16px;text-decoration:none;color:var(--ink);border-bottom:1px solid var(--line)}
+  .row:last-child{border-bottom:none}
+  .row .ic{width:38px;height:38px;flex:0 0 auto;border-radius:11px;background:var(--bg);display:flex;align-items:center;justify-content:center;font-size:1.2rem}
+  .row.go .ic{background:var(--hl)}
+  .row .tx{flex:1 1 auto;min-width:0}
+  .row .t{font-weight:750;font-size:1.02rem}
+  .row .s{font-size:.82rem;color:var(--mut)}
+  .row .chev{color:#c4c4bd;font-size:1.3rem}
+  .foot{color:var(--mut);font-size:.8rem;text-align:center;margin-top:22px}
+</style></head>
+<body>
+  <div class="top">
+    <svg class="crest" viewBox="0 0 100 138" aria-hidden="true">
+      <ellipse cx="50" cy="69" rx="33" ry="58" fill="none" stroke="#0b0b0b" stroke-width="4"/>
+      <line x1="50" y1="14" x2="50" y2="124" stroke="#0b0b0b" stroke-width="3"/>
+      <line x1="30" y1="40" x2="70" y2="98" stroke="#0b0b0b" stroke-width="3"/>
+      <line x1="70" y1="40" x2="30" y2="98" stroke="#0b0b0b" stroke-width="3"/>
+    </svg>
+    <span class="wm">Zulu Tennis</span><span class="by">by Veyane</span>
+  </div>
+
+  <input class="search" type="search" placeholder="Search anything — serve, lob, pusher…">
+
+  <div class="lead">On court</div>
+  <div class="list" style="margin-bottom:18px">
+    <a class="row go" href="#"><span class="ic">🎾</span><span class="tx"><div class="t">Playing now</div><div class="s">Match or practice — Set-Break planner</div></span><span class="chev">›</span></a>
+  </div>
+
+  <div class="lead">Improve</div>
+  <div class="list">
+    <a class="row" href="#"><span class="ic">🃏</span><span class="tx"><div class="t">The Deck</div><div class="s">8-card game plan, glanceable</div></span><span class="chev">›</span></a>
+    <a class="row" href="#"><span class="ic">🎥</span><span class="tx"><div class="t">Watch</div><div class="s">200+ strategy &amp; drill videos</div></span><span class="chev">›</span></a>
+    <a class="row" href="#"><span class="ic">📖</span><span class="tx"><div class="t">Learn</div><div class="s">Back to basics, by stroke</div></span><span class="chev">›</span></a>
+    <a class="row" href="#"><span class="ic">🎾</span><span class="tx"><div class="t">Drills</div><div class="s">Partner &amp; solo practice</div></span><span class="chev">›</span></a>
+    <a class="row" href="#"><span class="ic">📚</span><span class="tx"><div class="t">The System</div><div class="s">Full playbook &amp; tools</div></span><span class="chev">›</span></a>
+  </div>
+
+  <p class="foot">no sign-up · nothing tracked</p>
+</body></html>
