@@ -21,6 +21,13 @@
   .vid-sec { margin-top: 22px; }
   .vid-sec > h2 { display:flex; align-items:center; gap:8px; }
   .video-list.grid { grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); display:grid; }
+  .vfilter { position:sticky; top:0; z-index:6; background:var(--bg); padding:10px 0 6px; margin-top:8px; }
+  .vfilter input { width:100%; box-sizing:border-box; padding:10px 14px; border:1.5px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-size:1rem; }
+  .vchips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+  .vchips button { appearance:none; border:1.5px solid var(--border); background:var(--surface); color:var(--text); border-radius:999px; padding:5px 11px; font-weight:700; font-size:.78rem; cursor:pointer; white-space:nowrap; }
+  .vchips button[aria-pressed="true"] { background:var(--hl); color:#141414; border-color:var(--hl); }
+  .vcount { color:var(--muted); font-size:.8rem; margin-top:6px; min-height:1em; }
+  .vid-sec[hidden], .video-item[hidden] { display:none; }
 </style>
 </head>
 <body>
@@ -49,7 +56,11 @@
       third-party videos; credit to each channel.</p>
     </div>
 
-    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
+    <div class="vfilter">
+      <input id="vidSearch" type="search" placeholder="Search videos…" autocomplete="off" aria-label="Search videos">
+      <div class="vchips" id="vidChips"></div>
+      <div class="vcount" id="vidCount"></div>
+    </div>
 
     <section class="vid-sec">
       <h2 id="serve">🎾 Serve, Serve +1 &amp; serve-volley</h2>
@@ -138,6 +149,11 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=AKwZPh_uIkw" target="_blank" rel="noopener"><span class="meta"><span class="t">Best return vs serve &amp; volleyers (singles)</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=D3O7wYfiV9k" target="_blank" rel="noopener"><span class="meta"><span class="t">How to beat a counterpuncher</span><span class="ch">Essential Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=LjC0sGUHMrk" target="_blank" rel="noopener"><span class="meta"><span class="t">Beat a counterpuncher (more)</span><span class="ch">Tennis Warehouse</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@costatennisacademy/video/7600046557345352990" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">How to beat a pusher</span><span class="ch">@costatennisacademy · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@fuzzyyellowballsdotcom/video/7624179730950016270" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">The Federer play that kills pushers</span><span class="ch">@fuzzyyellowballsdotcom · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@patrickmouratoglou/video/7593083339318316310" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Playing a hard hitter — 3 tactics</span><span class="ch">@patrickmouratoglou · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simonkonov/video/7518334121475656982" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Beat moonballs — take them on the rise</span><span class="ch">@simonkonov · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@patrickmouratoglou/video/7250068484648897819" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Beating slicers</span><span class="ch">@patrickmouratoglou · TikTok</span></span></a>
       </div>
     </section>
 
@@ -155,6 +171,8 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=QvfszTETGE0" target="_blank" rel="noopener"><span class="meta"><span class="t">3 attacking patterns that win matches</span><span class="ch">PlayYourCourt</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=_RWXua8Ow-c" target="_blank" rel="noopener"><span class="meta"><span class="t">Expose your opponent's weakness (singles)</span><span class="ch">PlayYourCourt</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7645356262527356190" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Dictate the point — hunt forehands</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisacademy101/video/7591877448048872724" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Serve with intention — wide → open court</span><span class="ch">@tennisacademy101 · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@nutennis1/video/7607696120088644895" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Serve &amp; settle into your strongest wing</span><span class="ch">@nutennis1 · TikTok</span></span></a>
       </div>
     </section>
 
@@ -170,6 +188,9 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=q7qFobNwqVQ" target="_blank" rel="noopener"><span class="meta"><span class="t">Disguise your drop shot</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=HDQosGUWAdM" target="_blank" rel="noopener"><span class="meta"><span class="t">Why the drop shot is so effective</span><span class="ch">Performance-Plus Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=YRUam_aiJrA" target="_blank" rel="noopener"><span class="meta"><span class="t">Beating a drop shot (singles)</span><span class="ch">2MinuteTennis</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simonkonov/video/7611585149154675990" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">5 approach shots &amp; when to use each</span><span class="ch">@simonkonov · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@aubonetennis/video/7369365564944305451" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">3 benefits of the backhand-slice defense</span><span class="ch">@aubonetennis · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@grantvanderhayden/video/7590600618507570445" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Disguise your forehand drop shot</span><span class="ch">@grantvanderhayden · TikTok</span></span></a>
       </div>
     </section>
 
@@ -182,6 +203,9 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=NOMh7eK5HY4" target="_blank" rel="noopener"><span class="meta"><span class="t">Never miss an overhead again</span><span class="ch">PlayYourCourt</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=rzggh0YNlzQ" target="_blank" rel="noopener"><span class="meta"><span class="t">5 tips for awesome overheads</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7643876672768331038" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Backhand volley — shoulders for CC vs DTL</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisacademy101/video/7604540476762443026" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Stop guessing at the net — positioning</span><span class="ch">@tennisacademy101 · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@hptacademy_/video/7485807380245073195" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Serve &amp; volley — take the angles</span><span class="ch">@hptacademy_ · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@joel_myers_tennis/video/7323440032222842158" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Close the net vs a high-middle defender</span><span class="ch">@joel_myers_tennis · TikTok</span></span></a>
       </div>
     </section>
 
@@ -198,6 +222,10 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=xtsvg0udetY" target="_blank" rel="noopener"><span class="meta"><span class="t">Aim higher over the net — the reset ball</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=cTwmZpWftBY" target="_blank" rel="noopener"><span class="meta"><span class="t">Defeat the pusher &amp; counter-puncher</span><span class="ch">PlayYourCourt</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=l1cGL5VcAXo" target="_blank" rel="noopener"><span class="meta"><span class="t">How to beat a lobber</span><span class="ch">Howcast</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@nutennis1/video/7618008480208702751" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Out of position? Deep middle resets the rally</span><span class="ch">@nutennis1 · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@good.game.tennis/video/7566181486819380487" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">When defending, hit higher not harder</span><span class="ch">@good.game.tennis · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@keatonavic14/video/7609718764124359949" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Defense as offense — passing makes them hesitate</span><span class="ch">@keatonavic14 · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisacademy101/video/7595279540432244024" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Defend smart, neutralize, then attack</span><span class="ch">@tennisacademy101 · TikTok</span></span></a>
       </div>
     </section>
 
@@ -214,6 +242,12 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=XAxoiz2wElU" target="_blank" rel="noopener"><span class="meta"><span class="t">Between-point routines</span><span class="ch">Peak Performance Sports</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=aJFMjRMbM1E" target="_blank" rel="noopener"><span class="meta"><span class="t">12 habits for mental toughness</span><span class="ch">Coach Alfred</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=iioWcbBb3YQ" target="_blank" rel="noopener"><span class="meta"><span class="t">Stay focused during matches</span><span class="ch">Tennis Hacker</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@ace.analysis/video/7528685941779647766" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Win points smarter, not harder</span><span class="ch">@ace.analysis · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@playyourcourt/video/7592750720915344670" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">3 ways to win more points (The Cage…)</span><span class="ch">@playyourcourt · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@patrickmouratoglou/video/7619355522105462038" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Most points end in the first 4 shots</span><span class="ch">@patrickmouratoglou · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@the_inner_game/video/7617939300885368077" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Nadal's pre-serve ritual = mental strategy</span><span class="ch">@the_inner_game · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@noahstennistips/video/7586289570447150392" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Why pros sit down every 2 games</span><span class="ch">@noahstennistips · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@coachjosh.tennis/video/7654283646026714398" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">The serve's 5 responsibilities — play smarter</span><span class="ch">@coachjosh.tennis · TikTok</span></span></a>
       </div>
     </section>
 
@@ -230,6 +264,7 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=L6Sdl1325tg" target="_blank" rel="noopener"><span class="meta"><span class="t">Playing on grass &amp; fast surfaces</span><span class="ch">The Tennis Mentor</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=63tloTrqZUk" target="_blank" rel="noopener"><span class="meta"><span class="t">Playing in the heat</span><span class="ch">ChangBang Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=AmABrrNEQ7M" target="_blank" rel="noopener"><span class="meta"><span class="t">How to avoid cramping</span><span class="ch">MPTennis</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tenniscoachgreg/video/7634598325852835080" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Clay: beating a fast retriever</span><span class="ch">@tenniscoachgreg · TikTok</span></span></a>
       </div>
     </section>
 
@@ -246,6 +281,9 @@
         <a class="video-item" href="https://www.youtube.com/watch?v=BsF7cLvsiLg" target="_blank" rel="noopener"><span class="meta"><span class="t">Defeat a net-rusher — keep them deep</span><span class="ch">Essential Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=0x8gkn1TweU" target="_blank" rel="noopener"><span class="meta"><span class="t">Defeat net-rushers: 3 strategies</span><span class="ch">Online Tennis Instruction</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=kJLXi82ZK0k" target="_blank" rel="noopener"><span class="meta"><span class="t">How to hit a passing shot (singles)</span><span class="ch">2MinuteTennis</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisconditioned/video/7607120163485273364" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">+4 direction changes per point — move better</span><span class="ch">@tennisconditioned · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@coachkirsche/video/7477958317374147863" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Plyometrics for explosive tennis speed</span><span class="ch">@coachkirsche · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@coachkirsche/video/7561825494216297750" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Sprint workout for tennis</span><span class="ch">@coachkirsche · TikTok</span></span></a>
       </div>
     </section>
 
@@ -263,6 +301,20 @@
       <div class="video-list grid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7644248076131093790" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Stop slapping your forehand (racquet-tip path)</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7644617461928660255" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Serve — arch &amp; load like a bow</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@alexander.meliuk/video/7646478290890263839" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Forehand: extension, legs, contact point</span><span class="ch">@alexander.meliuk · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@patrickmouratoglou/video/7126255723197025542" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">The perfect follow-through in 3 steps</span><span class="ch">@patrickmouratoglou · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisacademy101/video/7651414949876485384" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Stay low like Andreeva on every shot</span><span class="ch">@tennisacademy101 · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@learntennislovetennis/video/7644204977077914902" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Top players split step — do you?</span><span class="ch">@learntennislovetennis · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@top.tennis.traini5/video/7625656979188485399" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">The ATP forehand 'magic' formula</span><span class="ch">@top.tennis.traini5 · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@eli_pironkova_tennis/video/7616868490812640525" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Which grip when you approach the net</span><span class="ch">@eli_pironkova_tennis · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisdoctor/video/7392747302856822021" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Forehands on the rise — a trick</span><span class="ch">@tennisdoctor · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@cntennisacademy/video/7240154099554045226" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Taking the ball on the rise</span><span class="ch">@cntennisacademy · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@ez_tennis/video/7602862179913682189" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Ready position: the chest-high triangle</span><span class="ch">@ez_tennis · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tenniswithdylan/video/7641904424826293526" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Groove serve pronation with a watch</span><span class="ch">@tenniswithdylan · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7652041064500579614" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Stop arming your groundstrokes</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7653152918069087518" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Clean contact — stop timing with your arm</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tenniscoacholi/video/7529624312244915478" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Fix a weak forehand</span><span class="ch">@tenniscoacholi · TikTok</span></span></a>
+        <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@intuitivetennis/video/7455857997009472814" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Forehand timing (Fonseca analysis)</span><span class="ch">@intuitivetennis · TikTok</span></span></a>
       </div>
     </section>
 
@@ -320,5 +372,37 @@
 
 <script src="assets/courts.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script>
+(function(){
+  var chips=document.getElementById("vidChips"), search=document.getElementById("vidSearch"), count=document.getElementById("vidCount");
+  if(!chips||!search) return;
+  var data=[].slice.call(document.querySelectorAll(".vid-sec")).map(function(s){
+    var h=s.querySelector("h2");
+    return { el:s, id:h?h.id:"", label:h?h.textContent.trim():"", cards:[].slice.call(s.querySelectorAll(".video-item")) };
+  });
+  var total=data.reduce(function(n,d){return n+d.cards.length;},0);
+  search.placeholder="Search "+total+" videos…";
+  var active="all";
+  function mk(id,label){ var b=document.createElement("button"); b.type="button"; b.textContent=label; b.setAttribute("data-f",id);
+    b.onclick=function(){ active=id; search.value=""; apply(); window.scrollTo(0,0); }; return b; }
+  chips.appendChild(mk("all","All"));
+  data.forEach(function(d){ if(d.id) chips.appendChild(mk(d.id,d.label)); });
+  function apply(){
+    var q=search.value.trim().toLowerCase(), shown=0;
+    data.forEach(function(d){
+      var secMatch=(active==="all"||active===d.id), any=false;
+      d.cards.forEach(function(c){
+        var vis=secMatch && (!q || c.textContent.toLowerCase().indexOf(q)>=0);
+        c.hidden=!vis; if(vis){any=true;shown++;}
+      });
+      d.el.hidden=!any;
+    });
+    [].forEach.call(chips.children,function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-f")===active?"true":"false"); });
+    count.textContent = q ? (shown+" match"+(shown===1?"":"es")) : (active==="all" ? "" : shown+" in this section");
+  }
+  search.addEventListener("input",function(){ if(search.value.trim()) active="all"; apply(); });
+  apply();
+})();
+</script>
 </body>
 </html>
