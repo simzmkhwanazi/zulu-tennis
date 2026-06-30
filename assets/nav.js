@@ -43,7 +43,7 @@
       { n: "00", file: "00-player-identity.html",    t: "Player Identity" },
       { n: "29", file: "29-data-model.html",          t: "Data Model" },
     ]},
-    { group: "Tactical Systems", layer: "L1–L2", items: [
+    { group: "Win the point", layer: "", items: [
       { n: "01", file: "01-decision-making.html",     t: "Decision Engine" },
       { n: "02", file: "02-court-geometry.html",       t: "Court Geometry" },
       { n: "03", file: "03-serve-strategy.html",       t: "Serve Strategy" },
@@ -54,18 +54,18 @@
       { n: "08", file: "08-net-play-system.html",      t: "Net Play System" },
       { n: "25", file: "25-pattern-library.html",      t: "Pattern Library" },
     ]},
-    { group: "Match Intelligence", layer: "L3", items: [
+    { group: "Read your opponent", layer: "", items: [
       { n: "09", file: "09-player-type-strategies.html", t: "Player-Type Strategies" },
       { n: "10", file: "10-score-based-strategy.html",   t: "Score-Based / State Engine" },
       { n: "17", file: "17-match-problem-solver.html",   t: "Match Problem Solver" },
       { n: "20", file: "20-match-intelligence-db.html",  t: "Match Intelligence DB" },
     ]},
-    { group: "Performance Management", layer: "L4", items: [
+    { group: "Body & mind", layer: "", items: [
       { n: "11", file: "11-mental-performance.html",   t: "Mental Performance" },
       { n: "18", file: "18-athlete-development.html",   t: "Athlete Development" },
       { n: "22", file: "22-tournament-os.html",         t: "Tournament OS" },
     ]},
-    { group: "Measurement & Improvement", layer: "L5", items: [
+    { group: "Measure & improve", layer: "", items: [
       { n: "12", file: "12-match-analysis.html",        t: "Match Analysis" },
       { n: "13", file: "13-video-analysis.html",        t: "Video Analysis" },
       { n: "21", file: "21-analytics.html",             t: "Analytics System" },
@@ -74,7 +74,7 @@
       { n: "27", file: "27-skill-roadmap.html",         t: "Skill-Level Roadmap" },
       { n: "28", file: "28-80-20-winning-tennis.html",  t: "80/20 Winning Tennis" },
     ]},
-    { group: "Knowledge & Execution", layer: "", items: [
+    { group: "Plans & reference", layer: "", items: [
       { n: "14", file: "14-practice-blueprint.html",       t: "Practice Blueprint" },
       { n: "15", file: "15-advanced-concepts.html",        t: "Advanced Concepts" },
       { n: "16", file: "16-complete-match-playbook.html",  t: "Complete Match Playbook" },
