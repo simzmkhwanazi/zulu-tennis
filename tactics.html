@@ -1,0 +1,1205 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b0b0b">
+<title>Zulu Tennis — Tactical Systems</title>
+<meta name="description" content="Tactical Systems — everything for winning the point, on one page.">
+<script>document.documentElement.classList.remove('no-js');</script>
+<link rel="icon" href="assets/favicon.svg">
+<meta property="og:title" content="Zulu Tennis — Tactical Systems">
+<meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
+<link rel="stylesheet" href="assets/styles.css">
+<style>
+  .topic { border-bottom:1px solid var(--border); }
+  .topic > summary { cursor:pointer; list-style:none; display:flex; align-items:center; gap:14px; padding:18px 2px; font-size:1.25rem; font-weight:750; letter-spacing:-.02em; }
+  .topic > summary::-webkit-details-marker { display:none; }
+  .topic > summary::after { content:"›"; margin-left:auto; color:var(--muted); font-size:1.5rem; transition:transform .2s ease; }
+  .topic[open] > summary::after { transform:rotate(90deg); }
+  .topic .tn { color:var(--muted); font-variant-numeric:tabular-nums; font-weight:700; min-width:1.6em; }
+  .topic-body { padding:2px 0 22px; }
+  .tactnav { display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 6px; }
+  .tactnav button { appearance:none; border:1.5px solid var(--border); background:var(--surface); color:var(--text); border-radius:999px; padding:6px 13px; font-weight:700; font-size:.85rem; cursor:pointer; }
+</style>
+</head>
+<body>
+<header class="topbar">
+  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
+  <span class="spacer"></span>
+  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+</header>
+<div class="layout">
+  <aside class="sidebar" id="sidebar"></aside>
+  <div class="scrim"></div>
+  <main class="content">
+    <div class="pagehead reveal">
+      <h1>Tactical Systems</h1>
+      <p class="lead">Everything for winning the point — on one page. Tap a topic to open it. Calm by default.</p>
+    </div>
+    <div class="tactnav">
+      <button type="button" id="expandAll">Expand all</button>
+      <button type="button" id="collapseAll">Collapse all</button>
+    </div>
+    
+
+    <details class="topic">
+      <summary><span class="tn">01</span> Decision Engine</summary>
+      <div class="topic-body">
+<section class="courtside no-collapse">
+      <div class="cs-eyebrow">🎾 Courtside · Decision Engine <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Reset the outside ball. Attack only the inside ball.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":18,"y":90,"label":"You","side":"you"},{"x":78,"y":14,"label":"O","side":"opp"}],"paths":[{"from":[78,16],"to":[20,86],"kind":"serve","label":"outside ball"},{"from":[20,86],"to":[80,16],"kind":"shot"}],"dots":[{"x":46,"y":97,"kind":"recovery","label":"recover"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — cross-court with margin until you get a short / inside ball, then attack.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — change direction off a wide / outside ball.</div>
+          <div class="cs-cues"><span>"Cross… cross… now"</span><span>Inside = green light</span><span>Behind? play % only</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> "Cross-until-inside" — rally crosscourt; you may only change direction off an inside ball.</div>
+    </section>
+
+    <h2 id="question">The only question that matters</h2>
+    <p>Every shot decision answers one question:</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> The core question</div>
+      <p style="font-size:1.1rem;margin:0"><em>Given the score, the situation, the opponent, the incoming
+      ball and my balance — what is the <strong>highest-value</strong> decision that increases my probability
+      of winning <strong>this point</strong>?</em></p></div>
+    <p>Not "what's the best shot in the world here," but "what's the best shot <strong>for me, right now,
+    that I can repeat.</strong>" Three priorities settle every close call:</p>
+    <div class="formula">
+      <div class="principles">
+        <span class="p">Expected Value &gt; highlight shots</span>
+        <span class="p">Repeatability &gt; perfect execution</span>
+        <span class="p">Pressure reliability &gt; practice level</span>
+      </div>
+    </div>
+
+    <h2 id="formula">The Tactical Decision Formula</h2>
+    <p>Elite decisions feel instinctive because the inputs have been internalised. These are the ten the
+    engine weighs — train them until the read is automatic:</p>
+    <div class="formula">
+      <div class="lbl" style="font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)">⚖️ Inputs</div>
+      <ol>
+        <li>Score situation</li><li>Point importance</li><li>Court position</li><li>Incoming ball quality</li>
+        <li>Player balance</li><li>Opponent position</li><li>Opponent weaknesses</li><li>Risk level</li>
+        <li>Expected reward</li><li>Recovery position after the shot</li>
+      </ol>
+    </div>
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistake</div>
+      <p>Most players weigh only inputs 4 and 9 (the ball and the reward) and ignore 1, 5 and 10 — score,
+      balance and recovery. That's how you hit a "great" shot at 0–30 and still lose the game.</p></div>
+
+    <h2 id="ballquality">The Ball-Quality Decision Engine</h2>
+    <p>The universal entry point. Before patterns, before targets — classify the ball, then respond. Where
+    the ball lands in <em>your</em> half sets the default:</p>
+
+    <figure class="diagram">
+      <div data-court='{"w":340,"zones":[{"x":0,"y":50,"w":100,"h":17,"kind":"target","label":"ATTACK ZONE"},{"x":0,"y":67,"w":100,"h":17,"kind":"neutral","label":"RALLY / NEUTRAL"},{"x":0,"y":84,"w":100,"h":16,"kind":"danger","label":"DEFEND ZONE"}],"players":[{"x":50,"y":94,"label":"You","side":"you"}]}'></div>
+      <figcaption>Default by zone: a short ball that sits up (attack zone) → take time away; a rally-depth ball → construct; a deep, heavy or wide ball (defend zone) → reset with margin. The zone sets the <em>default</em>; the formula adjusts it.</figcaption>
+    </figure>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Universal decision tree</div></div>
+    <pre class="tree">INCOMING BALL
+   │
+   ▼
+Is the ball ATTACKABLE?   (short · sitting up · inside the court)
+   │
+   ├─ NO  ─▶  Neutralise  ·  recover to home base  ·  extend the rally
+   │
+   └─ YES ─▶  Can I attack IN BALANCE?
+                 │
+                 ├─ NO  ─▶  Keep constructing — don't force it
+                 │
+                 └─ YES ─▶  Attack  ▸  finish  ▸  recover</pre>
+    <p>That's the whole game in four lines. Everything else — serve+1, baseline patterns, approaches —
+    is a specialised branch of this tree. <span class="ev ev-a">Level A</span></p>
+
+    <h2 id="card">How patterns are written: the Decision Card</h2>
+    <p>A read you can't recall under pressure is useless. So every <em>pattern</em> in Zulu Tennis is written
+    as a <strong>Decision Card</strong> — same fields every time, so it's trainable and instantly retrievable.
+    The flagship card follows.</p>
+
+    <h2 id="homebase">Flagship pattern: Home Base</h2>
+    <div class="decision-card">
+      <header><span class="badge">Decision Card</span><h3>Home Base Pattern</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
+      <div class="dc-body">
+
+        <div class="field"><div class="lbl">Match situation</div>
+          <div>Any neutral baseline rally — most often a crosscourt exchange — where you feel the urge to
+          "do something" but don't yet have a ball worth attacking. Especially valuable on serve at 0–30 / 15–30.</div></div>
+
+        <div class="field"><div class="lbl">Problem it solves</div>
+          <div>Stops the single most common unforced error in club tennis: changing direction off the wrong
+          ball. It converts a vague "stay patient" into a concrete, automatic rule.</div></div>
+
+        <div class="field"><div class="lbl">Decision rule</div>
+          <div class="rule">Picture an imaginary line running from you to your opponent.
+          <strong>If the ball crosses that line (an "outside" ball)</strong> → do <u>not</u> change direction;
+          return it back where it came from (crosscourt), with height and margin.
+          <strong>If the ball does <u>not</u> cross the line (an "inside" ball)</strong> and you're balanced →
+          direction change is unlocked: open court, inside-in, or inside-out.</div></div>
+
+        <div class="field"><div class="lbl">Why it works</div>
+          <ul style="margin:.3rem 0">
+            <li><strong>Geometry:</strong> redirecting an outside ball means hitting over the higher part of the net into less court — the lowest-percentage shot in tennis.</li>
+            <li><strong>Probability:</strong> resetting crosscourt keeps the ball over the lowest net and into the longest diagonal — maximum margin.</li>
+            <li><strong>Recovery:</strong> crosscourt-to-crosscourt keeps your recovery distance short; redirecting leaves the open court exposed.</li>
+            <li><strong>Pressure on them:</strong> each crosscourt to a stretched opponent makes <em>their</em> next ball more likely to float back as an inside ball — which you then attack.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Wrong vs correct</div>
+          <div class="dc-examples">
+            <div class="ex wrong"><span class="lbl">✗ Wrong</span><br>0–30, stuck in a backhand crosscourt rally, you feel pressure and rip it down-the-line off a wide, outside ball. Low percentage → 0–40, likely the game.</div>
+            <div class="ex right"><span class="lbl">✓ Correct</span><br>0–30, you reset the backhand crosscourt with margin, stretch them again, and attack the floaty inside ball that comes back. → 15–30, momentum shifts.</div>
+          </div>
+        </div>
+
+        <div class="field"><div class="lbl">Decision tree</div>
+          <pre class="tree">OPPONENT'S BALL
+   │
+   ▼
+Did it cross your imaginary centre line?
+   │
+   ├─ YES (outside ball) ─▶ DON'T change direction
+   │                        reset crosscourt — height + margin
+   │                        recover ▸ wait for the inside ball
+   │
+   └─ NO  (inside ball) ──▶ Direction change UNLOCKED (if balanced)
+                            ▸ open court  ▸ inside-in  ▸ inside-out
+                            ▸ recover & keep the pressure on</pre>
+        <div class="field"><div class="lbl">See it — if the ball goes this way</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
+            <figure class="diagram"><div data-court='{"w": 250, "players": [{"x": 18, "y": 90, "label": "You", "side": "you"}, {"x": 78, "y": 14, "label": "O", "side": "opp"}], "paths": [{"from": [78, 16], "to": [20, 86], "kind": "serve", "label": "outside ball"}, {"from": [20, 86], "to": [80, 16], "kind": "shot"}], "dots": [{"x": 46, "y": 97, "kind": "recovery", "label": "recover"}]}'></div><figcaption><strong>Crosses your line (outside)</strong> → don’t change direction; reset crosscourt &amp; recover.</figcaption></figure>
+            <figure class="diagram"><div data-court='{"w": 250, "players": [{"x": 42, "y": 90, "label": "You", "side": "you"}, {"x": 62, "y": 14, "label": "O", "side": "opp"}], "paths": [{"from": [60, 16], "to": [46, 78], "kind": "serve", "label": "inside ball"}, {"from": [46, 78], "to": [82, 14], "kind": "shot"}]}'></div><figcaption><strong>Stays inside the line (inside)</strong> → direction change unlocked; attack.</figcaption></figure>
+          </div>
+        </div>
+        </div>
+
+        <div class="field"><div class="lbl">Practice drill — "Cross until inside"</div>
+          <ul style="margin:.3rem 0">
+            <li><strong>Setup:</strong> both players rally crosscourt only; either may change direction <em>only</em> when they receive an inside ball.</li>
+            <li><strong>Reps:</strong> 6 × 4-minute games to 7; loser of each point feeds next.</li>
+            <li><strong>Constraint:</strong> changing direction off an outside ball = lose the point automatically.</li>
+            <li><strong>Coaching cue:</strong> "Cross, cross, cross… <em>now</em>." Say it out loud as you recognise the inside ball.</li>
+            <li><strong>Success metric:</strong> &lt; 2 illegal (outside-ball) direction changes per game.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Match application</div>
+          <div>Make this your <strong>default in every neutral rally</strong> and especially when behind on serve
+          (0–30, 15–30, break point). When ahead (30–0, 40–0) you can widen the trigger and attack slightly
+          earlier — see the <a href="10-score-based-strategy.html">Match State Engine</a>.</div></div>
+
+        <div class="field"><div class="lbl">Success metrics</div>
+          <ul style="margin:.3rem 0">
+            <li>Directional-change error rate ↓ (track in <a href="12-match-analysis.html">Match Analysis</a>).</li>
+            <li>Average rally length ↑ on your service games.</li>
+            <li>Points won after resetting an outside ball ↑.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Opponent adaptations</div>
+          <ul style="margin:.3rem 0">
+            <li><strong>vs a counter-puncher:</strong> add height/heaviness, not pace — outlast their patience for the inside ball.</li>
+            <li><strong>vs a flat hitter:</strong> they'll feed you more inside balls; be ready to attack earlier.</li>
+            <li><strong>vs a lefty:</strong> the "line" still applies — just remember the crosscourt diagonal now favours their forehand.</li>
+          </ul></div>
+
+        <div class="field"><div class="lbl">Skill-level adaptation</div>
+          <div><strong>Intermediate:</strong> just obey the rule — never change direction off an outside ball.
+          <strong>Advanced/Tournament:</strong> add disguise and vary height/spin on the reset to <em>manufacture</em>
+          the inside ball sooner. See <a href="27-skill-roadmap.html">Skill-Level Roadmap</a>.</div></div>
+
+      </div>
+    </div>
+
+    <h2 id="autopilot">Pattern Autopilot — pressure defaults</h2>
+    <p>Under pressure, decision fatigue is the enemy. Pre-load a single trusted default per situation so you
+    never deliberate on the big points. Full set in the <a href="25-pattern-library.html">Pattern Library</a>.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Situation</th><th>Default (autopilot)</th></tr></thead>
+      <tbody>
+        <tr><td>Neutral rally</td><td>Crosscourt with margin — wait for the inside ball</td></tr>
+        <tr><td>0–30 service game</td><td>Highest-percentage patterns; no direction changes off outside balls</td></tr>
+        <tr><td>Short ball</td><td>Approach / step in and take time</td></tr>
+        <tr><td>Pulled wide (defending)</td><td>High, deep crosscourt; recover</td></tr>
+        <tr><td>Returning a big server</td><td>Deep through the middle — neutralise</td></tr>
+        <tr><td>Break point down</td><td>Your #1 trusted serve pattern</td></tr>
+        <tr><td>Tie-break</td><td>Trusted patterns only — nothing new</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics for the engine</div>
+    <ul>
+      <li>After any lost point you can name: the ball quality, the decision you made, and the better decision.</li>
+      <li>Unforced errors from direction changes trend down month over month.</li>
+      <li>On break points and in tie-breaks you default to autopilot patterns &gt; 90% of the time.</li>
+    </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=2oz7VMyffGw" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Attack vs When To Defend — Tactics Lesson</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=sYXF77vwRzE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Singles Strategy &amp; Shot Selection — The Four Zones</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=Ns54d4WLQSo" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Simple 3-Step Shot Selection System</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">02</span> Court Geometry</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Court Geometry <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Crosscourt = lower net, more court.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":85,"y":90,"label":"You","side":"you"}],"paths":[{"from":[85,90],"to":[15,10],"kind":"shot","label":"CC"},{"from":[85,90],"to":[86,10],"kind":"serve","label":"DTL"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — default crosscourt; aim 1–1.5 m over the net.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — aim the lines or skim the net.</div>
+          <div class="cs-cues"><span>Over the net, not at the line</span><span>Recover to the bisector</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> bisector recovery — hit deep CC, then beat the ball back to the bisector.</div>
+    </section>
+
+    <h2 id="crosscourt">Why crosscourt is safer</h2>
+    <p>Two facts of the court geometry make the crosscourt ball the highest-percentage shot in tennis —
+    and they're not opinions, they're measurements:</p>
+    <div class="kpi-grid">
+      <div class="kpi"><div class="k">Net at the centre</div><div class="v">0.91 m</div><div class="sub">3′0″ · lowest point</div></div>
+      <div class="kpi"><div class="k">Net at the posts</div><div class="v">1.07 m</div><div class="sub">3′6″ · ~15 cm (6″) higher</div></div>
+      <div class="kpi"><div class="k">Straight length</div><div class="v">23.77 m</div><div class="sub">78 ft · baseline to baseline</div></div>
+      <div class="kpi"><div class="k">Diagonal length</div><div class="v">~25.2 m</div><div class="sub">82.5 ft · +1.4 m (4½ ft)</div></div>
+    </div>
+    <p>So the crosscourt ball travels <strong>over the lowest part of the net</strong> and into
+    <strong>~1.4 m (4½ ft) more court</strong>. Lower obstacle, bigger target — more margin for the same swing.</p>
+
+    <figure class="diagram">
+      <div data-court='{"w":340,"players":[{"x":85,"y":93,"label":"You","side":"you"}],"paths":[{"from":[85,93],"to":[14,8],"kind":"shot","label":"crosscourt · low net · 25.2 m / 82.5 ft"},{"from":[85,93],"to":[86,8],"kind":"serve","label":"down the line · high net · 23.8 m / 78 ft"}]}'></div>
+      <figcaption>The crosscourt (ink) crosses the low centre of the net into the long diagonal. The down-the-line (gold) must clear the higher net near the sideline into less court — same swing, less margin.</figcaption>
+    </figure>
+
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+      <p>Default to crosscourt to bank margin, then change direction only when the ball quality (an
+      <a href="01-decision-making.html">inside ball</a>) justifies the lower-percentage down-the-line.
+      <span class="ev ev-a">Level A</span></p></div>
+
+    <h2 id="margin">Margin over the net (aim up, not at the lines)</h2>
+    <p>Amateurs aim <em>at</em> the lines and skim the net. Pros aim at a <strong>window above the net</strong>
+    and let depth do the work. A ball aimed 1–1.5 m (3–5 ft) over the net still lands in — and almost never finds
+    the net cord on a bad day. Depth, not flatness, is what pressures opponents.</p>
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Aiming for the lines: tiny target, huge downside (net or wide) for a marginal upside.</li>
+        <li>Flat, low clearance "to look aggressive" — it just raises your error rate.</li>
+        <li>Going down-the-line from a defensive, outside ball (over the highest net into the least court).</li>
+      </ul></div>
+
+    <h2 id="targets">High-percentage targets</h2>
+    <p>Think in <strong>zones, not dots.</strong> Your bread-and-butter targets are the deep crosscourt
+    corner (maximum margin + pushes the opponent back and wide) and the deep middle (removes their angle,
+    "safe" under pressure).</p>
+    <figure class="diagram">
+      <div data-court='{"w":340,"zones":[{"x":3,"y":5,"w":32,"h":22,"kind":"target","label":"deep CC"},{"x":34,"y":4,"w":32,"h":15,"kind":"neutral","label":"deep middle (safe)"}],"players":[{"x":50,"y":93,"label":"You","side":"you"}]}'></div>
+      <figcaption>Yellow = primary target (deep crosscourt, max margin). Grey = the safe deep-middle target that kills the opponent's angle when you're under pressure.</figcaption>
+    </figure>
+
+    <h2 id="percentage">Percentage tennis (the 75/25 rule)</h2>
+    <p>High-level singles is roughly <strong>~75% primary patterns / ~25% secondary.</strong> The crosscourt
+    rally is the primary; the down-the-line, drop, and approach are the 25% you deploy <em>once the geometry
+    is in your favour.</em> The discipline isn't never going for it — it's only going for it on the right ball.</p>
+
+    <h2 id="recovery">Recovery positions</h2>
+    <p>Where you hit dictates where you stand next. Recover to the <strong>bisector</strong> of the opponent's
+    likely replies — not always the centre mark. Hit crosscourt? Recover a step <em>toward</em> the side you
+    hit to, because their best reply comes back crosscourt.</p>
+    <figure class="diagram">
+      <div data-court='{"w":340,"players":[{"x":14,"y":12,"label":"O","side":"opp"},{"x":10,"y":90,"label":"You","side":"you"}],"paths":[{"from":[10,90],"to":[16,10],"kind":"shot","label":"your deep CC"}],"dots":[{"x":40,"y":98,"kind":"recovery","label":"recover (bisector)"}]}'></div>
+      <figcaption>After a deep crosscourt from the wide position, recover to the bisector — just past centre toward your forehand side here — not all the way back to the middle.</figcaption>
+    </figure>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Situation</th><th>Recovery position</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Offensive</strong> (you're dictating)</td><td>On or just inside the baseline, centred — ready to step in.</td></tr>
+        <tr><td><strong>Defensive</strong> (stretched/behind)</td><td>Deeper behind the baseline, central — buy time, cover the most court.</td></tr>
+        <tr><td><strong>After a wide ball</strong></td><td>Bisector of their angles — a step toward the side you hit to.</td></tr>
+        <tr><td><strong>After an approach</strong></td><td>Forward, split-step inside the service line, cover the line you approached down.</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Recovery decision tree</div></div>
+    <pre class="tree">YOU JUST HIT —
+   │
+   ▼
+What did you hit?
+   ├─ Deep crosscourt ─▶ recover just past centre, toward the side you hit
+   ├─ Down the line ───▶ recover further across (you've opened your court)
+   └─ Short / defensive ▶ recover deeper &amp; central — buy time</pre>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Bisector recovery"</div>
+      <ul>
+        <li><strong>Setup:</strong> coach/partner feeds you wide, alternating corners; you hit deep crosscourt and recover.</li>
+        <li><strong>Reps:</strong> 4 × 90 seconds, 30s rest. Place a cone on the correct bisector spot each side.</li>
+        <li><strong>Constraint:</strong> you must touch the cone (correct recovery) before the next feed.</li>
+        <li><strong>Coaching cue:</strong> "Hit, then beat the ball back to the bisector."</li>
+        <li><strong>Success metric:</strong> reach the recovery spot before the opponent's contact on ≥ 80% of balls.</li>
+      </ul></div>
+
+    <h2 id="apply">Match application</h2>
+    <p>Geometry runs quietly under every point: default crosscourt for margin, aim over a net window for
+    depth, target zones (not lines), and recover to the bisector. It's the physics that makes the
+    <a href="01-decision-making.html">Home Base Pattern</a> mathematically correct.</p>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Net errors ↓ as your average clearance rises (aim higher, land deeper).</li>
+        <li>Depth: a majority of rally balls landing in the back third of the court.</li>
+        <li>You're set and balanced for the next ball more often (recovery on time).</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=CBH309BOKdE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Do NOT Hit Here! Cross Court vs Down The Line — Tactics</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=_cWG65aLoz8" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Singles Court Positioning — where to stand &amp; why</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=Rdor7I6x6rg" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Improve Your Court Positioning In Tennis</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">03</span> Serve Strategy</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Serve Strategy <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Pick a target. Plan the +1.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":58,"y":95,"label":"Srv","side":"you"}],"paths":[{"from":[58,95],"to":[17,29],"kind":"serve","label":"Wide"},{"from":[58,95],"to":[33,33],"kind":"serve","label":"Body"},{"from":[58,95],"to":[45,29],"kind":"serve","label":"T"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — location first; decide the +1 before you toss.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — patty-cake the 2nd serve or aim for the lines.</div>
+          <div class="cs-cues"><span>Wide opens court</span><span>Body jams</span><span>T takes time</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> serve + 1 — wide serve, drive the next ball into the open court.</div>
+    </section>
+
+    <h2 id="targets">The three targets: Wide · Body · T</h2>
+    <p>Forget "first serve in, second serve safe." Think in <strong>locations.</strong> Every box has three
+    targets, and each does a different tactical job:</p>
+    <figure class="diagram">
+      <div data-court='{"w":340,"players":[{"x":58,"y":95,"label":"Srv","side":"you"}],"paths":[{"from":[58,95],"to":[17,29],"kind":"serve","label":"Wide"},{"from":[58,95],"to":[33,33],"kind":"serve","label":"Body"},{"from":[58,95],"to":[45,29],"kind":"serve","label":"T"}]}'></div>
+      <figcaption>Three serve targets into the box. <strong>Wide</strong> drags the returner off court (opens the court). <strong>Body</strong> jams them (cramped, weak reply). <strong>T</strong> takes away their angle (centre, fast).</figcaption>
+    </figure>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Target</th><th>What it does</th><th>Sets up</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Wide</strong></td><td>Pulls returner off the court, opens the whole court</td><td>+1 into the open court</td></tr>
+        <tr><td><strong>Body</strong></td><td>Jams the returner (no room to swing) → weak floaty reply</td><td>+1 attack through the middle / step in</td></tr>
+        <tr><td><strong>T</strong></td><td>Removes angle, arrives fast, often an ace or jammed return</td><td>+1 behind them or into space</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="serveplus1">Serve +1 — winning the point on the first two balls</h2>
+    <p>The serve isn't the end of the play — it's the <em>set-up</em>. Decide the +1 <strong>before</strong> you
+    serve, based on the target. This is the cheapest source of points in tennis.</p>
+
+    <figure class="diagram">
+      <div data-court='{"w":340,"players":[{"x":60,"y":92,"label":"You","side":"you"},{"x":14,"y":17,"label":"O","side":"opp"}],"paths":[{"from":[60,94],"to":[16,29],"kind":"serve","label":"1 · wide serve"},{"from":[58,88],"to":[84,12],"kind":"shot","label":"2 · +1 open court"}],"dots":[{"x":52,"y":97,"kind":"recovery"}]}'></div>
+      <figcaption>The classic: wide serve drags the returner off court; the +1 goes behind them into the open court. You decided this before you tossed.</figcaption>
+    </figure>
+
+    <div class="decision-card">
+      <header><span class="badge">Decision Card</span><h3>Wide Serve + 1 (Deuce court)</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
+      <div class="dc-body">
+        <div class="field"><div class="lbl">Match situation</div><div>Your service point, deuce court, you want a cheap, low-risk first-strike — especially 30–0, 40–0, or to start a game.</div></div>
+        <div class="field"><div class="lbl">Decision rule</div><div class="rule">Serve wide to stretch the returner → take the +1 (usually a forehand) into the now-open court, away from the returner's recovery.</div></div>
+        <div class="field"><div class="lbl">Why it works</div><div>The wide serve creates a geometric hole; the returner is recovering one way while you hit the other. You attack space, not the opponent.</div></div>
+        <div class="field"><div class="lbl">Wrong vs correct</div>
+          <div class="dc-examples">
+            <div class="ex wrong"><span class="lbl">✗ Wrong</span><br>Big wide serve, then a +1 hit back <em>behind</em> the returner into the side they're already recovering to.</div>
+            <div class="ex right"><span class="lbl">✓ Correct</span><br>Wide serve, +1 driven into the open court — or behind them only if you read them sprinting early.</div>
+          </div></div>
+        <div class="field"><div class="lbl">Drill — "Serve &amp; open court"</div><div>Place a target cone in the open court. Serve wide + drive the next ball at the cone. 5 sets × 10 serves; track how many land in the open-court third.</div></div>
+        <div class="field"><div class="lbl">Success metric</div><div>≥ 50% of wide-serve points end within the first 3 balls in your favour.</div></div>
+        <div class="field"><div class="lbl">Opponent adaptation</div><div>vs a returner who blocks deep-middle, the court won't open — switch to body serves to jam them instead.</div></div>
+      </div>
+    </div>
+
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Serve</th><th>Likely reply</th><th>Your +1</th></tr></thead>
+      <tbody>
+        <tr><td>Wide</td><td>Stretched, short crosscourt</td><td>Drive into the open court</td></tr>
+        <tr><td>Body</td><td>Jammed, weak float</td><td>Step in, attack the middle / forehand</td></tr>
+        <tr><td>T</td><td>Late, blocked centre</td><td>First-strike into space behind them</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="first">First-serve patterns</h2>
+    <p>A first serve isn't "as hard as possible." It's <strong>location first, then pace.</strong> Build 2–3
+    go-to patterns per side and lean on them under pressure rather than improvising.</p>
+    <ul class="check">
+      <li>Deuce: <strong>Wide</strong> to open the court, or <strong>T</strong> for the cheap point.</li>
+      <li>Ad: <strong>T</strong> to the backhand (most players' weaker return), or <strong>wide</strong> to a one-handed backhand.</li>
+      <li>Mix in a <strong>body</strong> serve every few points so the returner can never commit early.</li>
+    </ul>
+
+    <h2 id="second">Second-serve patterns</h2>
+    <p>The second serve defines your floor. The goal is not "safe and short" — that invites attack. It's a
+    serve with <strong>spin, depth and a target</strong> that you can hit at 95%+ reliability under pressure.</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+      <p>A reliable, kicking second serve to the backhand removes the returner's free attack and keeps you in
+      the point on equal terms. <span class="ev ev-b">Level B</span></p></div>
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>"Patty-cake" second serve landing short and central — the easiest ball in tennis to attack.</li>
+        <li>Aiming the second serve at the lines; double faults cost more than a slightly safer target.</li>
+        <li>No spin: a flat, slow second serve sits up perfectly for the returner.</li>
+      </ul></div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Serve selection by score</div></div>
+    <pre class="tree">ABOUT TO SERVE —
+   │
+   ▼
+What's the score pressure?
+   ├─ Ahead (40-0, 30-0) ─▶ free to go for a bigger first-serve pattern
+   ├─ Neutral (15-15, 30-30) ─▶ go-to location, high first-serve %
+   └─ Behind / break point ─▶ your #1 TRUSTED pattern only — % over flash</pre>
+    <p>Score-by-score detail lives in the <a href="10-score-based-strategy.html">Match State Engine</a>.</p>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Targets &amp; second-serve floor"</div>
+      <ul>
+        <li><strong>Setup:</strong> place 3 cones (wide/body/T) in each box.</li>
+        <li><strong>Reps:</strong> 5 × 12 first serves calling the target before each; then 50 second serves to the backhand cone.</li>
+        <li><strong>Constraint:</strong> second-serve block — you must make 9/10 to a deep target or restart the set.</li>
+        <li><strong>Coaching cue:</strong> "Spin up and out, land it deep."</li>
+        <li><strong>Success metric:</strong> first-serve location accuracy ≥ 50%; second-serve make rate ≥ 90% deep.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>First-serve % in the 60–70% band <em>with</em> location (not just "in").</li>
+        <li>Points won on first serve ↑; points won on second serve ↑.</li>
+        <li>Double faults &lt; 2 per set; second serves landing in the back third.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=MWX2OSK0HzY" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">3 Serve + 1 Patterns (the cheat code)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=GumlybS_rBo" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Serve + 1 (Tennis Singles Strategy)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=IPSQUqoN8gU" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Serve +1 Strategy Explained — Win More Singles</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">04</span> Return Strategy</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Return Strategy <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Deep middle. Take away the +1.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":50,"y":92,"label":"R","side":"you"}],"zones":[{"x":33,"y":4,"w":34,"h":18,"kind":"target","label":"deep middle"}],"paths":[{"from":[50,92],"to":[50,12],"kind":"shot"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — 1st serve: block deep middle. 2nd serve: step in and attack.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — use the same big swing on every serve.</div>
+          <div class="cs-cues"><span>Split on the toss</span><span>Just make them play</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> deep-return target — block first serves into the back third.</div>
+    </section>
+
+    <h2 id="goal">The return's only job</h2>
+    <p>The return doesn't have to be a weapon. Its job is to <strong>start the point on neutral or better
+    terms</strong> and deny the server a free +1. The first measurable goal: get a high percentage of returns
+    <em>deep and in.</em></p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+      <p>Take away the server's cheap point. A deep return through the middle removes the server's angle for
+      their +1 and forces them to construct. <span class="ev ev-a">Level A</span></p></div>
+
+    <h2 id="first-second">First-serve vs second-serve returns</h2>
+    <p>Two completely different mindsets. Don't use the same return goal for both.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th></th><th>First-serve return</th><th>Second-serve return</th></tr></thead>
+      <tbody>
+        <tr><th>Mindset</th><td>Neutralise — survive &amp; reset</td><td>Attack — step in, take time</td></tr>
+        <tr><th>Target</th><td>Deep, middle (kill the angle)</td><td>Deep crosscourt or behind them</td></tr>
+        <tr><th>Position</th><td>Deeper, block/short swing</td><td>Step inside the baseline</td></tr>
+        <tr><th>Risk</th><td>Low — just get it deep</td><td>Moderate — controlled aggression</td></tr>
+      </tbody>
+    </table></div>
+
+    <figure class="diagram">
+      <div data-court='{"w":340,"players":[{"x":50,"y":92,"label":"R","side":"you"}],"zones":[{"x":33,"y":4,"w":34,"h":18,"kind":"target","label":"deep middle"}],"paths":[{"from":[50,92],"to":[50,12],"kind":"shot","label":"neutralising return"}]}'></div>
+      <figcaption>The default neutralising return: deep through the middle. It removes the server's +1 angle and buys you time to recover to home base.</figcaption>
+    </figure>
+
+    <h2 id="aggressive">Aggressive vs neutralising — when to switch</h2>
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Return decision tree</div></div>
+    <pre class="tree">SERVE INCOMING —
+   │
+   ▼
+First or second serve?
+   ├─ FIRST ─▶ Big/accurate? ─▶ BLOCK deep middle (neutralise)
+   │            Returnable?  ─▶ deep drive, crosscourt
+   │
+   └─ SECOND ▶ Step IN ─▶ attack: deep CC, or behind them,
+                          or +1 plan (run-around forehand)</pre>
+
+    <h2 id="opponents">Returning specific servers</h2>
+
+    <div class="card"><h3>vs a Big Server <span class="ev ev-b">Level B</span></h3>
+      <ul>
+        <li><strong>Stand back</strong> and shorten the swing — block, don't swing. Use their pace.</li>
+        <li>Target <strong>deep middle</strong> — biggest margin, kills their +1 angle.</li>
+        <li>Win the second-serve points ruthlessly; that's where big servers are beatable.</li>
+        <li>On big points, just make the return — force one more ball.</li>
+      </ul></div>
+
+    <div class="card"><h3>vs a Pusher / Junkballer</h3>
+      <ul>
+        <li>Their serve is soft — <strong>step in and take time</strong>, but don't over-hit the first ball.</li>
+        <li>Return deep and to a corner, then look to <strong>approach</strong> on the next short ball.</li>
+        <li>Patience: don't try to win the point on the return; win it by applying steady forward pressure.</li>
+      </ul></div>
+
+    <div class="card"><h3>vs a Left-hander</h3>
+      <ul>
+        <li>The lefty slice serve swings into the <strong>ad-court backhand</strong> — expect it on big points and shade that way.</li>
+        <li>Practise returning the wide ad serve; protect the backhand or run around to a forehand when you can.</li>
+        <li>Remember the diagonal: returning crosscourt now feeds <em>their</em> forehand — consider deep middle instead.</li>
+      </ul></div>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Same aggressive swing on first and second serves — frees up errors on the big first serve.</li>
+        <li>Standing in the same spot every time; vary depth and shade by score and server tendency.</li>
+        <li>Going for a return winner on break point instead of making the server play.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Deep return target"</div>
+      <ul>
+        <li><strong>Setup:</strong> server serves first &amp; second; place a deep-middle target zone (back third).</li>
+        <li><strong>Reps:</strong> 6 games — return only; +1 point for any return landing in the back third.</li>
+        <li><strong>Constraint:</strong> first-serve returns must be blocked (short backswing) to count.</li>
+        <li><strong>Coaching cue:</strong> "Split-step on their toss; eyes on contact; deep and in."</li>
+        <li><strong>Success metric:</strong> ≥ 70% of returns in play; ≥ 40% landing deep.</li>
+      </ul></div>
+
+    <h2 id="apply">Match application</h2>
+    <p>Pick a return position per serve type before the game starts, default to deep-middle on first serves,
+    and pre-decide your second-serve attack. On the receiver's side, your "+1" is the return — the
+    <a href="01-decision-making.html">Decision Engine</a> takes over from the third ball.</p>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Return-in-play rate ↑ (especially on first serves).</li>
+        <li>Return points won ↑, particularly off second serves.</li>
+        <li>Break points earned per return game ↑ over a season.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=zO90rScjNk0" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Return of Serve Strategy + Examples</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=AMnmwePJVGE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How to Break Big Servers (Return Lesson)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=fZMsoHPtWnU" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Improve Your Return of Serve</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">05</span> Baseline Patterns</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Baseline Patterns <span class="ev ev-c">C</span></div>
+      <div class="cs-rule">Crosscourt until the short ball.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":18,"y":92,"label":"You","side":"you"}],"zones":[{"x":2,"y":52,"w":42,"h":18,"kind":"target","label":"short"}],"paths":[{"from":[18,90],"to":[18,12],"kind":"shot","label":"rally CC"},{"from":[26,64],"to":[86,14],"kind":"shot","label":"attack"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — lean on 2 primary patterns; play the weapon only on the right ball.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — run the finish (down-the-line) before you’ve earned it.</div>
+          <div class="cs-cues"><span>Earn it, then end it</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> "pattern on call" — coach calls A–F; you execute it.</div>
+    </section>
+
+    <p>Each pattern below is a play, not a single shot. The <strong>success %</strong> figures are rough
+    planning heuristics (your mileage varies) to rank risk, not guarantees. <span class="ev ev-c">Level C</span></p>
+
+    <h2 id="a">Pattern A — Crosscourt until the short ball</h2>
+    <p>The backbone. Rally crosscourt with margin and depth; the moment you get a short, inside ball, change
+    direction and attack. This is the <a href="01-decision-making.html">Home Base Pattern</a> in action.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":18,"y":92,"label":"You","side":"you"}],"zones":[{"x":2,"y":52,"w":42,"h":18,"kind":"target","label":"short ball"}],"paths":[{"from":[18,90],"to":[18,12],"kind":"shot","label":"rally CC"},{"from":[26,64],"to":[86,14],"kind":"shot","label":"attack DTL"}]}'></div>
+      <figcaption>Repeat crosscourt (max margin) until a short ball appears, then change direction and attack.</figcaption>
+    </figure>
+    <p><strong>Use when:</strong> neutral, building, unsure. <strong>Risk:</strong> <span class="pill risk-low">low</span> · success ~75%.</p>
+
+    <h2 id="b">Pattern B — Crosscourt, crosscourt, down-the-line</h2>
+    <p>Two heavy crosscourts to move the opponent and earn an inside ball, then flip the third ball
+    down-the-line into the space they've vacated.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":20,"y":92,"label":"You","side":"you"}],"paths":[{"from":[20,90],"to":[20,12],"kind":"shot","label":"1 CC"},{"from":[20,80],"to":[24,14],"kind":"shot","label":"2 CC"},{"from":[24,70],"to":[82,14],"kind":"serve","label":"3 DTL"}]}'></div>
+      <figcaption>Set the trap crosscourt, spring it down-the-line on the ball you've earned — not before.</figcaption>
+    </figure>
+    <p><strong>Use when:</strong> opponent leans/cheats crosscourt. <strong>Risk:</strong> <span class="pill risk-med">med</span> · success ~60% (the DTL is the 25% shot — only on the right ball).</p>
+
+    <h2 id="c">Pattern C — Heavy topspin, then open-court attack</h2>
+    <p>Push the opponent back with high, heavy depth until they float a short reply, then step in and drive
+    the open court.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":30,"y":92,"label":"You","side":"you"},{"x":22,"y":14,"label":"O","side":"opp"}],"paths":[{"from":[30,90],"to":[22,10],"kind":"shot","label":"heavy &amp; deep"},{"from":[40,66],"to":[80,16],"kind":"shot","label":"open court"}]}'></div>
+      <figcaption>Heaviness buys you the short ball; then attack the space, not the opponent.</figcaption>
+    </figure>
+    <p><strong>Use when:</strong> opponent dislikes high balls / stands close. <strong>Risk:</strong> <span class="pill risk-low">low</span> · success ~70%.</p>
+
+    <h2 id="d">Pattern D — Middle-ball pressure</h2>
+    <p>Underrated. Deep, heavy balls down the middle remove the opponent's angles, jam their footwork, and
+    induce errors — with very low risk to you.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":50,"y":92,"label":"You","side":"you"}],"zones":[{"x":34,"y":4,"w":32,"h":18,"kind":"target","label":"deep middle"}],"paths":[{"from":[50,90],"to":[50,12],"kind":"shot","label":"deep middle"}]}'></div>
+      <figcaption>No angle for them, no risk for you. A superb default under pressure or against big hitters.</figcaption>
+    </figure>
+    <p><strong>Use when:</strong> under pressure, vs angle-hitters, big points. <strong>Risk:</strong> <span class="pill risk-low">low</span> · success ~78%.</p>
+
+    <h2 id="e">Pattern E — Forehand dominance</h2>
+    <p>Manufacture forehands. Run around the backhand to hit inside-out forehands, then finish inside-in into
+    the open court — built around your biggest weapon.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":30,"y":92,"label":"FH","side":"you"}],"paths":[{"from":[30,90],"to":[14,14],"kind":"shot","label":"inside-out"},{"from":[30,86],"to":[80,14],"kind":"serve","label":"inside-in finish"}]}'></div>
+      <figcaption>Inside-out to open the court, inside-in to finish. The aggressive baseliner's bread and butter.</figcaption>
+    </figure>
+    <p><strong>Use when:</strong> you're a forehand-dominant player with court time. <strong>Risk:</strong> <span class="pill risk-med">med</span> · success ~62% (exposes your backhand corner — recover hard).</p>
+
+    <h2 id="f">Pattern F — Backhand protection</h2>
+    <p>If your backhand is the liability, protect it: use depth, slice and middle balls to avoid backhand-to-
+    backhand exchanges you'll lose, and re-route to neutral.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":70,"y":92,"label":"BH","side":"you"}],"paths":[{"from":[70,90],"to":[40,12],"kind":"move","label":"slice deep / reset"},{"from":[70,86],"to":[50,12],"kind":"shot","label":"redirect to middle"}]}'></div>
+      <figcaption>Slice deep, target the middle, change the height — anything to avoid trading your weakest shot toe-to-toe.</figcaption>
+    </figure>
+    <p><strong>Use when:</strong> your backhand is exposed or breaking down. <strong>Risk:</strong> <span class="pill risk-low">low</span> · success ~68%.</p>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Running a pattern's <em>finish</em> (the DTL, the inside-in) before earning it — pattern collapses into a low-percentage gamble.</li>
+        <li>Having no pattern at all — reacting ball-to-ball, so the better-conditioned player wins.</li>
+        <li>Using Pattern E (forehand dominance) when you don't have the time/court position — leaving the backhand corner wide open.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Pattern on call"</div>
+      <ul>
+        <li><strong>Setup:</strong> coach calls a pattern letter (A–F) at the start of each point; you must execute it.</li>
+        <li><strong>Reps:</strong> 6 × 5-minute blocks, one pattern emphasised per block, then mixed.</li>
+        <li><strong>Constraint:</strong> the "finish" shot only counts if it came off an inside/short ball.</li>
+        <li><strong>Coaching cue:</strong> "Earn it, then end it."</li>
+        <li><strong>Success metric:</strong> correct pattern executed on ≥ 70% of points; finish-error rate falling.</li>
+      </ul></div>
+
+    <h2 id="apply">Match application</h2>
+    <p>Pick your <strong>two primary patterns</strong> (usually A + D) and <strong>one weapon pattern</strong>
+    (B, C or E) based on your <a href="00-player-identity.html">archetype</a>. Default to the primaries; deploy
+    the weapon ~25% of the time on the right ball. Pre-load them as autopilot in the
+    <a href="25-pattern-library.html">Pattern Library</a>.</p>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>You can name the pattern you're running mid-rally.</li>
+        <li>Finish-shot (DTL / inside-in) error rate stays below your crosscourt error rate.</li>
+        <li>Rally win % climbs as you stick to primaries under pressure.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=pJ_vwgSJWgw" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Singles Strategy — Forehand patterns to dominate</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=YbaRAIAhPc8" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Hit Cross Court &amp; Down The Line</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=L8TYCPIllJk" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">The 2-1 Baseline Pattern Explained</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">06</span> Attacking System</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Attacking System <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Short + up + balanced = attack.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":50,"y":92,"label":"You","side":"you"}],"zones":[{"x":12,"y":50,"w":76,"h":20,"kind":"target","label":"attack zone"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — approach down-the-line, then close the net.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — attack a ball that’s deep or below the net.</div>
+          <div class="cs-cues"><span>Read it, step in, split-step</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> "short-ball green light" — attack only genuine short balls, then close.</div>
+    </section>
+
+    <h2 id="recognise">Recognising the attackable ball</h2>
+    <p>Three cues, ideally two or more present at once: the ball is <strong>short</strong> (landing inside the
+    baseline), <strong>sitting up</strong> (above net height at contact), and you can take it <strong>in
+    balance.</strong> Miss these and you're forcing, not attacking.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":50,"y":92,"label":"You","side":"you"}],"zones":[{"x":12,"y":50,"w":76,"h":20,"kind":"target","label":"attackable: short + sitting up"}]}'></div>
+      <figcaption>The attack zone: a ball landing inside the baseline that lets you contact at or above net height — and step in <em>through</em> it.</figcaption>
+    </figure>
+
+    <h2 id="checklist">The "Should I attack?" checklist</h2>
+    <div class="callout check"><div class="head"><span class="ico">📋</span> Attack only if…</div>
+      <ul class="check">
+        <li>The ball is landing <strong>inside the baseline</strong> (short).</li>
+        <li>You can contact it <strong>at or above net height</strong> (sitting up).</li>
+        <li>You are <strong>balanced</strong> and moving forward, not stretched.</li>
+        <li>You have a <strong>target</strong> already in mind (open court / behind them).</li>
+      </ul>
+      <p style="margin:.4rem 0 0">If two or more are missing → <strong>keep constructing.</strong> Don't gift the point.</p>
+    </div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Attack decision tree</div></div>
+    <pre class="tree">SHORT BALL ARRIVES —
+   │
+   ▼
+Can I take it in balance, at/above net height?
+   ├─ NO ─▶ Rally ball deep, recover, stay patient
+   └─ YES ─▶ Approach or drive?
+              ├─ Very short / low ─▶ APPROACH + close net
+              └─ Sitting up high ──▶ DRIVE / swing volley, finish</pre>
+
+    <h2 id="footwork">Transition footwork</h2>
+    <p>The error most amateurs make: hitting the approach while still running, then stopping. Do the opposite —
+    <strong>load, hit, then keep moving forward</strong> and split-step as the opponent strikes.</p>
+    <ul>
+      <li>Read short early → explode forward.</li>
+      <li>Hit <em>through</em> the ball moving forward (don't camp behind it).</li>
+      <li>Continue toward the net; <strong>split-step</strong> just before their contact.</li>
+      <li>Close the line you hit down.</li>
+    </ul>
+
+    <h2 id="approach">Approach-shot selection</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>The short ball is…</th><th>Approach choice</th><th>Why</th></tr></thead>
+      <tbody>
+        <tr><td>Very low / awkward</td><td>Slice deep down-the-line</td><td>Stays low, buys you time to close</td></tr>
+        <tr><td>Sitting up, mid-court</td><td>Drive deep down-the-line</td><td>Shortest path to net to defend; pressures them</td></tr>
+        <tr><td>Wide &amp; short</td><td>Drive behind them / sharp angle</td><td>They're recovering the other way</td></tr>
+      </tbody>
+    </table></div>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> The golden rule</div>
+      <p>Approach <strong>down the line</strong> by default — it's the shortest distance to the net, so you have
+      time to get into position and you only have to cover one passing lane. <span class="ev ev-a">Level A</span></p></div>
+
+    <h2 id="closing">Closing &amp; finishing</h2>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":70,"y":40,"label":"You","side":"you"},{"x":18,"y":14,"label":"O","side":"opp"}],"paths":[{"from":[72,72],"to":[78,12],"kind":"shot","label":"approach DTL"},{"from":[70,40],"to":[24,30],"kind":"serve","label":"volley to open court"}]}'></div>
+      <figcaption>Approach down-the-line, close inside the service line, split-step, then volley into the open court.</figcaption>
+    </figure>
+    <ul>
+      <li><strong>First volley:</strong> deep and simple — you don't have to win it outright, just stay on offense.</li>
+      <li><strong>Position:</strong> close tight after a good approach; hang back a touch after a weak one.</li>
+      <li><strong>Finish:</strong> into the open court or behind a scrambling opponent — see <a href="08-net-play-system.html">Net Play</a>.</li>
+    </ul>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Attacking a ball that's deep or below net height — the #1 unforced-error source.</li>
+        <li>Approaching crosscourt (longer path to net, two passing lanes to cover).</li>
+        <li>Over-hitting the approach for a winner instead of setting up the volley.</li>
+        <li>Floating to the net without a split-step — you're a sitting duck for the pass.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Short-ball green light"</div>
+      <ul>
+        <li><strong>Setup:</strong> partner feeds a mix of deep and short balls randomly.</li>
+        <li><strong>Reps:</strong> 5 × 2-min. Attack only the genuine short balls; rally the deep ones.</li>
+        <li><strong>Constraint:</strong> attacking a deep ball = lose the point; you must close the net after every approach.</li>
+        <li><strong>Coaching cue:</strong> "Read it, step in, hit through, split-step."</li>
+        <li><strong>Success metric:</strong> &gt; 60% of approached points won; near-zero attacks on deep balls.</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Net points won % climbing (track in <a href="21-analytics.html">Analytics</a>).</li>
+        <li>Approach-shot success rate &gt; 60%.</li>
+        <li>Errors on "attacks" of deep/low balls trending to zero.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=xwYUlwTzaS0" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Tennis Approach Shot: How to Finish Short Balls</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=K8f5E6aXyfM" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Attack Short Balls (Strategy Explained)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=esJyKD3C2e0" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Aggressively Hit Approach Shots</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">07</span> Defensive System</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Defensive System <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">High, deep, recover — survive & reset.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":8,"y":90,"label":"You","side":"you"}],"paths":[{"from":[8,90],"to":[20,10],"kind":"shot","label":"high deep CC"}],"dots":[{"x":40,"y":98,"kind":"recovery","label":"recover"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — buy time with height; reset the rally to neutral.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — go for a winner from a losing position.</div>
+          <div class="cs-cues"><span>High, deep, recover</span><span>Lob the net-rusher</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> "survive & reset" scramble — reset 4–6 aggressive balls deep.</div>
+    </section>
+
+    <h2 id="goal">The goal of defense</h2>
+    <p>When you're stretched, the worst instinct is to try to hit a winner from a losing position. Elite
+    players do the opposite: they hit shots that <strong>buy time and reset the rally to even.</strong> One
+    great defensive ball flips the pressure back onto the attacker.</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+      <p>Turn defense into neutral, neutral into offense. Every defensive shot answers: "what buys me the most
+      time and the safest reset?" <span class="ev ev-a">Level A</span></p></div>
+
+    <h2 id="tools">The four defensive tools</h2>
+
+    <div class="card"><h3>1 · High, deep defensive crosscourt</h3>
+      <p>The #1 reset. High over the net (huge margin) + deep + crosscourt (longest court, shortest recovery).
+      Buys the time you need to get back to home base.</p>
+      <figure class="diagram">
+        <div data-court='{"w":300,"players":[{"x":8,"y":92,"label":"You","side":"you"}],"paths":[{"from":[8,90],"to":[20,10],"kind":"shot","label":"high deep CC"}],"dots":[{"x":40,"y":98,"kind":"recovery","label":"recover"}]}'></div>
+      </figure>
+    </div>
+
+    <div class="card"><h3>2 · Defensive slice</h3>
+      <p>When you can't get fully set, the slice keeps the ball <strong>low and deep</strong>, stays controlled
+      off pace, and gives you extra time. Especially valuable on the backhand and on the dead run.</p>
+    </div>
+
+    <div class="card"><h3>3 · Emergency lob</h3>
+      <p>Pulled way out wide or rushed at net by the opponent? The high defensive lob resets everything — it
+      buys maximum time and pushes them back off the net. Aim deep, over their backhand side.</p>
+    </div>
+
+    <div class="card"><h3>4 · Reset to neutral</h3>
+      <p>Not every ball under pressure must be spectacular. A simple deep ball down the middle removes the
+      opponent's angle and lets you re-centre. Middle + deep = the safest reset there is.</p>
+    </div>
+
+    <h2 id="wide">Recovering from wide positions</h2>
+    <p>After defending wide, don't sprint blindly to the centre mark — recover to the <strong>bisector</strong>
+    of the angles your reply allows the opponent (see <a href="02-court-geometry.html">Court Geometry</a>). A
+    high, deep crosscourt buys enough time to make that recovery.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":6,"y":90,"label":"You","side":"you"},{"x":20,"y":14,"label":"O","side":"opp"}],"paths":[{"from":[6,90],"to":[22,10],"kind":"shot","label":"high deep CC"},{"from":[6,90],"to":[40,96],"kind":"move","label":"recover to bisector"}]}'></div>
+      <figcaption>Buy time with height &amp; depth, then recover to the bisector — ready for the next ball instead of stranded wide.</figcaption>
+    </figure>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Defense decision tree</div></div>
+    <pre class="tree">YOU'RE STRETCHED / LATE —
+   │
+   ▼
+How much trouble are you in?
+   ├─ Very late, on the run ─▶ SLICE deep / high CC — just survive
+   ├─ Pulled wide, time-poor ▶ HIGH DEEP crosscourt, recover bisector
+   ├─ Rushed at the net ─────▶ LOB deep over backhand
+   └─ Mildly pressured ──────▶ RESET deep middle, re-centre</pre>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>Going for a winner from a defensive position — low percentage, hands the point over.</li>
+        <li>Hitting flat and low under pressure (no margin) instead of high and deep.</li>
+        <li>Recovering to the centre mark by default instead of the bisector — leaving the open court exposed.</li>
+        <li>Panicking at the net rush instead of calmly lobbing.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Survive &amp; reset"</div>
+      <ul>
+        <li><strong>Setup:</strong> partner/coach hits you 4–6 aggressive balls corner to corner; your only job is to keep resetting.</li>
+        <li><strong>Reps:</strong> 6 × 1-min scramble sets; count how many you reset deep (past the service line).</li>
+        <li><strong>Constraint:</strong> every ball must clear the net by 1.2 m+ (4 ft+) — height = time.</li>
+        <li><strong>Coaching cue:</strong> "High, deep, recover — don't be a hero."</li>
+        <li><strong>Success metric:</strong> ≥ 70% of defensive balls land deep; you reach the bisector before their next contact.</li>
+      </ul></div>
+
+    <h2 id="apply">Match application</h2>
+    <p>The moment you read trouble, switch from "win" to "survive &amp; reset." A patient defensive game frustrates
+    attackers into errors and turns long matches in your favour — the core of the
+    <a href="09-player-type-strategies.html">counter-puncher</a> game.</p>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Points won from defensive positions ↑.</li>
+        <li>Reset-to-neutral rate after being pulled wide ↑.</li>
+        <li>Unforced errors while defending ↓ (height &amp; depth doing the work).</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=PC79gxmdv8Q" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">3 Types of Shots — Offense, Neutral, Defense</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=UNSLArLm0nc" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Deal With High Heavy Topspin (Drills)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=IurVY9SHdHE" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Defense Strategy: When Opponent Comes To Net</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">08</span> Net Play System</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Net Play <span class="ev ev-b">B</span></div>
+      <div class="cs-rule">Volley deep. Then finish.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":62,"y":36,"label":"You","side":"you"},{"x":80,"y":12,"label":"O","side":"opp"}],"paths":[{"from":[80,16],"to":[92,90],"kind":"move","label":"DTL"},{"from":[80,16],"to":[30,80],"kind":"move","label":"CC"}],"dots":[{"x":62,"y":36,"kind":"recovery","label":"bisect"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — split-step on their contact; first volley deep, then close.</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — try to kill the first volley or float in without a split-step.</div>
+          <div class="cs-cues"><span>Approach, split, deep, close</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> "approach, split, finish" — split-step every rep; first volley past the service line.</div>
+    </section>
+
+    <h2 id="position">Positioning &amp; anticipation</h2>
+    <p>Win the net with your feet, not your hands. Close to the right depth, split-step on every contact, and
+    stand on the <strong>bisector</strong> of the opponent's two passing lanes — biased toward the line you
+    approached down.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":62,"y":36,"label":"You","side":"you"},{"x":80,"y":12,"label":"O","side":"opp"}],"paths":[{"from":[80,16],"to":[92,90],"kind":"move","label":"DTL pass"},{"from":[80,16],"to":[30,80],"kind":"move","label":"CC pass"}],"dots":[{"x":62,"y":36,"kind":"recovery","label":"bisect lanes"}]}'></div>
+      <figcaption>Stand on the bisector of the two passing lanes (dashed), shaded toward the line you approached. Split-step before their contact and you cover both passes.</figcaption>
+    </figure>
+
+    <h2 id="firstvolley">The first volley</h2>
+    <p>The first volley after an approach is a <strong>set-up, not a kill.</strong> Hit it deep and controlled,
+    keep closing, and let the second volley finish. Trying to end it on the first volley is the biggest cause
+    of net errors.</p>
+    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical purpose</div>
+      <p>Stay on offense and force a passing attempt from a worse position. Deep first volley → close → finish.
+      <span class="ev ev-b">Level B</span></p></div>
+
+    <h2 id="shots">The net shots</h2>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Shot</th><th>When</th><th>Target</th></tr></thead>
+      <tbody>
+        <tr><td><strong>First volley</strong></td><td>After an approach, around the service line</td><td>Deep, often behind the opponent or to open court</td></tr>
+        <tr><td><strong>Swing volley</strong></td><td>Floaty, high ball mid-court</td><td>Drive into the open court — take it out of the air</td></tr>
+        <tr><td><strong>Overhead</strong></td><td>Any lob you can reach</td><td>Deep middle (safe) or sharp angle off a short lob</td></tr>
+        <tr><td><strong>Low volley / half-volley</strong></td><td>Caught at your feet</td><td>Deep, neutral — reset and keep closing</td></tr>
+      </tbody>
+    </table></div>
+
+    <div class="callout tree"><div class="head"><span class="ico">🌳</span> At-the-net decision tree</div></div>
+    <pre class="tree">BALL COMING AT YOU AT NET —
+   │
+   ▼
+Height of the ball?
+   ├─ Above net ─▶ volley/punch deep or to open court (offense)
+   ├─ At/below net ─▶ low volley deep &amp; neutral, keep closing
+   └─ Lobbed ─▶ can you reach it?
+                ├─ YES ─▶ overhead (deep middle, or angle if short)
+                └─ NO  ─▶ retreat, let it bounce, defend/lob back</pre>
+
+    <h2 id="reading">Reading the incoming ball</h2>
+    <p>At the net the ball comes fast — its <strong>height and path decide the shot</strong> before you think. Gold = the incoming ball; ink = your reply.</p>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;max-width:none">
+      <figure class="diagram"><div data-court='{"w": 240, "players": [{"x": 50, "y": 58, "label": "You", "side": "you"}], "paths": [{"from": [80, 16], "to": [54, 52], "kind": "serve", "label": "high"}, {"from": [50, 56], "to": [16, 14], "kind": "shot", "label": "punch"}]}'></div><figcaption><strong>Above the net</strong> → punch deep / into the open court.</figcaption></figure>
+      <figure class="diagram"><div data-court='{"w": 240, "players": [{"x": 50, "y": 58, "label": "You", "side": "you"}], "paths": [{"from": [22, 16], "to": [50, 66], "kind": "serve", "label": "low"}, {"from": [50, 64], "to": [58, 14], "kind": "shot", "label": "block deep"}]}'></div><figcaption><strong>At your feet</strong> → low block deep, keep closing.</figcaption></figure>
+      <figure class="diagram"><div data-court='{"w": 240, "players": [{"x": 50, "y": 60, "label": "You", "side": "you"}], "paths": [{"from": [40, 16], "to": [58, 42], "kind": "move", "label": "lob"}, {"from": [55, 48], "to": [50, 14], "kind": "shot", "label": "overhead"}]}'></div><figcaption><strong>Lobbed</strong> → overhead to deep-middle (or retreat).</figcaption></figure>
+    </div>
+
+
+    <h2 id="approach">Approach patterns &amp; singles "poaching"</h2>
+    <p>Singles has no partner, but the same principle applies: <strong>anticipate and cut off.</strong> When you
+    read a predictable crosscourt reply, step across early and take it as a volley or swing volley. Approach
+    down-the-line (shortest path), then poach the crosscourt pass you've invited.</p>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
+      <ul>
+        <li>No split-step — you're moving when they hit, so you can't change direction to the pass.</li>
+        <li>Trying to end the point on the first volley instead of building it.</li>
+        <li>Standing too far back (volleying up) or too close (lobbed easily) — find the right depth.</li>
+        <li>Overheads aimed at the lines; under pressure, deep-middle is the high-% overhead.</li>
+      </ul></div>
+
+    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Approach, split, finish"</div>
+      <ul>
+        <li><strong>Setup:</strong> coach feeds a short ball; you approach DTL, then they try to pass.</li>
+        <li><strong>Reps:</strong> 5 × 10 approaches; alternate which pass they attempt; you must split-step every time.</li>
+        <li><strong>Constraint:</strong> first volley must land past the service line (deep) to count.</li>
+        <li><strong>Coaching cue:</strong> "Approach, split, deep volley, close, finish."</li>
+        <li><strong>Success metric:</strong> ≥ 65% of net points won; split-step on 100% of contacts.</li>
+      </ul></div>
+
+    <h2 id="apply">Match application</h2>
+    <p>You don't have to live at the net — but you must be willing to finish there. Convert the short balls you
+    earn in the <a href="06-attacking-system.html">Attacking System</a>, and use the net to shorten points
+    against grinders and on fast surfaces.</p>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>Net points won % &gt; 60% (track in <a href="21-analytics.html">Analytics</a>).</li>
+        <li>First-volley depth: majority landing past the service line.</li>
+        <li>Overhead error rate ↓; pass-attempts-against converted into errors ↑.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=WnVPbvUZOEM" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">How To Dominate The Net In Singles — Tactics</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=3uhq1YnGn7M" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Approach The Net / Come In To Volley</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=feCB0-CYqrI" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">Avoid These 3 Volley &amp; Overhead Mistakes</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <details class="topic">
+      <summary><span class="tn">25</span> Pattern Library</summary>
+      <div class="topic-body">
+<section class="courtside">
+      <div class="cs-eyebrow">🎾 Courtside · Pattern Library <span class="ev ev-a">A</span></div>
+      <div class="cs-rule">Big points → trusted pattern only.</div>
+      <div class="cs-grid">
+        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":60,"y":92,"label":"You","side":"you"},{"x":14,"y":17,"label":"O","side":"opp"}],"paths":[{"from":[60,94],"to":[16,29],"kind":"serve","label":"wide"},{"from":[58,88],"to":[84,12],"kind":"shot","label":"+1 open"}]}'></div></figure>
+        <div class="cs-dd">
+          <div class="dd dd-do"><b>✓ Do</b> — pre-load one default per situation (autopilot).</div>
+          <div class="dd dd-no"><b>✗ Don't</b> — invent a new play under pressure.</div>
+          <div class="cs-cues"><span>Pressure = your #1 pattern</span></div>
+        </div>
+      </div>
+      <div class="cs-drill">🎾 <b>Drill:</b> name your 3 signature patterns and their triggers.</div>
+    </section>
+
+    <h2 id="autopilot">Pattern Autopilot — pressure defaults</h2>
+    <p>Decision fatigue loses big points. Pre-load one trusted default per situation; on autopilot you execute
+    instead of deliberating.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Situation</th><th>Autopilot default</th></tr></thead>
+      <tbody>
+        <tr><td>Neutral rally</td><td>Crosscourt with margin — wait for the inside ball</td></tr>
+        <tr><td>0–30 service game</td><td>High-% patterns; no direction change off outside balls</td></tr>
+        <tr><td>Short ball</td><td>Approach down-the-line, close the net</td></tr>
+        <tr><td>Pulled wide (defending)</td><td>High, deep crosscourt; recover to bisector</td></tr>
+        <tr><td>Returning a big server</td><td>Block deep through the middle</td></tr>
+        <tr><td>Break point down</td><td>Your #1 trusted serve pattern</td></tr>
+        <tr><td>Tie-break</td><td>Trusted patterns only — nothing new</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="library">The pattern library</h2>
+    <p>Ten high-value patterns. Each is a <a href="01-decision-making.html">Decision Card</a>; the table gives
+    the essentials at a glance, then two are spotlighted in full. Risk:
+    <span class="pill risk-low">low</span> <span class="pill risk-med">med</span> <span class="pill risk-high">high</span>.</p>
+    <div class="tbl-wrap"><table>
+      <thead><tr><th>Pattern</th><th>Purpose</th><th>Risk</th><th>Best opponent</th><th>Best surface</th><th>Key metric</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Serve +1</strong></td><td>Win cheap on the first two balls</td><td><span class="pill risk-low">low</span></td><td>Weak returner</td><td>Hard / grass</td><td>Pts won in ≤3 shots</td></tr>
+        <tr><td><strong>Return +1</strong></td><td>Neutralise, then attack the 2nd serve</td><td><span class="pill risk-med">med</span></td><td>Big server</td><td>All</td><td>Return pts won</td></tr>
+        <tr><td><strong>Forehand Dominance</strong></td><td>Manufacture inside-out/in forehands</td><td><span class="pill risk-med">med</span></td><td>Weaker backhand</td><td>Hard / clay</td><td>FH winners : errors</td></tr>
+        <tr><td><strong>Backhand Neutralization</strong></td><td>Protect &amp; reset off the backhand</td><td><span class="pill risk-low">low</span></td><td>FH attacker</td><td>All</td><td>BH error rate</td></tr>
+        <tr><td><strong>Approach</strong></td><td>Finish short balls forward</td><td><span class="pill risk-med">med</span></td><td>Passive baseliner</td><td>Grass / hard</td><td>Net pts won %</td></tr>
+        <tr><td><strong>Defensive Recovery</strong></td><td>Survive &amp; reset to neutral</td><td><span class="pill risk-low">low</span></td><td>Power baseliner</td><td>Clay</td><td>Reset rate</td></tr>
+        <tr><td><strong>Counterattack</strong></td><td>Flip defense into offense off a stretched ball</td><td><span class="pill risk-high">high</span></td><td>Over-aggressor</td><td>Hard / clay</td><td>Counter win %</td></tr>
+        <tr><td><strong>Pressure Point</strong></td><td>Highest-% play on big points</td><td><span class="pill risk-low">low</span></td><td>Any</td><td>All</td><td>BP save / convert %</td></tr>
+        <tr><td><strong>Tie-Break</strong></td><td>Trusted patterns, mini-margins</td><td><span class="pill risk-low">low</span></td><td>Any</td><td>All</td><td>TB win %</td></tr>
+        <tr><td><strong>Closing-Out</strong></td><td>Serve out / convert when ahead</td><td><span class="pill risk-low">low</span></td><td>Any</td><td>All</td><td>Games closed when serving for it</td></tr>
+      </tbody>
+    </table></div>
+
+    <h2 id="pressure">Spotlight — Pressure Point</h2>
+    <div class="decision-card">
+      <header><span class="badge">Decision Card</span><h3>Pressure Point Pattern</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
+      <div class="dc-body">
+        <div class="field"><div class="lbl">Match situation</div><div>Break points, game points, 30–30, 4–4 — any point with outsized weight.</div></div>
+        <div class="field"><div class="lbl">Decision rule</div><div class="rule">Go to your <strong>highest-percentage, most-practised pattern</strong> — never something new. Reduce variables: trusted serve location → trusted +1 → construct.</div></div>
+        <div class="field"><div class="lbl">Why it works · risk · reward</div><div>Pressure shrinks skill; familiar patterns hold up best. <span class="pill risk-low">Low risk</span>, high reward — these points decide sets.</div></div>
+        <div class="field"><div class="lbl">Common failures</div><div>Going bigger "because it's important," or getting passive and just pushing. Both raise error/again-attacked risk.</div></div>
+        <div class="field"><div class="lbl">Practice progression</div><div>Play practice tiebreaks; start every server at 30–30; reward sticking to the trusted pattern, not winners.</div></div>
+        <div class="field"><div class="lbl">Performance metric</div><div>Break-point save % and conversion %; deciding-point win %.</div></div>
+      </div>
+    </div>
+
+    <h2 id="closing">Spotlight — Closing Out</h2>
+    <div class="decision-card">
+      <header><span class="badge">Decision Card</span><h3>Closing-Out Pattern</h3><span class="spacer"></span><span class="ev ev-b">Level B</span></header>
+      <div class="dc-body">
+        <div class="field"><div class="lbl">Match situation</div><div>Serving for the set/match, or up a break and tightening.</div></div>
+        <div class="field"><div class="lbl">Decision rule</div><div class="rule">Keep doing what built the lead — same intensity, same patterns. Raise first-serve % and rally margin slightly; do <u>not</u> get safe-passive or over-aggressive.</div></div>
+        <div class="field"><div class="lbl">Why it works</div><div>Most blown leads come from changing a winning game. Consistency under "almost there" nerves is the skill.</div></div>
+        <div class="field"><div class="lbl">Common failures</div><div>Tightening up and pushing (invites the comeback) or over-pressing for a quick finish.</div></div>
+        <div class="field"><div class="lbl">Practice progression</div><div>Practice sets starting at 4–3, serving; or "serve it out" games from 40–30 up.</div></div>
+        <div class="field"><div class="lbl">Performance metric</div><div>% of games closed when serving for set/match; leads converted.</div></div>
+      </div>
+    </div>
+
+    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes (all patterns)</div>
+      <ul>
+        <li>Collecting patterns you never drill — a pattern you can't execute under pressure isn't yours.</li>
+        <li>Running high-risk patterns (Counterattack) on big points instead of Pressure-Point defaults.</li>
+        <li>Ignoring the matchup — match the pattern to the opponent (see <a href="09-player-type-strategies.html">Player Types</a>).</li>
+      </ul></div>
+
+    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
+      <ul>
+        <li>You can name your top 3 patterns and their autopilot triggers.</li>
+        <li>On big points you default to Pressure-Point patterns &gt; 90% of the time.</li>
+        <li>Each pattern's "key metric" (above) is tracked in <a href="21-analytics.html">Analytics</a>.</li>
+      </ul></div>
+
+    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
+      <div class="video-list">
+        <a class="video-item" href="https://www.youtube.com/watch?v=MWX2OSK0HzY" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">3 Serve + 1 Patterns (the cheat code)</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=L8TYCPIllJk" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">The 2-1 Baseline Pattern Explained</span><span class="ch">YouTube · verified live</span></span></a>
+        <a class="video-item" href="https://www.youtube.com/watch?v=2oz7VMyffGw" target="_blank" rel="noopener">
+          <span class="meta"><span class="t">When To Attack vs When To Defend</span><span class="ch">YouTube · verified live</span></span></a>
+      </div>
+    </div>
+      </div>
+    </details>
+
+    <div class="next-action reveal">
+      <div class="lbl">Your next highest-value action</div>
+      <p style="margin:.3rem 0 0">New here? Open <b>Decision Engine</b> first. Between sets, jump to the <a href="set-break.html">Set-Break planner</a>.</p>
+    </div>
+    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr><p><strong>Zulu Tennis</strong> · by Veyane.</p></footer>
+  </main>
+</div>
+<script src="assets/courts.js" defer></script>
+<script src="assets/nav.js" defer></script>
+<script>
+(function(){ var t=document.querySelectorAll("details.topic");
+  var e=document.getElementById("expandAll"), c=document.getElementById("collapseAll");
+  if(e)e.onclick=function(){t.forEach(function(d){d.open=true;});};
+  if(c)c.onclick=function(){t.forEach(function(d){d.open=false;});}; })();
+</script>
+</body>
+</html>
