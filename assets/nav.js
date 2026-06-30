@@ -29,6 +29,7 @@
       { n: "", file: "index.html",     t: "🎾 Ukushaya iTennis (deck)" },
       { n: "", file: "set-break.html", t: "🎯 Playing now / Set-Break" },
       { n: "", file: "videos.html",    t: "🎥 Watch drills & clips" },
+      { n: "", file: "learning.html",  t: "📖 Learning — back to basics" },
       { n: "", file: "drills.html",    t: "🎾 Practice drills" },
       { n: "", file: "library.html",   t: "📚 More tactics & the system" },
     ]},
