@@ -26,8 +26,9 @@
   // Single source of truth for the whole site, grouped by the 5 layers.
   var SITE_NAV = [
     { group: "Quick Links", layer: "", items: [
-      { n: "", file: "index.html",     t: "🎾 Ukushaya iTennis (deck)" },
+      { n: "", file: "index.html",     t: "🏠 Home" },
       { n: "", file: "set-break.html", t: "🎯 Playing now / Set-Break" },
+      { n: "", file: "deck.html",      t: "🃏 The Deck (8 cards)" },
       { n: "", file: "videos.html",    t: "🎥 Watch drills & clips" },
       { n: "", file: "learning.html",  t: "📖 Learning — back to basics" },
       { n: "", file: "drills.html",    t: "🎾 Practice drills" },
@@ -37,7 +38,7 @@
       { n: "",   file: "set-break.html",              t: "Set-Break Quick-Planner" },
     ]},
     { group: "Start Here", layer: "", items: [
-      { n: "",   file: "index.html",                 t: "Ukushaya iTennis" },
+      { n: "",   file: "deck.html",                   t: "Ukushaya iTennis (deck)" },
       { n: "",   file: "library.html",                t: "Library / The System" },
       { n: "00", file: "00-player-identity.html",    t: "Player Identity" },
       { n: "29", file: "29-data-model.html",          t: "Data Model" },
@@ -279,7 +280,7 @@
     if (tb.querySelector(".benchback")) return;
     var brand = tb.querySelector(".brand"); if (!brand) return;
     var a = document.createElement("a");
-    a.className = "benchback"; a.href = "index.html"; a.innerHTML = "← Ukushaya iTennis";
+    a.className = "benchback"; a.href = "deck.html"; a.innerHTML = "← Deck";
     brand.insertAdjacentElement("afterend", a);
   }
 
