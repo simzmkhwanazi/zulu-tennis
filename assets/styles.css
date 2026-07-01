@@ -4,32 +4,36 @@
    Shared design system. Dependency-free. Light/Dark. Print-ready.
    =================================================================== */
 
+/* Luxury editorial display serif for headings (body stays on the system sans) */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap');
+
 /* ---------- Design tokens ---------- */
 :root {
-  /* Minimalist yellow + black identity */
-  --bg:        #f5f5f7;
+  /* Editorial identity — warm ivory / ink / forest / muted gold / clay */
+  --bg:        #F8F6F2;   /* warm ivory */
   --surface:   #ffffff;
-  --surface-2: #ececee;
-  --text:      #1d1d1f;
-  --muted:     #6e6e73;
-  --border:    #e5e5ea;
-  --accent:    #141414;   /* interactive ink (light mode) */
-  --accent-2:  #000000;
-  --hl:        #ffd400;   /* signature yellow */
-  --hl-deep:   #e8be00;
-  --lime:      #ffd400;   /* alias kept for legacy refs → yellow */
-  --gold:      #e8be00;
-  --clay:      #cf6a3c;
-  --navy:      #0c0c0c;   /* near-black hero base */
-  --ink:       #0c0c0c;
+  --surface-2: #efece6;
+  --text:      #111111;   /* deep black */
+  --muted:     #6b6660;
+  --border:    #e4e0d8;
+  --accent:    #264734;   /* interactive ink → forest */
+  --accent-2:  #1c3527;
+  --hl:        #A98B52;   /* signature accent → muted gold */
+  --hl-deep:   #8f7440;
+  --lime:      #A98B52;   /* alias kept for legacy refs → gold */
+  --gold:      #A98B52;
+  --clay:      #B35A2B;
+  --forest:    #264734;
+  --navy:      #111111;   /* near-black hero base */
+  --ink:       #111111;
   --shadow:    0 1px 2px rgba(10,10,10,.04), 0 10px 30px rgba(10,10,10,.06);
-  --radius:    18px;
-  --radius-sm: 12px;
+  --radius:    6px;
+  --radius-sm: 4px;
   --maxw:      940px;
   --sidebar-w: 290px;
   --mono: ui-monospace, "SF Mono", "Cascadia Code", Menlo, Consolas, monospace;
   --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --serif: "Bodoni 72", "Didot", "Playfair Display", "Hoefler Text", Georgia, "Times New Roman", serif;
+  --serif: "Fraunces", "Bodoni 72", "Didot", "Hoefler Text", Georgia, "Times New Roman", serif;
 
   /* callout accents */
   --c-mistake:  #d64545;
@@ -49,13 +53,13 @@
   :root:not([data-theme="light"]) {
     --bg:#0b0b0b; --surface:#161616; --surface-2:#1f1f1d; --text:#f1f1ec;
     --muted:#9b9b94; --border:#2a2a27; --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 26px rgba(0,0,0,.4);
-    --accent:#ffd400; --accent-2:#ffe04d;   /* yellow reads on black */
+    --accent:#c9a86a; --accent-2:#d8bd85;   /* yellow reads on black */
   }
 }
 :root[data-theme="dark"] {
   --bg:#0b0b0b; --surface:#161616; --surface-2:#1f1f1d; --text:#f1f1ec;
   --muted:#9b9b94; --border:#2a2a27; --shadow:0 1px 2px rgba(0,0,0,.5), 0 8px 26px rgba(0,0,0,.4);
-  --accent:#ffd400; --accent-2:#ffe04d;
+  --accent:#c9a86a; --accent-2:#d8bd85;
 }
 
 /* ---------- Base ---------- */
@@ -79,11 +83,11 @@ a:hover { text-decoration: underline; }
 .content p a:hover, .content li a:hover, .next-action a:hover, figcaption a:hover {
   background: var(--hl); color: #141414; text-decoration: none;
 }
-h1,h2,h3,h4 { line-height: 1.16; font-weight: 750; letter-spacing: -.022em; }
-h1 { font-size: 2.5rem; margin: .2em 0 .45em; }
-h2 { font-size: 1.7rem; margin: 2.6rem 0 .9rem; padding-top: .4rem; }
-h3 { font-size: 1.25rem; margin: 1.7rem 0 .5rem; }
-h4 { font-size: 1.02rem; margin: 1.1rem 0 .4rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; font-size:.82rem;}
+h1,h2,h3 { font-family: var(--serif); line-height: 1.12; font-weight: 400; letter-spacing: -.015em; }
+h1 { font-size: 3rem; font-weight: 300; margin: .2em 0 .5em; }
+h2 { font-size: 1.95rem; margin: 2.8rem 0 .9rem; padding-top: .4rem; }
+h3 { font-size: 1.32rem; margin: 1.7rem 0 .5rem; }
+h4 { font-family: var(--sans); font-weight: 700; margin: 1.1rem 0 .4rem; color: var(--muted); text-transform: uppercase; letter-spacing: .04em; font-size:.82rem;}
 p { margin: .6rem 0; }
 code { font-family: var(--mono); font-size: .9em; background: var(--surface-2); padding: .1em .4em; border-radius: 5px; }
 hr { border: none; border-top: 1px solid var(--border); margin: 2rem 0; }
