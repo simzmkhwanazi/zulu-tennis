@@ -106,20 +106,57 @@
   details.box .boxbody{padding-bottom:14px;} details.box h3{font-size:1rem;margin:.6rem 0 .3rem;}
 
   @media print{ .matchbar .btn,.toolbar,.rnd,.chip,.adder,.miniprint,.linkbtn{display:none!important;} .sb-card,.setrow{break-inside:avoid;} details.box[open]{display:block!important;} }
+
+  /* ===== editorial shell — like the Library page ===== */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:24px;
+    padding:14px clamp(20px,6vw,90px);background:rgba(248,246,242,.9);backdrop-filter:saturate(1.4) blur(14px);
+    -webkit-backdrop-filter:saturate(1.4) blur(14px);color:var(--ink);box-shadow:0 1px 0 var(--border);}
+  .nav .brand{display:flex;flex-direction:column;line-height:1;margin-right:auto;text-decoration:none;color:var(--ink);}
+  .nav .brand .wm{font-family:var(--serif);font-size:1.25rem;letter-spacing:.04em;}
+  .nav .brand .by{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px;font-style:normal;}
+  .nav .navlinks{display:flex;gap:30px;align-items:center;}
+  .nav .navlinks a{text-decoration:none;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--ink);opacity:.86;}
+  .nav .navlinks a:hover,.nav .navlinks a[aria-current]{opacity:1;}
+  .nav .navlinks a[aria-current]{border-bottom:1px solid var(--hl);padding-bottom:2px;}
+  .nav .menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer;}
+  @media(max-width:820px){
+    .nav .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:34px;background:var(--ink);color:#F8F6F2;transform:translateY(-100%);transition:transform .5s ease;}
+    .nav .navlinks.open{transform:translateY(0);}
+    .nav .navlinks a{font-size:1.1rem;color:#F8F6F2;opacity:1;}
+    .nav .menu-toggle{display:block;}
+  }
+  .plan-badge{display:none!important;}
+  /* centered editorial column under the fixed nav */
+  .content{max-width:880px!important;margin:0 auto!important;padding:clamp(116px,15vh,166px) clamp(20px,6vw,40px) 110px!important;}
+  /* minimalist, airy cards */
+  .sb-hero{border:none;border-radius:8px;padding:clamp(30px,5vw,44px) 20px;margin-bottom:22px;}
+  .sb-hero::after{width:64px;height:1px;}
+  .sb-hero h1{font-weight:300;}
+  .sb-hero p{color:var(--hl);}
+  .sb-card{border:1px solid var(--border);border-left:1px solid var(--border);border-radius:6px;padding:22px 24px;margin:18px 0;box-shadow:none;}
+  .sb-card h2{font-family:var(--serif);font-weight:400;font-size:1.45rem;}
+  .fld,.rowlbl{letter-spacing:.14em;font-size:.68rem;}
+  .chip{border:1px solid var(--border);background:none;color:var(--text);font-weight:600;font-size:.76rem;letter-spacing:.06em;padding:7px 14px;}
+  .chip[aria-pressed="true"]{background:var(--hl);color:#141414;border-color:var(--hl);}
+  .setrow{border:1px solid var(--border);border-left:1px solid var(--border);border-radius:6px;}
+  details.box{border:1px solid var(--border);border-radius:6px;}
+  details.box>summary{font-weight:600;}
+  .btn.save,.patlink{border-radius:6px;}
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
-</header>
-
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html" aria-current="page">Practice</a>
+    <a href="library.html">Library</a>
+  </div>
+  <button class="menu-toggle" id="navBtn" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
 
   <main class="content">
 
@@ -263,10 +300,14 @@
       <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
 
   </main>
-</div>
 
 <script src="assets/courts.js" defer></script>
 <script src="assets/nav.js" defer></script>
+<script>
+(function(){var b=document.getElementById('navBtn'),n=document.getElementById('navlinks');
+  if(!b||!n)return;b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='☰';}});})();
+</script>
 <script>
 (function(){
   "use strict";
