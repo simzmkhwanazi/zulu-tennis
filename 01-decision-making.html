@@ -81,6 +81,35 @@ a{color:inherit}
 
 [data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
 [data-reveal].in{opacity:1;transform:none}
+
+/* companion demo video — watch while you read */
+.watchbox{margin:36px auto 0;max-width:520px;width:100%}
+.watchbox .cap{font-size:.64rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:600;
+  margin-bottom:12px;display:flex;gap:11px;align-items:center}
+.watchbox .cap::before{content:"";width:22px;height:1px;background:var(--gold)}
+.watchbox .frame{position:relative;aspect-ratio:16/9;background:#0c0c0c;overflow:hidden;cursor:pointer}
+.watchbox .frame img,.watchbox .frame iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.watchbox .frame::after{content:"";position:absolute;inset:0;background:rgba(10,10,10,.16);transition:background .3s var(--ease)}
+.watchbox .frame:hover::after{background:rgba(10,10,10,.02)}
+.watchbox .frame.on{cursor:default}.watchbox .frame.on::after{display:none}
+.watchbox .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:58px;height:58px;
+  border-radius:50%;background:rgba(248,246,242,.94);color:var(--ink);display:grid;place-items:center;font-size:1rem;
+  padding-left:4px;transition:transform .3s var(--ease)}
+.watchbox .frame:hover .play{transform:translate(-50%,-50%) scale(1.08)}
+.watchbox .ttl{margin-top:12px;font-size:.88rem;font-weight:300;color:#3a352f;line-height:1.4}
+.watchbox .ttl b{font-weight:600}
+.tint .watchbox .ttl,.tint-ink .watchbox .ttl{color:rgba(248,246,242,.82)}
+@media(min-width:1180px){
+  .chunk{padding-right:clamp(380px,34vw,500px)}
+  .chunk .inner{margin-left:0;margin-right:auto}
+  .chunk.center{text-align:left}
+  .chunk.center .say,.chunk.center .diagram{margin-left:0;margin-right:0}
+  .watchbox{position:fixed;top:50%;right:clamp(34px,4.5vw,80px);transform:translateY(-50%);
+    width:min(32vw,400px);margin:0;z-index:40}
+  .watchbox .ttl{color:#3a352f}
+}
+@media(min-width:1180px) and (max-height:660px){ .watchbox{top:92px;transform:none} }
+
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;scroll-behavior:auto!important}
   [data-reveal]{opacity:1;transform:none;transition:none}
@@ -132,6 +161,14 @@ a{color:inherit}
     <figure class="diagram">
       <div data-court='{"w":320,"players":[{"x":74,"y":13,"label":"O","side":"opp"},{"x":14,"y":88,"label":"You","side":"you"}],"paths":[{"from":[14,88],"to":[80,12],"kind":"shot","label":"reset crosscourt, high"}],"dots":[{"x":48,"y":95,"kind":"recovery","label":"recover"}]}'></div>
     </figure>
+  </div>
+  <div class="watchbox">
+    <div class="cap">Watch it live · Tennis Hacker</div>
+    <div class="frame" id="ccFrame" role="button" tabindex="0" aria-label="Play the crosscourt demo video">
+      <img loading="lazy" src="https://i.ytimg.com/vi/o9SH7MbHn_A/hqdefault.jpg" alt="">
+      <span class="play" aria-hidden="true">▶</span>
+    </div>
+    <div class="ttl"><b>The crosscourt rally, up close</b><br>Deeper &amp; more consistent — see the outside-ball reset in motion.</div>
   </div>
   <span class="cue" aria-hidden="true">↓</span>
 </section>
@@ -195,6 +232,12 @@ a{color:inherit}
   if(rm||!('IntersectionObserver'in window)){[].forEach.call(items,function(i){i.classList.add('in')});}
   else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:0.25});
     [].forEach.call(items,function(i){io.observe(i);});}
+  /* companion video: click / Enter to play in place */
+  var f=document.getElementById('ccFrame');
+  function playCC(){ if(f.classList.contains('on'))return; f.classList.add('on');
+    f.innerHTML='<iframe src="https://www.youtube.com/embed/o9SH7MbHn_A?autoplay=1&rel=0&modestbranding=1" title="Crosscourt demo — Tennis Hacker" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }
+  if(f){ f.addEventListener('click',playCC);
+    f.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); playCC(); } }); }
 })();
 </script>
 </body>
