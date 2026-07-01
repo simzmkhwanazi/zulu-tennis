@@ -21,6 +21,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+<script>document.documentElement.className='js';</script>
 
 <style>
 /* ============================================================
@@ -271,16 +272,98 @@ section{padding-left:var(--gut);padding-right:var(--gut)}
 [data-reveal].d2{transition-delay:.16s}
 [data-reveal].d3{transition-delay:.24s}
 
+/* ============================================================
+   PREMIUM LAYER — grain · preloader · cinematic entrance · finish
+   ============================================================ */
+/* faint film grain / paper texture over everything (under nav & preloader) */
+.grain{position:fixed;inset:0;z-index:56;pointer-events:none;opacity:.045;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size:140px 140px}
+
+/* preloader curtain */
+.preloader{position:fixed;inset:0;z-index:200;background:var(--ink);color:var(--ivory);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
+  transition:transform 1s var(--ease);will-change:transform}
+.preloader .pl-mark{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,5vw,2.7rem);
+  letter-spacing:.06em;opacity:0;transform:translateY(14px);animation:rise .8s var(--ease) .1s forwards}
+.preloader .pl-by{font-size:.62rem;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);
+  margin-top:14px;opacity:0;animation:fade .8s var(--ease) .5s forwards}
+.preloader .pl-line{height:1px;background:var(--gold);width:0;margin-top:22px;animation:grow .9s var(--ease) .35s forwards}
+.preloader.done{transform:translateY(-100%)}
+html.js body.loading{overflow:hidden;height:100vh}
+@keyframes grow{to{width:min(220px,42vw)}}
+@keyframes fade{to{opacity:.75}}
+
+/* nav: hide on scroll-down, reveal up; gold scroll-progress hairline */
+.nav{transition:background .5s var(--ease),padding .4s var(--ease),box-shadow .5s var(--ease),color .4s var(--ease),transform .55s var(--ease)}
+.nav.hidden{transform:translateY(-102%)}
+.nav .progress{position:absolute;left:0;bottom:0;height:2px;width:0;background:linear-gradient(90deg,var(--gold),var(--clay));opacity:0;transition:opacity .4s var(--ease)}
+.nav.solid .progress{opacity:1}
+
+/* hero: vignette, gentle drift, staggered cinematic entrance */
+.hero-media{animation:heroDrift 22s var(--ease) forwards}
+@keyframes heroDrift{from{transform:scale(1.08)}to{transform:scale(1)}}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:radial-gradient(130% 90% at 50% 32%,transparent 52%,rgba(8,8,8,.5))}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.js .hero-inner .eyebrow,.js .hero-inner h1,.js .hero-inner .sub,.js .hero-inner .elink{opacity:0}
+body.ready .hero-inner .eyebrow{animation:rise .9s var(--ease) .05s both}
+body.ready .hero-inner h1{animation:rise 1.05s var(--ease) .18s both}
+body.ready .hero-inner .sub{animation:rise .9s var(--ease) .42s both}
+body.ready .hero-inner .elink{animation:rise .9s var(--ease) .58s both}
+.hero .eyebrow::before{content:"";display:inline-block;width:26px;height:1px;background:var(--gold);
+  vertical-align:middle;margin-right:14px}
+
+/* numbered, more tactile collection tiles */
+.cgrid{counter-reset:col}
+.collection{transition:transform .55s var(--ease),box-shadow .55s var(--ease)}
+.collection:hover{transform:translateY(-5px);box-shadow:0 26px 50px rgba(17,17,17,.16)}
+.collection .ceyebrow::before{counter-increment:col;content:counter(col,decimal-leading-zero);
+  font-family:var(--serif);font-style:italic;font-size:.92rem;letter-spacing:0;text-transform:none;color:var(--gold);margin-right:2px}
+.collection::before{content:"";position:absolute;inset:12px;z-index:2;pointer-events:none;
+  border:1px solid rgba(248,246,242,.5);opacity:0;transition:opacity .5s var(--ease),inset .5s var(--ease)}
+.collection:hover::before{opacity:.9;inset:16px}
+
+/* editorial finish */
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,.manifesto p,.quoteband blockquote,.feature h2,.searchband h2{text-wrap:balance}
+.manifesto p .serif,.manifesto p{font-optical-sizing:auto}
+html{scrollbar-color:#cfc7b9 var(--ivory)}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--ivory)}
+::-webkit-scrollbar-thumb{background:#cfc7b9;border:3px solid var(--ivory);border-radius:20px}
+::-webkit-scrollbar-thumb:hover{background:#b9b0a0}
+/* ghost wordmark behind the footer */
+.foot{position:relative;overflow:hidden}
+.foot .ghost{position:absolute;left:var(--gut);bottom:-.22em;margin:0;font-family:var(--serif);
+  font-weight:300;font-size:clamp(6rem,22vw,18rem);line-height:.8;color:rgba(248,246,242,.05);
+  pointer-events:none;letter-spacing:-.02em;white-space:nowrap}
+
 @media(prefers-reduced-motion:reduce){
   *{animation:none!important;scroll-behavior:auto!important}
   [data-reveal]{opacity:1;transform:none;transition:none}
+  .js .hero-inner>*{opacity:1}
+  .preloader{display:none}
+  html.js body.loading{overflow:auto;height:auto}
+  .hero-media{transform:none}
 }
 </style>
 </head>
-<body>
+<body class="loading">
+
+<!-- ===== PRELOADER ===== -->
+<div class="preloader" id="preloader" aria-hidden="true">
+  <div class="pl-mark">Zulu Tennis</div>
+  <div class="pl-line"></div>
+  <div class="pl-by">by Veyane</div>
+</div>
+
+<!-- film grain -->
+<div class="grain" aria-hidden="true"></div>
 
 <!-- ===== FLOATING NAV ===== -->
 <nav class="nav" id="nav">
+  <span class="progress" id="navProgress"></span>
   <a class="brand" href="index.html">
     <span class="wm">Zulu Tennis</span>
     <span class="by">by Veyane</span>
@@ -493,6 +576,7 @@ section{padding-left:var(--gut);padding-right:var(--gut)}
 
 <!-- ===== FOOTER ===== -->
 <footer class="foot">
+  <p class="ghost" aria-hidden="true">Zulu Tennis</p>
   <div class="wrap">
     <div class="foot-top">
       <div>
@@ -528,14 +612,37 @@ section{padding-left:var(--gut);padding-right:var(--gut)}
 <script>
 (function(){
   var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var body = document.body;
 
   /* reduced motion: freeze the hero video on its poster frame */
   var hero = document.getElementById('heroVideo');
   if(rm && hero){ hero.removeAttribute('autoplay'); try{hero.pause();}catch(e){} }
 
-  /* nav: transparent over hero → solid after scroll */
-  var nav = document.getElementById('nav');
-  function onScroll(){ nav.classList.toggle('solid', window.scrollY > window.innerHeight*0.7); }
+  /* preloader: elegant curtain lift once per session; then cue the hero entrance */
+  var pl = document.getElementById('preloader');
+  function reveal(){ body.classList.remove('loading'); body.classList.add('ready'); }
+  if(rm || !pl || sessionStorage.getItem('zt-seen')){
+    if(pl){ pl.parentNode && pl.parentNode.removeChild(pl); }
+    reveal();
+  } else {
+    try{ sessionStorage.setItem('zt-seen','1'); }catch(e){}
+    setTimeout(function(){
+      pl.classList.add('done'); reveal();
+      setTimeout(function(){ pl.parentNode && pl.parentNode.removeChild(pl); }, 1050);
+    }, 1150);
+  }
+
+  /* nav: solid after hero · hide on scroll-down / show on scroll-up · scroll progress */
+  var nav = document.getElementById('nav'), prog = document.getElementById('navProgress');
+  var lastY = 0;
+  function onScroll(){
+    var y = window.scrollY, h = document.documentElement.scrollHeight - window.innerHeight;
+    nav.classList.toggle('solid', y > window.innerHeight*0.7);
+    if(prog) prog.style.width = (h>0 ? (y/h*100) : 0) + '%';
+    if(y > lastY && y > window.innerHeight){ nav.classList.add('hidden'); }
+    else { nav.classList.remove('hidden'); }
+    lastY = y;
+  }
   onScroll(); addEventListener('scroll', onScroll, {passive:true});
 
   /* mobile menu */
