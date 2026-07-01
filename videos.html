@@ -1,70 +1,175 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Drills & Strategy Videos</title>
-<meta name="description" content="A curated library of tennis drill & strategy videos plus 10 Grand Slam classics — verified live, from top coaching and official tournament channels.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="theme-color" content="#F8F6F2">
+<title>Zulu Tennis — The Film Room</title>
+<meta name="description" content="The Film Room — a curated, singles-focused catalogue of tennis tactics & application in motion, plus Grand Slam classics. Hand-picked third-party film; credit to each channel.">
 <link rel="icon" href="assets/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Drills & Strategy Videos">
-<meta property="og:description" content="Curated drill & strategy videos + 10 Grand Slam classics.">
+<meta property="og:title" content="Zulu Tennis — The Film Room">
+<meta property="og:description" content="A curated catalogue of tennis tactics & application, plus Grand Slam classics.">
 <meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/videos.html">
 <meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
 <style>
-  .vid-sec { margin-top: 22px; }
-  .vid-sec > h2 { display:flex; align-items:center; gap:8px; }
-  .video-list.grid { grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); display:grid; }
-  .vfilter { position:sticky; top:0; z-index:6; background:var(--bg); padding:10px 0 6px; margin-top:8px; }
-  .vfilter input { width:100%; box-sizing:border-box; padding:10px 14px; border:1.5px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-size:1rem; }
-  .vchips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
-  .vchips button { appearance:none; border:1.5px solid var(--border); background:var(--surface); color:var(--text); border-radius:999px; padding:5px 11px; font-weight:700; font-size:.78rem; cursor:pointer; white-space:nowrap; }
-  .vchips button[aria-pressed="true"] { background:var(--hl); color:#141414; border-color:var(--hl); }
-  .vcount { color:var(--muted); font-size:.8rem; margin-top:6px; min-height:1em; }
-  .vid-sec[hidden], .video-item[hidden] { display:none; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.16);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.04}
+a{color:inherit}img,video{display:block;max-width:100%}
+::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding-bottom:4px;border-bottom:1px solid var(--ink);transition:gap .3s var(--ease)}
+.elink .arw{transition:transform .35s var(--ease)}
+.elink:hover{gap:.9em}.elink:hover .arw{transform:translateX(4px)}
+
+/* NAV (solid, editorial) */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:24px;
+  padding:14px var(--gut);background:rgba(248,246,242,.9);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto}
+.brand .wm{font-family:var(--serif);font-size:1.25rem;letter-spacing:.04em}
+.brand .by{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:30px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86;transition:opacity .3s var(--ease)}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer;line-height:1}
+@media(max-width:860px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:34px;background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .55s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;opacity:1}
+  .menu-toggle{display:block}
+}
+section,.masthead,.filterwrap{padding-left:var(--gut);padding-right:var(--gut)}
+.wrap{max-width:1240px;margin:0 auto}
+
+/* MASTHEAD */
+.masthead{padding-top:clamp(120px,18vh,180px);padding-bottom:clamp(30px,5vh,54px)}
+.masthead .kicker{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.masthead h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:300;letter-spacing:-.02em;line-height:.94}
+.masthead h1 em{font-style:italic;font-weight:400}
+.masthead .lead{max-width:56ch;margin-top:28px;font-size:clamp(1.02rem,1.3vw,1.2rem);font-weight:300;line-height:1.7;color:#3a352f}
+
+/* FILTER (sticky) */
+.filterwrap{position:sticky;top:53px;z-index:40;background:rgba(248,246,242,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding-top:16px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.searchrow{position:relative;max-width:1240px;margin:0 auto}
+#vidSearch{width:100%;background:none;border:none;border-bottom:1px solid var(--line);color:var(--ink);
+  font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,3vw,1.9rem);padding:6px 40px 12px 2px;letter-spacing:-.01em}
+#vidSearch::placeholder{color:#a29c93}#vidSearch:focus{outline:none;border-color:var(--gold)}
+.searchrow .mag{position:absolute;right:2px;bottom:12px;color:var(--muted);font-size:1.3rem;pointer-events:none}
+.vchips{max-width:1240px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:8px}
+.vchips button{appearance:none;border:1px solid var(--line);background:none;color:var(--ink);border-radius:999px;
+  padding:7px 15px;font-family:var(--sans);font-weight:600;font-size:.72rem;letter-spacing:.06em;cursor:pointer;white-space:nowrap;transition:all .25s var(--ease)}
+.vchips button:hover{border-color:var(--ink)}
+.vchips button[aria-pressed="true"]{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.vcount{max-width:1240px;margin:12px auto 0;color:var(--muted);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;min-height:1em}
+
+/* SECTIONS + CARDS */
+.sections{padding-top:clamp(20px,3vh,36px);padding-bottom:40px}
+.vid-sec{padding-top:clamp(46px,7vh,84px)}
+.vid-sec > h2{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:300;
+  padding-bottom:18px;margin-bottom:clamp(24px,3vw,38px);border-bottom:1px solid var(--line)}
+.vid-sec > h2 .n{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.vid-sec .lead{max-width:60ch;margin:-10px 0 26px;font-size:.98rem;font-weight:300;color:#3a352f;line-height:1.6}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(22px,2.6vw,40px)}
+.video-item{position:relative;display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+.video-item .vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--forest)}
+.video-item .vthumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);filter:saturate(.96)}
+.video-item:hover .vthumb img,.video-item:focus-visible .vthumb img{transform:scale(1.045)}
+.video-item .vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.42));opacity:.5;transition:opacity .4s var(--ease)}
+.video-item:hover .vthumb::after{opacity:.85}
+.video-item .vthumb.tt{background:#111;background-image:linear-gradient(135deg,rgba(37,244,238,.95),rgba(0,0,0,.55) 45%,rgba(254,44,85,.95))}
+.video-item .play{position:absolute;left:16px;bottom:14px;z-index:2;width:40px;height:40px;border:1px solid rgba(248,246,242,.7);
+  border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.8rem;background:rgba(17,17,17,.28);
+  transition:background .35s var(--ease),transform .35s var(--ease)}
+.video-item:hover .play{background:rgba(17,17,17,.5);transform:scale(1.06)}
+.video-item .src{position:absolute;right:14px;top:14px;z-index:2;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;background:rgba(17,17,17,.4);padding:4px 9px;border-radius:2px}
+.video-item .meta{padding:16px 2px 0;display:flex;flex-direction:column;flex:1}
+.video-item .t{font-family:var(--serif);font-size:1.16rem;font-weight:400;line-height:1.22;letter-spacing:-.01em}
+.video-item .ch{margin-top:9px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.plan-add{position:absolute;top:12px;left:14px;z-index:3;appearance:none;cursor:pointer;
+  border:1px solid rgba(248,246,242,.7);background:rgba(17,17,17,.36);color:#fff;border-radius:999px;
+  font-family:var(--sans);font-weight:600;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;
+  transition:all .25s var(--ease)}
+.plan-add:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.plan-add.on{background:var(--gold);border-color:var(--gold);color:#fff}
+
+/* PLAN BADGE */
+.plan-badge{position:fixed;right:20px;bottom:20px;z-index:70;display:none;align-items:center;gap:9px;
+  text-decoration:none;background:var(--ink);color:var(--ivory);border-radius:999px;padding:12px 18px;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;box-shadow:0 10px 30px rgba(10,10,10,.24)}
+.plan-badge.show{display:inline-flex}
+.plan-badge b{background:var(--gold);color:#fff;border-radius:999px;padding:1px 8px;font-size:.72rem}
+
+/* NEXT ACTION + FOOTER */
+.next-action{max-width:1240px;margin:clamp(50px,8vh,90px) auto 0;padding:30px 34px;border:1px solid var(--line);background:#fff}
+.next-action .lbl{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.next-action p{margin-top:10px;font-family:var(--serif);font-size:1.3rem;font-weight:300;line-height:1.35}
+.next-action a{color:var(--forest);text-underline-offset:3px}
+.foot{background:var(--forest);color:var(--ivory);margin-top:clamp(60px,9vh,110px);padding:clamp(56px,8vh,90px) var(--gut) 44px}
+.foot .fwm{font-family:var(--serif);font-size:clamp(2.2rem,6vw,3.6rem);font-weight:300;line-height:.95}
+.foot .fby{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;opacity:.72;margin-top:12px}
+.foot .fdesc{font-size:.92rem;font-weight:300;line-height:1.7;color:rgba(248,246,242,.8);max-width:52ch;margin-top:22px}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:30px}
+.foot-links a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.8}
+.foot-links a:hover{opacity:1}
+.foot-bottom{margin-top:34px;padding-top:20px;border-top:1px solid rgba(248,246,242,.16);font-size:.72rem;letter-spacing:.1em;opacity:.6}
+.vid-sec[hidden],.video-item[hidden]{display:none}
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html" aria-current="page">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html">Library</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">The Film Room — watch · learn · drill</p>
+    <h1>Drills &amp; <em>Strategy</em></h1>
+    <p class="lead">A growing, singles-focused catalogue of <b>tactics &amp; application</b> — how to <i>use</i> the game you already have to win more points — plus Grand Slam classics. Tap any still to watch. All third-party film; credit to each channel.</p>
+  </div>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<div class="filterwrap">
+  <div class="searchrow">
+    <input id="vidSearch" type="search" placeholder="What would you like to master today?" autocomplete="off" aria-label="Search videos">
+    <span class="mag">&#8981;</span>
+  </div>
+  <div class="vchips" id="vidChips"></div>
+  <div class="vcount" id="vidCount"></div>
+</div>
 
-  <main class="content">
-
-    <div class="pagehead reveal">
-      <div class="layertags">
-        <span class="layer-chip">🎥 Video Library</span>
-        <span class="layer-chip">Watch · learn · drill</span>
-      </div>
-      <h1>Drills &amp; Strategy Videos</h1>
-      <p class="lead">A growing, singles-focused catalog of <b>tactics &amp; application</b> — how to <i>use</i> the
-      game you already have to win more points — plus Grand Slam classics. Tap a card to watch. All
-      third-party videos; credit to each channel.</p>
-    </div>
-
-    <div class="vfilter">
-      <input id="vidSearch" type="search" placeholder="Search videos…" autocomplete="off" aria-label="Search videos">
-      <div class="vchips" id="vidChips"></div>
-      <div class="vcount" id="vidCount"></div>
-    </div>
-
+<main class="sections">
+<div class="wrap">
     <section class="vid-sec">
-      <h2 id="serve">🎾 Serve, Serve +1 &amp; serve-volley</h2>
-      <div class="video-list grid">
+      <h2 id="serve">🎾 Serve, Serve +1 &amp; serve-volley <span class="n">10 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=thtt1K3PdOQ" target="_blank" rel="noopener"><span class="meta"><span class="t">Why players bounce the ball — serve routine</span><span class="ch">Performance-Plus Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=VfQJdv349CU" target="_blank" rel="noopener"><span class="meta"><span class="t">Pronation explained (Mouratoglou)</span><span class="ch">Patrick Mouratoglou</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=MWX2OSK0HzY" target="_blank" rel="noopener"><span class="meta"><span class="t">Serve +1 patterns</span><span class="ch">The Tennis Mentor</span></span></a>
@@ -79,8 +184,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="return">↩️ Return of serve</h2>
-      <div class="video-list grid">
+      <h2 id="return">↩️ Return of serve <span class="n">10 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=Ox4IFGvwCy0" target="_blank" rel="noopener"><span class="meta"><span class="t">Where to aim your return in singles</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=kN21IHpx1Dk" target="_blank" rel="noopener"><span class="meta"><span class="t">Where to aim your singles return (more)</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=wja8bgYzX0U" target="_blank" rel="noopener"><span class="meta"><span class="t">Positioning on the return of serve</span><span class="ch">Intuitive Tennis</span></span></a>
@@ -95,8 +200,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="ground">🥎 Depth, shape &amp; net margin</h2>
-      <div class="video-list grid">
+      <h2 id="ground">🥎 Depth, shape &amp; net margin <span class="n">3 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=o9SH7MbHn_A" target="_blank" rel="noopener"><span class="meta"><span class="t">Crosscourt — deeper &amp; more consistent</span><span class="ch">Tennis Hacker</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=4uVXIkjVSuI" target="_blank" rel="noopener"><span class="meta"><span class="t">How high over the net to aim (margin)</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=5z28HtGNp_M" target="_blank" rel="noopener"><span class="meta"><span class="t">Finish height by court position</span><span class="ch">Meike Babel Tennis</span></span></a>
@@ -104,8 +209,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="footwork">👟 Footwork &amp; movement</h2>
-      <div class="video-list grid">
+      <h2 id="footwork">👟 Footwork &amp; movement <span class="n">7 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=UjRv-SbO6K8" target="_blank" rel="noopener"><span class="meta"><span class="t">5 footwork fundamentals</span><span class="ch">The Tennis Mentor</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=FLmwlQzjiQA" target="_blank" rel="noopener"><span class="meta"><span class="t">Split-step timing explained</span><span class="ch">Feel Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=mLeSkZN2PAI" target="_blank" rel="noopener"><span class="meta"><span class="t">When to split step</span><span class="ch">2MinuteTennis</span></span></a>
@@ -117,8 +222,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="strategy">🧠 Strategy &amp; decision-making</h2>
-      <div class="video-list grid">
+      <h2 id="strategy">🧠 Strategy &amp; decision-making <span class="n">14 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=F_5P90WlF3c" target="_blank" rel="noopener"><span class="meta"><span class="t">Pull your opponent off the court</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=0l4EWsvBDwo" target="_blank" rel="noopener"><span class="meta"><span class="t">Simple strategy to win more points</span><span class="ch">Total Tennis Domination</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=vW61LCkuCCo" target="_blank" rel="noopener"><span class="meta"><span class="t">Best way to attack short balls</span><span class="ch">2MinuteTennis</span></span></a>
@@ -137,8 +242,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="opponents">🧠 Game plans by opponent style</h2>
-      <div class="video-list grid">
+      <h2 id="opponents">🧠 Game plans by opponent style <span class="n">15 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=BTP03RCBtQ0" target="_blank" rel="noopener"><span class="meta"><span class="t">Beat pushers in singles</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=6L7-pbcKqjA" target="_blank" rel="noopener"><span class="meta"><span class="t">Beat pushers &amp; grinders</span><span class="ch">Top Tennis Training</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=y2HY-y3RtQY" target="_blank" rel="noopener"><span class="meta"><span class="t">Beat a big hitter (real examples)</span><span class="ch">Mark Sansait</span></span></a>
@@ -158,8 +263,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="patterns">🎯 Rally patterns &amp; point construction</h2>
-      <div class="video-list grid">
+      <h2 id="patterns">🎯 Rally patterns &amp; point construction <span class="n">13 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=lt3lZ4AuTDs" target="_blank" rel="noopener"><span class="meta"><span class="t">Play smarter &amp; construct your points (singles)</span><span class="ch">MINE! Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=peOh4fBeT4k" target="_blank" rel="noopener"><span class="meta"><span class="t">3 pattern strategies — win points</span><span class="ch">Vantage Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=dKvQdTRgJQQ" target="_blank" rel="noopener"><span class="meta"><span class="t">Patterns that win matches</span><span class="ch">Iron Will Tennis</span></span></a>
@@ -177,8 +282,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="slice">🪶 Slice, drop shots &amp; approach</h2>
-      <div class="video-list grid">
+      <h2 id="slice">🪶 Slice, drop shots &amp; approach <span class="n">12 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=Hyfb39pUjvk" target="_blank" rel="noopener"><span class="meta"><span class="t">The secret to touch (steer the ball)</span><span class="ch">Essential Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=oYpPaI37kkc" target="_blank" rel="noopener"><span class="meta"><span class="t">Defend with the forehand slice</span><span class="ch">Jordan C</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=SiV-JepF8Qo" target="_blank" rel="noopener"><span class="meta"><span class="t">Turn your slice backhand into a weapon</span><span class="ch">TPA Tennis</span></span></a>
@@ -195,8 +300,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="net">🥅 Net play &amp; overheads</h2>
-      <div class="video-list grid">
+      <h2 id="net">🥅 Net play &amp; overheads <span class="n">9 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=N5NFFUHQdMw" target="_blank" rel="noopener"><span class="meta"><span class="t">Volley with your body</span><span class="ch">Essential Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=mz6zRKPtkME" target="_blank" rel="noopener"><span class="meta"><span class="t">Where to aim your volleys in singles</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=fKPXFAVLx0c" target="_blank" rel="noopener"><span class="meta"><span class="t">The swinging volley — finish the point</span><span class="ch">2MinuteTennis</span></span></a>
@@ -210,8 +315,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="defense">🛡️ Defense &amp; counter-punching</h2>
-      <div class="video-list grid">
+      <h2 id="defense">🛡️ Defense &amp; counter-punching <span class="n">14 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=gP4POOF5b3U" target="_blank" rel="noopener"><span class="meta"><span class="t">Defend against attacking opponents</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=txpw6yNxPh4" target="_blank" rel="noopener"><span class="meta"><span class="t">Beat an attacking opponent (singles)</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=sw7zd6_O6dY" target="_blank" rel="noopener"><span class="meta"><span class="t">Defend against short angles (singles)</span><span class="ch">Meike Babel Tennis</span></span></a>
@@ -230,8 +335,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="mental">🧩 Mental &amp; match management</h2>
-      <div class="video-list grid">
+      <h2 id="mental">🧩 Mental &amp; match management <span class="n">16 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=OxyMU28beCE" target="_blank" rel="noopener"><span class="meta"><span class="t">The huge mistake 90% make</span><span class="ch">2MinuteTennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=vbIh5t2XNug" target="_blank" rel="noopener"><span class="meta"><span class="t">Let go of bad points (next-point rule)</span><span class="ch">Peak Performance Sports</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=twMrBvmrUb0" target="_blank" rel="noopener"><span class="meta"><span class="t">Stop choking — close out matches</span><span class="ch">Meike Babel Tennis</span></span></a>
@@ -252,8 +357,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="conditions">🌬️ Conditions &amp; environment</h2>
-      <div class="video-list grid">
+      <h2 id="conditions">🌬️ Conditions &amp; environment <span class="n">11 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=QXYI1iTPgTk" target="_blank" rel="noopener"><span class="meta"><span class="t">Play successfully in the wind</span><span class="ch">Meike Babel Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=5KHh5tVhTuA" target="_blank" rel="noopener"><span class="meta"><span class="t">Best way to play in the wind</span><span class="ch">Coach Adrian</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=ldkQydXAWKQ" target="_blank" rel="noopener"><span class="meta"><span class="t">How to play in the wind</span><span class="ch">Essential Tennis</span></span></a>
@@ -269,8 +374,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="scouting">🔎 Scouting, fitness &amp; the net-rusher</h2>
-      <div class="video-list grid">
+      <h2 id="scouting">🔎 Scouting, fitness &amp; the net-rusher <span class="n">13 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=TsfQuyONEy0" target="_blank" rel="noopener"><span class="meta"><span class="t">Scout your opponent in the warm-up</span><span class="ch">Meike Babel Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=SWmgmEVvev4" target="_blank" rel="noopener"><span class="meta"><span class="t">How to scout in the warm-up</span><span class="ch">Total Tennis Domination</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=tedowqbcUVA" target="_blank" rel="noopener"><span class="meta"><span class="t">Find their weakness</span><span class="ch">Essential Tennis</span></span></a>
@@ -288,17 +393,17 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="gear">🎒 Equipment &amp; surfaces</h2>
-      <div class="video-list grid">
+      <h2 id="gear">🎒 Equipment &amp; surfaces <span class="n">2 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=g5e-J7vhAys" target="_blank" rel="noopener"><span class="meta"><span class="t">Choosing strings — multi vs poly</span><span class="ch">PH Tennis</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=KxaopSwu4sA" target="_blank" rel="noopener"><span class="meta"><span class="t">Surface sensitivity — clay / grass / hard</span><span class="ch">Tennis Banana</span></span></a>
       </div>
     </section>
 
     <section class="vid-sec">
-      <h2 id="technique">🔧 Technique tune-ups</h2>
+      <h2 id="technique">🔧 Technique tune-ups <span class="n">16 films</span></h2>
       <p class="lead" style="margin:-2px 0 8px;font-size:.9rem">Stroke mechanics — kept separate from the tactics. Dip in when a shot needs a fix.</p>
-      <div class="video-list grid">
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7644248076131093790" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Stop slapping your forehand (racquet-tip path)</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@simpletennisiq/video/7644617461928660255" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Serve — arch &amp; load like a bow</span><span class="ch">@simpletennisiq · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@alexander.meliuk/video/7646478290890263839" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Forehand: extension, legs, contact point</span><span class="ch">@alexander.meliuk · TikTok</span></span></a>
@@ -319,8 +424,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="matchplay">🏆 Match play</h2>
-      <div class="video-list grid">
+      <h2 id="matchplay">🏆 Match play <span class="n">19 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=EXhMRS1WTPs" target="_blank" rel="noopener"><span class="meta"><span class="t">4 singles strategies to win your next match</span><span class="ch">RacquetFlex</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=gh4N2D7Q8sA" target="_blank" rel="noopener"><span class="meta"><span class="t">The 4 phases of a singles match</span><span class="ch">Total Tennis Domination</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=Q2fUkZr2cgs" target="_blank" rel="noopener"><span class="meta"><span class="t">Easily win more singles matches</span><span class="ch">2MinuteTennis</span></span></a>
@@ -344,8 +449,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="classics">🏆 Grand Slam classics</h2>
-      <div class="video-list grid">
+      <h2 id="classics">🏆 Grand Slam classics <span class="n">10 films</span></h2>
+      <div class="vgrid">
         <a class="video-item" href="https://www.youtube.com/watch?v=f8YEiCAPAbg" target="_blank" rel="noopener"><span class="meta"><span class="t">Wimbledon 2008 F — Federer v Nadal</span><span class="ch">Wimbledon</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=poiuL-HUyuc" target="_blank" rel="noopener"><span class="meta"><span class="t">Wimbledon 2019 F — Djokovic v Federer</span><span class="ch">Wimbledon</span></span></a>
         <a class="video-item" href="https://www.youtube.com/watch?v=4kzHQt61fos" target="_blank" rel="noopener"><span class="meta"><span class="t">Wimbledon 2014 F — Djokovic v Federer</span><span class="ch">Wimbledon</span></span></a>
@@ -359,49 +464,110 @@
       </div>
     </section>
 
-    <div class="next-action reveal">
+    <div class="next-action" data-reveal>
       <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">Pick ONE clip that matches this week's <a href="26-improvement-engine.html">priority</a> — watch it, then drill it. Back to the <a href="deck.html">deck</a> or the <a href="library.html">full library</a>.</p>
+      <p>Pick <b>one</b> clip that matches this week's <a href="26-improvement-engine.html">priority</a> — watch it, then drill it. Or return to the <a href="index.html">home</a> or the <a href="library.html">full library</a>.</p>
     </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
-      <p><strong>Zulu Tennis</strong> · by Veyane. Videos are third-party; all rights and credit belong to the respective YouTube channels.</p></footer>
-
-  </main>
 </div>
+</main>
 
-<script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
+<a class="plan-badge" id="planBadge" href="set-break.html?session=practice#plan">Training plan <b id="planCount">0</b></a>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fwm">The Film Room</div>
+    <div class="fby">Zulu Tennis — by Veyane</div>
+    <p class="fdesc">Hand-picked third-party film. All rights and credit belong to the respective YouTube and TikTok creators; nothing is hosted here, nothing is tracked.</p>
+    <div class="foot-links">
+      <a href="index.html">Home</a><a href="index.html#collections">Collections</a><a href="learning.html">Learn</a>
+      <a href="drills.html">Drills</a><a href="tactics.html">Tactics</a><a href="library.html">Library</a><a href="set-break.html">Set-Break</a>
+    </div>
+    <div class="foot-bottom">© Zulu Tennis — by Veyane · No sign-up · nothing tracked</div>
+  </div>
+</footer>
+
 <script>
 (function(){
-  var chips=document.getElementById("vidChips"), search=document.getElementById("vidSearch"), count=document.getElementById("vidCount");
-  if(!chips||!search) return;
-  var data=[].slice.call(document.querySelectorAll(".vid-sec")).map(function(s){
-    var h=s.querySelector("h2");
-    return { el:s, id:h?h.id:"", label:h?h.textContent.trim():"", cards:[].slice.call(s.querySelectorAll(".video-item")) };
+  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* mobile menu */
+  var mt=document.getElementById('menuToggle'), nl=document.getElementById('navlinks');
+  mt.addEventListener('click',function(){var o=nl.classList.toggle('open');mt.setAttribute('aria-expanded',o);mt.textContent=o?'✕':'☰';});
+  nl.addEventListener('click',function(e){if(e.target.tagName==='A'){nl.classList.remove('open');mt.textContent='☰';}});
+
+  /* training-plan store — compatible with set-break (localStorage 'zt-trainingplan') */
+  var KEY='zt-trainingplan';
+  function read(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+  function write(l){try{localStorage.setItem(KEY,JSON.stringify(l))}catch(e){}}
+  function has(k){return read().some(function(i){return i.k===k})}
+  function toggle(it){var l=read();if(has(it.k)){write(l.filter(function(i){return i.k!==it.k}))}else{l.push(it);write(l)}}
+
+  /* enhance each .video-item into an editorial film card */
+  var items=[].slice.call(document.querySelectorAll('.video-item'));
+  items.forEach(function(a){
+    var isTT=/tiktok/.test(a.className);
+    var m=a.getAttribute('href').match(/[?&]v=([^&]+)/);
+    var id=m?m[1]:(a.getAttribute('href'));
+    var t=(a.querySelector('.t')||{}).textContent||'';
+    var ch=(a.querySelector('.ch')||{}).textContent||'';
+    // remove any legacy .thumb placeholder
+    var old=a.querySelector('.thumb'); if(old) old.remove();
+    var fig=document.createElement('span');
+    fig.className='vthumb'+(isTT?' tt':'');
+    if(!isTT && m){
+      var img=document.createElement('img');
+      img.loading='lazy'; img.decoding='async'; img.alt='';
+      img.src='https://i.ytimg.com/vi/'+m[1]+'/hqdefault.jpg';
+      fig.appendChild(img);
+    }
+    var play=document.createElement('span'); play.className='play'; play.textContent='▶'; fig.appendChild(play);
+    var src=document.createElement('span'); src.className='src'; src.textContent=isTT?'TikTok':'Watch'; fig.appendChild(src);
+    var pb=document.createElement('button'); pb.type='button'; pb.className='plan-add'+(has(id)?' on':'');
+    pb.textContent=has(id)?'✓ In plan':'+ Plan';
+    pb.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();
+      toggle({k:id,t:t,u:a.href,ch:ch,src:'video',chip:''});
+      var on=has(id); pb.classList.toggle('on',on); pb.textContent=on?'✓ In plan':'+ Plan'; paintBadge();});
+    a.insertBefore(fig,a.firstChild);
+    a.insertBefore(pb,a.firstChild);
   });
-  var total=data.reduce(function(n,d){return n+d.cards.length;},0);
-  search.placeholder="Search "+total+" videos…";
-  var active="all";
-  function mk(id,label){ var b=document.createElement("button"); b.type="button"; b.textContent=label; b.setAttribute("data-f",id);
-    b.onclick=function(){ active=id; search.value=""; apply(); window.scrollTo(0,0); }; return b; }
-  chips.appendChild(mk("all","All"));
-  data.forEach(function(d){ if(d.id) chips.appendChild(mk(d.id,d.label)); });
+
+  /* floating plan badge */
+  var badge=document.getElementById('planBadge'), pc=document.getElementById('planCount');
+  function paintBadge(){var n=read().length;pc.textContent=n;badge.classList.toggle('show',n>0);}
+  paintBadge();
+
+  /* search + filter chips */
+  var chips=document.getElementById('vidChips'), search=document.getElementById('vidSearch'), count=document.getElementById('vidCount');
+  var data=[].slice.call(document.querySelectorAll('.vid-sec')).map(function(s){
+    var h=s.querySelector('h2');
+    var label=h?h.childNodes[0].textContent.trim():'';   // text before the count span
+    return {el:s,id:h?h.id:'',label:label,cards:[].slice.call(s.querySelectorAll('.video-item'))};
+  });
+  var active='all';
+  function mk(id,label){var b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('data-f',id);
+    b.onclick=function(){active=id;search.value='';apply();window.scrollTo({top:0,behavior:rm?'auto':'smooth'});};return b;}
+  chips.appendChild(mk('all','All films'));
+  data.forEach(function(d){if(d.id)chips.appendChild(mk(d.id,d.label));});
   function apply(){
-    var q=search.value.trim().toLowerCase(), shown=0;
+    var q=search.value.trim().toLowerCase(),shown=0;
     data.forEach(function(d){
-      var secMatch=(active==="all"||active===d.id), any=false;
+      var secMatch=(active==='all'||active===d.id),any=false;
       d.cards.forEach(function(c){
-        var vis=secMatch && (!q || c.textContent.toLowerCase().indexOf(q)>=0);
+        var vis=secMatch&&(!q||c.textContent.toLowerCase().indexOf(q)>=0);
         c.hidden=!vis; if(vis){any=true;shown++;}
       });
       d.el.hidden=!any;
     });
-    [].forEach.call(chips.children,function(b){ b.setAttribute("aria-pressed", b.getAttribute("data-f")===active?"true":"false"); });
-    count.textContent = q ? (shown+" match"+(shown===1?"":"es")) : (active==="all" ? "" : shown+" in this section");
+    [].forEach.call(chips.children,function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===active?'true':'false');});
+    count.textContent=q?(shown+' match'+(shown===1?'':'es')):(active==='all'?'':shown+' in this collection');
   }
-  search.addEventListener("input",function(){ if(search.value.trim()) active="all"; apply(); });
+  search.addEventListener('input',function(){if(search.value.trim())active='all';apply();});
   apply();
+
+  /* reveal */
+  var rev=document.querySelectorAll('[data-reveal]');
+  if(rm||!('IntersectionObserver'in window)){[].forEach.call(rev,function(i){i.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px'});[].forEach.call(rev,function(i){io.observe(i);});}
 })();
 </script>
 </body>
