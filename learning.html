@@ -1,64 +1,176 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Learning / Back to Basics</title>
-<meta name="description" content="Back-to-basics tennis learning library — fundamentals grouped by stroke, to unlearn and relearn. Saved TikTok coaching clips.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="theme-color" content="#F8F6F2">
+<title>Zulu Tennis — Learning</title>
+<meta name="description" content="Learning — back to basics. Tennis fundamentals grouped by stroke, so you can rebuild any shot from the ground up and relearn it clean.">
 <link rel="icon" href="assets/favicon.svg">
-<meta property="og:title" content="Zulu Tennis — Learning / Back to Basics">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Zulu Tennis">
+<meta property="og:title" content="Zulu Tennis — Learning">
+<meta property="og:description" content="Fundamentals grouped by stroke — rebuild any shot, clean.">
+<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/learning.html">
 <meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<link rel="stylesheet" href="assets/styles.css">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
 <style>
-  .vid-sec { margin-top: 22px; }
-  .vid-sec > h2 { display:flex; align-items:center; gap:8px; }
-  .video-list.grid { grid-template-columns: repeat(auto-fill, minmax(280px,1fr)); display:grid; }
-  .vfilter { position:sticky; top:0; z-index:6; background:var(--bg); padding:10px 0 6px; margin-top:8px; }
-  .vfilter input { width:100%; box-sizing:border-box; padding:10px 14px; border:1.5px solid var(--border); border-radius:10px; background:var(--surface); color:var(--text); font-size:1rem; }
-  .vchips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
-  .vchips button { appearance:none; border:1.5px solid var(--border); background:var(--surface); color:var(--text); border-radius:999px; padding:5px 11px; font-weight:700; font-size:.78rem; cursor:pointer; white-space:nowrap; }
-  .vchips button[aria-pressed="true"] { background:var(--hl); color:#141414; border-color:var(--hl); }
-  .vcount { color:var(--muted); font-size:.8rem; margin-top:6px; min-height:1em; }
-  .vid-sec[hidden], .video-item[hidden] { display:none; }
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.16);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.04}
+a{color:inherit}img,video{display:block;max-width:100%}
+::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding-bottom:4px;border-bottom:1px solid var(--ink);transition:gap .3s var(--ease)}
+.elink .arw{transition:transform .35s var(--ease)}
+.elink:hover{gap:.9em}.elink:hover .arw{transform:translateX(4px)}
+
+/* NAV (solid, editorial) */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:24px;
+  padding:14px var(--gut);background:rgba(248,246,242,.9);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto}
+.brand .wm{font-family:var(--serif);font-size:1.25rem;letter-spacing:.04em}
+.brand .by{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:30px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86;transition:opacity .3s var(--ease)}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer;line-height:1}
+@media(max-width:860px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:34px;background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .55s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;opacity:1}
+  .menu-toggle{display:block}
+}
+section,.masthead,.filterwrap{padding-left:var(--gut);padding-right:var(--gut)}
+.wrap{max-width:1240px;margin:0 auto}
+
+/* MASTHEAD */
+.masthead{padding-top:clamp(120px,18vh,180px);padding-bottom:clamp(30px,5vh,54px)}
+.masthead .kicker{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.masthead h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:300;letter-spacing:-.02em;line-height:.94}
+.masthead h1 em{font-style:italic;font-weight:400}
+.masthead .lead{max-width:56ch;margin-top:28px;font-size:clamp(1.02rem,1.3vw,1.2rem);font-weight:300;line-height:1.7;color:#3a352f}
+
+/* FILTER (sticky) */
+.filterwrap{position:sticky;top:53px;z-index:40;background:rgba(248,246,242,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding-top:16px;padding-bottom:14px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.searchrow{position:relative;max-width:1240px;margin:0 auto}
+#vidSearch{width:100%;background:none;border:none;border-bottom:1px solid var(--line);color:var(--ink);
+  font-family:var(--serif);font-weight:300;font-size:clamp(1.3rem,3vw,1.9rem);padding:6px 40px 12px 2px;letter-spacing:-.01em}
+#vidSearch::placeholder{color:#a29c93}#vidSearch:focus{outline:none;border-color:var(--gold)}
+.searchrow .mag{position:absolute;right:2px;bottom:12px;color:var(--muted);font-size:1.3rem;pointer-events:none}
+.vchips{max-width:1240px;margin:16px auto 0;display:flex;flex-wrap:wrap;gap:8px}
+.vchips button{appearance:none;border:1px solid var(--line);background:none;color:var(--ink);border-radius:999px;
+  padding:7px 15px;font-family:var(--sans);font-weight:600;font-size:.72rem;letter-spacing:.06em;cursor:pointer;white-space:nowrap;transition:all .25s var(--ease)}
+.vchips button:hover{border-color:var(--ink)}
+.vchips button[aria-pressed="true"]{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.vcount{max-width:1240px;margin:12px auto 0;color:var(--muted);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;min-height:1em}
+
+/* SECTIONS + CARDS */
+.sections{padding-top:clamp(20px,3vh,36px);padding-bottom:40px}
+.vid-sec{padding-top:clamp(46px,7vh,84px)}
+.vid-sec > h2{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:300;
+  padding-bottom:18px;margin-bottom:clamp(24px,3vw,38px);border-bottom:1px solid var(--line)}
+.vid-sec > h2 .n{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.vid-sec .lead{max-width:60ch;margin:-10px 0 26px;font-size:.98rem;font-weight:300;color:#3a352f;line-height:1.6}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(22px,2.6vw,40px)}
+.video-item{position:relative;display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
+.video-item .vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--forest)}
+.video-item .vthumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);filter:saturate(.96)}
+.video-item:hover .vthumb img,.video-item:focus-visible .vthumb img{transform:scale(1.045)}
+.video-item .vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.42));opacity:.5;transition:opacity .4s var(--ease)}
+.video-item:hover .vthumb::after{opacity:.85}
+.video-item .vthumb.tt{background:#111;background-image:linear-gradient(135deg,rgba(37,244,238,.95),rgba(0,0,0,.55) 45%,rgba(254,44,85,.95))}
+.video-item .play{position:absolute;left:16px;bottom:14px;z-index:2;width:40px;height:40px;border:1px solid rgba(248,246,242,.7);
+  border-radius:50%;display:grid;place-items:center;color:#fff;font-size:.8rem;background:rgba(17,17,17,.28);
+  transition:background .35s var(--ease),transform .35s var(--ease)}
+.video-item:hover .play{background:rgba(17,17,17,.5);transform:scale(1.06)}
+.video-item .src{position:absolute;right:14px;top:14px;z-index:2;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;
+  color:#fff;background:rgba(17,17,17,.4);padding:4px 9px;border-radius:2px}
+.video-item .meta{padding:16px 2px 0;display:flex;flex-direction:column;flex:1}
+.video-item .t{font-family:var(--serif);font-size:1.16rem;font-weight:400;line-height:1.22;letter-spacing:-.01em}
+.video-item .ch{margin-top:9px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.plan-add{position:absolute;top:12px;left:14px;z-index:3;appearance:none;cursor:pointer;
+  border:1px solid rgba(248,246,242,.7);background:rgba(17,17,17,.36);color:#fff;border-radius:999px;
+  font-family:var(--sans);font-weight:600;font-size:.64rem;letter-spacing:.1em;text-transform:uppercase;padding:6px 12px;
+  transition:all .25s var(--ease)}
+.plan-add:hover{background:var(--gold);border-color:var(--gold);color:#fff}
+.plan-add.on{background:var(--gold);border-color:var(--gold);color:#fff}
+
+/* PLAN BADGE */
+.plan-badge{position:fixed;right:20px;bottom:20px;z-index:70;display:none;align-items:center;gap:9px;
+  text-decoration:none;background:var(--ink);color:var(--ivory);border-radius:999px;padding:12px 18px;
+  font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;box-shadow:0 10px 30px rgba(10,10,10,.24)}
+.plan-badge.show{display:inline-flex}
+.plan-badge b{background:var(--gold);color:#fff;border-radius:999px;padding:1px 8px;font-size:.72rem}
+
+/* NEXT ACTION + FOOTER */
+.next-action{max-width:1240px;margin:clamp(50px,8vh,90px) auto 0;padding:30px 34px;border:1px solid var(--line);background:#fff}
+.next-action .lbl{font-size:.68rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.next-action p{margin-top:10px;font-family:var(--serif);font-size:1.3rem;font-weight:300;line-height:1.35}
+.next-action a{color:var(--forest);text-underline-offset:3px}
+.foot{background:var(--forest);color:var(--ivory);margin-top:clamp(60px,9vh,110px);padding:clamp(56px,8vh,90px) var(--gut) 44px}
+.foot .fwm{font-family:var(--serif);font-size:clamp(2.2rem,6vw,3.6rem);font-weight:300;line-height:.95}
+.foot .fby{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;opacity:.72;margin-top:12px}
+.foot .fdesc{font-size:.92rem;font-weight:300;line-height:1.7;color:rgba(248,246,242,.8);max-width:52ch;margin-top:22px}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:30px}
+.foot-links a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.8}
+.foot-links a:hover{opacity:1}
+.foot-bottom{margin-top:34px;padding-top:20px;border-top:1px solid rgba(248,246,242,.16);font-size:.72rem;letter-spacing:.1em;opacity:.6}
+.vid-sec[hidden],.video-item[hidden]{display:none}
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none;transition:none}}
 </style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html" aria-current="page">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html">Library</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">Learning — back to basics</p>
+    <h1>Rebuild any <em>shot</em></h1>
+    <p class="lead">Fundamentals grouped by <b>stroke</b>, so you can always go back, rebuild a shot from the ground up, and relearn it clean. Saved coaching clips; tap any still to watch. Use search or the collections below to jump to a stroke.</p>
+  </div>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<div class="filterwrap">
+  <div class="searchrow">
+    <input id="vidSearch" type="search" placeholder="What would you like to master today?" autocomplete="off" aria-label="Search videos">
+    <span class="mag">&#8981;</span>
+  </div>
+  <div class="vchips" id="vidChips"></div>
+  <div class="vcount" id="vidCount"></div>
+</div>
 
-  <main class="content">
-
-    <div class="pagehead reveal">
-      <div class="layertags">
-        <span class="layer-chip">📖 Learning</span>
-        <span class="layer-chip">Back to basics · unlearn &amp; relearn</span>
-      </div>
-      <h1>Learning — back to basics</h1>
-      <p class="lead">Fundamentals grouped by <b>stroke</b>, so you can always go back, rebuild a shot from
-      the ground up, and relearn it clean. Saved coaching clips; tap to watch. Use search or the chips to
-      jump to a stroke.</p>
-    </div>
-
-    <div class="vfilter">
-      <input id="vidSearch" type="search" placeholder="Search videos…" autocomplete="off" aria-label="Search videos">
-      <div class="vchips" id="vidChips"></div>
-      <div class="vcount" id="vidCount"></div>
-    </div>
-
+<main class="sections">
+<div class="wrap">
+    
     <section class="vid-sec">
-      <h2 id="serve">🎾 Serve</h2>
-      <div class="video-list grid">
+      <h2 id="serve">🎾 Serve <span class="n">80 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@coachrjtennis/video/7621737326170885406" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">🧠Mastering Racket Face Control on the Two-Handed Backhand 🎾 In this targ…</span><span class="ch">@coachrjtennis · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tenniscoacholi/video/7624901935438581014" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Master your backhand = master your space 🎾 Most players struggle not bec…</span><span class="ch">@tenniscoacholi · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisdoctor/video/7597609683205065991" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">🎁 Get a FREE video analysis from me on one of your strokes when you join…</span><span class="ch">@tennisdoctor · TikTok</span></span></a>
@@ -143,8 +255,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="return">↩️ Return</h2>
-      <div class="video-list grid">
+      <h2 id="return">↩️ Return <span class="n">4 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennissensai/video/7616120526989249823" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">1. Shot selection 2. Footwork 3. Second serve 4. Return of serve Watchin…</span><span class="ch">@tennissensai · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@julian.lopez316/video/7397767995801505054" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Don’t just give them the finger. 👇 ‼️ FIRST make sure to SAVE this rule …</span><span class="ch">@julian.lopez316 · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@onlinetennisinstruction/video/7349233700355296545" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Master Your Footwork On The Return Of Serve🔥 @leonie.kung</span><span class="ch">@onlinetennisinstruction · TikTok</span></span></a>
@@ -153,8 +265,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="forehand">🟡 Forehand</h2>
-      <div class="video-list grid">
+      <h2 id="forehand">🟡 Forehand <span class="n">137 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@top.tennis.traini5/video/7626354348930387222" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">MAGIC Formula For The ATP Forehand Coach Michael Masterclass (with 9 UTR)</span><span class="ch">@top.tennis.traini5 · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@top.tennis.traini5/video/7626052302238928150" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">MAGIC Formula For The ATP Forehand Coach Michael Masterclass (with 9 UTR)</span><span class="ch">@top.tennis.traini5 · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@theforehandguy/video/7160676463044349226" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Open Stance Forehand Drills💥</span><span class="ch">@theforehandguy · TikTok</span></span></a>
@@ -296,8 +408,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="backhand">🟦 Backhand</h2>
-      <div class="video-list grid">
+      <h2 id="backhand">🟦 Backhand <span class="n">57 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@coachrjtennis/video/7625332480165334303" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">BACKHAND PROGRESSION WORK 🎾 Building a stronger, more connected backhand…</span><span class="ch">@coachrjtennis · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@thenextleveloften/video/7585693606984322326" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Backhand practice by Anouck Vrancken Peeters (WTA</span><span class="ch">@thenextleveloften · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@samuelbegg/video/7084599394590412034" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Amanda Anisimova drilling backhands 🎾💥</span><span class="ch">@samuelbegg · TikTok</span></span></a>
@@ -359,8 +471,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="slice">🪶 Slice & drop shots</h2>
-      <div class="video-list grid">
+      <h2 id="slice">🪶 Slice & drop shots <span class="n">16 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@hvidnere/video/7584855333340843295" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Easy little tips to improve your slice 🎾 @Wilson Tennis</span><span class="ch">@hvidnere · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@pika_tennis/video/7537901630205775105" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">🎾 Tennis backhand slice slow motion white version. I love this outfit.Do…</span><span class="ch">@pika_tennis · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@payet_pauline/video/7468366996581715222" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">The wall is always a good idea 🤝</span><span class="ch">@payet_pauline · TikTok</span></span></a>
@@ -381,8 +493,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="volley">🥅 Volley & net</h2>
-      <div class="video-list grid">
+      <h2 id="volley">🥅 Volley & net <span class="n">18 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisshop.ae/video/7603383532794170644" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Mastering the net is mastering control. 🎾 Every step in, every split ste…</span><span class="ch">@tennisshop.ae · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisacademy101/video/7585169763962244373" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Volley–Baseline Precision Drill | Pro-Level Fundamentals At the net, you…</span><span class="ch">@tennisacademy101 · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@alexslabs/video/7413831894866873632" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">✅ Learn to feed the ball like a pro then follow me @alexslabs for more t…</span><span class="ch">@alexslabs · TikTok</span></span></a>
@@ -405,16 +517,16 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="overhead">☝️ Overhead & smash</h2>
-      <div class="video-list grid">
+      <h2 id="overhead">☝️ Overhead & smash <span class="n">2 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@trix.tennis/video/7519194686255435031" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Non-dominant hand is crucial. What do you think? @Kinpaiooo</span><span class="ch">@trix.tennis · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@curtistennis/video/7529923796451544327" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">A quick tip on the overhead!</span><span class="ch">@curtistennis · TikTok</span></span></a>
       </div>
     </section>
 
     <section class="vid-sec">
-      <h2 id="footwork">👟 Footwork & movement</h2>
-      <div class="video-list grid">
+      <h2 id="footwork">👟 Footwork & movement <span class="n">22 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@coppiniacademy/video/7615013041381346580" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">🔥 DETAILS CREATE MATCH WINNERS 🔥 Ethan Terblanche and Gerard Henning put…</span><span class="ch">@coppiniacademy · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@xpand_store/video/7596995537618947348" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Follow for more! Carlos Alcaraz and many other top athletes use the same…</span><span class="ch">@xpand_store · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@dmitrijurkincoach/video/7604137258471542038" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Staying close to the baseline is good for advanced players but not good …</span><span class="ch">@dmitrijurkincoach · TikTok</span></span></a>
@@ -441,8 +553,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="fitness">🏋️ Fitness & conditioning</h2>
-      <div class="video-list grid">
+      <h2 id="fitness">🏋️ Fitness & conditioning <span class="n">15 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@toptennis_sg/video/7610017409851739412" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Change the way you warm up 🎾 And you will see a difference in your game 💪</span><span class="ch">@toptennis_sg · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@rahultheathlete/video/7548171537065594143" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Do you warm up enough before 🎾?</span><span class="ch">@rahultheathlete · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisacademy101/video/7588911723323624724" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Daniel Altmaier: Full Beast Mode Training 🔥 Daniel Altmaier is grinding …</span><span class="ch">@tennisacademy101 · TikTok</span></span></a>
@@ -462,8 +574,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="mental">🧩 Mental & match</h2>
-      <div class="video-list grid">
+      <h2 id="mental">🧩 Mental & match <span class="n">16 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@curtistennis/video/7626075149543968021" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">What actually makes a shot “good” in tennis? This might just change how …</span><span class="ch">@curtistennis · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@tennisphere__/video/7380327392503483680" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Milos Raonic is warming-up before his match against De Minaur 🌱</span><span class="ch">@tennisphere__ · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@sashaklanecek/video/7616738529971932438" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Using your full body is essential for generating power in tennis - but t…</span><span class="ch">@sashaklanecek · TikTok</span></span></a>
@@ -484,8 +596,8 @@
     </section>
 
     <section class="vid-sec">
-      <h2 id="general">📖 Fundamentals & general</h2>
-      <div class="video-list grid">
+      <h2 id="general">📖 Fundamentals & general <span class="n">249 clips</span></h2>
+      <div class="vgrid">
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@bbcsport/video/7509193647980547350" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">A double bagel? Don&#x27;t be surprised to hear that term a bit more this sum…</span><span class="ch">@bbcsport · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@top.tennis.traini5/video/7626359572957072662" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Tennis clip</span><span class="ch">@top.tennis.traini5 · TikTok</span></span></a>
         <a class="video-item tiktok has-thumb" href="https://www.tiktok.com/@olivaritennis/video/7626109478156438806" target="_blank" rel="noopener"><span class="thumb tt"></span><span class="meta"><span class="t">Early preparation is the biggest mistake of the game! Don&#x27;t separate you…</span><span class="ch">@olivaritennis · TikTok</span></span></a>
@@ -738,43 +850,110 @@
       </div>
     </section>
 
-    <div class="next-action reveal">
-      <div class="lbl">How to use this</div>
-      <p style="margin:.3rem 0 0">Pick ONE fundamental to rebuild this week — drill it, then test it in a
-      <a href="set-break.html">practice session</a>. For tactics &amp; match play, see the <a href="videos.html">strategy videos</a>.</p>
+    <div class="next-action" data-reveal>
+      <div class="lbl">Your next highest-value action</div>
+      <p>Rebuilding a shot? Pick <b>one</b> stroke, watch two or three clips, then groove it in <a href="drills.html">practice</a>. Back to the <a href="index.html">home</a> or the <a href="library.html">full library</a>.</p>
     </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
-      <p><strong>Zulu Tennis</strong> · by Veyane. Clips are third-party (TikTok); credit to each creator.</p></footer>
-
-  </main>
 </div>
+</main>
 
-<script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
+<a class="plan-badge" id="planBadge" href="set-break.html?session=practice#plan">Training plan <b id="planCount">0</b></a>
+
+<footer class="foot">
+  <div class="wrap">
+    <div class="fwm">Back to basics</div>
+    <div class="fby">Zulu Tennis — by Veyane</div>
+    <p class="fdesc">Hand-picked third-party film. All rights and credit belong to the respective YouTube and TikTok creators; nothing is hosted here, nothing is tracked.</p>
+    <div class="foot-links">
+      <a href="index.html">Home</a><a href="index.html#collections">Collections</a><a href="learning.html" aria-current="page">Learn</a>
+      <a href="drills.html">Drills</a><a href="tactics.html">Tactics</a><a href="library.html">Library</a><a href="set-break.html">Set-Break</a>
+    </div>
+    <div class="foot-bottom">© Zulu Tennis — by Veyane · No sign-up · nothing tracked</div>
+  </div>
+</footer>
+
 <script>
 (function(){
-  var chips=document.getElementById("vidChips"), search=document.getElementById("vidSearch"), count=document.getElementById("vidCount");
-  if(!chips||!search) return;
-  var data=[].slice.call(document.querySelectorAll(".vid-sec")).map(function(s){var h=s.querySelector("h2");return {el:s,id:h?h.id:"",label:h?h.textContent.trim():"",cards:[].slice.call(s.querySelectorAll(".video-item"))};});
-  var total=data.reduce(function(n,d){return n+d.cards.length;},0);
-  search.placeholder="Search "+total+" clips…";
-  var active="all";
-  function mk(id,label){var b=document.createElement("button");b.type="button";b.textContent=label;b.setAttribute("data-f",id);b.onclick=function(){active=id;search.value="";apply();window.scrollTo(0,0);};return b;}
-  chips.appendChild(mk("all","All"));
-  data.forEach(function(d){ if(d.id) chips.appendChild(mk(d.id,d.label)); });
+  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* mobile menu */
+  var mt=document.getElementById('menuToggle'), nl=document.getElementById('navlinks');
+  mt.addEventListener('click',function(){var o=nl.classList.toggle('open');mt.setAttribute('aria-expanded',o);mt.textContent=o?'✕':'☰';});
+  nl.addEventListener('click',function(e){if(e.target.tagName==='A'){nl.classList.remove('open');mt.textContent='☰';}});
+
+  /* training-plan store — compatible with set-break (localStorage 'zt-trainingplan') */
+  var KEY='zt-trainingplan';
+  function read(){try{return JSON.parse(localStorage.getItem(KEY))||[]}catch(e){return[]}}
+  function write(l){try{localStorage.setItem(KEY,JSON.stringify(l))}catch(e){}}
+  function has(k){return read().some(function(i){return i.k===k})}
+  function toggle(it){var l=read();if(has(it.k)){write(l.filter(function(i){return i.k!==it.k}))}else{l.push(it);write(l)}}
+
+  /* enhance each .video-item into an editorial film card */
+  var items=[].slice.call(document.querySelectorAll('.video-item'));
+  items.forEach(function(a){
+    var isTT=/tiktok/.test(a.className);
+    var m=a.getAttribute('href').match(/[?&]v=([^&]+)/);
+    var id=m?m[1]:(a.getAttribute('href'));
+    var t=(a.querySelector('.t')||{}).textContent||'';
+    var ch=(a.querySelector('.ch')||{}).textContent||'';
+    // remove any legacy .thumb placeholder
+    var old=a.querySelector('.thumb'); if(old) old.remove();
+    var fig=document.createElement('span');
+    fig.className='vthumb'+(isTT?' tt':'');
+    if(!isTT && m){
+      var img=document.createElement('img');
+      img.loading='lazy'; img.decoding='async'; img.alt='';
+      img.src='https://i.ytimg.com/vi/'+m[1]+'/hqdefault.jpg';
+      fig.appendChild(img);
+    }
+    var play=document.createElement('span'); play.className='play'; play.textContent='▶'; fig.appendChild(play);
+    var src=document.createElement('span'); src.className='src'; src.textContent=isTT?'TikTok':'Watch'; fig.appendChild(src);
+    var pb=document.createElement('button'); pb.type='button'; pb.className='plan-add'+(has(id)?' on':'');
+    pb.textContent=has(id)?'✓ In plan':'+ Plan';
+    pb.addEventListener('click',function(e){e.preventDefault();e.stopPropagation();
+      toggle({k:id,t:t,u:a.href,ch:ch,src:'video',chip:''});
+      var on=has(id); pb.classList.toggle('on',on); pb.textContent=on?'✓ In plan':'+ Plan'; paintBadge();});
+    a.insertBefore(fig,a.firstChild);
+    a.insertBefore(pb,a.firstChild);
+  });
+
+  /* floating plan badge */
+  var badge=document.getElementById('planBadge'), pc=document.getElementById('planCount');
+  function paintBadge(){var n=read().length;pc.textContent=n;badge.classList.toggle('show',n>0);}
+  paintBadge();
+
+  /* search + filter chips */
+  var chips=document.getElementById('vidChips'), search=document.getElementById('vidSearch'), count=document.getElementById('vidCount');
+  var data=[].slice.call(document.querySelectorAll('.vid-sec')).map(function(s){
+    var h=s.querySelector('h2');
+    var label=h?h.childNodes[0].textContent.trim():'';   // text before the count span
+    return {el:s,id:h?h.id:'',label:label,cards:[].slice.call(s.querySelectorAll('.video-item'))};
+  });
+  var active='all';
+  function mk(id,label){var b=document.createElement('button');b.type='button';b.textContent=label;b.setAttribute('data-f',id);
+    b.onclick=function(){active=id;search.value='';apply();window.scrollTo({top:0,behavior:rm?'auto':'smooth'});};return b;}
+  chips.appendChild(mk('all','All films'));
+  data.forEach(function(d){if(d.id)chips.appendChild(mk(d.id,d.label));});
   function apply(){
-    var q=search.value.trim().toLowerCase(), shown=0;
+    var q=search.value.trim().toLowerCase(),shown=0;
     data.forEach(function(d){
-      var secMatch=(active==="all"||active===d.id), any=false;
-      d.cards.forEach(function(c){var vis=secMatch&&(!q||c.textContent.toLowerCase().indexOf(q)>=0);c.hidden=!vis;if(vis){any=true;shown++;}});
+      var secMatch=(active==='all'||active===d.id),any=false;
+      d.cards.forEach(function(c){
+        var vis=secMatch&&(!q||c.textContent.toLowerCase().indexOf(q)>=0);
+        c.hidden=!vis; if(vis){any=true;shown++;}
+      });
       d.el.hidden=!any;
     });
-    [].forEach.call(chips.children,function(b){b.setAttribute("aria-pressed",b.getAttribute("data-f")===active?"true":"false");});
-    count.textContent=q?(shown+" match"+(shown===1?"":"es")):(active==="all"?"":shown+" in this stroke");
+    [].forEach.call(chips.children,function(b){b.setAttribute('aria-pressed',b.getAttribute('data-f')===active?'true':'false');});
+    count.textContent=q?(shown+' match'+(shown===1?'':'es')):(active==='all'?'':shown+' in this collection');
   }
-  search.addEventListener("input",function(){if(search.value.trim())active="all";apply();});
+  search.addEventListener('input',function(){if(search.value.trim())active='all';apply();});
   apply();
+
+  /* reveal */
+  var rev=document.querySelectorAll('[data-reveal]');
+  if(rm||!('IntersectionObserver'in window)){[].forEach.call(rev,function(i){i.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px'});[].forEach.call(rev,function(i){io.observe(i);});}
 })();
 </script>
 </body>
