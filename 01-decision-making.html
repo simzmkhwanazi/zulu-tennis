@@ -5,39 +5,38 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#F8F6F2">
 <title>Zulu Tennis — The Decision Engine</title>
-<meta name="description" content="The one habit that wins more points: reset the outside ball, attack the inside ball. A calm, one-idea-at-a-time lesson with a demo that plays alongside.">
+<meta name="description" content="Read the ball: reset the outside ball, attack the inside ball. The core decision, shown in hand-picked videos.">
 <link rel="icon" href="assets/favicon.svg">
-<link rel="stylesheet" href="assets/styles.css">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
 <style>
-/* ============================================================
-   LESSON — sticky demo video + one-idea-at-a-time. Mobile-first.
-   ============================================================ */
-*{box-sizing:border-box}
+*{box-sizing:border-box;margin:0;padding:0}
 :root{
   --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
-  --muted:#6b6660;--line:rgba(17,17,17,.14);--navh:52px;
+  --muted:#6b6660;--line:rgba(17,17,17,.14);
   --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,serif;
   --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(18px,5vw,64px);
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
 }
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);
-  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.05;margin:0}
-a{color:inherit}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.05}
+a{color:inherit}img{display:block;max-width:100%}
 ::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .3s var(--ease)}
+.elink:hover{gap:.9em}
 
 /* LOCKED nav */
-.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:20px;
-  padding:13px var(--gut);background:rgba(248,246,242,.94);backdrop-filter:saturate(1.4) blur(14px);
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:22px;
+  padding:14px var(--gut);background:rgba(248,246,242,.94);backdrop-filter:saturate(1.4) blur(14px);
   -webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
 .brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto;color:var(--ink)}
-.brand .wm{font-family:var(--serif);font-size:1.15rem;letter-spacing:.04em}
-.brand .by{font-size:.58rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
-.navlinks{display:flex;gap:26px;align-items:center}
+.brand .wm{font-family:var(--serif);font-size:1.2rem;letter-spacing:.04em}
+.brand .by{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
 .navlinks a{text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86}
 .navlinks a:hover,.navlinks a[aria-current]{opacity:1}
 .navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
@@ -48,82 +47,44 @@ a{color:inherit}
   .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;color:var(--ivory);opacity:1}
   .menu-toggle{display:block}
 }
-.readbar{position:fixed;top:0;left:0;height:2px;width:0;z-index:61;background:linear-gradient(90deg,var(--gold),var(--clay))}
 
-/* ===== LESSON SHELL (mobile-first: sticky video on top, ideas scroll beneath) ===== */
-.lesson{padding-top:var(--navh)}
-.media{position:sticky;top:var(--navh);z-index:30;background:var(--ivory);
-  padding:12px var(--gut) 12px;border-bottom:1px solid var(--line)}
-.media .cap{font-size:.6rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);font-weight:600;
-  margin:0 0 9px;display:flex;gap:10px;align-items:center}
-.media .cap::before{content:"";width:20px;height:1px;background:var(--gold)}
-.frame{position:relative;aspect-ratio:16/9;width:100%;background:#0c0c0c;overflow:hidden;cursor:pointer}
-.frame img,.frame iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
-.frame::after{content:"";position:absolute;inset:0;background:rgba(10,10,10,.12);transition:background .3s var(--ease)}
-.frame:hover::after{background:rgba(10,10,10,.02)}
-.frame.on{cursor:default}.frame.on::after{display:none}
-.frame .play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:64px;height:64px;
-  border-radius:50%;background:rgba(248,246,242,.94);color:var(--ink);display:grid;place-items:center;
-  font-size:1.15rem;padding-left:5px;transition:transform .3s var(--ease)}
-.frame:hover .play{transform:translate(-50%,-50%) scale(1.08)}
-.media .ttl{display:none}
+/* header */
+.head{padding:clamp(116px,17vh,168px) var(--gut) clamp(30px,5vh,54px);max-width:1200px;margin:0 auto}
+.head .kicker{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.head h1{font-size:clamp(2.6rem,7.5vw,5.4rem);font-weight:300;letter-spacing:-.02em;line-height:.96}
+.head .idea{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.6vw,1.9rem);
+  color:var(--forest);margin-top:24px;max-width:24ch;line-height:1.25}
+.head .say{max-width:54ch;margin-top:22px;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:300;line-height:1.7;color:#3a352f}
 
-/* the scrolling stream of ideas */
-.chunk{min-height:64vh;display:flex;flex-direction:column;justify-content:center;
-  padding:60px var(--gut);position:relative}
-.chunk:first-child{min-height:56vh}
-.chunk .inner{max-width:720px;width:100%}
-.step{font-size:.66rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:20px}
-.idea{font-size:clamp(2.1rem,7.5vw,4.4rem);font-weight:300;line-height:1.03;letter-spacing:-.02em;text-wrap:balance}
-.idea em{font-style:italic}
-.say{font-size:clamp(1.05rem,1.7vw,1.35rem);font-weight:300;line-height:1.6;color:#3a352f;margin-top:22px;max-width:40ch}
-.chunk .diagram{margin:30px 0 0;max-width:300px}
-.chunk.center{text-align:center}
-.chunk.center .say,.chunk.center .diagram{margin-left:auto;margin-right:auto}
-.cue{position:absolute;left:50%;bottom:22px;transform:translateX(-50%);color:var(--muted);
-  font-size:1.3rem;animation:bob 2.4s var(--ease) infinite}
-@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
-.tint{background:var(--forest);color:var(--ivory)}
-.tint .say{color:rgba(248,246,242,.85)}.tint .step{color:var(--gold)}
-.tint-ink{background:var(--ink);color:var(--ivory)}
-.tint-ink .say{color:rgba(248,246,242,.85)}
-.drill .idea{font-size:clamp(1.9rem,6vw,3.3rem)}
-.close .idea{font-size:clamp(2rem,6.5vw,3.8rem)}
-.pager{display:flex;justify-content:space-between;gap:18px;margin-top:38px;flex-wrap:wrap}
-.pager a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
-  border-bottom:1px solid var(--gold);padding-bottom:4px}
+/* videos */
+.watch{max-width:1200px;margin:0 auto;padding:clamp(20px,3vh,40px) var(--gut) 40px}
+.watch .lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  padding-bottom:16px;margin-bottom:clamp(24px,3vw,40px);border-bottom:1px solid var(--line)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(24px,2.6vw,42px)}
+.vcard{display:flex;flex-direction:column}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c0c0c;cursor:pointer}
+.vthumb img,.vthumb iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.4));transition:opacity .4s var(--ease)}
+.vthumb:hover::after{opacity:.7}
+.vthumb.on{cursor:default}.vthumb.on::after{display:none}
+.vthumb .play{position:absolute;left:16px;bottom:14px;z-index:2;width:44px;height:44px;border-radius:50%;
+  background:rgba(248,246,242,.94);color:var(--ink);display:grid;place-items:center;font-size:.9rem;padding-left:3px;
+  transition:transform .35s var(--ease)}
+.vthumb:hover .play{transform:scale(1.08)}
+.vmeta{padding:16px 2px 0}
+.vt{font-family:var(--serif);font-size:1.2rem;font-weight:400;line-height:1.22;letter-spacing:-.01em}
+.vch{margin-top:9px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* pager + footer */
+.pager{max-width:1200px;margin:clamp(40px,6vh,70px) auto 0;padding:0 var(--gut);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:4px}
 .pager a.back{opacity:.7;border-color:var(--line)}
-
-[data-reveal]{opacity:0;transform:translateY(18px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
-[data-reveal].in{opacity:1;transform:none}
-
-/* ===== DESKTOP: video becomes a large sticky pane beside the ideas ===== */
-@media(min-width:940px){
-  .lesson{display:grid;grid-template-columns:1.02fr .98fr;align-items:start;padding-top:0}
-  .stream{grid-column:1;grid-row:1}
-  .media{grid-column:2;grid-row:1;position:sticky;top:0;height:100vh;border-bottom:none;
-    display:flex;flex-direction:column;justify-content:center;padding:var(--navh) clamp(30px,4vw,72px) 40px}
-  .media .cap{margin-bottom:14px}
-  .frame{box-shadow:0 30px 60px rgba(10,10,10,.16)}
-  .media .ttl{display:block;margin-top:16px;font-size:.95rem;font-weight:300;color:#3a352f;line-height:1.5}
-  .media .ttl b{font-weight:600}
-  .chunk{min-height:100vh;padding-top:var(--navh);padding-left:var(--gut)}
-  .chunk:first-child{min-height:100vh}
-  .chunk.center{text-align:left}
-  .chunk.center .say,.chunk.center .diagram{margin-left:0;margin-right:0}
-}
-
-@media(prefers-reduced-motion:reduce){
-  *{animation:none!important;scroll-behavior:auto!important}
-  [data-reveal]{opacity:1;transform:none;transition:none}
-  .chunk{min-height:auto;padding:44px var(--gut)}
-  .media{position:static}
-}
+.foot{margin-top:clamp(56px,9vh,100px);padding:44px var(--gut);border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-align:center}
+.foot b{color:var(--ink);font-weight:600}
 </style>
 </head>
 <body>
 
-<span class="readbar" id="readbar" aria-hidden="true"></span>
 <nav class="nav" id="nav">
   <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
   <div class="navlinks" id="navlinks">
@@ -136,121 +97,43 @@ a{color:inherit}
   <button class="menu-toggle" id="navBtn" aria-label="Menu" aria-expanded="false">☰</button>
 </nav>
 
-<div class="lesson">
+<header class="head">
+  <p class="kicker">Tactics · The Decision Engine</p>
+  <h1>Read the ball.</h1>
+  <p class="idea">Reset the outside ball. Attack the inside ball.</p>
+  <p class="say">Most points aren’t lost on technique — they’re lost by attacking the wrong ball. Picture a line down the middle: play safe crosscourt off anything wide, and only change direction when the ball sits inside the line and you’re balanced. Here it is in action.</p>
+</header>
 
-  <!-- sticky demo video — plays alongside the whole lesson -->
-  <div class="media">
-    <div class="cap">Watch it live · Tennis Hacker</div>
-    <div class="frame" id="ccFrame" role="button" tabindex="0" aria-label="Play the crosscourt demo video">
-      <img loading="lazy" src="https://i.ytimg.com/vi/o9SH7MbHn_A/hqdefault.jpg" alt="">
-      <span class="play" aria-hidden="true">▶</span>
-    </div>
-    <div class="ttl"><b>The crosscourt rally, up close.</b><br>Deeper &amp; more consistent — the outside-ball reset in motion.</div>
+<section class="watch">
+  <div class="lbl">Watch · 6 clips on this idea</div>
+  <div class="vgrid" id="vgrid">
+    <div class="vcard"><div class="vthumb" data-id="o9SH7MbHn_A" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/o9SH7MbHn_A/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Crosscourt — deeper &amp; more consistent</div><div class="vch">Tennis Hacker</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="CBH309BOKdE" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/CBH309BOKdE/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Cross-court vs down-the-line</div><div class="vch">Top Tennis Training</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="sYXF77vwRzE" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/sYXF77vwRzE/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Shot selection — the four zones</div><div class="vch">Patrick Smith Tennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="vW61LCkuCCo" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/vW61LCkuCCo/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">The best way to attack short balls</div><div class="vch">2MinuteTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="wcj9foLDoNU" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/wcj9foLDoNU/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">When to change direction &amp; attack</div><div class="vch">PlayYourCourt</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="F_5P90WlF3c" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/F_5P90WlF3c/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Pull your opponent off the court</div><div class="vch">2MinuteTennis</div></div></div>
   </div>
+</section>
 
-  <div class="stream">
+<div class="pager">
+  <a class="back" href="library.html">← All topics</a>
+  <a href="02-court-geometry.html">Next · Court Geometry →</a>
+</div>
 
-    <!-- 1 · premise -->
-    <section class="chunk center">
-      <div class="inner" data-reveal>
-        <div class="step">The Decision Engine · 01 / 07</div>
-        <h1 class="idea">Win the point <em>before</em> you hit it.</h1>
-        <p class="say">Most points aren’t lost on technique. They’re lost by attacking the wrong ball. One habit fixes that.</p>
-      </div>
-      <span class="cue" aria-hidden="true">↓</span>
-    </section>
+<footer class="foot"><b>Zulu Tennis</b> · by Veyane — videos are third-party; credit to each channel. Nothing tracked.</footer>
 
-    <!-- 2 · the line -->
-    <section class="chunk">
-      <div class="inner" data-reveal>
-        <div class="step">02 / 07 · The idea</div>
-        <h2 class="idea">Picture a line down the middle.</h2>
-        <p class="say">A line between you and your opponent. Every ball is either <b>outside</b> that line, or <b>inside</b> it. That is the whole decision.</p>
-      </div>
-      <span class="cue" aria-hidden="true">↓</span>
-    </section>
-
-    <!-- 3 · outside ball -->
-    <section class="chunk">
-      <div class="inner" data-reveal>
-        <div class="step">03 / 07 · Outside the line</div>
-        <h2 class="idea">Outside? <em>Reset.</em></h2>
-        <p class="say">If the ball pulls you wide, don’t try to change direction. Send it back crosscourt — high, with margin — and live to fight the next ball. <b>That’s the rally in the video.</b></p>
-        <figure class="diagram">
-          <div data-court='{"w":300,"players":[{"x":74,"y":13,"label":"O","side":"opp"},{"x":14,"y":88,"label":"You","side":"you"}],"paths":[{"from":[14,88],"to":[80,12],"kind":"shot","label":"reset crosscourt, high"}],"dots":[{"x":48,"y":95,"kind":"recovery","label":"recover"}]}'></div>
-        </figure>
-      </div>
-      <span class="cue" aria-hidden="true">↓</span>
-    </section>
-
-    <!-- 4 · inside ball -->
-    <section class="chunk tint">
-      <div class="inner" data-reveal>
-        <div class="step">04 / 07 · Inside the line</div>
-        <h2 class="idea">Inside, and balanced? <em>Attack.</em></h2>
-        <p class="say">Now you have the green light. Change direction, take the open court, and finish the point on your terms.</p>
-        <figure class="diagram">
-          <div data-court='{"w":300,"players":[{"x":70,"y":14,"label":"O","side":"opp"},{"x":48,"y":90,"label":"You","side":"you"}],"zones":[{"x":6,"y":4,"w":30,"h":18,"kind":"target","label":"open court"}],"paths":[{"from":[48,90],"to":[16,12],"kind":"shot","label":"attack"}]}'></div>
-        </figure>
-      </div>
-      <span class="cue" aria-hidden="true">↓</span>
-    </section>
-
-    <!-- 5 · recover -->
-    <section class="chunk center">
-      <div class="inner" data-reveal>
-        <div class="step">05 / 07 · In between</div>
-        <h2 class="idea">Then get back to the middle.</h2>
-        <p class="say">After every ball, recover to centre and wait. Stay patient. The inside ball will come.</p>
-      </div>
-      <span class="cue" aria-hidden="true">↓</span>
-    </section>
-
-    <!-- 6 · the drill -->
-    <section class="chunk drill tint-ink">
-      <div class="inner" data-reveal>
-        <div class="step">06 / 07 · Groove it</div>
-        <h2 class="idea">“Cross until inside.”</h2>
-        <p class="say">Rally only crosscourt. You may change direction just once — the moment you get a genuine inside ball. Count your unforced errors before and after; watch them fall.</p>
-      </div>
-      <span class="cue" aria-hidden="true">↓</span>
-    </section>
-
-    <!-- 7 · takeaway + next -->
-    <section class="chunk close center">
-      <div class="inner" data-reveal>
-        <div class="step">07 / 07 · Remember this</div>
-        <h2 class="idea">Reset the outside ball.<br>Attack the <em>inside</em> ball.</h2>
-        <div class="pager">
-          <a class="back" href="library.html">← All lessons</a>
-          <a href="02-court-geometry.html">Next · Court Geometry →</a>
-        </div>
-      </div>
-    </section>
-
-  </div><!-- /.stream -->
-</div><!-- /.lesson -->
-
-<script src="assets/courts.js" defer></script>
 <script>
 (function(){
-  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
   var b=document.getElementById('navBtn'),n=document.getElementById('navlinks');
   b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';});
   n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='☰';}});
-  var bar=document.getElementById('readbar');
-  addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;
-    bar.style.width=(h>0?scrollY/h*100:0)+'%';},{passive:true});
-  var items=document.querySelectorAll('[data-reveal]');
-  if(rm||!('IntersectionObserver'in window)){[].forEach.call(items,function(i){i.classList.add('in')});}
-  else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:0.25});
-    [].forEach.call(items,function(i){io.observe(i);});}
-  /* companion video: click / Enter to play in place */
-  var f=document.getElementById('ccFrame');
-  function playCC(){ if(f.classList.contains('on'))return; f.classList.add('on');
-    f.innerHTML='<iframe src="https://www.youtube.com/embed/o9SH7MbHn_A?autoplay=1&rel=0&modestbranding=1" title="Crosscourt demo — Tennis Hacker" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }
-  if(f){ f.addEventListener('click',playCC);
-    f.addEventListener('keydown',function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); playCC(); } }); }
+  function play(el){ if(el.classList.contains('on'))return; var id=el.getAttribute('data-id'); el.classList.add('on');
+    el.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }
+  [].forEach.call(document.querySelectorAll('.vthumb'),function(el){
+    el.addEventListener('click',function(){play(el);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(el);}});
+  });
 })();
 </script>
 </body>
