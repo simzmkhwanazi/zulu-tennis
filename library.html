@@ -1,209 +1,266 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Library (full system)</title>
-<meta name="description" content="Zulu Tennis by Veyane — a complete tennis singles performance operating system. Decision engine, tactics, analytics, athlete development.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F8F6F2">
+<title>Zulu Tennis — The Full System</title>
+<meta name="description" content="The complete Zulu Tennis singles operating system — decision engine, tactics, analytics, scouting, athlete development and improvement — organised by what you're trying to do.">
 <link rel="icon" href="assets/favicon.svg">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Elite Singles Performance System">
-<meta property="og:description" content="Zulu Tennis by Veyane — a complete tennis singles performance operating system. Decision engine, tactics, analytics, athlete development.">
-<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/">
+<meta property="og:title" content="Zulu Tennis — The Full System">
+<meta property="og:description" content="The complete singles performance operating system, organised by goal.">
+<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/library.html">
 <meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — Elite Singles Performance System">
-<meta name="twitter:description" content="Zulu Tennis by Veyane — a complete tennis singles performance operating system. Decision engine, tactics, analytics, athlete development.">
 <meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.16);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,"Times New Roman",serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);-webkit-font-smoothing:antialiased;line-height:1.6;overflow-x:hidden}
+h1,h2,h3,h4{font-family:var(--serif);font-weight:400;letter-spacing:-.01em;line-height:1.06}
+a{color:inherit}img{display:block;max-width:100%}
+::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.82rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--ink);padding-bottom:4px;border-bottom:1px solid var(--ink);transition:gap .3s var(--ease)}
+.elink .arw{transition:transform .35s var(--ease)}
+.elink:hover{gap:.9em}.elink:hover .arw{transform:translateX(4px)}
+.elink.gold{color:var(--gold);border-color:var(--gold)}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:24px;
+  padding:14px var(--gut);background:rgba(248,246,242,.9);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);color:var(--ink);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto}
+.brand .wm{font-family:var(--serif);font-size:1.25rem;letter-spacing:.04em}
+.brand .by{font-size:.62rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:30px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86;transition:opacity .3s var(--ease)}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer;line-height:1}
+@media(max-width:860px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:34px;background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .55s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;opacity:1}
+  .menu-toggle{display:block}
+}
+section,.masthead{padding-left:var(--gut);padding-right:var(--gut)}
+.wrap{max-width:1240px;margin:0 auto}
+
+/* MASTHEAD */
+.masthead{padding-top:clamp(120px,18vh,180px);padding-bottom:clamp(24px,4vh,44px)}
+.masthead .kicker{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.masthead h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:300;letter-spacing:-.02em;line-height:.94}
+.masthead h1 em{font-style:italic;font-weight:400}
+.masthead .lead{max-width:54ch;margin-top:28px;font-size:clamp(1.02rem,1.3vw,1.2rem);font-weight:300;line-height:1.7;color:#3a352f}
+
+/* START HERE callout */
+.starthere{margin-top:34px;display:flex;align-items:center;gap:26px 40px;flex-wrap:wrap;
+  padding:26px 30px;background:var(--forest);color:var(--ivory)}
+.starthere .st-t{font-family:var(--serif);font-size:clamp(1.3rem,2.4vw,1.9rem);font-weight:300;line-height:1.15;max-width:26ch}
+.starthere .elink{color:var(--ivory);border-color:rgba(248,246,242,.6);margin-left:auto}
+
+/* GOAL SECTIONS + INDEX ROWS */
+.paths{padding-top:clamp(40px,6vh,70px);padding-bottom:20px}
+.goal{padding-top:clamp(44px,6vh,78px)}
+.goal > h2{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;font-size:clamp(1.7rem,3.4vw,2.5rem);font-weight:300;
+  padding-bottom:16px;margin-bottom:8px;border-bottom:1px solid var(--line)}
+.goal > h2 .n{font-family:var(--sans);font-size:.7rem;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.idxgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:0 clamp(30px,5vw,80px)}
+@media(max-width:760px){.idxgrid{grid-template-columns:1fr}}
+.idx{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:10px 18px;
+  padding:22px 2px;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);transition:padding .3s var(--ease)}
+.idx:hover{padding-left:8px}
+.idx .it{font-family:var(--serif);font-size:1.3rem;font-weight:400;letter-spacing:-.01em;line-height:1.15}
+.idx .id{grid-column:1 / -1;color:var(--muted);font-size:.9rem;font-weight:300;margin-top:2px}
+.idx .go{color:var(--gold);font-size:1.1rem;transition:transform .3s var(--ease)}
+.idx:hover .go{transform:translateX(5px)}
+
+/* THEORY (details) */
+.more{margin-top:clamp(50px,8vh,90px);border-top:1px solid var(--line)}
+.more > summary{list-style:none;cursor:pointer;padding:26px 2px;display:flex;align-items:center;gap:14px;
+  font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.6rem);font-weight:300}
+.more > summary::-webkit-details-marker{display:none}
+.more > summary::after{content:"+";margin-left:auto;color:var(--gold);font-size:1.5rem;transition:transform .3s var(--ease)}
+.more[open] > summary::after{transform:rotate(45deg)}
+.more .theory{padding:6px 2px 30px;max-width:820px}
+.more .theory h3{font-size:1.5rem;font-weight:300;margin:34px 0 12px}
+.more .theory p{font-weight:300;line-height:1.75;color:#33302b;margin-bottom:14px}
+.more .theory .lenses{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:18px 0}
+@media(max-width:640px){.more .theory .lenses{grid-template-columns:repeat(2,1fr)}}
+.more .theory .lens{border:1px solid var(--line);padding:16px 14px}
+.more .theory .lens .k{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.more .theory .lens .v{font-family:var(--serif);font-size:1.05rem;margin-top:6px}
+.more .theory .layers2{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:1px;background:var(--line);border:1px solid var(--line);margin:16px 0}
+.more .theory .l2{background:var(--ivory);padding:18px 16px}
+.more .theory .l2 .num{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.more .theory .l2 h4{font-size:1.1rem;font-weight:400;margin:6px 0 6px}
+.more .theory .l2 p{font-size:.88rem;margin:0}
+.more .theory .formula{border-left:2px solid var(--gold);padding:14px 20px;margin:18px 0;background:#fff}
+.more .theory ol{margin:6px 0 0 20px;columns:2;font-weight:300;color:#33302b}
+@media(max-width:560px){.more .theory ol{columns:1}}
+
+/* FOOTER */
+.foot{background:var(--forest);color:var(--ivory);margin-top:clamp(60px,9vh,110px);padding:clamp(56px,8vh,90px) var(--gut) 44px}
+.foot .fwm{font-family:var(--serif);font-size:clamp(2.2rem,6vw,3.6rem);font-weight:300;line-height:.95}
+.foot .fby{font-size:.66rem;letter-spacing:.34em;text-transform:uppercase;opacity:.72;margin-top:12px}
+.foot .fdesc{font-size:.92rem;font-weight:300;line-height:1.7;color:rgba(248,246,242,.8);max-width:52ch;margin-top:22px}
+.foot-links{display:flex;flex-wrap:wrap;gap:8px 28px;margin-top:30px}
+.foot-links a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;opacity:.8}
+.foot-links a:hover{opacity:1}
+.foot-bottom{margin-top:34px;padding-top:20px;border-top:1px solid rgba(248,246,242,.16);font-size:.72rem;letter-spacing:.1em;opacity:.6}
+[data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none;transition:none}}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html">
-    <span class="wm">Zulu Tennis</span>
-    <span class="sep"></span>
-    <span class="by">by Veyane</span>
-  </a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html" aria-current="page">Library</a>
+  </div>
+  <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
+
+<header class="masthead">
+  <div class="wrap">
+    <p class="kicker">The complete operating system</p>
+    <h1>The full <em>playbook</em></h1>
+    <p class="lead">Everything is organised by what you're trying to do — not by theory. Thirty-plus studies covering the decision engine, tactics, opponents, the mind, the body, and how to measure and improve. Pick a goal.</p>
+    <div class="starthere" data-reveal>
+      <span class="st-t">New here? Start by learning your own game.</span>
+      <a class="elink" href="00-player-identity.html">Player Identity <span class="arw">→</span></a>
+    </div>
+  </div>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<main class="paths">
+<div class="wrap">
 
-  <main class="content">
+  <section class="goal" data-reveal>
+    <h2>🎯 Win the next match <span class="n">Tactics</span></h2>
+    <div class="idxgrid">
+      <a class="idx" href="01-decision-making.html"><span class="it">Decision Engine</span><span class="go">→</span><span class="id">What to do with every ball</span></a>
+      <a class="idx" href="25-pattern-library.html"><span class="it">Pattern Library</span><span class="go">→</span><span class="id">Plays that win points</span></a>
+      <a class="idx" href="10-score-based-strategy.html"><span class="it">Score Strategy</span><span class="go">→</span><span class="id">How to play each score</span></a>
+      <a class="idx" href="17-match-problem-solver.html"><span class="it">Problem Solver</span><span class="go">→</span><span class="id">“I keep losing to…”</span></a>
+      <a class="idx" href="16-complete-match-playbook.html"><span class="it">Match Playbook</span><span class="go">→</span><span class="id">Checklists for every phase</span></a>
+      <a class="idx" href="tactics.html"><span class="it">Tactical Systems</span><span class="go">→</span><span class="id">All nine, in one place</span></a>
+    </div>
+  </section>
 
-    <!-- HERO -->
-    <section class="hero reveal">
-      <img class="crest" src="assets/logo.svg" alt="Zulu Tennis crest — a Zulu shield with crossed rackets" width="200" height="276">
-      <div class="wordmark">
-        <h1 class="zt">Zulu Tennis</h1>
-        <div class="rule"></div>
-        <div class="by">by Veyane</div>
+  <section class="goal" data-reveal>
+    <h2>🧠 Beat this opponent <span class="n">Intelligence</span></h2>
+    <div class="idxgrid">
+      <a class="idx" href="09-player-type-strategies.html"><span class="it">Player-Type Plans</span><span class="go">→</span><span class="id">Pusher, lefty, big hitter…</span></a>
+      <a class="idx" href="20-match-intelligence-db.html"><span class="it">Scouting Sheets</span><span class="go">→</span><span class="id">Read &amp; track opponents</span></a>
+      <a class="idx" href="03-serve-strategy.html"><span class="it">Serve &amp; Return</span><span class="go">→</span><span class="id">Win your serve &amp; return games</span></a>
+      <a class="idx" href="06-attacking-system.html"><span class="it">Attack &amp; Defend</span><span class="go">→</span><span class="id">When to press, when to reset</span></a>
+    </div>
+  </section>
+
+  <section class="goal" data-reveal>
+    <h2>🏋️ Train &amp; improve <span class="n">Development</span></h2>
+    <div class="idxgrid">
+      <a class="idx" href="00-player-identity.html"><span class="it">Player Identity</span><span class="go">→</span><span class="id">Know your game — start here</span></a>
+      <a class="idx" href="14-practice-blueprint.html"><span class="it">Practice Plans</span><span class="go">→</span><span class="id">1hr · weekly · pre-tournament</span></a>
+      <a class="idx" href="30-drill-library.html"><span class="it">Drill Library</span><span class="go">→</span><span class="id">Stroke, pattern &amp; physical drills</span></a>
+      <a class="idx" href="11-mental-performance.html"><span class="it">Mental Game</span><span class="go">→</span><span class="id">Routines under pressure</span></a>
+      <a class="idx" href="18-athlete-development.html"><span class="it">Athlete Development</span><span class="go">→</span><span class="id">Gym, speed, recovery, food</span></a>
+      <a class="idx" href="23-development-roadmap.html"><span class="it">12-Month Roadmap</span><span class="go">→</span><span class="id">The long-term plan</span></a>
+    </div>
+  </section>
+
+  <section class="goal" data-reveal>
+    <h2>📊 Track &amp; review <span class="n">Measurement</span></h2>
+    <div class="idxgrid">
+      <a class="idx" href="21-analytics.html"><span class="it">Stats Dashboard</span><span class="go">→</span><span class="id">KPIs + benchmarks by level</span></a>
+      <a class="idx" href="12-match-analysis.html"><span class="it">Match Analysis</span><span class="go">→</span><span class="id">Review a match properly</span></a>
+      <a class="idx" href="13-video-analysis.html"><span class="it">Video Analysis</span><span class="go">→</span><span class="id">What to track + rubrics</span></a>
+      <a class="idx" href="26-improvement-engine.html"><span class="it">Improvement Engine</span><span class="go">→</span><span class="id">What to fix first</span></a>
+    </div>
+  </section>
+
+  <details class="more" data-reveal>
+    <summary>How the system works — the thinking behind it</summary>
+    <div class="theory">
+      <h3>Core philosophy</h3>
+      <p>The objective is <strong>not to hit better shots</strong> — it is to <strong>win more matches</strong> and become a better athlete on and off the court. Every recommendation is weighed through five lenses:</p>
+      <div class="lenses">
+        <div class="lens"><div class="k">Lens 1</div><div class="v">Match Win %</div></div>
+        <div class="lens"><div class="k">Lens 2</div><div class="v">Expected Value</div></div>
+        <div class="lens"><div class="k">Lens 3</div><div class="v">Risk vs Reward</div></div>
+        <div class="lens"><div class="k">Lens 4</div><div class="v">Repeatability</div></div>
+        <div class="lens"><div class="k">Lens 5</div><div class="v">Long-Term Gain</div></div>
       </div>
-      <p class="kicker">The full playbook</p>
-      <p style="margin-top:26px"><a class="cta" href="00-player-identity.html">New here? Start with Player Identity →</a></p>
-    </section>
+      <div class="formula">Expected Value &gt; highlight shots · Repeatability &gt; perfect execution · Pressure reliability &gt; practice level</div>
 
-    <!-- PATHS -->
-    <h2 id="start">Where do you want to go?</h2>
-    <p class="lead">Everything's grouped by what you're trying to do — not by theory. Pick a goal.</p>
-
-    <h3 style="margin-top:22px">🎯 Win the next match</h3>
-    <div class="modgrid">
-      <a href="01-decision-making.html"><span class="t">🃏 Decision Engine</span><span class="d">What to do with every ball</span></a>
-      <a href="25-pattern-library.html"><span class="t">♟️ Pattern Library</span><span class="d">Plays that win points</span></a>
-      <a href="10-score-based-strategy.html"><span class="t">📍 Score Strategy</span><span class="d">How to play each score</span></a>
-      <a href="17-match-problem-solver.html"><span class="t">🛠 Problem Solver</span><span class="d">"I keep losing to…"</span></a>
-      <a href="16-complete-match-playbook.html"><span class="t">📋 Match Playbook</span><span class="d">Checklists for every phase</span></a>
-    </div>
-
-    <h3 style="margin-top:22px">🧠 Beat this opponent</h3>
-    <div class="modgrid">
-      <a href="09-player-type-strategies.html"><span class="t">🎭 Player-Type Plans</span><span class="d">Pusher, lefty, big hitter…</span></a>
-      <a href="20-match-intelligence-db.html"><span class="t">🗂️ Scouting Sheets</span><span class="d">Read &amp; track opponents</span></a>
-      <a href="03-serve-strategy.html"><span class="t">🎾 Serve &amp; Return</span><span class="d">Win your serve &amp; return games</span></a>
-      <a href="06-attacking-system.html"><span class="t">⚔️ Attack &amp; Defend</span><span class="d">When to press, when to reset</span></a>
-    </div>
-
-    <h3 style="margin-top:22px">🏋️ Train &amp; improve</h3>
-    <div class="modgrid">
-      <a href="00-player-identity.html"><span class="t">🪪 Player Identity</span><span class="d">Know your game — start here</span></a>
-      <a href="14-practice-blueprint.html"><span class="t">🎯 Practice Plans</span><span class="d">1hr · weekly · pre-tournament</span></a>
-      <a href="30-drill-library.html"><span class="t">🎾 Drill Library</span><span class="d">Stroke, pattern &amp; physical drills</span></a>
-      <a href="11-mental-performance.html"><span class="t">🧠 Mental Game</span><span class="d">Routines under pressure</span></a>
-      <a href="18-athlete-development.html"><span class="t">🏋️ Athlete Development</span><span class="d">Gym, speed, recovery, food</span></a>
-      <a href="23-development-roadmap.html"><span class="t">🗺️ 12-Month Roadmap</span><span class="d">The long-term plan</span></a>
-    </div>
-
-    <h3 style="margin-top:22px">📊 Track &amp; review</h3>
-    <div class="modgrid">
-      <a href="21-analytics.html"><span class="t">📊 Stats Dashboard</span><span class="d">KPIs + benchmarks by level</span></a>
-      <a href="12-match-analysis.html"><span class="t">🔍 Match Analysis</span><span class="d">Review a match properly</span></a>
-      <a href="13-video-analysis.html"><span class="t">🎬 Video Analysis</span><span class="d">What to track + rubrics</span></a>
-      <a href="26-improvement-engine.html"><span class="t">📈 Improvement Engine</span><span class="d">What to fix first</span></a>
-    </div>
-
-    <details class="more" style="margin-top:26px">
-      <summary>ℹ️ How the system works — the thinking behind it (optional)</summary>
-
-    <!-- PHILOSOPHY -->
-    <h2 id="philosophy">Core philosophy</h2>
-    <p>The objective is <strong>not to hit better shots</strong> — it is to <strong>win more matches</strong>
-    and become a better athlete on and off the court. Every recommendation in Zulu Tennis is evaluated
-    through five lenses:</p>
-    <div class="kpi-grid">
-      <div class="kpi"><div class="k">Lens 1</div><div class="v" style="font-size:1.1rem">Match Win %</div></div>
-      <div class="kpi"><div class="k">Lens 2</div><div class="v" style="font-size:1.1rem">Expected Value</div></div>
-      <div class="kpi"><div class="k">Lens 3</div><div class="v" style="font-size:1.1rem">Risk vs Reward</div></div>
-      <div class="kpi"><div class="k">Lens 4</div><div class="v" style="font-size:1.1rem">Repeatability</div></div>
-      <div class="kpi"><div class="k">Lens 5</div><div class="v" style="font-size:1.1rem">Long-Term Gain</div></div>
-    </div>
-    <div class="formula">
-      <div class="principles">
-        <span class="p">Expected Value &gt; highlight shots</span>
-        <span class="p">Repeatability &gt; perfect execution</span>
-        <span class="p">Pressure reliability &gt; practice level</span>
+      <h3>The five-layer architecture</h3>
+      <p>Every study is tagged to the layer(s) it serves, so the whole thing reads as one operating system.</p>
+      <div class="layers2">
+        <div class="l2"><div class="num">Layer 1</div><h4>Technical Execution</h4><p>Serve, return, groundstrokes, slice, volley, overhead, approach.</p></div>
+        <div class="l2"><div class="num">Layer 2</div><h4>Tactical Systems</h4><p>Serve, return, baseline, attack, defence &amp; net patterns.</p></div>
+        <div class="l2"><div class="num">Layer 3</div><h4>Match Intelligence</h4><p>Opponent profiling, pattern recognition, score &amp; momentum.</p></div>
+        <div class="l2"><div class="num">Layer 4</div><h4>Performance Mgmt</h4><p>Mind, body, recovery, nutrition, tournaments.</p></div>
+        <div class="l2"><div class="num">Layer 5</div><h4>Continuous Improvement</h4><p>Match &amp; video review, data, prioritisation, planning.</p></div>
       </div>
-    </div>
 
-    <!-- 5-LAYER ARCHITECTURE -->
-    <h2 id="architecture">The 5-layer architecture</h2>
-    <p>Every page in the system is tagged to the layer(s) it serves, so the whole thing reads as one OS.</p>
-    <div class="layers">
-      <div class="layer"><div class="num">LAYER 1</div><h3>Technical Execution</h3><p>Serve, return, groundstrokes, slice, volley, overhead, approach, passing, lob.</p></div>
-      <div class="layer"><div class="num">LAYER 2</div><h3>Tactical Systems</h3><p>Serve, return, baseline, attack, defensive & net patterns.</p></div>
-      <div class="layer"><div class="num">LAYER 3</div><h3>Match Intelligence</h3><p>Opponent profiling, pattern recognition, score & momentum awareness.</p></div>
-      <div class="layer"><div class="num">LAYER 4</div><h3>Performance Mgmt</h3><p>Mental game, physical development, recovery, nutrition, tournaments.</p></div>
-      <div class="layer"><div class="num">LAYER 5</div><h3>Continuous Improvement</h3><p>Match & video review, data, prioritization, development planning.</p></div>
-    </div>
-
-    <!-- DECISION ENGINE OVERVIEW -->
-    <h2 id="engine">The Decision Engine (core logic layer)</h2>
-    <p>Zulu Tennis runs like an in-match decision engine. The question is never "what's a nice shot?"
-    but: <em>given the score, situation, opponent, ball quality and my balance — what is the highest-value
-    decision that increases my probability of winning the point?</em> Every decision weighs 10 inputs:</p>
-    <div class="formula">
-      <div class="lbl" style="font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)">⚖️ Tactical Decision Formula</div>
-      <ol>
-        <li>Score Situation</li><li>Point Importance</li><li>Court Position</li><li>Incoming Ball Quality</li>
-        <li>Player Balance</li><li>Opponent Position</li><li>Opponent Weaknesses</li><li>Risk Level</li>
-        <li>Expected Reward</li><li>Recovery Position</li>
-      </ol>
-    </div>
-
-    <figure class="diagram reveal">
-      <div data-court='{"w":340,"players":[{"x":50,"y":12,"label":"O","side":"opp"},{"x":50,"y":90,"label":"You","side":"you"}],"zones":[{"x":8,"y":4,"w":40,"h":22,"kind":"target","label":"high-% target"}],"paths":[{"from":[50,90],"to":[20,8],"kind":"shot","label":"CC"},{"from":[50,90],"to":[50,99],"kind":"move"}],"dots":[{"x":50,"y":95,"kind":"recovery","label":"recover"}]}'></div>
-      <figcaption>Sample court diagram (powered by <code>courts.js</code>): crosscourt with margin into the high-percentage target, then recover to home base. Yellow = shot, blue dashed = movement.</figcaption>
-    </figure>
-
-    <!-- COMPONENT / CALLOUT LEGEND -->
-    <h2 id="legend">How to read this system (legend)</h2>
-    <p>Recurring components you'll see on every page:</p>
-
-    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> Tactical Purpose</div><p>Why a decision or shot exists — what it's trying to achieve.</p></div>
-    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common Mistakes</div><p>The errors most players make here, and why they cost matches.</p></div>
-    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice Drill</div><p>Setup · reps · constraints · coaching cue · success metric.</p></div>
-    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success Metrics</div><p>How you measure whether it's working — numbers, not feelings.</p></div>
-    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div><p>Hand-picked, verified YouTube references (title · channel · link).</p></div>
-
-    <h3>Evidence levels</h3>
-    <p>Every recommendation is tagged so you know how strongly it's backed:</p>
-    <p style="display:flex;gap:8px;flex-wrap:wrap">
-      <span class="ev ev-a">Level A — strong pro + sports-science support</span>
-      <span class="ev ev-b">Level B — widely accepted coaching principle</span>
-      <span class="ev ev-c">Level C — useful heuristic</span>
-      <span class="ev ev-d">Level D — personal preference</span>
-    </p>
-
-    <h3>The Decision Card</h3>
-    <p>Every tactical <em>pattern</em> is written as a Decision Card so it can be trained and recalled under pressure:</p>
-    <div class="decision-card reveal">
-      <header><span class="badge">Decision Card · sample</span><h3>Home Base Pattern</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
-      <div class="dc-body">
-        <div class="field"><div class="lbl">Decision Rule</div><div class="rule">If the ball crosses the imaginary center line (outside ball) → return crosscourt with height &amp; margin. If it doesn't (inside ball) and you're balanced → direction change is unlocked.</div></div>
-        <div class="field">
-          <div class="lbl">Wrong vs Correct</div>
-          <div class="dc-examples">
-            <div class="ex wrong"><span class="lbl">✗ Wrong</span><br>Change direction down-the-line off an outside, stretched ball "to take control."</div>
-            <div class="ex right"><span class="lbl">✓ Correct</span><br>Reset crosscourt, recover, and wait for the inside ball before attacking.</div>
-          </div>
-        </div>
-        <div class="field"><div class="lbl">Full card</div><div>See the complete card — situation, why it works, decision tree, drill, metrics, opponent &amp; skill-level adaptations — in <a href="01-decision-making.html">the Decision Engine</a>.</div></div>
+      <h3>The Decision Engine</h3>
+      <p>Zulu Tennis runs like an in-match decision engine. The question is never “what's a nice shot?” but: <em>given the score, situation, opponent, ball quality and my balance — what is the highest-value decision that increases my probability of winning the point?</em> Every decision weighs ten inputs:</p>
+      <div class="formula">
+        <ol>
+          <li>Score Situation</li><li>Point Importance</li><li>Court Position</li><li>Incoming Ball Quality</li>
+          <li>Player Balance</li><li>Opponent Position</li><li>Opponent Weaknesses</li><li>Risk Level</li>
+          <li>Expected Reward</li><li>Recovery Position</li>
+        </ol>
       </div>
+      <p>See the full worked treatment — the Home Base pattern, decision trees, drills and metrics — in <a href="01-decision-making.html">the Decision Engine</a>.</p>
     </div>
+  </details>
 
-    </details>
-
-    <!-- NEXT ACTION -->
-    <div class="next-action reveal">
-      <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">New here? Start with <a href="00-player-identity.html">Player Identity</a> to find your archetype,
-      then learn <a href="01-decision-making.html">the Decision Engine</a>. Between sets, jump to the
-      <a href="set-break.html">Set-Break Quick-Planner</a>.</p>
-    </div>
-
-    <div class="pager">
-      <span></span>
-      <a class="next" href="00-player-identity.html"><small>Next</small>00 · Player Identity →</a>
-    </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem">
-      <hr><p><strong>Zulu Tennis</strong> · by Veyane — the full playbook. All content original.</p>
-    </footer>
-
-  </main>
 </div>
+</main>
 
-<script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
+<footer class="foot">
+  <div class="wrap">
+    <div class="fwm">The full system</div>
+    <div class="fby">Zulu Tennis — by Veyane</div>
+    <p class="fdesc">A complete singles performance operating system — decision engine, tactics, intelligence, athlete development and continuous improvement. All content original; nothing tracked.</p>
+    <div class="foot-links">
+      <a href="index.html">Home</a><a href="videos.html">Watch</a><a href="learning.html">Learn</a>
+      <a href="drills.html">Drills</a><a href="tactics.html">Tactics</a><a href="set-break.html">Set-Break</a>
+      <a href="00-player-identity.html">Player Identity</a>
+    </div>
+    <div class="foot-bottom">© Zulu Tennis — by Veyane · No sign-up · nothing tracked</div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var mt=document.getElementById('menuToggle'),nl=document.getElementById('navlinks');
+  mt.addEventListener('click',function(){var o=nl.classList.toggle('open');mt.setAttribute('aria-expanded',o);mt.textContent=o?'✕':'☰';});
+  nl.addEventListener('click',function(e){if(e.target.tagName==='A'){nl.classList.remove('open');mt.textContent='☰';}});
+  var rev=document.querySelectorAll('[data-reveal]');
+  if(rm||!('IntersectionObserver'in window)){[].forEach.call(rev,function(i){i.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{rootMargin:'0px 0px -8% 0px'});[].forEach.call(rev,function(i){io.observe(i);});}
+})();
+</script>
 </body>
 </html>
