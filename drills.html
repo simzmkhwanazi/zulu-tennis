@@ -41,15 +41,18 @@ a{color:inherit}img{display:block;max-width:100%}::selection{background:var(--go
 .masthead .lead{max-width:60ch;margin-top:28px;font-size:clamp(1.02rem,1.3vw,1.18rem);font-weight:300;line-height:1.7;color:#3a352f}
 main{padding:0 var(--gut) 20px}
 /* intro callout */
-.callout{max-width:1180px;margin:20px auto 0;border:1px solid var(--line);background:#fff;padding:24px 28px}
+.callout{max-width:1180px;margin:24px auto 0;border:none;background:none;border-left:2px solid var(--gold);padding:2px 0 2px 24px}
 .callout strong{font-family:var(--serif);font-weight:500;font-size:1.15rem}
 .callout .video-list{display:flex;flex-wrap:wrap;gap:10px 26px;margin-top:14px}
 /* filter chips */
 .drillfilter{position:sticky;top:53px;z-index:40;max-width:1180px;margin:24px auto 0;display:flex;gap:8px;flex-wrap:wrap;
   background:rgba(248,246,242,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:14px 0;border-bottom:1px solid var(--line)}
-.drillfilter button{appearance:none;border:1px solid var(--line);background:none;color:var(--ink);border-radius:999px;padding:8px 16px;font-weight:600;font-size:.74rem;letter-spacing:.06em;cursor:pointer;transition:all .25s var(--ease)}
-.drillfilter button:hover{border-color:var(--ink)}
-.drillfilter button[aria-selected="true"]{background:var(--ink);color:var(--ivory);border-color:var(--ink)}
+.drillfilter{gap:30px!important}
+.drillfilter button{appearance:none;border:none;background:none;color:var(--muted);border-radius:0;padding:2px 0 6px;
+  font-weight:600;font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;cursor:pointer;
+  border-bottom:1px solid transparent;transition:color .25s var(--ease),border-color .25s var(--ease)}
+.drillfilter button:hover{color:var(--ink)}
+.drillfilter button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
 /* groups + subheads */
 .drillgroup{max-width:1180px;margin:0 auto}
 .drillgroup[hidden]{display:none}
@@ -58,9 +61,13 @@ main{padding:0 var(--gut) 20px}
 .drillgroup h3[id]{font-family:var(--serif);font-weight:400;font-size:1.2rem;color:var(--forest);margin:34px 0 6px;
   letter-spacing:.02em}
 /* drill cards */
-.drillcard{background:#fff;border:1px solid var(--line);padding:24px 26px;margin:14px 0}
+.drillcard{background:none;border:none;border-top:1px solid var(--line);padding:30px 0;margin:0;
+  display:grid;grid-template-columns:1fr;gap:2px;justify-items:start}
+.drillgroup h3[id]+.drillcard{border-top:none}
 .drillcard > h3{font-family:var(--serif);font-weight:400;font-size:1.4rem;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap;margin-bottom:8px}
-.dtag{font-family:var(--sans);font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;padding:4px 10px;border-radius:999px;font-weight:700}
+.dtag{font-family:var(--sans);font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;padding:0;font-weight:700;background:none!important}
+.dtag::before{content:"— "}
+.dtag.open{color:var(--forest)}.dtag.pattern{color:#7a6231}.dtag.net{color:var(--clay)}.dtag.solo{color:var(--muted)}
 .dtag.open{background:rgba(38,71,52,.12);color:var(--forest)}
 .dtag.pattern{background:rgba(169,139,82,.18);color:#7a6231}
 .dtag.net{background:rgba(179,90,43,.14);color:var(--clay)}
@@ -74,10 +81,10 @@ main{padding:0 var(--gut) 20px}
 .drillcard .video-item .t::before,.callout .video-item .t::before{content:"\25B6";color:var(--gold);margin-right:6px;font-size:.7em}
 .drillcard .video-item .ch,.callout .video-item .ch{color:var(--muted);font-size:.76rem}
 .drillcard .video-item .ch::before,.callout .video-item .ch::before{content:"\00B7";margin-right:6px}
-.drill-plan{display:inline-block;margin-top:16px;appearance:none;cursor:pointer;border:1px solid var(--gold);background:none;color:#7a6231;
-  border-radius:999px;font-family:var(--sans);font-weight:600;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;padding:8px 16px;transition:all .25s var(--ease)}
-.drill-plan:hover{background:rgba(169,139,82,.12)}
-.drill-plan.on{background:var(--gold);border-color:var(--gold);color:#fff}
+.drill-plan{display:inline-block;margin-top:16px;appearance:none;cursor:pointer;border:none;background:none;color:#7a6231;
+  border-bottom:1px solid transparent;font-family:var(--sans);font-weight:600;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;padding:0 0 3px;transition:color .25s var(--ease),border-color .25s var(--ease)}
+.drill-plan:hover{border-bottom-color:var(--gold)}
+.drill-plan.on{color:var(--gold);border-bottom-color:var(--gold)}
 /* plan badge + next-action + footer */
 .plan-badge{position:fixed;right:20px;bottom:20px;z-index:70;display:none;align-items:center;gap:9px;text-decoration:none;background:var(--ink);color:var(--ivory);border-radius:999px;padding:12px 18px;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;font-weight:600;box-shadow:0 10px 30px rgba(10,10,10,.24)}
 .plan-badge.show{display:inline-flex}.plan-badge b{background:var(--gold);color:#fff;border-radius:999px;padding:1px 8px}
