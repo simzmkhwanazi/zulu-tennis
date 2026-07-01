@@ -1,270 +1,201 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b0b">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F8F6F2">
 <title>Zulu Tennis — The Decision Engine</title>
-<meta name="description" content="The Decision Engine — the core logic layer of Zulu Tennis. Tactical Decision Formula, ball-quality tree, Decision Cards, and the Home Base Pattern.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="description" content="The one habit that wins more points: reset the outside ball, attack the inside ball. A calm, one-idea-at-a-time lesson.">
 <link rel="icon" href="assets/favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — The Decision Engine">
-<meta property="og:description" content="The Decision Engine — the core logic layer of Zulu Tennis. Tactical Decision Formula, ball-quality tree, Decision Cards, and the Home Base Pattern.">
-<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/01-decision-making.html">
-<meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — The Decision Engine">
-<meta name="twitter:description" content="The Decision Engine — the core logic layer of Zulu Tennis. Tactical Decision Formula, ball-quality tree, Decision Cards, and the Home Base Pattern.">
-<meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
 <link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   LESSON — one idea per screen. Calm, breathing, editorial.
+   ============================================================ */
+*{box-sizing:border-box}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.14);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(22px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--ivory);color:var(--ink);font-family:var(--sans);
+  line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.05;margin:0}
+a{color:inherit}
+::selection{background:var(--gold);color:#fff}
+
+/* LOCKED nav — always visible, never hides */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:24px;
+  padding:14px var(--gut);background:rgba(248,246,242,.92);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto;color:var(--ink)}
+.brand .wm{font-family:var(--serif);font-size:1.2rem;letter-spacing:.04em}
+.brand .by{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer}
+@media(max-width:820px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:32px;
+    background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .5s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;color:var(--ivory);opacity:1}
+  .menu-toggle{display:block}
+}
+/* thin reading-progress bar on top of the locked nav */
+.readbar{position:fixed;top:0;left:0;height:2px;width:0;z-index:61;background:linear-gradient(90deg,var(--gold),var(--clay))}
+
+/* one idea per screen */
+.chunk{min-height:100svh;display:flex;flex-direction:column;justify-content:center;
+  padding:118px var(--gut) 90px;position:relative}
+.chunk .inner{max-width:760px;margin:0 auto;width:100%}
+.step{font-size:.68rem;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:26px}
+.idea{font-size:clamp(2.4rem,7vw,4.6rem);font-weight:300;line-height:1.02;letter-spacing:-.02em;text-wrap:balance}
+.idea em{font-style:italic}
+.say{font-size:clamp(1.1rem,1.7vw,1.4rem);font-weight:300;line-height:1.6;color:#3a352f;margin-top:26px;max-width:40ch}
+.chunk .diagram{margin:38px 0 0;max-width:330px}
+.chunk.center{text-align:center}
+.chunk.center .say{margin-left:auto;margin-right:auto}
+.chunk.center .diagram{margin-left:auto;margin-right:auto}
+.cue{position:absolute;left:50%;bottom:30px;transform:translateX(-50%);color:var(--muted);
+  font-size:1.4rem;animation:bob 2.4s var(--ease) infinite}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
+.tint{background:var(--forest);color:var(--ivory)}
+.tint .say{color:rgba(248,246,242,.85)}
+.tint .step{color:var(--gold)}
+.tint-ink{background:var(--ink);color:var(--ivory)}
+.tint-ink .say{color:rgba(248,246,242,.85)}
+
+.drill .idea{font-size:clamp(2rem,5.5vw,3.4rem)}
+.close .idea{font-size:clamp(2.2rem,6vw,4rem)}
+.pager{display:flex;justify-content:space-between;gap:18px;margin-top:44px;flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;
+  border-bottom:1px solid var(--gold);padding-bottom:4px}
+.pager a.back{opacity:.7;border-color:var(--line)}
+
+[data-reveal]{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
+[data-reveal].in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;scroll-behavior:auto!important}
+  [data-reveal]{opacity:1;transform:none;transition:none}
+  .chunk{min-height:auto;padding-top:96px;padding-bottom:60px}
+}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
-</header>
+<span class="readbar" id="readbar" aria-hidden="true"></span>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html" aria-current="page">Library</a>
+  </div>
+  <button class="menu-toggle" id="navBtn" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<!-- 1 · premise -->
+<section class="chunk center">
+  <div class="inner" data-reveal>
+    <div class="step">The Decision Engine · 01 / 07</div>
+    <h1 class="idea">Win the point <em>before</em> you hit it.</h1>
+    <p class="say">Most points aren’t lost on technique. They’re lost by attacking the wrong ball. One habit fixes that.</p>
+  </div>
+  <span class="cue" aria-hidden="true">↓</span>
+</section>
 
-  <main class="content">
+<!-- 2 · the line -->
+<section class="chunk">
+  <div class="inner" data-reveal>
+    <div class="step">02 / 07 · The idea</div>
+    <h2 class="idea">Picture a line down the middle.</h2>
+    <p class="say">A line between you and your opponent. Every ball is either <b>outside</b> that line, or <b>inside</b> it. That is the whole decision.</p>
+  </div>
+  <span class="cue" aria-hidden="true">↓</span>
+</section>
 
-    <div class="pagehead reveal">
-      <h1>The Decision Engine</h1>
-      <p class="lead">The spine of the whole system. Tennis isn't won by nicer shots — it's won by better
-      <em>decisions</em>, made automatically under pressure. This page turns "what should I hit?" into a
-      repeatable, high-percentage process.</p>
-    </div>
-
-    <section class="courtside reveal">
-      <div class="cs-eyebrow">🎾 Courtside · Decision Engine <span class="ev ev-a">A</span></div>
-      <div class="cs-rule">Reset the outside ball. Attack only the inside ball.</div>
-      <div class="cs-grid">
-        <figure class="diagram"><div data-court='{"w":250,"players":[{"x":18,"y":90,"label":"You","side":"you"},{"x":78,"y":14,"label":"O","side":"opp"}],"paths":[{"from":[78,16],"to":[20,86],"kind":"serve","label":"outside ball"},{"from":[20,86],"to":[80,16],"kind":"shot"}],"dots":[{"x":46,"y":97,"kind":"recovery","label":"recover"}]}'></div></figure>
-        <div class="cs-dd">
-          <div class="dd dd-do"><b>✓ Do</b> — cross-court with margin until you get a short / inside ball, then attack.</div>
-          <div class="dd dd-no"><b>✗ Don't</b> — change direction off a wide / outside ball.</div>
-          <div class="cs-cues"><span>"Cross… cross… now"</span><span>Inside = green light</span><span>Behind? play % only</span></div>
-        </div>
-      </div>
-      <div class="cs-drill">🎾 <b>Drill:</b> "Cross-until-inside" — rally crosscourt; you may only change direction off an inside ball.</div>
-    </section>
-
-    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
-
-    <h2 id="question">The only question that matters</h2>
-    <p>Every shot decision answers one question:</p>
-    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> The core question</div>
-      <p style="font-size:1.1rem;margin:0"><em>Given the score, the situation, the opponent, the incoming
-      ball and my balance — what is the <strong>highest-value</strong> decision that increases my probability
-      of winning <strong>this point</strong>?</em></p></div>
-    <p>Not "what's the best shot in the world here," but "what's the best shot <strong>for me, right now,
-    that I can repeat.</strong>" Three priorities settle every close call:</p>
-    <div class="formula">
-      <div class="principles">
-        <span class="p">Expected Value &gt; highlight shots</span>
-        <span class="p">Repeatability &gt; perfect execution</span>
-        <span class="p">Pressure reliability &gt; practice level</span>
-      </div>
-    </div>
-
-    <h2 id="formula">The Tactical Decision Formula</h2>
-    <p>Elite decisions feel instinctive because the inputs have been internalised. These are the ten the
-    engine weighs — train them until the read is automatic:</p>
-    <div class="formula">
-      <div class="lbl" style="font-size:.7rem;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--muted)">⚖️ Inputs</div>
-      <ol>
-        <li>Score situation</li><li>Point importance</li><li>Court position</li><li>Incoming ball quality</li>
-        <li>Player balance</li><li>Opponent position</li><li>Opponent weaknesses</li><li>Risk level</li>
-        <li>Expected reward</li><li>Recovery position after the shot</li>
-      </ol>
-    </div>
-    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistake</div>
-      <p>Most players weigh only inputs 4 and 9 (the ball and the reward) and ignore 1, 5 and 10 — score,
-      balance and recovery. That's how you hit a "great" shot at 0–30 and still lose the game.</p></div>
-
-    <h2 id="ballquality">The Ball-Quality Decision Engine</h2>
-    <p>The universal entry point. Before patterns, before targets — classify the ball, then respond. Where
-    the ball lands in <em>your</em> half sets the default:</p>
-
-    <figure class="diagram reveal">
-      <div data-court='{"w":340,"zones":[{"x":0,"y":50,"w":100,"h":17,"kind":"target","label":"ATTACK ZONE"},{"x":0,"y":67,"w":100,"h":17,"kind":"neutral","label":"RALLY / NEUTRAL"},{"x":0,"y":84,"w":100,"h":16,"kind":"danger","label":"DEFEND ZONE"}],"players":[{"x":50,"y":94,"label":"You","side":"you"}]}'></div>
-      <figcaption>Default by zone: a short ball that sits up (attack zone) → take time away; a rally-depth ball → construct; a deep, heavy or wide ball (defend zone) → reset with margin. The zone sets the <em>default</em>; the formula adjusts it.</figcaption>
+<!-- 3 · outside ball -->
+<section class="chunk">
+  <div class="inner" data-reveal>
+    <div class="step">03 / 07 · Outside the line</div>
+    <h2 class="idea">Outside? <em>Reset.</em></h2>
+    <p class="say">If the ball pulls you wide, don’t try to change direction. Send it back crosscourt — high, with margin — and live to fight the next ball.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":74,"y":13,"label":"O","side":"opp"},{"x":14,"y":88,"label":"You","side":"you"}],"paths":[{"from":[14,88],"to":[80,12],"kind":"shot","label":"reset crosscourt, high"}],"dots":[{"x":48,"y":95,"kind":"recovery","label":"recover"}]}'></div>
     </figure>
+  </div>
+  <span class="cue" aria-hidden="true">↓</span>
+</section>
 
-    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Universal decision tree</div></div>
-    <pre class="tree">INCOMING BALL
-   │
-   ▼
-Is the ball ATTACKABLE?   (short · sitting up · inside the court)
-   │
-   ├─ NO  ─▶  Neutralise  ·  recover to home base  ·  extend the rally
-   │
-   └─ YES ─▶  Can I attack IN BALANCE?
-                 │
-                 ├─ NO  ─▶  Keep constructing — don't force it
-                 │
-                 └─ YES ─▶  Attack  ▸  finish  ▸  recover</pre>
-    <p>That's the whole game in four lines. Everything else — serve+1, baseline patterns, approaches —
-    is a specialised branch of this tree. <span class="ev ev-a">Level A</span></p>
+<!-- 4 · inside ball -->
+<section class="chunk tint">
+  <div class="inner" data-reveal>
+    <div class="step">04 / 07 · Inside the line</div>
+    <h2 class="idea">Inside, and balanced? <em>Attack.</em></h2>
+    <p class="say">Now you have the green light. Change direction, take the open court, and finish the point on your terms.</p>
+    <figure class="diagram">
+      <div data-court='{"w":320,"players":[{"x":70,"y":14,"label":"O","side":"opp"},{"x":48,"y":90,"label":"You","side":"you"}],"zones":[{"x":6,"y":4,"w":30,"h":18,"kind":"target","label":"open court"}],"paths":[{"from":[48,90],"to":[16,12],"kind":"shot","label":"attack"}]}'></div>
+    </figure>
+  </div>
+  <span class="cue" aria-hidden="true">↓</span>
+</section>
 
-    <h2 id="card">How patterns are written: the Decision Card</h2>
-    <p>A read you can't recall under pressure is useless. So every <em>pattern</em> in Zulu Tennis is written
-    as a <strong>Decision Card</strong> — same fields every time, so it's trainable and instantly retrievable.
-    The flagship card follows.</p>
+<!-- 5 · recover -->
+<section class="chunk center">
+  <div class="inner" data-reveal>
+    <div class="step">05 / 07 · In between</div>
+    <h2 class="idea">Then get back to the middle.</h2>
+    <p class="say">After every ball, recover to centre and wait. Stay patient. The inside ball will come.</p>
+  </div>
+  <span class="cue" aria-hidden="true">↓</span>
+</section>
 
-    <h2 id="homebase">Flagship pattern: Home Base</h2>
-    <div class="decision-card reveal">
-      <header><span class="badge">Decision Card</span><h3>Home Base Pattern</h3><span class="spacer"></span><span class="ev ev-a">Level A</span></header>
-      <div class="dc-body">
+<!-- 6 · the drill -->
+<section class="chunk drill tint-ink">
+  <div class="inner" data-reveal>
+    <div class="step">06 / 07 · Groove it</div>
+    <h2 class="idea">“Cross until inside.”</h2>
+    <p class="say">Rally only crosscourt. You may change direction just once — the moment you get a genuine inside ball. Count your unforced errors before and after; watch them fall.</p>
+  </div>
+  <span class="cue" aria-hidden="true">↓</span>
+</section>
 
-        <div class="field"><div class="lbl">Match situation</div>
-          <div>Any neutral baseline rally — most often a crosscourt exchange — where you feel the urge to
-          "do something" but don't yet have a ball worth attacking. Especially valuable on serve at 0–30 / 15–30.</div></div>
-
-        <div class="field"><div class="lbl">Problem it solves</div>
-          <div>Stops the single most common unforced error in club tennis: changing direction off the wrong
-          ball. It converts a vague "stay patient" into a concrete, automatic rule.</div></div>
-
-        <div class="field"><div class="lbl">Decision rule</div>
-          <div class="rule">Picture an imaginary line running from you to your opponent.
-          <strong>If the ball crosses that line (an "outside" ball)</strong> → do <u>not</u> change direction;
-          return it back where it came from (crosscourt), with height and margin.
-          <strong>If the ball does <u>not</u> cross the line (an "inside" ball)</strong> and you're balanced →
-          direction change is unlocked: open court, inside-in, or inside-out.</div></div>
-
-        <div class="field"><div class="lbl">Why it works</div>
-          <ul style="margin:.3rem 0">
-            <li><strong>Geometry:</strong> redirecting an outside ball means hitting over the higher part of the net into less court — the lowest-percentage shot in tennis.</li>
-            <li><strong>Probability:</strong> resetting crosscourt keeps the ball over the lowest net and into the longest diagonal — maximum margin.</li>
-            <li><strong>Recovery:</strong> crosscourt-to-crosscourt keeps your recovery distance short; redirecting leaves the open court exposed.</li>
-            <li><strong>Pressure on them:</strong> each crosscourt to a stretched opponent makes <em>their</em> next ball more likely to float back as an inside ball — which you then attack.</li>
-          </ul></div>
-
-        <div class="field"><div class="lbl">Wrong vs correct</div>
-          <div class="dc-examples">
-            <div class="ex wrong"><span class="lbl">✗ Wrong</span><br>0–30, stuck in a backhand crosscourt rally, you feel pressure and rip it down-the-line off a wide, outside ball. Low percentage → 0–40, likely the game.</div>
-            <div class="ex right"><span class="lbl">✓ Correct</span><br>0–30, you reset the backhand crosscourt with margin, stretch them again, and attack the floaty inside ball that comes back. → 15–30, momentum shifts.</div>
-          </div>
-        </div>
-
-        <div class="field"><div class="lbl">Decision tree</div>
-          <pre class="tree">OPPONENT'S BALL
-   │
-   ▼
-Did it cross your imaginary centre line?
-   │
-   ├─ YES (outside ball) ─▶ DON'T change direction
-   │                        reset crosscourt — height + margin
-   │                        recover ▸ wait for the inside ball
-   │
-   └─ NO  (inside ball) ──▶ Direction change UNLOCKED (if balanced)
-                            ▸ open court  ▸ inside-in  ▸ inside-out
-                            ▸ recover & keep the pressure on</pre>
-        <div class="field"><div class="lbl">See it — if the ball goes this way</div>
-          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px">
-            <figure class="diagram"><div data-court='{"w": 250, "players": [{"x": 18, "y": 90, "label": "You", "side": "you"}, {"x": 78, "y": 14, "label": "O", "side": "opp"}], "paths": [{"from": [78, 16], "to": [20, 86], "kind": "serve", "label": "outside ball"}, {"from": [20, 86], "to": [80, 16], "kind": "shot"}], "dots": [{"x": 46, "y": 97, "kind": "recovery", "label": "recover"}]}'></div><figcaption><strong>Crosses your line (outside)</strong> → don’t change direction; reset crosscourt &amp; recover.</figcaption></figure>
-            <figure class="diagram"><div data-court='{"w": 250, "players": [{"x": 42, "y": 90, "label": "You", "side": "you"}, {"x": 62, "y": 14, "label": "O", "side": "opp"}], "paths": [{"from": [60, 16], "to": [46, 78], "kind": "serve", "label": "inside ball"}, {"from": [46, 78], "to": [82, 14], "kind": "shot"}]}'></div><figcaption><strong>Stays inside the line (inside)</strong> → direction change unlocked; attack.</figcaption></figure>
-          </div>
-        </div>
-        </div>
-
-        <div class="field"><div class="lbl">Practice drill — "Cross until inside"</div>
-          <ul style="margin:.3rem 0">
-            <li><strong>Setup:</strong> both players rally crosscourt only; either may change direction <em>only</em> when they receive an inside ball.</li>
-            <li><strong>Reps:</strong> 6 × 4-minute games to 7; loser of each point feeds next.</li>
-            <li><strong>Constraint:</strong> changing direction off an outside ball = lose the point automatically.</li>
-            <li><strong>Coaching cue:</strong> "Cross, cross, cross… <em>now</em>." Say it out loud as you recognise the inside ball.</li>
-            <li><strong>Success metric:</strong> &lt; 2 illegal (outside-ball) direction changes per game.</li>
-          </ul></div>
-
-        <div class="field"><div class="lbl">Match application</div>
-          <div>Make this your <strong>default in every neutral rally</strong> and especially when behind on serve
-          (0–30, 15–30, break point). When ahead (30–0, 40–0) you can widen the trigger and attack slightly
-          earlier — see the <a href="10-score-based-strategy.html">Match State Engine</a>.</div></div>
-
-        <div class="field"><div class="lbl">Success metrics</div>
-          <ul style="margin:.3rem 0">
-            <li>Directional-change error rate ↓ (track in <a href="12-match-analysis.html">Match Analysis</a>).</li>
-            <li>Average rally length ↑ on your service games.</li>
-            <li>Points won after resetting an outside ball ↑.</li>
-          </ul></div>
-
-        <div class="field"><div class="lbl">Opponent adaptations</div>
-          <ul style="margin:.3rem 0">
-            <li><strong>vs a counter-puncher:</strong> add height/heaviness, not pace — outlast their patience for the inside ball.</li>
-            <li><strong>vs a flat hitter:</strong> they'll feed you more inside balls; be ready to attack earlier.</li>
-            <li><strong>vs a lefty:</strong> the "line" still applies — just remember the crosscourt diagonal now favours their forehand.</li>
-          </ul></div>
-
-        <div class="field"><div class="lbl">Skill-level adaptation</div>
-          <div><strong>Intermediate:</strong> just obey the rule — never change direction off an outside ball.
-          <strong>Advanced/Tournament:</strong> add disguise and vary height/spin on the reset to <em>manufacture</em>
-          the inside ball sooner. See <a href="27-skill-roadmap.html">Skill-Level Roadmap</a>.</div></div>
-
-      </div>
-    </div>
-
-    <h2 id="autopilot">Pattern Autopilot — pressure defaults</h2>
-    <p>Under pressure, decision fatigue is the enemy. Pre-load a single trusted default per situation so you
-    never deliberate on the big points. Full set in the <a href="25-pattern-library.html">Pattern Library</a>.</p>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Situation</th><th>Default (autopilot)</th></tr></thead>
-      <tbody>
-        <tr><td>Neutral rally</td><td>Crosscourt with margin — wait for the inside ball</td></tr>
-        <tr><td>0–30 service game</td><td>Highest-percentage patterns; no direction changes off outside balls</td></tr>
-        <tr><td>Short ball</td><td>Approach / step in and take time</td></tr>
-        <tr><td>Pulled wide (defending)</td><td>High, deep crosscourt; recover</td></tr>
-        <tr><td>Returning a big server</td><td>Deep through the middle — neutralise</td></tr>
-        <tr><td>Break point down</td><td>Your #1 trusted serve pattern</td></tr>
-        <tr><td>Tie-break</td><td>Trusted patterns only — nothing new</td></tr>
-      </tbody>
-    </table></div>
-
-    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics for the engine</div>
-    <ul>
-      <li>After any lost point you can name: the ball quality, the decision you made, and the better decision.</li>
-      <li>Unforced errors from direction changes trend down month over month.</li>
-      <li>On break points and in tie-breaks you default to autopilot patterns &gt; 90% of the time.</li>
-    </ul></div>
-
-    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
-      <div class="video-list">
-        <a class="video-item" href="https://www.youtube.com/watch?v=2oz7VMyffGw" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">When To Attack vs When To Defend — Tactics Lesson</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=sYXF77vwRzE" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Singles Strategy &amp; Shot Selection — The Four Zones</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=Ns54d4WLQSo" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Simple 3-Step Shot Selection System</span><span class="ch">YouTube · verified live</span></span></a>
-      </div>
-    </div>
-
-    <div class="next-action reveal">
-      <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">Drill the Home Base "cross until inside" game this week. Then learn <em>why</em>
-      the geometry rewards it — read <a href="02-court-geometry.html">Court Geometry</a>.</p>
-    </div>
-
+<!-- 7 · takeaway + next -->
+<section class="chunk close center">
+  <div class="inner" data-reveal>
+    <div class="step">07 / 07 · Remember this</div>
+    <h2 class="idea">Reset the outside ball.<br>Attack the <em>inside</em> ball.</h2>
     <div class="pager">
-      <a href="29-data-model.html"><small>Previous</small>← 29 · Data Model</a>
-      <a class="next" href="02-court-geometry.html"><small>Next</small>02 · Court Geometry →</a>
+      <a class="back" href="library.html">← All lessons</a>
+      <a href="02-court-geometry.html">Next · Court Geometry →</a>
     </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
-      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
-
-  </main>
-</div>
+  </div>
+</section>
 
 <script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
+<script>
+(function(){
+  var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var b=document.getElementById('navBtn'),n=document.getElementById('navlinks');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='☰';}});
+  var bar=document.getElementById('readbar');
+  addEventListener('scroll',function(){var h=document.documentElement.scrollHeight-innerHeight;
+    bar.style.width=(h>0?scrollY/h*100:0)+'%';},{passive:true});
+  var items=document.querySelectorAll('[data-reveal]');
+  if(rm||!('IntersectionObserver'in window)){[].forEach.call(items,function(i){i.classList.add('in')});}
+  else{var io=new IntersectionObserver(function(es){es.forEach(function(en){if(en.isIntersecting){en.target.classList.add('in');io.unobserve(en.target);}});},{threshold:0.25});
+    [].forEach.call(items,function(i){io.observe(i);});}
+})();
+</script>
 </body>
 </html>
