@@ -1,188 +1,140 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Score-Based Strategy (Match State Engine)</title>
-<meta name="description" content="The Match State Engine — how aggression, risk, serve/return targets and mindset should change at every score from 0-0 to the tie-break.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F8F6F2">
+<title>Zulu Tennis — Score Strategy</title>
+<meta name="description" content="How aggressive to be at every score. — Score Strategy on Zulu Tennis, shown in hand-picked videos.">
 <link rel="icon" href="assets/favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Score-Based Strategy (Match State Engine)">
-<meta property="og:description" content="The Match State Engine — how aggression, risk, serve/return targets and mindset should change at every score from 0-0 to the tie-break.">
-<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/10-score-based-strategy.html">
-<meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — Score-Based Strategy (Match State Engine)">
-<meta name="twitter:description" content="The Match State Engine — how aggression, risk, serve/return targets and mindset should change at every score from 0-0 to the tie-break.">
-<meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.14);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.05}
+a{color:inherit}img{display:block;max-width:100%}
+::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .3s var(--ease)}
+.elink:hover{gap:.9em}
+
+/* LOCKED nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:22px;
+  padding:14px var(--gut);background:rgba(248,246,242,.94);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto;color:var(--ink)}
+.brand .wm{font-family:var(--serif);font-size:1.2rem;letter-spacing:.04em}
+.brand .by{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer}
+@media(max-width:820px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:30px;
+    background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .5s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;color:var(--ivory);opacity:1}
+  .menu-toggle{display:block}
+}
+
+/* header */
+.head{padding:clamp(116px,17vh,168px) var(--gut) clamp(30px,5vh,54px);max-width:1200px;margin:0 auto}
+.head .kicker{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.head h1{font-size:clamp(2.6rem,7.5vw,5.4rem);font-weight:300;letter-spacing:-.02em;line-height:.96}
+.head .idea{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.6vw,1.9rem);
+  color:var(--forest);margin-top:24px;max-width:24ch;line-height:1.25}
+.head .say{max-width:54ch;margin-top:22px;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:300;line-height:1.7;color:#3a352f}
+
+/* videos */
+.watch{max-width:1200px;margin:0 auto;padding:clamp(20px,3vh,40px) var(--gut) 40px}
+.watch .lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  padding-bottom:16px;margin-bottom:clamp(24px,3vw,40px);border-bottom:1px solid var(--line)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(24px,2.6vw,42px)}
+.vcard{display:flex;flex-direction:column}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c0c0c;cursor:pointer}
+.vthumb img,.vthumb iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.4));transition:opacity .4s var(--ease)}
+.vthumb:hover::after{opacity:.7}
+.vthumb.on{cursor:default}.vthumb.on::after{display:none}
+.vthumb .play{position:absolute;left:16px;bottom:14px;z-index:2;width:44px;height:44px;border-radius:50%;
+  background:rgba(248,246,242,.94);color:var(--ink);display:grid;place-items:center;font-size:.9rem;padding-left:3px;
+  transition:transform .35s var(--ease)}
+.vthumb:hover .play{transform:scale(1.08)}
+.vmeta{padding:16px 2px 0}
+.vt{font-family:var(--serif);font-size:1.2rem;font-weight:400;line-height:1.22;letter-spacing:-.01em}
+.vch{margin-top:9px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* pager + footer */
+.pager{max-width:1200px;margin:clamp(40px,6vh,70px) auto 0;padding:0 var(--gut);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.pager a.back{opacity:.7;border-color:var(--line)}
+.foot{margin-top:clamp(56px,9vh,100px);padding:44px var(--gut);border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-align:center}
+.foot b{color:var(--ink);font-weight:600}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html" aria-current="page">Library</a>
+  </div>
+  <button class="menu-toggle" id="navBtn" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
+
+<header class="head">
+  <p class="kicker">The Score</p>
+  <h1>Play the score.</h1>
+  <p class="idea">How aggressive to be at every score.</p>
+  <p class="say">Not every point is equal. Adjust your risk from 0-0 to break point to the tie-break, and you’ll win the moments that decide matches.</p>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<section class="watch">
+  <div class="lbl">Watch · 6 clips on this idea</div>
+  <div class="vgrid" id="vgrid">
+    <div class="vcard"><div class="vthumb" data-id="EXhMRS1WTPs" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/EXhMRS1WTPs/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">4 singles strategies to win your next match</div><div class="vch">RacquetFlex</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="gh4N2D7Q8sA" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/gh4N2D7Q8sA/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">The 4 phases of a singles match</div><div class="vch">Total Tennis Domination</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="Q2fUkZr2cgs" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/Q2fUkZr2cgs/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Easily win more singles matches</div><div class="vch">2MinuteTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="ByNtBs8-lJM" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/ByNtBs8-lJM/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">5 awesome singles strategies</div><div class="vch">2MinuteTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="kQ6XBrV6aVE" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/kQ6XBrV6aVE/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Winning the pressure points</div><div class="vch">StokkeTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="teZlZP_0gEg" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/teZlZP_0gEg/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Play your best under pressure</div><div class="vch">Essential Tennis</div></div></div>
+  </div>
+</section>
 
-  <main class="content">
-
-    <div class="pagehead reveal">
-      <h1>Score-Based Strategy <span style="font-weight:500;color:var(--muted)">· the Match State Engine</span></h1>
-      <p class="lead">Two identical balls demand different decisions at 30–0 and 0–30. The scoreboard changes
-      the math of risk. This engine tells you how aggressive to be at every score.</p>
-    </div>
-
-    <section class="courtside reveal">
-      <div class="cs-eyebrow">🎾 Courtside · Score / State Engine <span class="ev ev-a">A</span></div>
-      <div class="cs-rule">Behind → play safe. Ahead → press.</div>
-      <div class="cs-grid">
-        <figure class="diagram"><svg viewBox="0 0 240 144" style="color:var(--text)" xmlns="http://www.w3.org/2000/svg"><path d="M30,120 A90,90 0 0 1 75,42" fill="none" stroke="#2e7d46" stroke-width="18"/><path d="M75,42 A90,90 0 0 1 165,42" fill="none" stroke="#f4c20d" stroke-width="18"/><path d="M165,42 A90,90 0 0 1 210,120" fill="none" stroke="#c0392b" stroke-width="18"/><line x1="120" y1="120" x2="120" y2="40" stroke="currentColor" stroke-width="3"/><circle cx="120" cy="120" r="6" fill="currentColor"/><text x="46" y="140" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="11">BEHIND ↓</text><text x="120" y="140" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="11">EVEN →</text><text x="196" y="140" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="11">AHEAD ↑</text></svg></figure>
-        <div class="cs-dd">
-          <div class="dd dd-do"><b>✓ Do</b> — 0–30: trusted patterns, high-% only. Ahead: take a calculated risk.</div>
-          <div class="dd dd-no"><b>✗ Don't</b> — get more aggressive when you’re behind.</div>
-          <div class="cs-cues"><span>Read score → set the dial → pick pattern</span></div>
-        </div>
-      </div>
-      <div class="cs-drill">🎾 <b>Drill:</b> "start at the score" — play games from 0–30, deuce, ad-out.</div>
-    </section>
-
-    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
-
-    <h2 id="principle">The core principle</h2>
-    <p>When you're <strong>ahead</strong> in a game, points are "cheaper" — you can take a calculated risk for a
-    big reward. When you're <strong>behind</strong>, every point is expensive — play your highest-percentage
-    tennis and make the opponent earn it.</p>
-    <div class="callout purpose"><div class="head"><span class="ico">🎯</span> The 0–30 example</div>
-      <p>At 0–30 the temptation is to "do something" — go big down-the-line. Wrong. The goal isn't a highlight,
-      it's to reach <strong>15–30</strong> and rebuild the game. If it slips to 0–40 your hold probability falls
-      off a cliff. So at 0–30: lower error probability, higher rally tolerance, trusted patterns.
-      <span class="ev ev-a">Level A</span></p></div>
-
-    <h2 id="serving">Match State Engine — serving</h2>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Score</th><th>Aggression</th><th>Risk</th><th>Serve focus</th><th>Mental cue</th><th>Avoid</th></tr></thead>
-      <tbody>
-        <tr><td><strong>0–0</strong></td><td>Medium</td><td><span class="pill risk-med">med</span></td><td>Go-to first-serve pattern; set the tone</td><td>Start a routine, not a war</td><td>Casual first point</td></tr>
-        <tr><td><strong>15–0 / 30–0</strong></td><td>High</td><td><span class="pill risk-med">med</span></td><td>Free to go bigger / try a 2nd pattern</td><td>Press the advantage</td><td>Carelessness / 3 quick errors</td></tr>
-        <tr><td><strong>40–0 / 40–15</strong></td><td>High</td><td><span class="pill risk-med">med</span></td><td>Big first serve; take a swing</td><td>Close it out, stay sharp</td><td>Going passive / gifting points</td></tr>
-        <tr><td><strong>0–15</strong></td><td>Medium</td><td><span class="pill risk-low">low</span></td><td>High first-serve %, go-to spot</td><td>Reset, one point at a time</td><td>Overcorrecting with risk</td></tr>
-        <tr><td><strong>0–30</strong></td><td>Low</td><td><span class="pill risk-low">low</span></td><td>Trusted spot, high %, +1 construct</td><td>Reach 15–30 first</td><td>Low-% direction changes</td></tr>
-        <tr><td><strong>0–40</strong></td><td>Low (steady)</td><td><span class="pill risk-low">low</span></td><td>One point at a time; trusted serve</td><td>Make them earn every point</td><td>Hero ball / giving up</td></tr>
-        <tr><td><strong>15–15 / 30–30</strong></td><td>Medium-high</td><td><span class="pill risk-med">med</span></td><td>Best go-to pattern — these are mini break points</td><td>Win the leverage point</td><td>Indecision on a big point</td></tr>
-        <tr><td><strong>Deuce</strong></td><td>Medium</td><td><span class="pill risk-low">low</span></td><td>#1 trusted pattern</td><td>Two points, both yours</td><td>New / untested plays</td></tr>
-        <tr><td><strong>Ad-in (game point)</strong></td><td>Medium-high</td><td><span class="pill risk-med">med</span></td><td>Trusted serve, look to finish</td><td>Finish what you built</td><td>Tightening up / pushing</td></tr>
-        <tr><td><strong>Ad-out (break point down)</strong></td><td>Low (high-%)</td><td><span class="pill risk-low">low</span></td><td>Your #1 trusted serve pattern only</td><td>One ball at a time</td><td>Going for too much</td></tr>
-      </tbody>
-    </table></div>
-
-    <h2 id="returning">Match State Engine — returning</h2>
-    <div class="tbl-wrap"><table>
-      <thead><tr><th>Score</th><th>Aggression</th><th>Return focus</th><th>Mental cue</th><th>Avoid</th></tr></thead>
-      <tbody>
-        <tr><td><strong>0–0 / 15–0 (theirs)</strong></td><td>Medium</td><td>Deep middle, find rhythm; read their patterns</td><td>Build the return game</td><td>Going for a winner early</td></tr>
-        <tr><td><strong>30–0 / 40–0 down (theirs)</strong></td><td>Higher (free swings)</td><td>Step in, attack 2nd serves — nothing to lose</td><td>Free points — relax &amp; rip</td><td>Pressing as if it's must-win</td></tr>
-        <tr><td><strong>30–30 / Deuce (theirs)</strong></td><td>Medium-high</td><td>Deep, into their weaker wing; make them play</td><td>This is your opening</td><td>Low-% return on the big point</td></tr>
-        <tr><td><strong>Break point (yours)</strong></td><td>Medium</td><td>Make the return — deep, in play, force one more ball</td><td>Get it back &amp; compete</td><td>Return winner attempt</td></tr>
-      </tbody>
-    </table></div>
-
-    <h2 id="tiebreak">Tie-break</h2>
-    <div class="card reveal">
-      <p>A tie-break is a pressure cauldron — so it's the wrong time for new ideas.</p>
-      <ul>
-        <li><strong>Aggression:</strong> medium — controlled, not reckless. <strong>Risk:</strong> low.</li>
-        <li><strong>Serve:</strong> highest first-serve %, your most trusted locations.</li>
-        <li><strong>Return:</strong> get it deep and in; make every serve be played.</li>
-        <li><strong>Mental:</strong> mini-margins matter — win the first two points, take the early lead, breathe between points.</li>
-        <li><strong>Avoid:</strong> untested patterns, the big bail-out shot, rushing.</li>
-      </ul>
-    </div>
-
-    <div class="callout tree"><div class="head"><span class="ico">🌳</span> Aggression dial (quick read)</div></div>
-    <pre class="tree">WHAT'S THE SCORE? —
-   │
-   ▼
-Am I ahead, even, or behind in this game?
-   ├─ AHEAD  ─▶ dial UP: calculated risk, press, try the weapon pattern
-   ├─ EVEN   ─▶ dial MID: best go-to pattern, win the leverage point
-   └─ BEHIND ─▶ dial DOWN: highest-% tennis, trusted patterns, make them earn it</pre>
-    <figure class="diagram reveal">
-      <svg viewBox="0 0 320 188" role="img" aria-label="Aggression dial" style="color:var(--text)" xmlns="http://www.w3.org/2000/svg">
-        <path d="M50,150 A110,110 0 0 1 105,54.7" fill="none" stroke="#2e7d46" stroke-width="22"/>
-        <path d="M105,54.7 A110,110 0 0 1 215,54.7" fill="none" stroke="#f4c20d" stroke-width="22"/>
-        <path d="M215,54.7 A110,110 0 0 1 270,150" fill="none" stroke="#c0392b" stroke-width="22"/>
-        <line x1="160" y1="150" x2="160" y2="46" stroke="currentColor" stroke-width="3"/>
-        <circle cx="160" cy="150" r="7" fill="currentColor"/>
-        <text x="62" y="174" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="12">BEHIND ↓</text>
-        <text x="160" y="174" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="12">EVEN →</text>
-        <text x="258" y="174" text-anchor="middle" fill="currentColor" font-family="var(--sans)" font-weight="700" font-size="12">AHEAD ↑</text>
-      </svg>
-      <figcaption>The aggression dial: behind → highest-percentage tennis; even → your best go-to; ahead → press and risk the weapon pattern.</figcaption>
-    </figure>
-
-
-    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
-      <ul>
-        <li>Playing every point the same regardless of score.</li>
-        <li>Getting <em>more</em> aggressive when behind (raising error risk exactly when you can't afford it).</li>
-        <li>Getting <em>passive</em> when ahead (inviting the comeback) — see <a href="25-pattern-library.html">Closing-Out</a>.</li>
-        <li>Trying something new on the biggest points instead of your <a href="25-pattern-library.html">Pressure-Point</a> default.</li>
-      </ul></div>
-
-    <div class="callout drill"><div class="head"><span class="ico">🎾</span> Practice drill — "Start at the score"</div>
-      <ul>
-        <li><strong>Setup:</strong> play practice games that start at a called score (0–30, 40–0, deuce, ad-out).</li>
-        <li><strong>Reps:</strong> rotate through 6 score states; state your aggression dial before each point.</li>
-        <li><strong>Constraint:</strong> at "behind" scores you lose the point if you attempt a low-% direction change.</li>
-        <li><strong>Coaching cue:</strong> "Read the score, set the dial, pick the pattern."</li>
-        <li><strong>Success metric:</strong> correct aggression level chosen on ≥ 80% of points; hold % from 0–30 starts improving.</li>
-      </ul></div>
-
-    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
-      <ul>
-        <li>Hold % after going 0–30 down ↑.</li>
-        <li>Break-point conversion &amp; save % ↑.</li>
-        <li>Deciding-point and tie-break win % ↑ (track in <a href="21-analytics.html">Analytics</a>).</li>
-      </ul></div>
-
-    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
-      <div class="video-list">
-        <a class="video-item" href="https://www.youtube.com/watch?v=2oz7VMyffGw" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">When To Attack vs When To Defend — Tactics</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=HtsqfAgj0YE" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Break Point — Who's Got The Pressure?</span><span class="ch">YouTube · verified live</span></span></a>
-      </div>
-    </div>
-
-    <div class="next-action reveal">
-      <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">Add "start at the score" games to practice this week. Then build the engine that
-      keeps you steady when the score gets tight — <a href="11-mental-performance.html">Mental Performance</a>.</p>
-    </div>
-
-    <div class="pager">
-      <a href="09-player-type-strategies.html"><small>Previous</small>← 09 · Player-Type Strategies</a>
-      <a class="next" href="11-mental-performance.html"><small>Next</small>11 · Mental Performance →</a>
-    </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
-      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
-
-  </main>
+<div class="pager">
+  <a class="back" href="library.html">← All topics</a>
+  <a href="25-pattern-library.html">Next · Pattern Library →</a>
 </div>
 
-<script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
+<footer class="foot"><b>Zulu Tennis</b> · by Veyane — videos are third-party; credit to each channel. Nothing tracked.</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('navBtn'),n=document.getElementById('navlinks');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='☰';}});
+  function play(el){ if(el.classList.contains('on'))return; var id=el.getAttribute('data-id'); el.classList.add('on');
+    el.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }
+  [].forEach.call(document.querySelectorAll('.vthumb'),function(el){
+    el.addEventListener('click',function(){play(el);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(el);}});
+  });
+})();
+</script>
 </body>
 </html>

@@ -1,167 +1,140 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Tournament Operating System</title>
-<meta name="description" content="The Tournament OS — countdown checklists from 30 days out to post-tournament review.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F8F6F2">
+<title>Zulu Tennis — Tournament</title>
+<meta name="description" content="Peak for the day that matters. — Tournament on Zulu Tennis, shown in hand-picked videos.">
 <link rel="icon" href="assets/favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Tournament Operating System">
-<meta property="og:description" content="The Tournament OS — countdown checklists from 30 days out to post-tournament review.">
-<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/22-tournament-os.html">
-<meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — Tournament Operating System">
-<meta name="twitter:description" content="The Tournament OS — countdown checklists from 30 days out to post-tournament review.">
-<meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.14);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.05}
+a{color:inherit}img{display:block;max-width:100%}
+::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .3s var(--ease)}
+.elink:hover{gap:.9em}
+
+/* LOCKED nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:22px;
+  padding:14px var(--gut);background:rgba(248,246,242,.94);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto;color:var(--ink)}
+.brand .wm{font-family:var(--serif);font-size:1.2rem;letter-spacing:.04em}
+.brand .by{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer}
+@media(max-width:820px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:30px;
+    background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .5s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;color:var(--ivory);opacity:1}
+  .menu-toggle{display:block}
+}
+
+/* header */
+.head{padding:clamp(116px,17vh,168px) var(--gut) clamp(30px,5vh,54px);max-width:1200px;margin:0 auto}
+.head .kicker{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.head h1{font-size:clamp(2.6rem,7.5vw,5.4rem);font-weight:300;letter-spacing:-.02em;line-height:.96}
+.head .idea{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.6vw,1.9rem);
+  color:var(--forest);margin-top:24px;max-width:24ch;line-height:1.25}
+.head .say{max-width:54ch;margin-top:22px;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:300;line-height:1.7;color:#3a352f}
+
+/* videos */
+.watch{max-width:1200px;margin:0 auto;padding:clamp(20px,3vh,40px) var(--gut) 40px}
+.watch .lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  padding-bottom:16px;margin-bottom:clamp(24px,3vw,40px);border-bottom:1px solid var(--line)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(24px,2.6vw,42px)}
+.vcard{display:flex;flex-direction:column}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c0c0c;cursor:pointer}
+.vthumb img,.vthumb iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.4));transition:opacity .4s var(--ease)}
+.vthumb:hover::after{opacity:.7}
+.vthumb.on{cursor:default}.vthumb.on::after{display:none}
+.vthumb .play{position:absolute;left:16px;bottom:14px;z-index:2;width:44px;height:44px;border-radius:50%;
+  background:rgba(248,246,242,.94);color:var(--ink);display:grid;place-items:center;font-size:.9rem;padding-left:3px;
+  transition:transform .35s var(--ease)}
+.vthumb:hover .play{transform:scale(1.08)}
+.vmeta{padding:16px 2px 0}
+.vt{font-family:var(--serif);font-size:1.2rem;font-weight:400;line-height:1.22;letter-spacing:-.01em}
+.vch{margin-top:9px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* pager + footer */
+.pager{max-width:1200px;margin:clamp(40px,6vh,70px) auto 0;padding:0 var(--gut);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.pager a.back{opacity:.7;border-color:var(--line)}
+.foot{margin-top:clamp(56px,9vh,100px);padding:44px var(--gut);border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-align:center}
+.foot b{color:var(--ink);font-weight:600}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html" aria-current="page">Library</a>
+  </div>
+  <button class="menu-toggle" id="navBtn" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
+
+<header class="head">
+  <p class="kicker">Tournaments</p>
+  <h1>Prepare to compete.</h1>
+  <p class="idea">Peak for the day that matters.</p>
+  <p class="say">Tournaments reward preparation — sleep, fuel, warm-up and a calm mind. Build the routine that gets you ready to play your best.</p>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<section class="watch">
+  <div class="lbl">Watch · 6 clips on this idea</div>
+  <div class="vgrid" id="vgrid">
+    <div class="vcard"><div class="vthumb" data-id="7xg-n4tuveg" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/7xg-n4tuveg/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">The skill to change tactics mid-match</div><div class="vch">StokkeTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="WQRjN6jiIt0" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/WQRjN6jiIt0/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">When to change game plans</div><div class="vch">Jorge Capestany Tennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="8peN20xCVmE" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/8peN20xCVmE/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Stop your opponent's momentum</div><div class="vch">Championship Productions</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="XAxoiz2wElU" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/XAxoiz2wElU/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Between-point routines</div><div class="vch">Peak Performance Sports</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="aJFMjRMbM1E" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/aJFMjRMbM1E/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">12 habits for mental toughness</div><div class="vch">Coach Alfred</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="iioWcbBb3YQ" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/iioWcbBb3YQ/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Stay focused during matches</div><div class="vch">Tennis Hacker</div></div></div>
+  </div>
+</section>
 
-  <main class="content">
-
-    <div class="pagehead reveal">
-      <h1>Tournament Operating System</h1>
-      <p class="lead">Peaking on the day isn't luck — it's a countdown. Work backwards from match day and remove
-      every avoidable surprise so all that's left to do is compete.</p>
-    </div>
-
-    <section class="courtside reveal">
-      <div class="cs-eyebrow">🎾 Courtside · Tournament OS <span class="ev ev-b">B</span></div>
-      <div class="cs-rule">Peak by counting down to match day.</div>
-      <div class="cs-viz" data-viz='{"type": "flow", "steps": ["30d", "14d", "7d", "48h", "Match"]}'></div>
-      <div class="cs-dd">
-        <div class="dd dd-do"><b>✓ Do</b> — build &gt;14 days out; taper the last week; familiar food &amp; warm-up.</div>
-        <div class="dd dd-no"><b>✗ Don't</b> — train hard the week before, or try new gear/food/tactics at the event.</div>
-      </div>
-      <div class="cs-cues"><span>Taper · sleep · arrive early</span></div>
-      <div class="cs-drill">🎾 <b>Drill:</b> put your next event on the 30 / 14 / 7 / 48-hour countdown.</div>
-    </section>
-
-    <nav id="pageToc" aria-label="On this page" style="display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 0"></nav>
-
-    <h2 id="30">30 days out — build</h2>
-    <ul class="check">
-      <li>Finalise the training block; this is your last window for heavy physical work.</li>
-      <li>Play practice matches vs varied styles (especially the ones you struggle with).</li>
-      <li>Confirm logistics: entry, draw date, travel, accommodation, surface.</li>
-      <li>Lock in any equipment changes now (strings, shoes) — never new gear late.</li>
-    </ul>
-
-    <h2 id="14">14 days out — sharpen</h2>
-    <ul class="check">
-      <li>Shift from building fitness to sharpening patterns and serve/return.</li>
-      <li>Reduce strength volume; keep intensity, add court-specific movement.</li>
-      <li>Review scouting for likely opponents (<a href="20-match-intelligence-db.html">Scouting DB</a>).</li>
-      <li>Dial in match-day nutrition &amp; warm-up; rehearse them in practice.</li>
-    </ul>
-
-    <h2 id="7">7 days out — taper</h2>
-    <ul class="check">
-      <li>Taper volume; keep it crisp and confident — quality over quantity.</li>
-      <li>Prioritise sleep; bank rest now.</li>
-      <li>Pack list ready (rackets, strings, kit, food, water, tape, sunscreen).</li>
-      <li>Visualise your patterns and a calm, focused you (<a href="11-mental-performance.html">Mental</a>).</li>
-    </ul>
-
-    <h2 id="48">48 hours out — prime</h2>
-    <ul class="check">
-      <li>Light, sharp hit; serve targets; nothing exhausting.</li>
-      <li>Hydrate well; familiar meals only; no experiments.</li>
-      <li>Confirm match time, court, transport; plan arrival ~60–90 min early.</li>
-      <li>Prepare your 3-line game plan card for the likely opponent.</li>
-    </ul>
-
-    <h2 id="matchday">Match day</h2>
-    <ul class="check">
-      <li>Carb-based meal 2–3 h before; hydrate early.</li>
-      <li>Arrive early; dynamic warm-up + the <a href="16-complete-match-playbook.html">10-minute hit routine</a>.</li>
-      <li>Re-read your 3-line plan + autopilot patterns; set the <a href="10-score-based-strategy.html">aggression dial</a> for game 1.</li>
-      <li>First 2 games: high first-serve %, deep returns, read their tendencies before forcing.</li>
-    </ul>
-
-    <h2 id="between">Between matches (same day / next round)</h2>
-    <ul class="check">
-      <li>Refuel + rehydrate immediately; protein + carbs.</li>
-      <li>Cool-down movement; brief note on what worked (next opponent prep).</li>
-      <li>Get off your feet, stay warm, stay calm; don't over-spectate other matches.</li>
-    </ul>
-
-    <h2 id="recovery">Tournament recovery</h2>
-    <ul class="check">
-      <li>Sleep is the priority across multi-day events.</li>
-      <li>Active recovery (easy movement, mobility) over total rest between match days.</li>
-      <li>Manage soreness; treat niggles early.</li>
-    </ul>
-
-    <h2 id="post">Post-tournament review</h2>
-    <ul class="check">
-      <li>Chart/aggregate results (<a href="12-match-analysis.html">Match Analysis</a>); update <a href="20-match-intelligence-db.html">scouting</a>.</li>
-      <li>Honest review: what held up under pressure, what didn't.</li>
-      <li>Feed the biggest gap into the <a href="26-improvement-engine.html">Improvement Engine</a> and the <a href="23-development-roadmap.html">Roadmap</a>.</li>
-      <li>Plan a short recovery block before the next training cycle.</li>
-    </ul>
-
-    <div class="callout mistake"><div class="head"><span class="ico">⚠️</span> Common mistakes</div>
-      <ul>
-        <li>Training hard the week before (tired legs on day 1).</li>
-        <li>New gear, new food, or new tactics at the event.</li>
-        <li>No plan for between-match refuelling and recovery in a one-day event.</li>
-      </ul></div>
-
-    <div class="callout metric"><div class="head"><span class="ico">✅</span> Success metrics</div>
-      <ul>
-        <li>You arrive rested, fuelled and with a plan every match.</li>
-        <li>Fewer slow starts (first-2-games win rate ↑).</li>
-        <li>A post-tournament review exists with one clear priority.</li>
-      </ul></div>
-
-    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
-      <div class="video-list">
-        <a class="video-item" href="https://www.youtube.com/watch?v=Sf46KbN11D0" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">How To Prepare For A Tennis Tournament</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=qfE0I0_7pdk" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Match Prep Routine for All Levels</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=bMnVFK4Kg9E" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Prepare For Your First Competition — 5 Tips</span><span class="ch">YouTube · verified live</span></span></a>
-      </div>
-    </div>
-
-    <div class="next-action reveal">
-      <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">Put your next event on a countdown using these checklists. Then zoom out to the year —
-      the <a href="23-development-roadmap.html">Development Roadmap</a>.</p>
-    </div>
-
-    <div class="pager">
-      <a href="15-advanced-concepts.html"><small>Previous</small>← 15 · Advanced Concepts</a>
-      <a class="next" href="23-development-roadmap.html"><small>Next</small>23 · Development Roadmap →</a>
-    </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
-      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
-
-  </main>
+<div class="pager">
+  <a class="back" href="library.html">← All topics</a>
+  <a href="23-development-roadmap.html">Next · Roadmap →</a>
 </div>
 
-<script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
+<footer class="foot"><b>Zulu Tennis</b> · by Veyane — videos are third-party; credit to each channel. Nothing tracked.</footer>
+
+<script>
+(function(){
+  var b=document.getElementById('navBtn'),n=document.getElementById('navlinks');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='☰';}});
+  function play(el){ if(el.classList.contains('on'))return; var id=el.getAttribute('data-id'); el.classList.add('on');
+    el.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }
+  [].forEach.call(document.querySelectorAll('.vthumb'),function(el){
+    el.addEventListener('click',function(){play(el);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(el);}});
+  });
+})();
+</script>
 </body>
 </html>

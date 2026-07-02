@@ -1,190 +1,140 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Match Problem Solver</title>
-<meta name="description" content="The Match Scenario Database — a searchable troubleshooting system for the situations that beat you, each with causes, fixes, drills and metrics.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F8F6F2">
+<title>Zulu Tennis — Problem Solver</title>
+<meta name="description" content="Name the problem. Apply the fix. — Problem Solver on Zulu Tennis, shown in hand-picked videos.">
 <link rel="icon" href="assets/favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Match Problem Solver">
-<meta property="og:description" content="The Match Scenario Database — a searchable troubleshooting system for the situations that beat you, each with causes, fixes, drills and metrics.">
-<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/17-match-problem-solver.html">
-<meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — Match Problem Solver">
-<meta name="twitter:description" content="The Match Scenario Database — a searchable troubleshooting system for the situations that beat you, each with causes, fixes, drills and metrics.">
-<meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.14);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.05}
+a{color:inherit}img{display:block;max-width:100%}
+::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .3s var(--ease)}
+.elink:hover{gap:.9em}
+
+/* LOCKED nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:22px;
+  padding:14px var(--gut);background:rgba(248,246,242,.94);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto;color:var(--ink)}
+.brand .wm{font-family:var(--serif);font-size:1.2rem;letter-spacing:.04em}
+.brand .by{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer}
+@media(max-width:820px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:30px;
+    background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .5s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;color:var(--ivory);opacity:1}
+  .menu-toggle{display:block}
+}
+
+/* header */
+.head{padding:clamp(116px,17vh,168px) var(--gut) clamp(30px,5vh,54px);max-width:1200px;margin:0 auto}
+.head .kicker{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.head h1{font-size:clamp(2.6rem,7.5vw,5.4rem);font-weight:300;letter-spacing:-.02em;line-height:.96}
+.head .idea{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.6vw,1.9rem);
+  color:var(--forest);margin-top:24px;max-width:24ch;line-height:1.25}
+.head .say{max-width:54ch;margin-top:22px;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:300;line-height:1.7;color:#3a352f}
+
+/* videos */
+.watch{max-width:1200px;margin:0 auto;padding:clamp(20px,3vh,40px) var(--gut) 40px}
+.watch .lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  padding-bottom:16px;margin-bottom:clamp(24px,3vw,40px);border-bottom:1px solid var(--line)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(24px,2.6vw,42px)}
+.vcard{display:flex;flex-direction:column}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c0c0c;cursor:pointer}
+.vthumb img,.vthumb iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.4));transition:opacity .4s var(--ease)}
+.vthumb:hover::after{opacity:.7}
+.vthumb.on{cursor:default}.vthumb.on::after{display:none}
+.vthumb .play{position:absolute;left:16px;bottom:14px;z-index:2;width:44px;height:44px;border-radius:50%;
+  background:rgba(248,246,242,.94);color:var(--ink);display:grid;place-items:center;font-size:.9rem;padding-left:3px;
+  transition:transform .35s var(--ease)}
+.vthumb:hover .play{transform:scale(1.08)}
+.vmeta{padding:16px 2px 0}
+.vt{font-family:var(--serif);font-size:1.2rem;font-weight:400;line-height:1.22;letter-spacing:-.01em}
+.vch{margin-top:9px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* pager + footer */
+.pager{max-width:1200px;margin:clamp(40px,6vh,70px) auto 0;padding:0 var(--gut);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.pager a.back{opacity:.7;border-color:var(--line)}
+.foot{margin-top:clamp(56px,9vh,100px);padding:44px var(--gut);border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-align:center}
+.foot b{color:var(--ink);font-weight:600}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html" aria-current="page">Library</a>
+  </div>
+  <button class="menu-toggle" id="navBtn" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
+
+<header class="head">
+  <p class="kicker">Fixes</p>
+  <h1>Fix what’s losing you matches.</h1>
+  <p class="idea">Name the problem. Apply the fix.</p>
+  <p class="say">“I keep losing to pushers.” “I choke when I’m ahead.” Every common problem has a tactical answer — find yours here.</p>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<section class="watch">
+  <div class="lbl">Watch · 6 clips on this idea</div>
+  <div class="vgrid" id="vgrid">
+    <div class="vcard"><div class="vthumb" data-id="b-HII85xJRs" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/b-HII85xJRs/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">How to beat lefties (strategy &amp; tactics)</div><div class="vch">Essential Tennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="KQrobRHZeYM" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/KQrobRHZeYM/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Return a lefty serve on the ad side (singles)</div><div class="vch">Essential Tennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="lZTdLUQ6CQo" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/lZTdLUQ6CQo/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Defend against serve &amp; volley (singles)</div><div class="vch">2MinuteTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="AKwZPh_uIkw" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/AKwZPh_uIkw/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Best return vs serve &amp; volleyers (singles)</div><div class="vch">2MinuteTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="D3O7wYfiV9k" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/D3O7wYfiV9k/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">How to beat a counterpuncher</div><div class="vch">Essential Tennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="LjC0sGUHMrk" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/LjC0sGUHMrk/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Beat a counterpuncher (more)</div><div class="vch">Tennis Warehouse</div></div></div>
+  </div>
+</section>
 
-  <main class="content">
-
-    <div class="pagehead reveal">
-      <h1>Match Problem Solver</h1>
-      <p class="lead">A decision-support system for the situations that keep beating you. Search your problem,
-      get the likely cause, the fix, the drill and the metric. Built on the
-      <a href="01-decision-making.html">Decision Card</a> structure.</p>
-    </div>
-
-    <label for="problemFilter" style="display:block;font-weight:700;margin:14px 0 6px">🔎 Search the scenario database</label>
-    <input id="problemFilter" type="search" placeholder="e.g. pusher, tiebreak, overhitting, break point…"
-      style="width:100%;max-width:520px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:1rem">
-    <p id="filterCount" style="color:var(--muted);font-size:.85rem;margin:6px 0 0"></p>
-
-    <div id="problemList">
-
-      <div class="card problem reveal"><h3>I keep losing to a pusher</h3>
-        <p><strong>Symptoms:</strong> long matches, you make all the errors, they barely miss.
-        <strong>Likely cause:</strong> impatience — trying to out-hit a player who lives off your pace.</p>
-        <p><strong>Fix:</strong> build with depth, draw the short ball, <strong>approach and finish at net</strong>; add the drop-shot/approach combo. Win with forward pressure, not bigger swings.</p>
-        <p><strong>Drill:</strong> "approach &amp; finish" off short balls. <strong>Metric:</strong> net points won % &gt; 60%, UE count down. <strong>See:</strong> <a href="09-player-type-strategies.html#pusher">Pusher plan</a>, <a href="06-attacking-system.html">Attacking</a>.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I can't break a big server</h3>
-        <p><strong>Symptoms:</strong> cheap holds against you, you press on returns. <strong>Likely cause:</strong> over-swinging returns, not winning second-serve points.</p>
-        <p><strong>Fix:</strong> stand back, <strong>block deep through the middle</strong>, attack second serves, hold your own serve easily so every game pressures theirs. Treat returns as free swings.</p>
-        <p><strong>Drill:</strong> block-return-to-deep-target. <strong>Metric:</strong> return-in-play % &amp; 2nd-serve-return points won. <strong>See:</strong> <a href="04-return-strategy.html">Return Strategy</a>.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>Lefties give me trouble</h3>
-        <p><strong>Symptoms:</strong> jammed on the ad side, your backhand gets exposed, spin surprises you.
-        <strong>Likely cause:</strong> not adjusting for reversed spin/angles.</p>
-        <p><strong>Fix:</strong> serve/return to their backhand, expect the ad-court kick on big points, favour deep-middle (crosscourt feeds their forehand). Practise vs lefties on purpose.</p>
-        <p><strong>Drill:</strong> return the wide ad-serve repeatedly. <strong>Metric:</strong> win % vs lefties over a season. <strong>See:</strong> <a href="09-player-type-strategies.html#lefty">Lefty plan</a>.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I lose tight matches / can't close out</h3>
-        <p><strong>Symptoms:</strong> lead slips when serving for it; tighten up at the end. <strong>Likely cause:</strong> changing a winning game — getting passive or over-pressing.</p>
-        <p><strong>Fix:</strong> keep the patterns that built the lead, raise first-serve %, run your <a href="25-pattern-library.html">Closing-Out</a> &amp; <a href="25-pattern-library.html#pressure">Pressure-Point</a> defaults, keep the routine identical.</p>
-        <p><strong>Drill:</strong> serve-it-out games from 40–30 up. <strong>Metric:</strong> % games closed when serving for set/match.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I lose the long rallies</h3>
-        <p><strong>Symptoms:</strong> you crack first in extended exchanges. <strong>Likely cause:</strong> fitness, shot tolerance, or forcing too early.</p>
-        <p><strong>Fix:</strong> raise margin/height to extend safely, improve endurance &amp; shot tolerance, and only attack the inside ball (<a href="01-decision-making.html">Home Base</a>).</p>
-        <p><strong>Drill:</strong> 10-ball crosscourt tolerance rallies. <strong>Metric:</strong> avg rally length you win; UE after 6+ shots. <strong>See:</strong> <a href="18-athlete-development.html">Athlete Development</a>.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I lose tie-breaks</h3>
-        <p><strong>Symptoms:</strong> reach breakers but rarely win them. <strong>Likely cause:</strong> trying new things / rushing under pressure.</p>
-        <p><strong>Fix:</strong> trusted patterns only, highest first-serve %, get the early mini-break, breathe between points. Medium aggression, low risk.</p>
-        <p><strong>Drill:</strong> first-to-7 practice breakers daily. <strong>Metric:</strong> tie-break win %. <strong>See:</strong> <a href="10-score-based-strategy.html#tiebreak">Tie-break</a>.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I'm being outpowered</h3>
-        <p><strong>Symptoms:</strong> rushed, late, pushed back. <strong>Likely cause:</strong> trading pace toe-to-toe and standing too deep.</p>
-        <p><strong>Fix:</strong> change height &amp; pace (slice, high heavy), move them with depth-down-the-middle, take time early or reset with defense — don't match their power.</p>
-        <p><strong>Drill:</strong> absorb-and-reset against a feeder hitting hard. <strong>Metric:</strong> reset rate; errors while defending ↓. <strong>See:</strong> <a href="07-defensive-system.html">Defensive System</a>.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I'm being outdefended (everything comes back)</h3>
-        <p><strong>Symptoms:</strong> you hit "winners" that come back, then over-press. <strong>Likely cause:</strong> attacking the wrong ball / no net finish.</p>
-        <p><strong>Fix:</strong> attack only the genuine short/inside ball, then <strong>close the net</strong> to finish rather than going for bigger baseline winners.</p>
-        <p><strong>Drill:</strong> short-ball "green light" + approach. <strong>Metric:</strong> approach success %, net points won.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I break down mentally</h3>
-        <p><strong>Symptoms:</strong> lose the plot after bad points/calls; double-fault clusters. <strong>Likely cause:</strong> no routine; carrying points forward.</p>
-        <p><strong>Fix:</strong> run the 4-step <a href="11-mental-performance.html">Reset/Breathe/Analyze/Commit</a> routine on every point; one external focus cue on big points.</p>
-        <p><strong>Drill:</strong> "routine under load." <strong>Metric:</strong> win % on point-after-a-lost-point.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I play too passive</h3>
-        <p><strong>Symptoms:</strong> push the ball, wait to lose, never dictate. <strong>Likely cause:</strong> fear of errors; no clear attack trigger.</p>
-        <p><strong>Fix:</strong> commit to attacking the inside/short ball every time it appears; pre-decide serve+1; widen the aggression dial when ahead.</p>
-        <p><strong>Drill:</strong> "must-attack the short ball" points. <strong>Metric:</strong> winners + forced errors created ↑; short balls attacked %.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I overhit / too many unforced errors</h3>
-        <p><strong>Symptoms:</strong> spray balls, low first-serve %, errors in clusters. <strong>Likely cause:</strong> aiming the lines, attacking the wrong ball, flat low margin.</p>
-        <p><strong>Fix:</strong> aim over a net window into zones (not lines), add margin/height, and obey ball-quality rules — construct, don't force.</p>
-        <p><strong>Drill:</strong> 1.2 m (4 ft)-net-clearance rally game. <strong>Metric:</strong> UE rate ↓; rally balls landing deep. <strong>See:</strong> <a href="02-court-geometry.html">Court Geometry</a>.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I keep missing my down-the-line changes</h3>
-        <p><strong>Symptoms:</strong> direction-change errors, especially under pressure. <strong>Likely cause:</strong> changing direction off an <em>outside</em> ball.</p>
-        <p><strong>Fix:</strong> the <a href="01-decision-making.html#homebase">Home Base</a> rule — only change direction off an inside ball, in balance. Reset crosscourt off outside balls.</p>
-        <p><strong>Drill:</strong> "cross until inside." <strong>Metric:</strong> directional-change error rate ↓.</p>
-      </div>
-
-      <div class="card problem reveal"><h3>I can't convert break points</h3>
-        <p><strong>Symptoms:</strong> earn break points, rarely take them. <strong>Likely cause:</strong> going for a winner or getting passive on the big point.</p>
-        <p><strong>Fix:</strong> make the server play — deep return, your best pattern, force one more ball. Medium aggression, trusted shapes.</p>
-        <p><strong>Drill:</strong> play points from break-point-up scores. <strong>Metric:</strong> break-point conversion %. <strong>See:</strong> <a href="25-pattern-library.html#pressure">Pressure-Point</a>.</p>
-      </div>
-
-    </div>
-
-    <div class="callout metric"><div class="head"><span class="ico">✅</span> How to use this</div>
-      <p>After a loss, find the scenario, do the drill it names this week, and track the metric it gives in
-      <a href="21-analytics.html">Analytics</a>. Feed the biggest recurring one into the
-      <a href="26-improvement-engine.html">Improvement Engine</a> to rank it against everything else.</p></div>
-
-    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
-      <div class="video-list">
-        <a class="video-item" href="https://www.youtube.com/watch?v=cTwmZpWftBY" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Defeat the Pusher AND the Counter-Puncher</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=twMrBvmrUb0" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Stop Choking — Close Out Matches</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=HnByEZTjqWA" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">5 Strategies To Beat A Pusher</span><span class="ch">YouTube · verified live</span></span></a>
-      </div>
-    </div>
-
-    <div class="next-action reveal">
-      <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">Pick the one problem that cost you your last loss and drill its fix this week.
-      Then build the body that executes it — <a href="18-athlete-development.html">Athlete Development</a>.</p>
-    </div>
-
-    <div class="pager">
-      <a href="11-mental-performance.html"><small>Previous</small>← 11 · Mental Performance</a>
-      <a class="next" href="18-athlete-development.html"><small>Next</small>18 · Athlete Development →</a>
-    </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
-      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
-
-  </main>
+<div class="pager">
+  <a class="back" href="library.html">← All topics</a>
+  <a href="11-mental-performance.html">Next · Mental Game →</a>
 </div>
 
+<footer class="foot"><b>Zulu Tennis</b> · by Veyane — videos are third-party; credit to each channel. Nothing tracked.</footer>
+
 <script>
-  (function(){
-    var input=document.getElementById('problemFilter');
-    var cards=[].slice.call(document.querySelectorAll('#problemList .problem'));
-    var count=document.getElementById('filterCount');
-    function apply(){
-      var q=(input.value||'').toLowerCase().trim();
-      var shown=0;
-      cards.forEach(function(c){
-        var hit = !q || c.textContent.toLowerCase().indexOf(q)>-1;
-        c.style.display = hit ? '' : 'none';
-        if(hit) shown++;
-      });
-      count.textContent = q ? (shown+' of '+cards.length+' scenarios match') : (cards.length+' scenarios');
-    }
-    input.addEventListener('input',apply); apply();
-  })();
+(function(){
+  var b=document.getElementById('navBtn'),n=document.getElementById('navlinks');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='☰';}});
+  function play(el){ if(el.classList.contains('on'))return; var id=el.getAttribute('data-id'); el.classList.add('on');
+    el.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }
+  [].forEach.call(document.querySelectorAll('.vthumb'),function(el){
+    el.addEventListener('click',function(){play(el);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(el);}});
+  });
+})();
 </script>
-<script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
 </body>
 </html>

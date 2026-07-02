@@ -1,200 +1,140 @@
 <!DOCTYPE html>
-<html lang="en" class="no-js">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#0b0b0b">
-<title>Zulu Tennis — Drill Library</title>
-<meta name="description" content="Stroke, pattern and physical drills — each with setup, objective, reps, constraints, coaching cue, progression and success metric.">
-<script>document.documentElement.classList.remove('no-js');</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F8F6F2">
+<title>Zulu Tennis — Drills</title>
+<meta name="description" content="Practice the decisions you’ll face in a match. — Drills on Zulu Tennis, shown in hand-picked videos.">
 <link rel="icon" href="assets/favicon.svg">
-<meta property="og:type" content="website">
-<meta property="og:site_name" content="Zulu Tennis">
-<meta property="og:title" content="Zulu Tennis — Drill Library">
-<meta property="og:description" content="Stroke, pattern and physical drills — each with setup, objective, reps, constraints, coaching cue, progression and success metric.">
-<meta property="og:url" content="https://simzmkhwanazi.github.io/zulu-tennis/30-drill-library.html">
-<meta property="og:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Zulu Tennis — Drill Library">
-<meta name="twitter:description" content="Stroke, pattern and physical drills — each with setup, objective, reps, constraints, coaching cue, progression and success metric.">
-<meta name="twitter:image" content="https://simzmkhwanazi.github.io/zulu-tennis/assets/og-image.png">
-<link rel="stylesheet" href="assets/styles.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..600;1,9..144,300..500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#F8F6F2;--ink:#111111;--forest:#264734;--gold:#A98B52;--clay:#B35A2B;
+  --muted:#6b6660;--line:rgba(17,17,17,.14);
+  --serif:"Fraunces","Didot","Bodoni 72","Hoefler Text",Georgia,serif;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1);--gut:clamp(20px,6vw,90px);
+}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--ivory);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:-.015em;line-height:1.05}
+a{color:inherit}img{display:block;max-width:100%}
+::selection{background:var(--gold);color:#fff}
+.elink{display:inline-flex;align-items:baseline;gap:.5em;font-size:.78rem;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:4px;transition:gap .3s var(--ease)}
+.elink:hover{gap:.9em}
+
+/* LOCKED nav */
+.nav{position:fixed;top:0;left:0;right:0;z-index:60;display:flex;align-items:center;gap:22px;
+  padding:14px var(--gut);background:rgba(248,246,242,.94);backdrop-filter:saturate(1.4) blur(14px);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.brand{text-decoration:none;display:flex;flex-direction:column;line-height:1;margin-right:auto;color:var(--ink)}
+.brand .wm{font-family:var(--serif);font-size:1.2rem;letter-spacing:.04em}
+.brand .by{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;opacity:.7;margin-top:3px}
+.navlinks{display:flex;gap:28px;align-items:center}
+.navlinks a{text-decoration:none;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:600;opacity:.86}
+.navlinks a:hover,.navlinks a[aria-current]{opacity:1}
+.navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
+.menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer}
+@media(max-width:820px){
+  .navlinks{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:30px;
+    background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .5s var(--ease)}
+  .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;color:var(--ivory);opacity:1}
+  .menu-toggle{display:block}
+}
+
+/* header */
+.head{padding:clamp(116px,17vh,168px) var(--gut) clamp(30px,5vh,54px);max-width:1200px;margin:0 auto}
+.head .kicker{font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:22px}
+.head h1{font-size:clamp(2.6rem,7.5vw,5.4rem);font-weight:300;letter-spacing:-.02em;line-height:.96}
+.head .idea{font-family:var(--serif);font-style:italic;font-weight:300;font-size:clamp(1.3rem,2.6vw,1.9rem);
+  color:var(--forest);margin-top:24px;max-width:24ch;line-height:1.25}
+.head .say{max-width:54ch;margin-top:22px;font-size:clamp(1rem,1.3vw,1.15rem);font-weight:300;line-height:1.7;color:#3a352f}
+
+/* videos */
+.watch{max-width:1200px;margin:0 auto;padding:clamp(20px,3vh,40px) var(--gut) 40px}
+.watch .lbl{font-size:.7rem;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600;
+  padding-bottom:16px;margin-bottom:clamp(24px,3vw,40px);border-bottom:1px solid var(--line)}
+.vgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:clamp(24px,2.6vw,42px)}
+.vcard{display:flex;flex-direction:column}
+.vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:#0c0c0c;cursor:pointer}
+.vthumb img,.vthumb iframe{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:0}
+.vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.4));transition:opacity .4s var(--ease)}
+.vthumb:hover::after{opacity:.7}
+.vthumb.on{cursor:default}.vthumb.on::after{display:none}
+.vthumb .play{position:absolute;left:16px;bottom:14px;z-index:2;width:44px;height:44px;border-radius:50%;
+  background:rgba(248,246,242,.94);color:var(--ink);display:grid;place-items:center;font-size:.9rem;padding-left:3px;
+  transition:transform .35s var(--ease)}
+.vthumb:hover .play{transform:scale(1.08)}
+.vmeta{padding:16px 2px 0}
+.vt{font-family:var(--serif);font-size:1.2rem;font-weight:400;line-height:1.22;letter-spacing:-.01em}
+.vch{margin-top:9px;font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+/* pager + footer */
+.pager{max-width:1200px;margin:clamp(40px,6vh,70px) auto 0;padding:0 var(--gut);display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap}
+.pager a{text-decoration:none;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:4px}
+.pager a.back{opacity:.7;border-color:var(--line)}
+.foot{margin-top:clamp(56px,9vh,100px);padding:44px var(--gut);border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-align:center}
+.foot b{color:var(--ink);font-weight:600}
+</style>
 </head>
 <body>
 
-<header class="topbar">
-  <button class="iconbtn menu-toggle" id="menuToggle" aria-label="Menu">☰</button>
-  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="sep"></span><span class="by">by Veyane</span></a>
-  <span class="spacer"></span>
-  <button class="iconbtn" id="themeToggle" aria-label="Toggle theme">☾ Dark</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="wm">Zulu Tennis</span><span class="by">by Veyane</span></a>
+  <div class="navlinks" id="navlinks">
+    <a href="index.html#collections">Collections</a>
+    <a href="videos.html">Watch</a>
+    <a href="learning.html">Learn</a>
+    <a href="set-break.html">Practice</a>
+    <a href="library.html" aria-current="page">Library</a>
+  </div>
+  <button class="menu-toggle" id="navBtn" aria-label="Menu" aria-expanded="false">☰</button>
+</nav>
+
+<header class="head">
+  <p class="kicker">Drills</p>
+  <h1>Drills that transfer.</h1>
+  <p class="idea">Practice the decisions you’ll face in a match.</p>
+  <p class="say">The best drills feel like tennis, not target practice. Groove the patterns and reads you’ll actually use when it counts.</p>
 </header>
 
-<div class="layout">
-  <aside class="sidebar" id="sidebar"></aside>
-  <div class="scrim"></div>
+<section class="watch">
+  <div class="lbl">Watch · 6 clips on this idea</div>
+  <div class="vgrid" id="vgrid">
+    <div class="vcard"><div class="vthumb" data-id="FLmwlQzjiQA" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/FLmwlQzjiQA/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Split-step timing explained</div><div class="vch">Feel Tennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="mLeSkZN2PAI" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/mLeSkZN2PAI/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">When to split step</div><div class="vch">2MinuteTennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="s_pMqxGwh8k" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/s_pMqxGwh8k/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Daily footwork workout (no equipment)</div><div class="vch">Rip It Tennis</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="JR0HlE-gB2g" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/JR0HlE-gB2g/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Boogie to the bounce — court coverage</div><div class="vch">PlayYourCourt</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="eMq0oS36lf8" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/eMq0oS36lf8/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Approach footwork — moving forward</div><div class="vch">RacquetFlex</div></div></div>
+    <div class="vcard"><div class="vthumb" data-id="SKiLLhEhdx4" role="button" tabindex="0" aria-label="Play video"><img loading="lazy" src="https://i.ytimg.com/vi/SKiLLhEhdx4/hqdefault.jpg" alt=""><span class="play" aria-hidden="true">▶</span></div><div class="vmeta"><div class="vt">Early racquet preparation</div><div class="vch">Tom Avery Tennis</div></div></div>
+  </div>
+</section>
 
-  <main class="content">
-
-    <div class="pagehead reveal">
-      <h1>Drill Library</h1>
-      <p class="lead">Repeatable drills by stroke, pattern and physical quality. Every drill names a setup, reps,
-      a constraint that forces the right behaviour, a cue, a progression, and a success metric.</p>
-    </div>
-
-    <label for="drillFilter" style="display:block;font-weight:700;margin:14px 0 6px">🔎 Search drills</label>
-    <input id="drillFilter" type="search" placeholder="e.g. serve, backhand, footwork, approach, pressure…"
-      style="width:100%;max-width:520px;padding:12px 14px;border:1px solid var(--border);border-radius:10px;background:var(--surface);color:var(--text);font-size:1rem">
-    <p id="drillCount" style="color:var(--muted);font-size:.85rem;margin:6px 0 0"></p>
-
-    <div id="drillList">
-
-      <h2 id="serve-return">Serve &amp; return</h2>
-      <div class="card drill-item reveal"><h3>🎾 Serve target ladder</h3>
-        <p><strong>Setup:</strong> 3 cones per box (wide/body/T). <strong>Objective:</strong> location over power.
-        <strong>Reps:</strong> 5×12, call target before each. <strong>Constraint:</strong> must call &amp; hit zone to score.
-        <strong>Cue:</strong> "Spot first, pace second." <strong>Progression:</strong> add a +1 ball to the open court.
-        <strong>Metric:</strong> location accuracy ≥ 50%.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Second-serve floor</h3>
-        <p><strong>Setup:</strong> deep target each box. <strong>Objective:</strong> 90%+ reliable kick/spin serve.
-        <strong>Reps:</strong> 50 second serves. <strong>Constraint:</strong> make 9/10 deep or restart.
-        <strong>Cue:</strong> "Up and out, land it deep." <strong>Progression:</strong> serve at 30–30 pressure.
-        <strong>Metric:</strong> make rate ≥ 90% deep; DF &lt; 2/set.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Deep-return target</h3>
-        <p><strong>Setup:</strong> server serves 1st/2nd; back-third target. <strong>Objective:</strong> neutralise deep.
-        <strong>Reps:</strong> 6 return games. <strong>Constraint:</strong> 1st-serve returns blocked (short backswing).
-        <strong>Cue:</strong> "Split on the toss, deep and in." <strong>Progression:</strong> attack 2nd serves.
-        <strong>Metric:</strong> ≥ 70% in play, ≥ 40% deep.</p></div>
-
-      <h2 id="ground">Groundstrokes &amp; slice</h2>
-      <div class="card drill-item reveal"><h3>🎾 Crosscourt tolerance (10-ball)</h3>
-        <p><strong>Setup:</strong> both crosscourt only. <strong>Objective:</strong> consistency + margin.
-        <strong>Reps:</strong> rallies of 10+; 6 rounds. <strong>Constraint:</strong> 1.2 m (4 ft) net clearance minimum.
-        <strong>Cue:</strong> "Heavy, deep, repeat." <strong>Progression:</strong> change direction only off an inside ball.
-        <strong>Metric:</strong> UE rate ↓; rally length ↑.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Forehand inside-out / inside-in</h3>
-        <p><strong>Setup:</strong> feeds to your backhand corner. <strong>Objective:</strong> manufacture FH weapons.
-        <strong>Reps:</strong> 5×10 (alt IO/II). <strong>Constraint:</strong> recover fully after each.
-        <strong>Cue:</strong> "Run around, set, drive." <strong>Progression:</strong> IO to open court, II to finish.
-        <strong>Metric:</strong> FH winners:errors ≥ 1:1.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Backhand reset slice</h3>
-        <p><strong>Setup:</strong> partner pressures your backhand. <strong>Objective:</strong> low, deep defensive slice.
-        <strong>Reps:</strong> 4×2 min. <strong>Constraint:</strong> slice must land past service line &amp; stay low.
-        <strong>Cue:</strong> "Stay down, carry it deep." <strong>Progression:</strong> slice-approach. <strong>Metric:</strong> depth ≥ 70%.</p></div>
-
-      <h2 id="net">Net &amp; overhead</h2>
-      <div class="card drill-item reveal"><h3>🎾 Approach, split, finish</h3>
-        <p><strong>Setup:</strong> coach feeds short; you approach DTL. <strong>Objective:</strong> build then finish at net.
-        <strong>Reps:</strong> 5×10. <strong>Constraint:</strong> split-step every time; first volley past service line.
-        <strong>Cue:</strong> "Approach, split, deep, close." <strong>Progression:</strong> they try to pass.
-        <strong>Metric:</strong> net pts won ≥ 65%.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Overhead under the lob</h3>
-        <p><strong>Setup:</strong> partner lobs randomly. <strong>Objective:</strong> calm, deep overhead.
-        <strong>Reps:</strong> 4×10. <strong>Constraint:</strong> deep-middle target under pressure (angle only on short lobs).
-        <strong>Cue:</strong> "Turn, point, reach, hit down." <strong>Progression:</strong> move back for deeper lobs.
-        <strong>Metric:</strong> overhead error rate ↓.</p></div>
-
-      <h2 id="approach-pass">Approach · passing · lob</h2>
-      <div class="card drill-item reveal"><h3>🎾 Pass &amp; lob mix vs net-rusher</h3>
-        <p><strong>Setup:</strong> partner approaches; you pass or lob. <strong>Objective:</strong> beat the net player.
-        <strong>Reps:</strong> 6×2 min. <strong>Constraint:</strong> alternate dip-pass and lob; aim low at their feet or deep over backhand.
-        <strong>Cue:</strong> "Low or over — never chest-high." <strong>Metric:</strong> pass/lob success ↑.</p></div>
-
-      <h2 id="patterns">Patterns</h2>
-      <div class="card drill-item reveal"><h3>🎾 Serve +1 to open court</h3>
-        <p><strong>Setup:</strong> wide serve + open-court target. <strong>Objective:</strong> first-strike combo.
-        <strong>Reps:</strong> 5×10. <strong>Constraint:</strong> decide the +1 before serving. <strong>Cue:</strong> "Stretch, then space."
-        <strong>Progression:</strong> live point after the +1. <strong>Metric:</strong> pts won in ≤ 3 shots ≥ 50%.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Return +1</h3>
-        <p><strong>Setup:</strong> deep return then attack the reply. <strong>Objective:</strong> turn defence to neutral/offense.
-        <strong>Reps:</strong> 5×10. <strong>Constraint:</strong> return deep-middle, then attack only an inside ball.
-        <strong>Cue:</strong> "Deep, then hunt." <strong>Metric:</strong> return-game points won ↑.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 "Cross until inside" (Home Base)</h3>
-        <p><strong>Setup:</strong> crosscourt rally; change direction only off an inside ball. <strong>Objective:</strong> decision discipline.
-        <strong>Reps:</strong> 6×4-min games. <strong>Constraint:</strong> illegal (outside-ball) change = lose point.
-        <strong>Cue:</strong> "Cross, cross… now." <strong>Metric:</strong> &lt; 2 illegal changes/game.</p></div>
-
-      <h2 id="defense-pressure">Defensive &amp; pressure</h2>
-      <div class="card drill-item reveal"><h3>🎾 Survive &amp; reset scramble</h3>
-        <p><strong>Setup:</strong> coach hits 4–6 aggressive balls corner-to-corner. <strong>Objective:</strong> reset to neutral.
-        <strong>Reps:</strong> 6×1-min. <strong>Constraint:</strong> 1.2 m+ (4 ft+) net clearance (height = time).
-        <strong>Cue:</strong> "High, deep, recover." <strong>Metric:</strong> ≥ 70% reset deep.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Start at the score</h3>
-        <p><strong>Setup:</strong> games begin at a called score (0–30, deuce, ad-out). <strong>Objective:</strong> score-based decisions.
-        <strong>Reps:</strong> rotate 6 score states. <strong>Constraint:</strong> behind = no low-% direction changes.
-        <strong>Cue:</strong> "Read score, set dial, pick pattern." <strong>Metric:</strong> correct dial ≥ 80%.</p></div>
-      <div class="card drill-item reveal"><h3>🎾 Tie-break trust</h3>
-        <p><strong>Setup:</strong> first-to-7 breakers. <strong>Objective:</strong> execute trusted patterns under pressure.
-        <strong>Reps:</strong> 3–5 breakers. <strong>Constraint:</strong> trusted patterns only — nothing new.
-        <strong>Cue:</strong> "Breathe, first two points." <strong>Metric:</strong> tie-break win % ↑.</p></div>
-
-      <h2 id="physical">Physical (off-court)</h2>
-      <div class="card drill-item reveal"><h3>🏋️ Acceleration starts</h3>
-        <p><strong>Setup:</strong> 5–10 m sprints from a split-step. <strong>Objective:</strong> explosive first step.
-        <strong>Reps:</strong> 8–10, full recovery. <strong>Constraint:</strong> react to a visual cue. <strong>Cue:</strong> "Low, drive, go."
-        <strong>Progression:</strong> multidirectional starts. <strong>Metric:</strong> 5–10 m split time ↓.</p></div>
-      <div class="card drill-item reveal"><h3>🏋️ 5-0-5 agility shuttle</h3>
-        <p><strong>Setup:</strong> 3 cones, ~4.5 m (5 yd) apart. <strong>Objective:</strong> change of direction + decel.
-        <strong>Reps:</strong> 6–8, full recovery. <strong>Constraint:</strong> touch each line, stay low. <strong>Cue:</strong> "Brake then burst."
-        <strong>Metric:</strong> shuttle time ↓ (see <a href="18-athlete-development.html#benchmarks">benchmarks</a>).</p></div>
-      <div class="card drill-item reveal"><h3>🏋️ Ladder + shadow movement</h3>
-        <p><strong>Setup:</strong> agility ladder, then shadow strokes to court positions. <strong>Objective:</strong> footwork &amp; recovery patterns.
-        <strong>Reps:</strong> 4 ladder patterns + 4×30s shadow. <strong>Constraint:</strong> split-step + recover to bisector each rep.
-        <strong>Cue:</strong> "Quick feet, recover home." <strong>Metric:</strong> clean footwork, balanced finishes.</p></div>
-      <div class="card drill-item reveal"><h3>🏋️ Tennis strength circuit</h3>
-        <p><strong>Setup:</strong> squat/hinge/push/pull/rotation/jump (see <a href="18-athlete-development.html#physical">template</a>).
-        <strong>Objective:</strong> force &amp; power base. <strong>Reps:</strong> 3–4 rounds, 5–8 reps. <strong>Constraint:</strong> quality over load.
-        <strong>Cue:</strong> "Brace, drive, control." <strong>Progression:</strong> add med-ball power. <strong>Metric:</strong> strength &amp; jump tests ↑.</p></div>
-
-    </div>
-
-    <div class="callout watch"><div class="head"><span class="ico">▶️</span> Watch</div>
-      <div class="video-list">
-        <a class="video-item" href="https://www.youtube.com/watch?v=37_ixSxH9Jc" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">Top 6 Drills To Win At Every Level</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=cY6UNLYA9Jk" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">3 Solo Tennis Practice Drills To Win More</span><span class="ch">YouTube · verified live</span></span></a>
-        <a class="video-item" href="https://www.youtube.com/watch?v=R5w7dnZmC18" target="_blank" rel="noopener">
-          <span class="meta"><span class="t">How To Practice Tennis Alone</span><span class="ch">YouTube · verified live</span></span></a>
-      </div>
-    </div>
-
-    <div class="next-action reveal">
-      <div class="lbl">Your next highest-value action</div>
-      <p style="margin:.3rem 0 0">Pick the 2 drills that target your #1 priority and put them in this week's plan.
-      Match day soon? Open the <a href="set-break.html">Set-Break Quick-Planner</a>.</p>
-    </div>
-
-    <div class="pager">
-      <a href="24-ai-review-framework.html"><small>Previous</small>← 24 · AI Review Framework</a>
-      <a class="next" href="set-break.html"><small>Next</small>Set-Break Quick-Planner →</a>
-    </div>
-
-    <footer style="margin-top:40px;color:var(--muted);font-size:.85rem"><hr>
-      <p><strong>Zulu Tennis</strong> · by Veyane — Elite Singles Performance System.</p></footer>
-
-  </main>
+<div class="pager">
+  <a class="back" href="library.html">← All topics</a>
+  <a href="16-complete-match-playbook.html">Next · Match Playbook →</a>
 </div>
 
+<footer class="foot"><b>Zulu Tennis</b> · by Veyane — videos are third-party; credit to each channel. Nothing tracked.</footer>
+
 <script>
-  (function(){
-    var input=document.getElementById('drillFilter');
-    var cards=[].slice.call(document.querySelectorAll('#drillList .drill-item'));
-    var heads=[].slice.call(document.querySelectorAll('#drillList h2'));
-    var count=document.getElementById('drillCount');
-    function apply(){
-      var q=(input.value||'').toLowerCase().trim(); var shown=0;
-      cards.forEach(function(c){ var hit=!q||c.textContent.toLowerCase().indexOf(q)>-1; c.style.display=hit?'':'none'; if(hit)shown++; });
-      heads.forEach(function(h){ var n=h.nextElementSibling, any=false;
-        while(n&&!/H2/.test(n.tagName)){ if(n.classList&&n.classList.contains('drill-item')&&n.style.display!=='none')any=true; n=n.nextElementSibling; }
-        h.style.display=any?'':'none'; });
-      count.textContent=q?(shown+' of '+cards.length+' drills match'):(cards.length+' drills');
-    }
-    input.addEventListener('input',apply); apply();
-  })();
+(function(){
+  var b=document.getElementById('navBtn'),n=document.getElementById('navlinks');
+  b.addEventListener('click',function(){var o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'✕':'☰';});
+  n.addEventListener('click',function(e){if(e.target.tagName==='A'){n.classList.remove('open');b.textContent='☰';}});
+  function play(el){ if(el.classList.contains('on'))return; var id=el.getAttribute('data-id'); el.classList.add('on');
+    el.innerHTML='<iframe src="https://www.youtube.com/embed/'+id+'?autoplay=1&rel=0&modestbranding=1" title="Video" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>'; }
+  [].forEach.call(document.querySelectorAll('.vthumb'),function(el){
+    el.addEventListener('click',function(){play(el);});
+    el.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();play(el);}});
+  });
+})();
 </script>
-<script src="assets/courts.js" defer></script>
-<script src="assets/nav.js" defer></script>
 </body>
 </html>
