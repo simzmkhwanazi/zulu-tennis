@@ -1186,19 +1186,25 @@ section,.masthead,.filterwrap{padding-left:var(--gut);padding-right:var(--gut)}
       var on=has(id); pb.classList.toggle('on',on); pb.textContent=on?'✓ In plan':'+ Plan'; paintBadge();});
     a.insertBefore(fig,a.firstChild);
     a.insertBefore(pb,a.firstChild);
-    /* tap the card → play the embed in place, never open YouTube/TikTok */
-    a.removeAttribute('target');
-    a.addEventListener('click',function(e){
-      if(e.target.closest('.plan-add')) return;
-      e.preventDefault();
-      if(fig.classList.contains('on')||!embed) return;
-      fig.classList.add('on');
-      var f=document.createElement('iframe');
-      f.src=embed; f.title=t||'Video';
-      f.setAttribute('allow','autoplay; encrypted-media; picture-in-picture; fullscreen');
-      f.setAttribute('allowfullscreen','');
-      fig.innerHTML=''; fig.appendChild(f);
-    });
+    if(isTT){
+      /* TikTok: open on TikTok in a new tab — Zulu Tennis stays open behind it */
+      a.setAttribute('target','_blank'); a.setAttribute('rel','noopener');
+      src.textContent='TikTok ↗';
+    } else {
+      /* YouTube: play the embed in place, never leave the site */
+      a.removeAttribute('target');
+      a.addEventListener('click',function(e){
+        if(e.target.closest('.plan-add')) return;
+        e.preventDefault();
+        if(fig.classList.contains('on')||!embed) return;
+        fig.classList.add('on');
+        var f=document.createElement('iframe');
+        f.src=embed; f.title=t||'Video';
+        f.setAttribute('allow','autoplay; encrypted-media; picture-in-picture; fullscreen');
+        f.setAttribute('allowfullscreen','');
+        fig.innerHTML=''; fig.appendChild(f);
+      });
+    }
   });
 
   /* floating plan badge */
