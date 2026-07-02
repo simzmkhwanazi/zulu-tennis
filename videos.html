@@ -101,6 +101,10 @@ section,.masthead,.filterwrap{padding-left:var(--gut);padding-right:var(--gut)}
 .video-item{position:relative;display:flex;flex-direction:column;text-decoration:none;color:var(--ink)}
 .video-item .vthumb{position:relative;aspect-ratio:16/9;overflow:hidden;background:var(--forest)}
 .video-item .vthumb img{width:100%;height:100%;object-fit:cover;transition:transform 1s var(--ease);filter:saturate(.96)}
+.video-item .vthumb iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-item .vthumb.on{cursor:default;background:#000}
+.video-item .vthumb.on::after{display:none}
+.video-item .vthumb.on .play,.video-item .vthumb.on .src{display:none}
 .video-item:hover .vthumb img,.video-item:focus-visible .vthumb img{transform:scale(1.045)}
 .video-item .vthumb::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,0) 55%,rgba(17,17,17,.42));opacity:.5;transition:opacity .4s var(--ease)}
 .video-item:hover .vthumb::after{opacity:.85}
@@ -1152,22 +1156,25 @@ section,.masthead,.filterwrap{padding-left:var(--gut);padding-right:var(--gut)}
   function has(k){return read().some(function(i){return i.k===k})}
   function toggle(it){var l=read();if(has(it.k)){write(l.filter(function(i){return i.k!==it.k}))}else{l.push(it);write(l)}}
 
-  /* enhance each .video-item into an editorial film card */
+  /* enhance each .video-item into a film card that PLAYS INLINE (no leaving the site) */
   var items=[].slice.call(document.querySelectorAll('.video-item'));
   items.forEach(function(a){
-    var isTT=/tiktok/.test(a.className);
-    var m=a.getAttribute('href').match(/[?&]v=([^&]+)/);
-    var id=m?m[1]:(a.getAttribute('href'));
+    var href=a.getAttribute('href')||'';
+    var isTT=/tiktok/.test(a.className)||/tiktok\.com/.test(href);
+    var ytm=href.match(/[?&]v=([^&]+)/);
+    var ttm=href.match(/\/video\/(\d+)/);
+    var id = ytm?ytm[1] : (ttm?('tt:'+ttm[1]) : href);
+    var embed = isTT ? (ttm?('https://www.tiktok.com/embed/v2/'+ttm[1]):null)
+                     : (ytm?('https://www.youtube.com/embed/'+ytm[1]+'?autoplay=1&rel=0&modestbranding=1&playsinline=1'):null);
     var t=(a.querySelector('.t')||{}).textContent||'';
     var ch=(a.querySelector('.ch')||{}).textContent||'';
-    // remove any legacy .thumb placeholder
     var old=a.querySelector('.thumb'); if(old) old.remove();
     var fig=document.createElement('span');
     fig.className='vthumb'+(isTT?' tt':'');
-    if(!isTT && m){
+    if(!isTT && ytm){
       var img=document.createElement('img');
       img.loading='lazy'; img.decoding='async'; img.alt='';
-      img.src='https://i.ytimg.com/vi/'+m[1]+'/hqdefault.jpg';
+      img.src='https://i.ytimg.com/vi/'+ytm[1]+'/hqdefault.jpg';
       fig.appendChild(img);
     }
     var play=document.createElement('span'); play.className='play'; play.textContent='▶'; fig.appendChild(play);
@@ -1179,6 +1186,19 @@ section,.masthead,.filterwrap{padding-left:var(--gut);padding-right:var(--gut)}
       var on=has(id); pb.classList.toggle('on',on); pb.textContent=on?'✓ In plan':'+ Plan'; paintBadge();});
     a.insertBefore(fig,a.firstChild);
     a.insertBefore(pb,a.firstChild);
+    /* tap the card → play the embed in place, never open YouTube/TikTok */
+    a.removeAttribute('target');
+    a.addEventListener('click',function(e){
+      if(e.target.closest('.plan-add')) return;
+      e.preventDefault();
+      if(fig.classList.contains('on')||!embed) return;
+      fig.classList.add('on');
+      var f=document.createElement('iframe');
+      f.src=embed; f.title=t||'Video';
+      f.setAttribute('allow','autoplay; encrypted-media; picture-in-picture; fullscreen');
+      f.setAttribute('allowfullscreen','');
+      fig.innerHTML=''; fig.appendChild(f);
+    });
   });
 
   /* floating plan badge */

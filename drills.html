@@ -113,6 +113,9 @@ main{padding:0 var(--gut) 20px}
   .nav .searchbtn{position:relative;z-index:2}
   .navlinks{z-index:1}
   .nav:has(.navlinks.open) .brand{color:#F8F6F2}
+.vplay{position:relative;aspect-ratio:16/9;margin-top:14px;max-width:540px;background:#000}
+.vplay iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video-item.playing{pointer-events:none;opacity:.55}
 </style>
 </head>
 <body>
@@ -400,6 +403,22 @@ document.addEventListener("DOMContentLoaded", function(){
       var b=card.querySelector(".drill-plan"); if(b) paint(id,b); });
   });
 });
+</script>
+<script>
+(function(){
+  [].forEach.call(document.querySelectorAll('.drillcard .video-item,.callout .video-item'),function(a){
+    var m=(a.getAttribute('href')||'').match(/[?&]v=([^&]+)/); if(!m) return;
+    a.removeAttribute('target');
+    a.addEventListener('click',function(e){
+      e.preventDefault();
+      if(a.nextElementSibling&&a.nextElementSibling.classList.contains('vplay')) return;
+      a.classList.add('playing');
+      var w=document.createElement('div'); w.className='vplay';
+      w.innerHTML='<iframe src="https://www.youtube.com/embed/'+m[1]+'?autoplay=1&rel=0&modestbranding=1&playsinline=1" allow="autoplay; encrypted-media; picture-in-picture; fullscreen" allowfullscreen></iframe>';
+      a.insertAdjacentElement('afterend',w);
+    });
+  });
+})();
 </script>
 </body>
 </html>
