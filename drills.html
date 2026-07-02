@@ -102,6 +102,10 @@ main{padding:0 var(--gut) 20px}
 .foot-bottom{margin-top:34px;padding-top:20px;border-top:1px solid rgba(248,246,242,.16);font-size:.72rem;letter-spacing:.1em;opacity:.6}
 [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .8s var(--ease),transform .8s var(--ease)}[data-reveal].in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;scroll-behavior:auto!important}[data-reveal]{opacity:1;transform:none;transition:none}}
+
+  /* menu button always legible: light on the open dark overlay, subtle shadow on any bg */
+  .menu-toggle{text-shadow:0 1px 3px rgba(0,0,0,.28)}
+  .navlinks.open~.menu-toggle,.navlinks.open~.searchbtn{color:#F8F6F2 !important;text-shadow:0 1px 6px rgba(0,0,0,.4)}
 </style>
 </head>
 <body>

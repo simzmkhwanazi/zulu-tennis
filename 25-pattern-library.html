@@ -81,6 +81,10 @@ a{color:inherit}img{display:block;max-width:100%}
 .pager a.back{opacity:.7;border-color:var(--line)}
 .foot{margin-top:clamp(56px,9vh,100px);padding:44px var(--gut);border-top:1px solid var(--line);color:var(--muted);font-size:.78rem;letter-spacing:.04em;text-align:center}
 .foot b{color:var(--ink);font-weight:600}
+
+  /* menu button always legible: light on the open dark overlay, subtle shadow on any bg */
+  .menu-toggle{text-shadow:0 1px 3px rgba(0,0,0,.28)}
+  .navlinks.open~.menu-toggle,.navlinks.open~.searchbtn{color:#F8F6F2 !important;text-shadow:0 1px 6px rgba(0,0,0,.4)}
 </style>
 </head>
 <body>
