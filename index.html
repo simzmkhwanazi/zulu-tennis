@@ -96,7 +96,7 @@ img,video{display:block;max-width:100%}
 @media(max-width:820px){
   .navlinks{
     position:fixed;top:0;left:0;right:0;height:100dvh;flex-direction:column;justify-content:center;gap:34px;
-    background:var(--ink);color:var(--ivory);
+    background:var(--forest);color:var(--ivory);
     transform:translateY(-100%);transition:transform .55s var(--ease);
   }
   .navlinks.open{transform:translateY(0)}
@@ -222,7 +222,7 @@ section{padding-left:var(--gut);padding-right:var(--gut)}
 @media(max-width:820px){.trio-grid{grid-template-columns:1fr;gap:44px}}
 
 /* search band */
-.searchband{background:var(--ink);color:var(--ivory);text-align:center;
+.searchband{background:var(--forest);color:var(--ivory);text-align:center;
   padding-top:clamp(90px,15vh,150px);padding-bottom:clamp(90px,15vh,150px)}
 .searchband h2{font-size:clamp(1.9rem,4.4vw,3.2rem);font-weight:300;max-width:20ch;margin:0 auto 40px}
 .searchform{max-width:640px;margin:0 auto;position:relative}
@@ -281,7 +281,7 @@ section{padding-left:var(--gut);padding-right:var(--gut)}
   background-size:140px 140px}
 
 /* preloader curtain */
-.preloader{position:fixed;inset:0;z-index:200;background:var(--ink);color:var(--ivory);
+.preloader{position:fixed;inset:0;z-index:200;background:var(--forest);color:var(--ivory);
   display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;
   transition:transform 1s var(--ease);will-change:transform}
 .preloader .pl-mark{font-family:var(--serif);font-weight:300;font-size:clamp(1.7rem,5vw,2.7rem);
@@ -351,6 +351,13 @@ html{scrollbar-color:#cfc7b9 var(--ivory)}
   /* menu button always legible: light on the open dark overlay, subtle shadow on any bg */
   .menu-toggle{text-shadow:0 1px 3px rgba(0,0,0,.28)}
   .navlinks.open~.menu-toggle,.navlinks.open~.searchbtn{color:#F8F6F2 !important;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+
+  /* menu overlay: keep the wordmark above it + on-brand colour */
+  .nav .brand{position:relative;z-index:2}
+  .menu-toggle{position:relative;z-index:2}
+  .nav .searchbtn{position:relative;z-index:2}
+  .navlinks{z-index:1}
+  .nav:has(.navlinks.open) .brand{color:#F8F6F2}
 </style>
 </head>
 <body class="loading">

@@ -50,7 +50,7 @@ a{color:inherit}img{display:block;max-width:100%}
 .navlinks a[aria-current]{border-bottom:1px solid var(--gold);padding-bottom:2px}
 .menu-toggle{display:none;background:none;border:none;color:inherit;font-size:1.3rem;cursor:pointer;line-height:1}
 @media(max-width:860px){
-  .navlinks{position:fixed;top:0;left:0;right:0;height:100dvh;flex-direction:column;justify-content:center;gap:34px;background:var(--ink);color:var(--ivory);transform:translateY(-100%);transition:transform .55s var(--ease)}
+  .navlinks{position:fixed;top:0;left:0;right:0;height:100dvh;flex-direction:column;justify-content:center;gap:34px;background:var(--forest);color:var(--ivory);transform:translateY(-100%);transition:transform .55s var(--ease)}
   .navlinks.open{transform:translateY(0)}.navlinks a{font-size:1.1rem;opacity:1}
   .menu-toggle{display:block}
 }
@@ -126,6 +126,13 @@ section,.masthead{padding-left:var(--gut);padding-right:var(--gut)}
   /* menu button always legible: light on the open dark overlay, subtle shadow on any bg */
   .menu-toggle{text-shadow:0 1px 3px rgba(0,0,0,.28)}
   .navlinks.open~.menu-toggle,.navlinks.open~.searchbtn{color:#F8F6F2 !important;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+
+  /* menu overlay: keep the wordmark above it + on-brand colour */
+  .nav .brand{position:relative;z-index:2}
+  .menu-toggle{position:relative;z-index:2}
+  .nav .searchbtn{position:relative;z-index:2}
+  .navlinks{z-index:1}
+  .nav:has(.navlinks.open) .brand{color:#F8F6F2}
 </style>
 </head>
 <body>

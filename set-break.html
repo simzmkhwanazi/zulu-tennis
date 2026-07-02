@@ -146,6 +146,13 @@
   /* menu button always legible: light on the open dark overlay, subtle shadow on any bg */
   .menu-toggle{text-shadow:0 1px 3px rgba(0,0,0,.28)}
   .navlinks.open~.menu-toggle,.navlinks.open~.searchbtn{color:#F8F6F2 !important;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+
+  /* menu overlay: keep the wordmark above it + on-brand colour */
+  .nav .brand{position:relative;z-index:2}
+  .menu-toggle{position:relative;z-index:2}
+  .nav .searchbtn{position:relative;z-index:2}
+  .navlinks{z-index:1}
+  .nav:has(.navlinks.open) .brand{color:#F8F6F2}
 </style>
 </head>
 <body>
