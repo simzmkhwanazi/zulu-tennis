@@ -296,13 +296,13 @@
           <li><strong>Outside ball (crossed the line)</strong> → don't change direction; reset crosscourt.</li>
           <li><strong>Opponent stretched</strong> → change direction only if I'm balanced.</li>
         </ul>
-        <p class="sub" style="margin-top:8px">Full detail: the <a href="16-complete-match-playbook.html">Complete Match Playbook</a>.</p>
+        <p class="sub" style="margin-top:8px">More on this: the <a href="videos.html#matchplay">match-play films</a>.</p>
       </div>
     </details>
 
     <div class="pager">
-      <a href="30-drill-library.html"><small>Previous</small>← 30 · Drill Library</a>
-      <a class="next" href="index.html"><small>Home</small>The System →</a>
+      <a href="drills.html"><small>Previous</small>← Practice drills</a>
+      <a class="next" href="videos.html"><small>Watch</small>The film library →</a>
     </div>
 
     <footer style="margin-top:30px;color:var(--muted);font-size:.85rem"><hr>
@@ -416,7 +416,7 @@
       var entry=PLAYBOOK.filter(function(p){return p[0]===name;})[0]||[name,[],""];
       var tips=entry[1], anchor=entry[2];
       return '<h4>To beat a '+esc(name)+':</h4><ul>'+tips.map(function(t){return '<li>'+esc(t)+'</li>';}).join("")+'</ul>'+
-        (anchor?'<a class="patlink" href="09-player-type-strategies.html#'+anchor+'">📐 See the '+esc(name)+' patterns →</a>':"");
+        (anchor?'<a class="patlink" href="videos.html#opponents">📐 See the '+esc(name)+' films →</a>':"");
     }).join("");
   }
 
